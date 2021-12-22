@@ -45,7 +45,7 @@ const Home = () => {
             <div className="flex items-center flex-1">
               <div className="flex items-center justify-between w-full md:w-auto">
                 <a href="#">
-                  <span className="sr-only">Workflow</span>
+                  <span className="sr-only">CTFGuide</span>
                  
                   <div className="flex-shrink-0 flex items-center">
 				

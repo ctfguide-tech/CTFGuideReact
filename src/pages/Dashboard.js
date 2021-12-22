@@ -31,25 +31,7 @@ const Dashboard = () => {
     email: 'Loading...',
     imageUrl: 'https://ctfguide.com/demopfp.png'
   });
-  const people = [
-    {
-      name: 'ecksdee',
-      imageUrl:
-        'https://images.unsplash.com/photo-1517841905240-472988babdf9?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=3&w=256&h=256&q=80',
-    },
-    {
-      name: 'ecksdee has logged in',
-      imageUrl:
-        'https://images.unsplash.com/photo-1517841905240-472988babdf9?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=3&w=256&h=256&q=80',
-    }
-    // More people...
-  ]
-  const activityItems = [
-    { id: 1, person: people[1], project: 'Workcation', commit: '2d89f0c8', environment: 'production', time: 'just now', description: '' },
 
-    { id: 2, person: people[0], project: 'Workcation', commit: '2d89f0c8', environment: 'production', time: '1h', description: 'Found the flag for Horrible Web Authentication' },
-
-  ]
   
   function logout() {
     signOut(auth).then(() => {
@@ -97,9 +79,7 @@ const Dashboard = () => {
   ]
   const continueWorking = [
     { name: 'test', author: 'laphatize', difficulty: "easy" },
-    { name: 'test', author: 'laphatize', difficulty: "easy" },
-    { name: 'test', author: 'laphatize', difficulty: "easy" },
-    { name: 'test', author: 'laphatize', difficulty: "easy" }
+
 
   ]
 
@@ -284,13 +264,13 @@ const Dashboard = () => {
             <div className="lg:col-span-2 sm:col-span-1">
               <h1 className="text-4xl text-white mb-4"> Continue working on</h1>
 
-              {continueWorking.map((activity) => (
+              {continueWorking.map((activity1) => (
 
                 <div className="mt-2 bg-gray-900 px-4 py-4 text-white rounded border border-blue-900">
                   <div className="flex items-center justify-between">
                     <div>
-                      <h1 className="text-xl"><span className="font-semibold">CTF Activity:</span> {activity.name}</h1>
-                      <p className="text-blue-600">@{activity.author} <span className="text-gray-400">·</span> <span className="text-green-500">{activity.difficulty}</span></p>
+                      <h1 className="text-xl"><span className="font-semibold">CTF Activity:</span> {activity1.name}</h1>
+                      <p className="text-blue-600">@{activity1.author} <span className="text-gray-400">·</span> <span className="text-green-500">{activity1.difficulty}</span></p>
                     </div>
 
                     <div className="ml-2 flex-shrink-0 flex">
@@ -334,22 +314,22 @@ const Dashboard = () => {
               <h1 className="text-4xl text-white mt-6 mb-4"> Social</h1>
               <div>
       <ul role="list" className="">
-        {activityItems.map((activityItem) => (
-          <li key={activityItem.id} className="py-4 bg-gray-900 border border-blue-800 px-4 mb-2 rounded">
+      
+          <li  className="py-4 bg-gray-900 border border-blue-800 px-4 mb-2 rounded">
             <div className="flex space-x-3">
-              <img className="h-6 w-6 rounded-full" src={activityItem.person.imageUrl} alt="" />
+              <img className="h-6 w-6 rounded-full"  alt="" />
               <div className="flex-1 space-y-1">
                 <div className="flex items-center justify-between">
-                  <h3 className="text-sm font-medium text-white">{activityItem.person.name}</h3>
-                  <p className="text-sm text-blue-500">{activityItem.time}</p>
+                  <h3 className="text-sm font-medium text-white"></h3>
+                  <p className="text-sm text-blue-500"></p>
                 </div>
                 <p className="text-sm text-blue-500">
-                {activityItem.description}
+            
                 </p>
               </div>
             </div>
           </li>
-        ))}
+        
       </ul>
     </div>
             
