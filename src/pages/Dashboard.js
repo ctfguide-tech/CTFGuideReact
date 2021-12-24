@@ -213,6 +213,7 @@ const Dashboard = () => {
                     )}
                     aria-current={item.current ? 'page' : undefined}
                     onClick={item.onClick}
+
                   >
                     {item.name}
                   </Disclosure.Button>
@@ -242,6 +243,8 @@ const Dashboard = () => {
                       as="a"
                       href={item.href}
                       className="block px-3 py-2 rounded-md text-base font-medium text-gray-400 hover:text-white hover:bg-gray-700"
+                      onClick={item.onClick}
+
                     >
                       {item.name}
                     </Disclosure.Button>
@@ -255,7 +258,7 @@ const Dashboard = () => {
 
 
       <main>
-        <div className="max-w-7xl mx-auto py-6 sm:px-6 lg:px-8">
+        <div className="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
 
           <div className="grid lg:grid-cols-3 gap-4 sm:grid-cols-1">
 

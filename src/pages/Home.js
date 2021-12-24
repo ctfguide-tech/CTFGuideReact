@@ -55,7 +55,7 @@ const Home = () => {
 
                 </a>
                 <div className="-mr-2 flex items-center md:hidden">
-                  <Popover.Button className="bg-white rounded-md p-2 inline-flex items-center justify-center text-gray-400 hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-indigo-500">
+                  <Popover.Button className="bg-gray-800 rounded-md p-2 inline-flex items-center justify-center text-gray-400 hover:text-white hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white">
                     <span className="sr-only">Open main menu</span>
                     <MenuIcon className="h-6 w-6" aria-hidden="true" />
                   </Popover.Button>
@@ -88,17 +88,20 @@ const Home = () => {
               focus
               className="absolute z-10 top-0 inset-x-0 p-2 transition transform origin-top-right md:hidden"
             >
-              <div className="rounded-lg shadow-md bg-white ring-1 ring-black ring-opacity-5 overflow-hidden">
+              <div className="rounded-lg shadow-sm shadow-blue-600 bg-black ring-1 ring-black ring-opacity-5 overflow-hidden  border border-2 border-blue-700">
                 <div className="px-5 pt-4 flex items-center justify-between">
-                  <div>
-                    <img
-                      className="h-8 w-auto"
-                      src="https://ctfguide.com/logo.svg"
-                      alt=""
-                    />
-                  </div>
+                <a href="#">
+                  <span className="sr-only">CTFGuide</span>
+                 
+                  <div className="flex-shrink-0 flex items-center">
+				
+                <img src="./CTFGuide trans dark.png" class="w-10"/> <span style={{fontFamily: 'Space Grotesk, sans-serif'}} className="w-auto font-semibold text-xl text-white">CTFGuide</span>
+                </div>
+
+
+                </a>
                   <div className="-mr-2">
-                    <Popover.Button className="bg-white rounded-md p-2 inline-flex items-center justify-center text-gray-400 hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-indigo-500">
+                    <Popover.Button className="bg-gray-800 rounded-md p-2 inline-flex items-center justify-center text-gray-400 hover:text-white hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white">
                       <span className="sr-only">Close main menu</span>
                       <XIcon className="h-6 w-6" aria-hidden="true" />
                     </Popover.Button>
@@ -107,9 +110,17 @@ const Home = () => {
                
                 <Link
                   to="./Login"
-                  className="block w-full px-5 py-3 text-center font-medium text-indigo-600 bg-gray-50 hover:bg-gray-100"
+                  className="block w-full px-5 py-3 text-sm text-center font-medium text-white bg-gray-900 hover:bg-gray-800 mt-4"
+                  style={{fontFamily: 'Space Grotesk, sans-serif'}}
                 >
                   Log in
+                </Link>
+                <Link
+                  to="./Register"
+                  className="block w-full px-5 py-3 text-sm text-center font-medium text-white bg-gray-900 hover:bg-gray-800"
+                  style={{fontFamily: 'Space Grotesk, sans-serif'}}
+                >
+                 Register
                 </Link>
               </div>
             </Popover.Panel>
@@ -131,20 +142,19 @@ const Home = () => {
               </p>
               <div style={{fontFamily: 'Space Grotesk, sans-serif'}} className="mt-8 sm:max-w-lg sm:mx-auto  sm:text-center lg:text-center lg:mx-auto">
         
-                  <button
-                    type="submit"
+                  <a
+                    href="./register"
                     className="shadow-lg shadow-blue-500/50 mt-3 w-full px-10 py-3 border border-2  text-base font-medium rounded-md text-white bg-gray-800 border-blue-600 border-2 text-xl shadow-sm hover:bg-gray-900 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 sm:mt-0  sm:flex-shrink-0 sm:inline-flex sm:items-center sm:w-auto"
                   >
                     Create an account
-                  </button>
+                  </a>
 
-                  <Link
-                    to="./Login"
-                    type="submit"
+                  <a
+                    href="./login"
                     className="shadow-lg shadow-blue-500/50 mt-3 lg:ml-2 sm:ml-0 w-full px-10 py-3 border border-2 text-base font-medium rounded-md text-white bg-gray-800 border-blue-600 border-2 text-xl shadow-sm hover:bg-gray-900 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 sm:mt-0  sm:flex-shrink-0 sm:inline-flex sm:items-center sm:w-auto"
                   >
                      Login
-                  </Link>
+                  </a>
             
               </div>
             </div>
