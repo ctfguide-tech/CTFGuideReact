@@ -3,6 +3,8 @@ import ReactDOM from "react-dom";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Layout from "./pages/Layout";
 import Home from "./pages/Home";
+import Practice from "./pages/Practice";
+
 import NoPage from "./pages/NoPage";
 import Dashboard from "./pages/Dashboard";
 import Login from "./pages/Login";
@@ -18,6 +20,7 @@ export default function App() {
           <Route index element={<Home />} />
           <Route path="/login" element={<Login />} />
           <Route path="/dashboard" element={<Dashboard />} />
+          <Route path="/practice" element={<Practice />} />
           <Route path="*" element={<NoPage />} />
         </Route>
       </Routes>
