@@ -143,15 +143,16 @@ const Home = () => {
               <div style={{fontFamily: 'Space Grotesk, sans-serif'}} className="mt-8 sm:max-w-lg sm:mx-auto  sm:text-center lg:text-center lg:mx-auto">
         
                   <a
-                    href="./register"
-                    className="shadow-lg shadow-blue-500/50 mt-3 w-full px-10 py-3 border border-2  text-base font-medium rounded-md text-white bg-gray-800 border-blue-600 border-2 text-xl shadow-sm hover:bg-gray-900 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 sm:mt-0  sm:flex-shrink-0 sm:inline-flex sm:items-center sm:w-auto"
+                    type="submit"
+                    className="shadow-lg shadow-blue-500/50 mt-4 w-full px-10 py-4 border border-2  text-base font-medium rounded-md text-white bg-gray-800 border-blue-600 border-2 text-xl shadow-sm hover:bg-gray-900 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 sm:mt-0  sm:flex-shrink-0 sm:inline-flex sm:items-center sm:w-auto"
                   >
                     Create an account
-                  </a>
+                  </a> 
 
                   <a
-                    href="./login"
-                    className="shadow-lg shadow-blue-500/50 mt-3 lg:ml-2 sm:ml-0 w-full px-10 py-3 border border-2 text-base font-medium rounded-md text-white bg-gray-800 border-blue-600 border-2 text-xl shadow-sm hover:bg-gray-900 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 sm:mt-0  sm:flex-shrink-0 sm:inline-flex sm:items-center sm:w-auto"
+                    href="./Login"
+                    type="submit"
+                    className="shadow-lg shadow-blue-500/50 mt-3 lg:ml-2 sm:ml-0 w-full px-10 py-4 border border-2 text-base font-medium rounded-md text-white bg-gray-800 border-blue-600 border-2 text-xl shadow-sm hover:bg-gray-900 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 sm:mt-0  sm:flex-shrink-0 sm:inline-flex sm:items-center sm:w-auto"
                   >
                      Login
                   </a>

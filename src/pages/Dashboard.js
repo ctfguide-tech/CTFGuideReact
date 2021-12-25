@@ -6,6 +6,7 @@ import { BellIcon, MenuIcon, XIcon, FireIcon } from '@heroicons/react/outline'
 import { getAuth, onAuthStateChanged, signOut } from "firebase/auth";
 import { initializeApp } from "firebase/app";
 import { getAnalytics } from "firebase/analytics";
+
 const Dashboard = () => {
 
   const firebaseConfig = {
@@ -32,6 +33,12 @@ const Dashboard = () => {
     imageUrl: 'https://ctfguide.com/demopfp.png'
   });
 
+  const [userData, setUserData] = useState({
+    streak: 0,
+    history: [],
+    continueWorking: []
+  })
+
   
   function logout() {
     signOut(auth).then(() => {
@@ -42,6 +49,8 @@ const Dashboard = () => {
 
   }
   useEffect(() => {
+
+    
     onAuthStateChanged(auth, (firebaseUser) => {
       if (firebaseUser) {
         const uid = firebaseUser.uid;
@@ -60,14 +69,44 @@ const Dashboard = () => {
               "https://ui-avatars.com/api/?name=laphatize&background=random",
           });
         }
+
+        var xhttp = new XMLHttpRequest();
+        xhttp.onreadystatechange = function() {
+          if (this.readyState === 4 & this.status === 200) {
+            let data = JSON.parse(this.responseText);
+            setUserData({
+              streak: data.streak,
+              history: [],
+              continueWorking: data.history
+            })
+            document.getElementById("fetchingHistory").classList.add("hidden");
+            if (data.history.length < 1)  document.getElementById("noHistory").classList.remove("hidden")
+          }
+
+          if (this.readyState === 4 & this.status === 500) {
+            // User not registered via API
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function() {
+              if (this.readyState === 4 & this.status === 200) {
+                window.location.reload();
+              }
+            }
+            xhttp.open("GET", `http://localhost:3001/users/register?uid=${firebaseUser.uid}`);
+            xhttp.send();
+            
+          }
+        }
+      
+      xhttp.open("GET", `http://localhost:3001/users/data?uid=${firebaseUser.uid}`);
+      xhttp.send();
       } else {
         window.location.href = "../login";
       }
     });
   }, []);
   const navigation = [
-    { name: 'Dashboard', href: '#', current: true },
-    { name: 'Practice', href: '#', current: false },
+    { name: 'Dashboard', href: './dashboard', current: true },
+    { name: 'Practice', href: './practice', current: false },
     { name: 'Classes', href: '#', current: false },
     { name: 'CTFLive', href: '#', current: false },
     { name: 'Friends', href: '#', current: false },
@@ -77,27 +116,9 @@ const Dashboard = () => {
     { name: 'Settings', href: '#' },
     { name: 'Sign out', onClick: logout },
   ]
-  const continueWorking = [
-    { name: 'test', author: 'laphatize', difficulty: "easy" },
-
-
-  ]
 
   function classNames(...classes) {
     return classes.filter(Boolean).join(' ')
-  }
-
-
-  function fetchDashboard() {
-    var xhttp = new XMLHttpRequest();
-    xhttp.onreadystatechange = function() {
-      if (this.readyState === 4 & this.status === 200) {
-        console.log(xhttp.responseText);
-      }
-    }
-  
-  xhttp.open("GET", "https://localhost:88/v2/dashboard");
-  xhttp.send();
   }
 
 
@@ -238,16 +259,11 @@ const Dashboard = () => {
                 </div>
                 <div className="mt-3 px-2 space-y-1">
                   {userNavigation.map((item) => (
-                    <Disclosure.Button
-                      key={item.name}
-                      as="a"
-                      href={item.href}
-                      className="block px-3 py-2 rounded-md text-base font-medium text-gray-400 hover:text-white hover:bg-gray-700"
-                      onClick={item.onClick}
-
-                    >
-                      {item.name}
-                    </Disclosure.Button>
+                    <a
+                      key={item.name + "m"}
+                      onClick={logout}
+                      className="block px-3 py-2 rounded-md text-base font-medium text-red-400 hover:text-white hover:bg-gray-700"
+                    >{item.name}</a>
                   ))}
                 </div>
               </div>
@@ -266,10 +282,32 @@ const Dashboard = () => {
 
             <div className="lg:col-span-2 sm:col-span-1">
               <h1 className="text-4xl text-white mb-4"> Continue working on</h1>
+              
+              <div id="fetchingHistory" className="mt-2 bg-gray-900 px-4 py-4 text-white rounded border border-blue-900">
+                  <div className="flex items-center justify-between">
+                    <div>
+                      <h1 className="text-xl">Fetching History...</h1>
+                    </div>
 
-              {continueWorking.map((activity1) => (
 
-                <div className="mt-2 bg-gray-900 px-4 py-4 text-white rounded border border-blue-900">
+                  </div>
+                </div>
+
+                <div id="noHistory" className="hidden mt-2 bg-gray-900 px-4 py-4 text-white rounded border border-red-900">
+                  <div className="flex items-center justify-between">
+                    <div>
+                      <h1 className="text-xl">No history found!</h1>
+                    </div>
+
+
+                  </div>
+                </div>
+                    
+                    
+
+              {userData.continueWorking.map((activity1) => (
+
+                <div key={activity1.name} className="mt-2 bg-gray-900 px-4 py-4 text-white rounded border border-blue-900">
                   <div className="flex items-center justify-between">
                     <div>
                       <h1 className="text-xl"><span className="font-semibold">CTF Activity:</span> {activity1.name}</h1>
@@ -306,7 +344,7 @@ const Dashboard = () => {
             <div className="">
               <h1 className="text-4xl text-white mb-4"> Progress</h1>
               <div className="bg-gray-900 px-4 py-4 text-white mx-auto text-center mt-2 rounded border border-blue-900">
-                <h1 className="text-xl font-semibold text-yellow-500 inline-flex text-center"> <FireIcon className="h-6 w-6 text-center" aria-hidden="true" /> 25 day streak</h1>
+                <h1 className="text-xl font-semibold text-yellow-500 inline-flex text-center"> <FireIcon className="h-6 w-6 text-center mr-1" aria-hidden="true" />  {userData.streak} day streak</h1>
                 <p>No activity today, yet!</p>
               </div>
               <div className="bg-gray-900 px-4 py-4 text-white mx-auto text-center mt-2 rounded border border-blue-900">
