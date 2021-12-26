@@ -35,7 +35,6 @@ const Dashboard = () => {
 
   const [userData, setUserData] = useState({
     streak: 0,
-    history: [],
     continueWorking: []
   })
 
@@ -74,13 +73,15 @@ const Dashboard = () => {
         xhttp.onreadystatechange = function() {
           if (this.readyState === 4 & this.status === 200) {
             let data = JSON.parse(this.responseText);
+            if (!data.streak) data[`streak`] = 0;
+            if (!data.continueWorking) data[`continueWorking`] = []
+            document.getElementById("myInfo").innerText = JSON.stringify(data, null, 3);
             setUserData({
               streak: data.streak,
-              history: [],
-              continueWorking: data.history
+              continueWorking: data.continueWorking
             })
             document.getElementById("fetchingHistory").classList.add("hidden");
-            if (data.history.length < 1)  document.getElementById("noHistory").classList.remove("hidden")
+            if (data.continueWorking.length < 1)  document.getElementById("noHistory").classList.remove("hidden")
           }
 
           if (this.readyState === 4 & this.status === 500) {
@@ -338,6 +339,9 @@ const Dashboard = () => {
                 </div>
       
 
+                <h1 className="text-4xl text-white mt-6 mb-4"> Developer Message</h1>
+                <p className="text-white">Hey, did we load your stuff properly? We just did a database migration and we want to confirm that this looks normal with you.</p>
+                <p className="text-green-500 bg-gray-900 mt-4 px-4 py-2" id="myInfo"></p>
             </div>
 
 
@@ -358,14 +362,28 @@ const Dashboard = () => {
       
           <li  className="py-4 bg-gray-900 border border-blue-800 px-4 mb-2 rounded">
             <div className="flex space-x-3">
-              <img className="h-6 w-6 rounded-full"  alt="" />
+              <img className="h-6 w-6 rounded-full" src="https://th.bing.com/th/id/R.2f86c5260be65f26800c2f88cc39aa6b?rik=t8ZDT5ZTeX5wpA&riu=http%3a%2f%2fwww.trbimg.com%2fimg-5a68a878%2fturbine%2fct-grumpy-cat-lawsuit-20180124&ehk=Tjg%2fsr1Mwd0lIKKGL5eCh0b6O4s2DSGvi7Gvsw8DVto%3d&risl=&pid=ImgRaw&r=0" alt="" />
               <div className="flex-1 space-y-1">
                 <div className="flex items-center justify-between">
-                  <h3 className="text-sm font-medium text-white"></h3>
-                  <p className="text-sm text-blue-500"></p>
+                  <h3 className="text-sm font-medium text-white">valmodaa1 has logged in</h3>
+                  <p className="text-sm text-blue-500">just now</p>
                 </div>
                 <p className="text-sm text-blue-500">
-            
+                  
+                </p>
+              </div>
+            </div>
+          </li>
+          <li  className="py-4 bg-gray-900 border border-blue-800 px-4 mb-2 rounded">
+            <div className="flex space-x-3">
+              <img className="h-6 w-6 rounded-full" src="https://th.bing.com/th/id/R.2f86c5260be65f26800c2f88cc39aa6b?rik=t8ZDT5ZTeX5wpA&riu=http%3a%2f%2fwww.trbimg.com%2fimg-5a68a878%2fturbine%2fct-grumpy-cat-lawsuit-20180124&ehk=Tjg%2fsr1Mwd0lIKKGL5eCh0b6O4s2DSGvi7Gvsw8DVto%3d&risl=&pid=ImgRaw&r=0" alt="" />
+              <div className="flex-1 space-y-1">
+                <div className="flex items-center justify-between">
+                  <h3 className="text-sm font-medium text-white">valmodaa1</h3>
+                  <p className="text-sm text-blue-500">just now</p>
+                </div>
+                <p className="text-sm text-white">
+                  Solved Horrible Web Authentication
                 </p>
               </div>
             </div>
