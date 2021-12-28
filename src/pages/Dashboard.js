@@ -100,14 +100,16 @@ const Dashboard = () => {
       
       xhttp.open("GET", `http://localhost:3001/users/data?uid=${firebaseUser.uid}`);
       xhttp.send();
+
+
       } else {
         window.location.href = "../login";
       }
     });
   }, []);
   const navigation = [
-    { name: 'Dashboard', href: './dashboard', current: true },
-    { name: 'Practice', href: './practice', current: false },
+    { name: 'Dashboard', href: './dashboard', current: false },
+    { name: 'Practice', href: './practice', current: true },
     { name: 'Classes', href: '#', current: false },
     { name: 'CTFLive', href: '#', current: false },
     { name: 'Friends', href: '#', current: false },

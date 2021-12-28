@@ -32,7 +32,10 @@ const Practice = () => {
     email: 'Loading...',
     imageUrl: 'https://ctfguide.com/demopfp.png'
   });
-
+  
+  const [challenge, setChallenges] = useState({
+    data: []
+  })
 
   
   function logout() {
@@ -90,6 +93,24 @@ const Practice = () => {
       
       xhttp.open("GET", `http://localhost:3001/users/data?uid=${firebaseUser.uid}`);
       xhttp.send();
+
+      var xhttp = new XMLHttpRequest();
+        xhttp.onreadystatechange = function() {
+          if (this.readyState === 4 && this.status === 200) {
+            // Success!
+            console.log(JSON.parse(this.responseText));
+            setChallenges({
+             data: JSON.parse(this.responseText)
+            })
+            document.getElementById("suggestedLoader").classList.add("hidden");
+          }
+        }
+      xhttp.open("GET", "http://localhost:3001/challenges/all");
+      xhttp.send();
+
+
+
+
       } else {
         window.location.href = "../login";
       }
@@ -274,8 +295,11 @@ const Practice = () => {
             <div className="">
               <h1 className="text-4xl text-white mb-4">Suggested for you</h1>
               
-              <div className="mt-2 bg-gray-900 px-4 py-4 text-white rounded border border-blue-900">
+              <div id="suggestedLoader" className="mt-2 bg-gray-900 px-4 py-4 text-white rounded border border-blue-900">
                   <div className="flex items-center justify-between">
+                   
+          
+                
                     <div>
                       <h1 className="text-xl">One second please...</h1>
                     </div>
@@ -283,8 +307,16 @@ const Practice = () => {
 
                   </div>
                 </div>
-
-             
+                
+               <div class="grid grid-cols-4 gap-2 mt-2">
+                {challenge.data.map((item) => (
+                    <div
+                      key={item.title}
+                      className="block px-3 py-2 rounded-md bg-gray-900 mb-2 border border-blue-800 text-base font-medium text-white hover:text-white hover:bg-gray-800"
+                    >{item.title}</div>
+                    
+                  ))}
+              </div>       
       
 
             </div>
