@@ -108,8 +108,8 @@ const Dashboard = () => {
     });
   }, []);
   const navigation = [
-    { name: 'Dashboard', href: './dashboard', current: false },
-    { name: 'Practice', href: './practice', current: true },
+    { name: 'Dashboard', href: './dashboard', current: true },
+    { name: 'Practice', href: './practice', current: false },
     { name: 'Classes', href: '#', current: false },
     { name: 'CTFLive', href: '#', current: false },
     { name: 'Friends', href: '#', current: false },
