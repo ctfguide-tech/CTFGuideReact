@@ -32,12 +32,12 @@ const Practice = () => {
     email: 'Loading...',
     imageUrl: 'https://ctfguide.com/demopfp.png'
   });
-  
+
   const [challenge, setChallenges] = useState({
     data: []
   })
 
-  
+
   function logout() {
     signOut(auth).then(() => {
       // Sign-out successful.
@@ -48,7 +48,7 @@ const Practice = () => {
   }
   useEffect(() => {
 
-    
+
     onAuthStateChanged(auth, (firebaseUser) => {
       if (firebaseUser) {
         const uid = firebaseUser.uid;
@@ -69,44 +69,44 @@ const Practice = () => {
         }
 
         var xhttp = new XMLHttpRequest();
-        xhttp.onreadystatechange = function() {
+        xhttp.onreadystatechange = function () {
 
-        if (this.readyState === 4 & this.status === 200) {
+          if (this.readyState === 4 & this.status === 200) {
             let data = JSON.parse(this.responseText);
-            
-        
-        }
+
+
+          }
 
           if (this.readyState === 4 & this.status === 500) {
             // User not registered via API
             var xhttp = new XMLHttpRequest();
-            xhttp.onreadystatechange = function() {
+            xhttp.onreadystatechange = function () {
               if (this.readyState === 4 & this.status === 200) {
                 window.location.reload();
               }
             }
             xhttp.open("GET", `http://localhost:3001/users/register?uid=${firebaseUser.uid}`);
             xhttp.send();
-            
+
           }
         }
-      
-      xhttp.open("GET", `http://localhost:3001/users/data?uid=${firebaseUser.uid}`);
-      xhttp.send();
 
-      var xhttp = new XMLHttpRequest();
-        xhttp.onreadystatechange = function() {
+        xhttp.open("GET", `http://localhost:3001/users/data?uid=${firebaseUser.uid}`);
+        xhttp.send();
+
+        var xhttp = new XMLHttpRequest();
+        xhttp.onreadystatechange = function () {
           if (this.readyState === 4 && this.status === 200) {
             // Success!
             console.log(JSON.parse(this.responseText));
             setChallenges({
-             data: JSON.parse(this.responseText)
+              data: JSON.parse(this.responseText)
             })
             document.getElementById("suggestedLoader").classList.add("hidden");
           }
         }
-      xhttp.open("GET", "http://localhost:3001/challenges/all");
-      xhttp.send();
+        xhttp.open("GET", "http://localhost:3001/challenges/all");
+        xhttp.send();
 
 
 
@@ -294,30 +294,39 @@ const Practice = () => {
 
             <div className="">
               <h1 className="text-4xl text-white mb-4">Suggested for you</h1>
-              
+
               <div id="suggestedLoader" className="mt-2 bg-gray-900 px-4 py-4 text-white rounded border border-blue-900">
-                  <div className="flex items-center justify-between">
-                   
-          
-                
-                    <div>
-                      <h1 className="text-xl">One second please...</h1>
-                    </div>
+                <div className="flex items-center justify-between">
 
 
+
+                  <div>
+                    <h1 className="text-xl">One second please...</h1>
                   </div>
+
+
                 </div>
-                
-               <div class="grid grid-cols-4 gap-2 mt-2">
-                {challenge.data.map((item) => (
+              </div>
+
+              <div className="grid grid-cols-4 gap-2 mt-2">
+                {
+
+                  challenge.data.map((item) => (
+
+
                     <div
                       key={item.title}
-                      className="block px-3 py-2 rounded-md bg-gray-900 mb-2 border border-blue-800 text-base font-medium text-white hover:text-white hover:bg-gray-800"
-                    >{item.title}</div>
-                    
-                  ))}
-              </div>       
-      
+                      className=" px-3 py-2 rounded-md bg-gray-900 mb-2 border border-blue-800 text-base font-medium text-white hover:text-white hover:bg-gray-800"
+                    >{item.title}
+                      <span className={"lowercase " +  (item.difficulty === 'hard' ? 'text-red-500' : item.difficulty === 'medium' ? ' text-yellow-500' : 'text-green-500')}> {item.difficulty}</span>
+                    </div>
+
+                  ))
+
+
+                }
+              </div>
+
 
             </div>
 
@@ -325,19 +334,19 @@ const Practice = () => {
             <hr class="mt-10 ml-4 mr-4 mb-4 border-gray-700" />
             <div className="mt-6">
               <h1 className="text-4xl text-white mb-4">Challenges by category</h1>
-              
+
               <div className="mt-2 bg-gray-900 px-4 py-4 text-white rounded border border-blue-900">
-                  <div className="flex items-center justify-between">
-                    <div>
-                      <h1 className="text-xl">One second please...</h1>
-                    </div>
-
-
+                <div className="flex items-center justify-between">
+                  <div>
+                    <h1 className="text-xl">One second please...</h1>
                   </div>
-                </div>
 
-             
-      
+
+                </div>
+              </div>
+
+
+
 
             </div>
 
