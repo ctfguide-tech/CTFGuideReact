@@ -26,7 +26,7 @@ const Practice = () => {
 
   const auth = getAuth();
 
-  document.title = "CTFGuide - Practice"
+  document.title = "CTFGuide - Activity"
   const [user, setUser] = useState({
     name: 'Loading...',
     email: 'Loading...',
@@ -146,7 +146,7 @@ const Practice = () => {
                   <div className="flex-shrink-0">
                     <img
                       className="h-14 w-14"
-                      src="./CTFGuide trans dark.png"
+                      src="../CTFGuide trans dark.png"
                       alt="CTFGuide"
                     />
                   </div>
@@ -293,7 +293,7 @@ const Practice = () => {
 
 
             <div className="">
-              <h1 className="text-4xl text-white mb-4">Suggested for you</h1>
+              <h1 className="text-4xl text-white mb-4">Challenge Name</h1>
 
               <div id="suggestedLoader" className="mt-2 bg-gray-900 px-4 py-4 text-white rounded border border-blue-900">
                 <div className="flex items-center justify-between">
@@ -308,49 +308,13 @@ const Practice = () => {
                 </div>
               </div>
 
-              <div className="grid grid-cols-1 sm:grid-cols-4 gap-2 mt-2">
-                {
-
-                  challenge.data.map((item) => (
-
-
-                    <div
-                     style={{cursor: 'pointer'}}
-                      key={item.title}
-                      className=" px-3 py-2 rounded-md bg-gray-900 mb-2 border border-blue-800 text-base font-medium text-white hover:text-white hover:bg-gray-800"
-                    >{item.title}
-                    <hr className="border-blue-900 text-gray-900 mb-2"></hr>
-                      <span className={"lowercase " +  (item.difficulty === 'hard' ? 'text-red-500' : item.difficulty === 'medium' ? ' text-yellow-500' : 'text-green-500')}> {item.difficulty}</span> <b>∙</b> <span className="bg-black rounded-lg px-2  lowercase">{item.category}</span>
-                    </div>
-
-                  ))
-
-
-                }
-              </div>
-
+                  <p className="text-white text-xl">
+                      Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                    </p>
 
             </div>
 
 
-            <hr class="mt-10 ml-4 mr-4 mb-4 border-gray-700" />
-            <div className="mt-6">
-              <h1 className="text-4xl text-white mb-4">Challenges by category</h1>
-
-              <div className="mt-2 bg-gray-900 px-4 py-4 text-white rounded border border-blue-900">
-                <div className="flex items-center justify-between">
-                  <div>
-                    <h1 className="text-xl">One second please...</h1>
-                  </div>
-
-
-                </div>
-              </div>
-
-
-
-
-            </div>
 
           </div>
 

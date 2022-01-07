@@ -7,7 +7,7 @@ import Practice from "./pages/Practice";
 import NoPage from "./pages/NoPage";
 import Dashboard from "./pages/Dashboard";
 import Login from "./pages/Login";
-
+import Challenge from "./pages/Challenge";
 import "./index.css";
 
 
@@ -20,6 +20,7 @@ export default function App() {
           <Route path="/login" element={<Login />} />
           <Route path="/dashboard" element={<Dashboard />} />
           <Route path="/practice" element={<Practice />} />
+          <Route path="/challenges/:id" element={<Challenge />} />
           <Route path="*" element={<NoPage />} />
         </Route>
       </Routes>
