@@ -315,6 +315,7 @@ const Practice = () => {
 
 
                     <div
+                    onClick={() => {window.location.href = `./challenges/${item.id}`}}
                      style={{cursor: 'pointer'}}
                       key={item.title}
                       className=" px-3 py-2 rounded-md bg-gray-900 mb-2 border border-blue-800 text-base font-medium text-white hover:text-white hover:bg-gray-800"

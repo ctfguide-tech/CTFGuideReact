@@ -94,18 +94,19 @@ const Practice = () => {
         xhttp.open("GET", `http://localhost:3001/users/data?uid=${firebaseUser.uid}`);
         xhttp.send();
 
+        // ChallengeName ChallengeDetails
         var xhttp = new XMLHttpRequest();
         xhttp.onreadystatechange = function () {
           if (this.readyState === 4 && this.status === 200) {
             // Success!
-            console.log(JSON.parse(this.responseText));
-            setChallenges({
-              data: JSON.parse(this.responseText)
-            })
+            let data = JSON.parse(this.responseText);
+            document.getElementById("challengeName").innerHTML = data.title;
+            document.getElementById("challengeDetails").innerHTML = data.problem;
+
             document.getElementById("suggestedLoader").classList.add("hidden");
           }
         }
-        xhttp.open("GET", "http://localhost:3001/challenges/all");
+        xhttp.open("GET", "http://localhost:3001/challenges/specific/" + window.location.href.split("/")[4]);
         xhttp.send();
 
 
@@ -117,8 +118,8 @@ const Practice = () => {
     });
   }, []);
   const navigation = [
-    { name: 'Dashboard', href: './dashboard', current: false },
-    { name: 'Practice', href: './practice', current: true },
+    { name: 'Dashboard', href: '../dashboard', current: false },
+    { name: 'Practice', href: '../practice', current: true },
     { name: 'Classes', href: '#', current: false },
     { name: 'CTFLive', href: '#', current: false },
     { name: 'Friends', href: '#', current: false },
@@ -293,7 +294,7 @@ const Practice = () => {
 
 
             <div className="">
-              <h1 className="text-4xl text-white mb-4">Challenge Name</h1>
+              <h1 id="challengeName" className="text-4xl text-white mb-4"></h1>
 
               <div id="suggestedLoader" className="mt-2 bg-gray-900 px-4 py-4 text-white rounded border border-blue-900">
                 <div className="flex items-center justify-between">
@@ -308,8 +309,8 @@ const Practice = () => {
                 </div>
               </div>
 
-                  <p className="text-white text-xl">
-                      Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                  <p id="challengeDetails" className="text-white text-xl">
+                      
                     </p>
 
             </div>

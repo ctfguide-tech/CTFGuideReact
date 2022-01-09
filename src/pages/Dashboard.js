@@ -401,16 +401,16 @@ const Dashboard = () => {
           </div>
 
 
-          <div className="px-4 py-4 sm:px-0">
-            <div className=" rounded-lg h-96" />
-
-
-
-          </div>
           {/* /End replace */}
         </div>
       </main>
+
+
+   
     </div>
+
+
+
 
   )
 }
