@@ -119,7 +119,7 @@ const Practice = () => {
   }, []);
   const navigation = [
     { name: 'Dashboard', href: '../dashboard', current: false },
-    { name: 'Practice', href: '../practice', current: true },
+    { name: 'Practice', href: '.. /practice', current: true },
     { name: 'Classes', href: '#', current: false },
     { name: 'CTFLive', href: '#', current: false },
     { name: 'Friends', href: '#', current: false },
@@ -312,6 +312,31 @@ const Practice = () => {
                   <p id="challengeDetails" className="text-white text-xl">
                       
                     </p>
+
+                      <button className="border border-green-500 text-white px-4 py-2 mt-6">Submit Flag</button>
+                      <button className="border border-blue-700 text-white px-4 py-2 ml-4 ">Launch Terminal</button>
+
+                    <div class="bg-gray-900 mt-6 py-4">
+
+                      <h1 class="text-xl text-white ml-5">Terminal <span className="text-sm">v.0.1</span></h1>
+                      <div class="mt-2 bg-black text-white py-2 px-5 mr-5 ml-5">
+                        <p class="text-sm">
+                          <span class="text-yellow-500">SERVER</span> &gt; Looking for next avaliable container...
+                          <br></br>
+                          <span class="text-yellow-500">SERVER</span> &gt; You'll see the output of executed commands here.
+                          <br></br>
+                          <span class="text-green-500">YOU</span> &gt; <span class="text-indigo-400">(Executing Command...)</span> neofetch
+
+                          </p>
+                          
+                          <div class="mt-5 text-sm mb-1">YOUR COMMAND</div>
+                          <div class="bg-gray-900  text-sm  px-4 py-1 mb-4 rounded-lg focus:outline-none"  contenteditable="true">
+                            
+                          </div>
+                      </div>
+
+                       </div>
+
 
             </div>
 
