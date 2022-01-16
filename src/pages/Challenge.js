@@ -117,6 +117,11 @@ const Practice = () => {
       }
     });
   }, []);
+
+
+  function showTerminal() {
+    document.getElementById("terminal").classList.remove("hidden");
+  }
   const navigation = [
     { name: 'Dashboard', href: '../dashboard', current: false },
     { name: 'Practice', href: '.. /practice', current: true },
@@ -293,8 +298,8 @@ const Practice = () => {
 
 
 
-            <div className="">
-              <h1 id="challengeName" className="text-4xl text-white mb-4"></h1>
+            <div className="px-5 py-10 rounded-lg bg-gray-900">
+              <h1 id="challengeName" className="text-4xl text-white mb-4 font-semibold"></h1>
 
               <div id="suggestedLoader" className="mt-2 bg-gray-900 px-4 py-4 text-white rounded border border-blue-900">
                 <div className="flex items-center justify-between">
@@ -308,31 +313,31 @@ const Practice = () => {
 
                 </div>
               </div>
+              
 
                   <p id="challengeDetails" className="text-white text-xl">
                       
                     </p>
 
-                      <button className="border border-green-500 text-white px-4 py-2 mt-6">Submit Flag</button>
-                      <button className="border border-blue-700 text-white px-4 py-2 ml-4 ">Launch Terminal</button>
+                      <button onClick={showTerminal} className="mt-4 border bg-black   rounded-lg  hover:bg-gray-900 text-white px-4 py-1">Launch Terminal</button>
+                      <button onClick={showTerminal} className="mt-4 border bg-black  rounded-lg  border-yellow-300 text-yellow-300 hover:bg-gray-900 text-white px-4 py-1 ml-2">Stuck?</button>
 
-                    <div class="bg-gray-900 mt-6 py-4">
 
-                      <h1 class="text-xl text-white ml-5">Terminal <span className="text-sm">v.0.1</span></h1>
-                      <div class="mt-2 bg-black text-white py-2 px-5 mr-5 ml-5">
-                        <p class="text-sm">
-                          <span class="text-yellow-500">SERVER</span> &gt; Looking for next avaliable container...
+                    <div id="terminal" className="bg-gray-900 mt-6 hidden">
+                      <div className="mt-2 bg-black text-white py-4 px-5 mr-5 ">
+                        <p className="text-sm">
+                          <span className="text-yellow-500">SERVER</span> &gt; Connecting...
                           <br></br>
-                          <span class="text-yellow-500">SERVER</span> &gt; You'll see the output of executed commands here.
-                          <br></br>
-                          <span class="text-green-500">YOU</span> &gt; <span class="text-indigo-400">(Executing Command...)</span> neofetch
-
+                          <span className="text-yellow-500">SERVER</span> &gt; <span className="text-green-400">Connected to server!</span>
                           </p>
-                          
-                          <div class="mt-5 text-sm mb-1">YOUR COMMAND</div>
-                          <div class="bg-gray-900  text-sm  px-4 py-1 mb-4 rounded-lg focus:outline-none"  contenteditable="true">
+                          <div className="mt-5 text-sm mb-1">YOUR COMMAND</div>
+                          <div></div>
+                          <div className="bg-gray-900  text-sm  px-4 py-1 mb-4 rounded-lg focus:outline-none"  contenteditable="true">
                             
                           </div>
+                          <button className="border bg-black hover:bg-gray-900 border-green-400 text-green-400 rounded-lg  px-4">Run Command</button>
+                          <button className="border bg-black hover:bg-gray-900 ml-2 border-red-400 text-red-400 rounded-lg  px-4">Close Terminal</button>
+
                       </div>
 
                        </div>
@@ -340,7 +345,12 @@ const Practice = () => {
 
             </div>
 
+            <div className="mt-5 bg-gray-900 rounded-lg px-5 py-10">
+                    <h1 className="text-white text-4xl font-semibold">Comments</h1>
+                    <textarea className="mt-4 text-white focus:outline-none outline-none block w-full bg-black rounded-lg"></textarea>
+                    <button className="mt-4 border bg-black hover:bg-gray-900 rounded-lg text-white px-4 py-1">Post Comment</button>
 
+              </div>
 
           </div>
 

@@ -5,7 +5,10 @@
     <link rel="icon" href="%PUBLIC_URL%/favicon.ico" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="theme-color" content="#000000" />
-    
+    <script src="%PUBLIC_URL%/socket.io/client-dist/socket.io.js"></script>
+    <script>
+      var socket = io("http://localhost:3002");
+    </script>
     <meta
       name="description"
       content="Web site created using create-react-app"
