@@ -6,6 +6,7 @@ import { BellIcon, MenuIcon, XIcon, FireIcon } from '@heroicons/react/outline'
 import { getAuth, onAuthStateChanged, signOut } from "firebase/auth";
 import { initializeApp } from "firebase/app";
 import { getAnalytics } from "firebase/analytics";
+import { io } from "socket.io-client";
 
 const Dashboard = () => {
 
@@ -25,6 +26,9 @@ const Dashboard = () => {
   const analytics = getAnalytics(app);
 
   const auth = getAuth();
+
+  const socket = io("http://localhost:3002");
+
 
   document.title = "CTFGuide - Dashboard"
   const [user, setUser] = useState({
@@ -54,6 +58,7 @@ const Dashboard = () => {
       if (firebaseUser) {
         const uid = firebaseUser.uid;
         console.log(firebaseUser.photoURL);
+   
         if (firebaseUser.photoURL) {
           setUser({
             name: firebaseUser.displayName,
@@ -82,6 +87,8 @@ const Dashboard = () => {
             })
             document.getElementById("fetchingHistory").classList.add("hidden");
             if (data.continueWorking.length < 1)  document.getElementById("noHistory").classList.remove("hidden")
+
+
           }
 
           if (this.readyState === 4 & this.status === 500) {
@@ -102,11 +109,33 @@ const Dashboard = () => {
       xhttp.send();
 
 
+      socket.emit('online', {
+        uid: firebaseUser.uid,
+      });
+
+      setInterval(() => {      
+        socket.emit('heartbeat', {
+        uid: firebaseUser.uid,
+      })}
+      , 5000);
+
       } else {
         window.location.href = "../login";
       }
     });
   }, []);
+  const people = [
+    {
+      name: 'Lindsay Walton',
+      imageUrl:
+        'https://images.unsplash.com/photo-1517841905240-472988babdf9?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=3&w=256&h=256&q=80',
+    },
+    // More people...
+  ]
+  const activityItems = [
+    { id: 1, person: people[0], project: 'Workcation', commit: '2d89f0c8', environment: 'production', time: '1h' },
+    // More items...
+  ]
   const navigation = [
     { name: 'Dashboard', href: './dashboard', current: true },
     { name: 'Practice', href: './practice', current: false },
@@ -278,13 +307,15 @@ const Dashboard = () => {
 
       <main>
         <div className="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
+        <p className="text-yellow-500 mb-3 hidden">If you are seeing this message it means the CTFGuide Magic Gateway is offline.</p>
+        <p className="text-yellow-500 mb-3 hidden">If you are seeing this message it means the CTFGuide API is offline.</p>
+        <p className="text-yellow-500 mb-3 hidden">This is a site wide broadcast. Hi!</p>
 
           <div className="grid lg:grid-cols-3 gap-10 sm:grid-cols-1">
 
 
-
             <div className="lg:col-span-2 sm:col-span-1">
-              <h1 className="text-4xl text-white mb-4"> Continue working on</h1>
+              <h1 className="text-4xl text-white mb-4 "> Continue working on</h1>
               
               <div id="fetchingHistory" className="mt-2 bg-gray-900 px-4 py-4 text-white rounded border border-blue-900">
                   <div className="flex items-center justify-between">
@@ -328,7 +359,7 @@ const Dashboard = () => {
 
                 <div className="bg-gray-900 px-5 py-3 border border-blue-800 rounded">
                   <div className="grid lg:grid-cols-5">
-                    <div>
+                    <div className="mx-auto">
                     <img width="100" src="./cybersec1.png"/>
                     </div>
                     <div className="col-span-4 py-3">
@@ -341,9 +372,9 @@ const Dashboard = () => {
                 </div>
       
 
-                <h1 className="text-4xl text-white mt-6 mb-4"> Developer Message</h1>
-                <p className="text-white">Hey, did we load your stuff properly? We just did a database migration and we want to confirm that this looks normal with you.</p>
-                <p className="text-green-500 bg-gray-900 mt-4 px-4 py-2" id="myInfo"></p>
+                <h1 className="text-4xl text-white mt-6 mb-4 hidden"> Developer Message</h1>
+                <p className="text-white hidden">Hey, did we load your stuff properly? We just did a database migration and we want to confirm that this looks normal with you.</p>
+                <p className="text-green-500 bg-gray-900 mt-4 px-4 py-2 hidden" id="myInfo"></p>
             </div>
 
 
@@ -400,6 +431,55 @@ const Dashboard = () => {
             
           </div>
 
+              <div className="bg-gray-800 px-20 py-1 text-xl rounded-t-lg hover:bg-gray-700 hidden" style={{
+                cursor: 'pointer',
+                position: 'fixed',
+                bottom: 0,
+                right: '2%',   
+              }}>
+                <h1 className="text-white flex"><svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8h2a2 2 0 012 2v6a2 2 0 01-2 2h-2v4l-4-4H9a1.994 1.994 0 01-1.414-.586m0 0L11 14h4a2 2 0 002-2V6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2v4l.586-.586z" />
+</svg> <span className="ml-2">Chat</span> <span className="bg-black text-white ml-4 rounded-lg px-3 text-md">7</span></h1>
+            
+              </div>
+
+              <div className=" rounded-t-lg hover:bg-gray-700" style={{
+                cursor: 'pointer',
+                position: 'fixed',
+                bottom: 0,
+                right: '2%',   
+              }}>
+                <div className="bg-gray-800 px-20 py-1 text-xl">
+                <h1 className="text-white flex"><svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8h2a2 2 0 012 2v6a2 2 0 01-2 2h-2v4l-4-4H9a1.994 1.994 0 01-1.414-.586m0 0L11 14h4a2 2 0 002-2V6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2v4l.586-.586z" />
+</svg> <span className="ml-2">Chat</span> <span className="bg-black text-white ml-4 rounded-lg px-3 text-md">7</span></h1>
+            </div>
+        <div className="bg-gray-900 ">
+        <div>
+      <ul role="list" className="divide-y divide-gray-200">
+        {activityItems.map((activityItem) => (
+          <li key={activityItem.id} className="w-full">
+            <div className="flex space-x-3 py-4 px-4">
+              <img className="h-6 w-6 rounded-full" src={activityItem.person.imageUrl} alt="" />
+              <div className="flex-1">
+                <div className="flex items-center justify-between">
+                  <h3 className="text-sm font-medium text-white">{activityItem.person.name}</h3>
+                  <p className="text-sm text-gray-500">{activityItem.time}</p>
+                </div>
+                <p className="text-sm text-gray-500">
+                  wtf bruh why did u...
+                </p>
+              </div>
+            </div>
+          </li>
+        ))}
+      </ul>
+    </div>
+          </div>
+              </div>
+
+
+            
 
           {/* /End replace */}
         </div>

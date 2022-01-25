@@ -319,27 +319,13 @@ const Practice = () => {
                       
                     </p>
 
-                      <button onClick={showTerminal} className="mt-4 border bg-black   rounded-lg  hover:bg-gray-900 text-white px-4 py-1">Launch Terminal</button>
+                      <button onClick={showTerminal} className="mt-4 border bg-black border-green-500  rounded-lg  hover:bg-gray-900 text-green-500 px-4 py-1">Submit Flag</button>
                       <button onClick={showTerminal} className="mt-4 border bg-black  rounded-lg  border-yellow-300 text-yellow-300 hover:bg-gray-900 text-white px-4 py-1 ml-2">Stuck?</button>
 
 
-                    <div id="terminal" className="bg-gray-900 mt-6 hidden">
-                      <div className="mt-2 bg-black text-white py-4 px-5 mr-5 ">
-                        <p className="text-sm">
-                          <span className="text-yellow-500">SERVER</span> &gt; Connecting...
-                          <br></br>
-                          <span className="text-yellow-500">SERVER</span> &gt; <span className="text-green-400">Connected to server!</span>
-                          </p>
-                          <div className="mt-5 text-sm mb-1">YOUR COMMAND</div>
-                          <div></div>
-                          <div className="bg-gray-900  text-sm  px-4 py-1 mb-4 rounded-lg focus:outline-none"  contenteditable="true">
-                            
-                          </div>
-                          <button className="border bg-black hover:bg-gray-900 border-green-400 text-green-400 rounded-lg  px-4">Run Command</button>
-                          <button className="border bg-black hover:bg-gray-900 ml-2 border-red-400 text-red-400 rounded-lg  px-4">Close Terminal</button>
-
-                      </div>
-
+                    <div id="terminal" className="bg-gray-900 mt-6 ">
+                  <p className="text-white">  <i className="fas fa-circle-notch fa-spin text-white"></i> One second please...</p>
+                    <iframe className="w-full" height="300" src="https://terminal.ctfguide.com/wetty/ssh/root?pass=test" ></iframe>
                        </div>
 
 

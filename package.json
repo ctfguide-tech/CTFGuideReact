@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@fortawesome/react-fontawesome": "^0.1.16",
     "@headlessui/react": "^1.4.2",
     "@heroicons/react": "^1.0.5",
     "@tailwindcss/forms": "^0.4.0",
@@ -14,6 +15,7 @@
     "react-dom": "^17.0.2",
     "react-scripts": "5.0.0",
     "socket.io": "^4.4.1",
+    "socket.io-client": "^4.4.1",
     "web-vitals": "^2.1.2"
   },
   "scripts": {
