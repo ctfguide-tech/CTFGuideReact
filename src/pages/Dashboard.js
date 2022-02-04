@@ -1,8 +1,8 @@
 import { Link } from "react-router-dom";
 
-import { Fragment, useEffect, useState } from 'react'
-import { Disclosure, Menu, Transition } from '@headlessui/react'
-import { BellIcon, MenuIcon, XIcon, FireIcon } from '@heroicons/react/outline'
+import { Fragment, useEffect, useRef, useState } from 'react'
+import { Disclosure, Menu, Transition, Dialog } from '@headlessui/react'
+import { BellIcon, MenuIcon, XIcon, FireIcon, ExclamationIcon } from '@heroicons/react/outline'
 import { getAuth, onAuthStateChanged, signOut } from "firebase/auth";
 import { initializeApp } from "firebase/app";
 import { getAnalytics } from "firebase/analytics";
@@ -29,7 +29,9 @@ const Dashboard = () => {
 
   const socket = io("http://localhost:3002");
 
+  const [open, setOpen] = useState(true)
 
+  const cancelButtonRef = useRef(null)
   document.title = "CTFGuide - Dashboard"
   const [user, setUser] = useState({
     name: 'Loading...',
@@ -157,7 +159,8 @@ const Dashboard = () => {
   return (
 
     <div className="min-h-full" style={{ fontFamily: 'Space Grotesk, sans-serif' }}>
-      <Disclosure as="nav" className="bg-black">
+
+      <Disclosure as="nav" className="bg-gradient-to-br from-gray-800 to-gray-900">
         {({ open }) => (
           <>
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -305,19 +308,24 @@ const Dashboard = () => {
       </Disclosure>
 
 
-      <main>
+      <main className="mt-6">
         <div className="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
         <p className="text-yellow-500 mb-3 hidden">If you are seeing this message it means the CTFGuide Magic Gateway is offline.</p>
         <p className="text-yellow-500 mb-3 hidden">If you are seeing this message it means the CTFGuide API is offline.</p>
         <p className="text-yellow-500 mb-3 hidden">This is a site wide broadcast. Hi!</p>
 
-          <div className="grid lg:grid-cols-3 gap-10 sm:grid-cols-1">
+         <div className="bg-gradient-to-br from-gray-800 to-bg-gray-700 px-6 py-10 rounded-lg flex align-middle">
+
+         <img className="rounded-full" src={user.imageUrl } alt="" /><h1 className="text-white text-4xl ml-4 mt-3">Hello Laphatize</h1>
+           </div>
+ 
+          <div className="mt-5 grid lg:grid-cols-3 gap-10 sm:grid-cols-1">
 
 
             <div className="lg:col-span-2 sm:col-span-1">
               <h1 className="text-4xl text-white mb-4 "> Continue working on</h1>
               
-              <div id="fetchingHistory" className="mt-2 bg-gray-900 px-4 py-4 text-white rounded border border-blue-900">
+              <div id="fetchingHistory" className="mt-2 bg-gradient-to-t from-gray-800 to-black px-4 py-4 text-white rounded">
                   <div className="flex items-center justify-between">
                     <div>
                       <h1 className="text-xl">Fetching History...</h1>
@@ -327,10 +335,10 @@ const Dashboard = () => {
                   </div>
                 </div>
 
-                <div id="noHistory" className="hidden mt-2 bg-gray-900 px-4 py-4 text-white rounded border border-red-900">
+                <div id="noHistory" className="hidden mt-2 bg-gradient-to-br from-gray-800 to-black-800  px-4 py-4 text-white rounded ">
                   <div className="flex items-center justify-between">
                     <div>
-                      <h1 className="text-xl">No history found!</h1>
+                      <h1 className="text">☹️ Nothing here yet. Head on to the <span>Practice</span> page to get started.</h1>
                     </div>
 
 
@@ -355,9 +363,9 @@ const Dashboard = () => {
                 </div>
               ))}
 
-     <h1 className="text-4xl text-white mt-6 mb-4"> Suggested for you</h1>
 
-                <div className="bg-gray-900 px-5 py-3 border border-blue-800 rounded">
+
+                <div className="hidden bg-gray-900 px-5 py-3 border border-blue-800 rounded">
                   <div className="grid lg:grid-cols-5">
                     <div className="mx-auto">
                     <img width="100" src="./cybersec1.png"/>
@@ -371,65 +379,69 @@ const Dashboard = () => {
                   
                 </div>
       
+                
 
                 <h1 className="text-4xl text-white mt-6 mb-4 hidden"> Developer Message</h1>
                 <p className="text-white hidden">Hey, did we load your stuff properly? We just did a database migration and we want to confirm that this looks normal with you.</p>
                 <p className="text-green-500 bg-gray-900 mt-4 px-4 py-2 hidden" id="myInfo"></p>
-            </div>
+            </div> 
 
 
             <div className="">
               <h1 className="text-4xl text-white mb-4"> Progress</h1>
-              <div className="bg-gray-900 px-4 py-4 text-white mx-auto text-center mt-2 rounded border border-blue-900">
+              <div  className="mt-4 bg-gradient-to-br from-gray-800 to-black px-4 py-4 text-white rounded ">
                 <h1 className="text-xl font-semibold text-yellow-500 inline-flex text-center"> <FireIcon className="h-6 w-6 text-center mr-1" aria-hidden="true" />  {userData.streak} day streak</h1>
                 <p>No activity today, yet!</p>
               </div>
-              <div className="bg-gray-900 px-4 py-4 text-white mx-auto text-center mt-2 rounded border border-blue-900">
-                <h1 className="text-xl font-semibold text-blue-500 inline-flex text-center">Gold League</h1>
-                <p>Season 2 | Competitive</p>
-              </div>
-            
-              <h1 className="text-4xl text-white mt-6 mb-4"> Social</h1>
-              <div>
-      <ul role="list" className="">
-      
-          <li  className="py-4 bg-gray-900 border border-blue-800 px-4 mb-2 rounded">
-            <div className="flex space-x-3">
-              <img className="h-6 w-6 rounded-full" src="https://th.bing.com/th/id/R.2f86c5260be65f26800c2f88cc39aa6b?rik=t8ZDT5ZTeX5wpA&riu=http%3a%2f%2fwww.trbimg.com%2fimg-5a68a878%2fturbine%2fct-grumpy-cat-lawsuit-20180124&ehk=Tjg%2fsr1Mwd0lIKKGL5eCh0b6O4s2DSGvi7Gvsw8DVto%3d&risl=&pid=ImgRaw&r=0" alt="" />
-              <div className="flex-1 space-y-1">
-                <div className="flex items-center justify-between">
-                  <h3 className="text-sm font-medium text-white">valmodaa1 has logged in</h3>
-                  <p className="text-sm text-blue-500">just now</p>
-                </div>
-                <p className="text-sm text-blue-500">
-                  
-                </p>
-              </div>
-            </div>
-          </li>
-          <li  className="py-4 bg-gray-900 border border-blue-800 px-4 mb-2 rounded">
-            <div className="flex space-x-3">
-              <img className="h-6 w-6 rounded-full" src="https://th.bing.com/th/id/R.2f86c5260be65f26800c2f88cc39aa6b?rik=t8ZDT5ZTeX5wpA&riu=http%3a%2f%2fwww.trbimg.com%2fimg-5a68a878%2fturbine%2fct-grumpy-cat-lawsuit-20180124&ehk=Tjg%2fsr1Mwd0lIKKGL5eCh0b6O4s2DSGvi7Gvsw8DVto%3d&risl=&pid=ImgRaw&r=0" alt="" />
-              <div className="flex-1 space-y-1">
-                <div className="flex items-center justify-between">
-                  <h3 className="text-sm font-medium text-white">valmodaa1</h3>
-                  <p className="text-sm text-blue-500">just now</p>
-                </div>
-                <p className="text-sm text-white">
-                  Solved Horrible Web Authentication
-                </p>
-              </div>
-            </div>
-          </li>
+       
         
-      </ul>
-    </div>
+    
             
             
             </div>
 
             
+
           </div>
+
+
+          <div>
+     <h1 className="text-4xl text-white mt-6 mb-4"> Learning Path</h1>
+     <div className="mt-2 bg-gradient-to-br from-gray-800 to-black px-4 py-4 text-white rounded ">
+<div className="flex items-center justify-between">
+  <h1 className="text-xl w-full"><i className="fas fa-search"></i> Exploratory Cybersecurity</h1>
+  <div className="ml-2 flex-shrink-0 flex w-1/2">
+  <div class="w-full bg-gray-800 rounded-full">
+  <div class="bg-gradient-to-br from-green-600 to-green-900  text-xs font-medium text-blue-100 text-center p-0.5 leading-none rounded-l-full" style={{width: '25%'}}> 25%</div>
+</div>
+
+  </div>
+                
+
+  </div>
+  
+  <p class="mt-4 uppercase">Up next</p>
+  <i className="far fa-play-circle"></i> Video Lesson - Cyberwhatnow?
+</div>
+
+
+<div className="mt-4 bg-gradient-to-br from-gray-800 to-black px-4 py-4 text-white rounded ">
+<div className="flex items-center justify-between">
+  <h1 className="text-xl"><i className="fab fa-linux"></i> Linux 101</h1>
+  <div className="ml-2 flex-shrink-0 flex w-1/2">
+  <div class="w-full bg-gray-800 rounded-full">
+  <div class="bg-gradient-to-br from-green-600 to-green-900 text-xs font-medium text-blue-100 text-center p-0.5 leading-none rounded-l-full" style={{width: '25%'}}> 25%</div>
+</div>
+
+  </div>
+                
+
+  </div>
+  
+  <p class="mt-4 uppercase">Up next</p>
+  <i className="far fa-play-circle"></i> Video Lesson - Accessing other servers
+</div>
+</div>
 
               <div className="bg-gray-800 px-20 py-1 text-xl rounded-t-lg hover:bg-gray-700 hidden" style={{
                 cursor: 'pointer',
@@ -485,7 +497,58 @@ const Dashboard = () => {
         </div>
       </main>
 
+      <Transition.Root show={open} as={Fragment}>
+      <Dialog as="div" className="fixed z-10 inset-0 overflow-y-auto " initialFocus={cancelButtonRef} onClose={setOpen}>
+        <div className="flex items-end justify-center min-h-screen pt-4 px-4 pb-20 text-center sm:block sm:p-0" style={{ fontFamily: 'Space Grotesk, sans-serif' }}>
+          <Transition.Child
+            as={Fragment}
+            enter="ease-out duration-300"
+            enterFrom="opacity-0"
+            enterTo="opacity-100"
+            leave="ease-in duration-200"
+            leaveFrom="opacity-100"
+            leaveTo="opacity-0"
+          >
+            <Dialog.Overlay className="fixed inset-0 bg-gray-900 bg-opacity-90 transition-opacity" />
+          </Transition.Child>
 
+          {/* This element is to trick the browser into centering the modal contents. */}
+          <span className="hidden sm:inline-block sm:align-middle sm:h-screen" aria-hidden="true">
+            &#8203;
+          </span>
+          <Transition.Child
+            as={Fragment}
+            enter="ease-out duration-300"
+            enterFrom="opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95"
+            enterTo="opacity-100 translate-y-0 sm:scale-100"
+            leave="ease-in duration-200"
+            leaveFrom="opacity-100 translate-y-0 sm:scale-100"
+            leaveTo="opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95"
+          >
+            <div className="inline-block align-bottom bg-gradient-to-br from-gray-800 to-black text-white rounded-lg pt-5 pb-4 text-left overflow-hidden shadow-xl transform transition-all sm:my-8 sm:align-middle sm:max-w-4xl sm:w-full">
+              <div className="sm:flex sm:items-start">
+            
+                <div className="mt-3 text-center sm:mt-0 sm:ml-4 sm:text-left">
+                  <Dialog.Title as="h3" className="text-xl leading-6 font-semibold">
+                  <i class="fas fa-door-open"></i> Onboarding
+                  </Dialog.Title>
+                  <div className="mt-2">
+                    <p className=" text-white">
+                      Hi, Pranav. We're so excited to see you exploring the world of cybersecurity. But, we need to ask you a few questions to create an effective learning model for you.
+
+                    
+                    </p>
+
+                    <button className="mt-4 px-6 py-2 border rounded-lg">Continue</button>  <button className="mt-4 px-6 py-2">No thanks!</button>
+                  </div>
+                </div>
+              </div>
+             
+            </div>
+          </Transition.Child>
+        </div>
+      </Dialog>
+    </Transition.Root>
    
     </div>
 

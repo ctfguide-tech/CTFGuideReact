@@ -324,8 +324,8 @@ const Practice = () => {
 
 
                     <div id="terminal" className="bg-gray-900 mt-6 ">
-                  <p className="text-white">  <i className="fas fa-circle-notch fa-spin text-white"></i> One second please...</p>
-                    <iframe className="w-full" height="300" src="https://terminal.ctfguide.com/wetty/ssh/root?pass=test" ></iframe>
+                  <p className="text-gray-400 mb-2 hint">Your server credentials are the same as your CTFGuide account. <a style={{ cursor: 'pointer'}} className="hover:bg-black text-gray-300">Need help?</a></p>
+                    <iframe className="w-full" height="500" src="https://terminal.ctfguide.com/wetty/ssh/root?pass=" ></iframe>
                        </div>
 
 
