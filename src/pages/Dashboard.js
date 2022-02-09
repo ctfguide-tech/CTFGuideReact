@@ -1,9 +1,9 @@
 import { Link } from "react-router-dom";
-
 import { Fragment, useEffect, useRef, useState } from 'react'
 import { Disclosure, Menu, Transition, Dialog } from '@headlessui/react'
 import { BellIcon, MenuIcon, XIcon, FireIcon, ExclamationIcon } from '@heroicons/react/outline'
 import { getAuth, onAuthStateChanged, signOut } from "firebase/auth";
+import { CheckCircleIcon } from '@heroicons/react/outline'
 import { initializeApp } from "firebase/app";
 import { getAnalytics } from "firebase/analytics";
 import { io } from "socket.io-client";
@@ -29,8 +29,12 @@ const Dashboard = () => {
 
   const socket = io("http://localhost:3002");
 
-  const [open, setOpen] = useState(true)
+  setTimeout(function() {
+      document.getElementById("warning").classList.add("hidden")
+  },4000)
 
+  const [open, setOpen] = useState(true)
+  const [show, setShow] = useState(true)
   const cancelButtonRef = useRef(null)
   document.title = "CTFGuide - Dashboard"
   const [user, setUser] = useState({
@@ -72,7 +76,7 @@ const Dashboard = () => {
             name: firebaseUser.displayName,
             email: firebaseUser.email,
             imageUrl:
-              "https://ui-avatars.com/api/?name=laphatize&background=random",
+              `https://ui-avatars.com/api/?name=${firebaseUser.email}&background=random`,
           });
         }
 
@@ -160,7 +164,7 @@ const Dashboard = () => {
 
     <div className="min-h-full" style={{ fontFamily: 'Space Grotesk, sans-serif' }}>
 
-      <Disclosure as="nav" className="bg-gradient-to-br from-gray-800 to-gray-900">
+      <Disclosure as="nav" className="bg-gradient-to-br from-gray-900 to-black border border-gray-800 ">
         {({ open }) => (
           <>
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -310,11 +314,34 @@ const Dashboard = () => {
 
       <main className="mt-6">
         <div className="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
-        <p className="text-yellow-500 mb-3 hidden">If you are seeing this message it means the CTFGuide Magic Gateway is offline.</p>
+        <p className="text-yellow-500 mb-3 hidden"><i className="fas fa-tools"></i> <b>Developer Broadcast</b> The following services aren't avaliable: Learning Paths, Progress, Challenge Solving, Classes, CTFLive, Friends, Settings, Billing, Terminals and more.</p>
         <p className="text-yellow-500 mb-3 hidden">If you are seeing this message it means the CTFGuide API is offline.</p>
         <p className="text-yellow-500 mb-3 hidden">This is a site wide broadcast. Hi!</p>
 
-         <div className="bg-gradient-to-br from-gray-800 to-bg-gray-700 px-6 py-10 rounded-lg flex align-middle">
+      <div className="rounded-lg bg-gradient-to-br from-gray-900 to-black border border-gray-800 mb-10 max-w-7xl mx-auto py-12 px-4 sm:px-3 lg:py-12 lg:px-8 lg:flex lg:items-center lg:justify-between">
+                    <div className="w-full">
+                    <h2 className="text-3xl font-extrabold tracking-tight text-gray-900 md:text-4xl">
+          <span className="block text-white"><i class="fa-solid fa-hand-wave"></i> Welcome to CTFGuide!</span>
+          <span className="block text-blue-600">Mind if we show you around?</span>
+          <a
+              href="#"
+              className="mt-4 inline-flex items-center justify-center px-10 py-3 border border-transparent text-base font-medium rounded-md text-white bg-blue-600 hover:bg-blue-700"
+            >
+              Start Tutorial
+            </a>
+
+            <a
+              href="#"
+              className="mt-4 ml-2 inline-flex border  border-gray-100 items-center justify-center px-10 py-3 border border-transparent text-base font-medium rounded-md text-white "
+            >
+              No thanks
+            </a>
+        </h2>
+                    </div>
+    
+      <img width="300" className="" src="../egg.svg"></img>
+    </div>
+         <div className="bg-gradient-to-br from-gray-900 to-black border border-gray-800  px-6 py-10 rounded-lg flex align-middle">
 
          <img className="rounded-full" src={user.imageUrl } alt="" /><h1 className="text-white text-4xl ml-4 mt-3">Hello Laphatize</h1>
            </div>
@@ -325,7 +352,7 @@ const Dashboard = () => {
             <div className="lg:col-span-2 sm:col-span-1">
               <h1 className="text-4xl text-white mb-4 "> Continue working on</h1>
               
-              <div id="fetchingHistory" className="mt-2 bg-gradient-to-t from-gray-800 to-black px-4 py-4 text-white rounded">
+              <div id="fetchingHistory" className="mt-2 bg-gradient-to-br from-gray-900 to-black border border-gray-800  px-4 py-4 text-white rounded">
                   <div className="flex items-center justify-between">
                     <div>
                       <h1 className="text-xl">Fetching History...</h1>
@@ -335,10 +362,10 @@ const Dashboard = () => {
                   </div>
                 </div>
 
-                <div id="noHistory" className="hidden mt-2 bg-gradient-to-br from-gray-800 to-black-800  px-4 py-4 text-white rounded ">
+                <div id="noHistory" className="hidden mt-2 bg-gradient-to-br from-gray-900 to-black border border-gray-800   px-4 py-6 text-white rounded ">
                   <div className="flex items-center justify-between">
                     <div>
-                      <h1 className="text">☹️ Nothing here yet. Head on to the <span>Practice</span> page to get started.</h1>
+                      <h1 className="text-xl">☹️ Nothing here yet. Head on to the <span>Practice</span> page to get started.</h1>
                     </div>
 
 
@@ -389,7 +416,7 @@ const Dashboard = () => {
 
             <div className="">
               <h1 className="text-4xl text-white mb-4"> Progress</h1>
-              <div  className="mt-4 bg-gradient-to-br from-gray-800 to-black px-4 py-4 text-white rounded ">
+              <div  className="mt-4 bg-gradient-to-br from-gray-900 to-black border border-gray-800  px-4 py-4 text-white rounded ">
                 <h1 className="text-xl font-semibold text-yellow-500 inline-flex text-center"> <FireIcon className="h-6 w-6 text-center mr-1" aria-hidden="true" />  {userData.streak} day streak</h1>
                 <p>No activity today, yet!</p>
               </div>
@@ -407,29 +434,37 @@ const Dashboard = () => {
 
           <div>
      <h1 className="text-4xl text-white mt-6 mb-4"> Learning Path</h1>
-     <div className="mt-2 bg-gradient-to-br from-gray-800 to-black px-4 py-4 text-white rounded ">
+     <div className="mt-2 bg-gradient-to-br from-gray-900 to-black border border-gray-800  px-4 py-4 text-white rounded ">
 <div className="flex items-center justify-between">
   <h1 className="text-xl w-full"><i className="fas fa-search"></i> Exploratory Cybersecurity</h1>
   <div className="ml-2 flex-shrink-0 flex w-1/2">
-  <div class="w-full bg-gray-800 rounded-full">
+  <div class="w-full bg-gray-900 border border-gray-700 rounded-full">
   <div class="bg-gradient-to-br from-green-600 to-green-900  text-xs font-medium text-blue-100 text-center p-0.5 leading-none rounded-l-full" style={{width: '25%'}}> 25%</div>
+
 </div>
 
   </div>
                 
 
   </div>
-  
+  <div className="flex items-center justify-between">
+ <div>
+   
   <p class="mt-4 uppercase">Up next</p>
   <i className="far fa-play-circle"></i> Video Lesson - Cyberwhatnow?
+ </div>
+  <div className="ml-2 flex-shrink-0 flex w-1/10">
+                <button className="border border-green-600 px-4 py-1 rounded-lg hover:bg-gray-800">Start Lesson</button>
+  </div>
+  </div>
 </div>
 
 
-<div className="mt-4 bg-gradient-to-br from-gray-800 to-black px-4 py-4 text-white rounded ">
+<div className=" mt-4 bg-gradient-to-br from-gray-900 to-black border border-gray-800  px-4 py-4 text-white rounded ">
 <div className="flex items-center justify-between">
   <h1 className="text-xl"><i className="fab fa-linux"></i> Linux 101</h1>
   <div className="ml-2 flex-shrink-0 flex w-1/2">
-  <div class="w-full bg-gray-800 rounded-full">
+  <div class="w-full bg-gray-900 border border-gray-700 rounded-full">
   <div class="bg-gradient-to-br from-green-600 to-green-900 text-xs font-medium text-blue-100 text-center p-0.5 leading-none rounded-l-full" style={{width: '25%'}}> 25%</div>
 </div>
 
@@ -437,25 +472,33 @@ const Dashboard = () => {
                 
 
   </div>
-  
+  <div className="flex items-center justify-between">
+ <div>
+   
   <p class="mt-4 uppercase">Up next</p>
   <i className="far fa-play-circle"></i> Video Lesson - Accessing other servers
+ </div>
+  <div className="ml-2 flex-shrink-0 flex w-1/10">
+                <button className="border border-green-600 px-4 py-1 rounded-lg hover:bg-gray-800">Start Lesson</button>
+  </div>
+  </div>
 </div>
 </div>
 
-              <div className="bg-gray-800 px-20 py-1 text-xl rounded-t-lg hover:bg-gray-700 hidden" style={{
+              <div className="hidden bg-gray-800 px-20 py-1 text-xl rounded-t-lg hover:bg-gray-700 hidden" style={{
+                display:'none',
                 cursor: 'pointer',
                 position: 'fixed',
                 bottom: 0,
                 right: '2%',   
               }}>
-                <h1 className="text-white flex"><svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <h1 className="text-white flex hidden"><svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8h2a2 2 0 012 2v6a2 2 0 01-2 2h-2v4l-4-4H9a1.994 1.994 0 01-1.414-.586m0 0L11 14h4a2 2 0 002-2V6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2v4l.586-.586z" />
 </svg> <span className="ml-2">Chat</span> <span className="bg-black text-white ml-4 rounded-lg px-3 text-md">7</span></h1>
             
               </div>
 
-              <div className=" rounded-t-lg hover:bg-gray-700" style={{
+              <div className=" rounded-t-lg hover:bg-gray-700 hidden" style={{
                 cursor: 'pointer',
                 position: 'fixed',
                 bottom: 0,
@@ -466,7 +509,7 @@ const Dashboard = () => {
   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8h2a2 2 0 012 2v6a2 2 0 01-2 2h-2v4l-4-4H9a1.994 1.994 0 01-1.414-.586m0 0L11 14h4a2 2 0 002-2V6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2v4l.586-.586z" />
 </svg> <span className="ml-2">Chat</span> <span className="bg-black text-white ml-4 rounded-lg px-3 text-md">7</span></h1>
             </div>
-        <div className="bg-gray-900 ">
+        <div className="bg-gray-900 hidden ">
         <div>
       <ul role="list" className="divide-y divide-gray-200">
         {activityItems.map((activityItem) => (
@@ -495,62 +538,53 @@ const Dashboard = () => {
 
           {/* /End replace */}
         </div>
+        <p className="mt-4 text-gray-500 py-4 text-center mx-auto">  &copy; CTFGuide 2022<br></br><a className="hover:text-white" href="../terms-of-service">Terms of Service</a> • <a className="hover:text-white" href="../privacy-policy">Privacy Policy</a> • <a className="hover:text-white" href="../ambassador-program">Ambassador Program</a><br></br>This is beta software. Problems will arise.</p>
       </main>
-
-      <Transition.Root show={open} as={Fragment}>
-      <Dialog as="div" className="fixed z-10 inset-0 overflow-y-auto " initialFocus={cancelButtonRef} onClose={setOpen}>
-        <div className="flex items-end justify-center min-h-screen pt-4 px-4 pb-20 text-center sm:block sm:p-0" style={{ fontFamily: 'Space Grotesk, sans-serif' }}>
-          <Transition.Child
+      <div
+        aria-live="assertive"
+        id="warning"
+        className="fixed inset-0 flex items-end px-4 py-6 pointer-events-none sm:p-6 sm:items-start"
+      >
+        <div className="w-full flex flex-col items-center space-y-4 sm:items-end">
+          {/* Notification panel, dynamically insert this into the live region when it needs to be displayed */}
+          <Transition
+            show={show}
             as={Fragment}
-            enter="ease-out duration-300"
-            enterFrom="opacity-0"
-            enterTo="opacity-100"
-            leave="ease-in duration-200"
+            enter="transform ease-out duration-300 transition"
+            enterFrom="translate-y-2 opacity-80 sm:translate-y-0 sm:translate-x-2"
+            enterTo="translate-y-0 opacity-100 sm:translate-x-0"
+            leave="transition ease-in duration-100"
             leaveFrom="opacity-100"
-            leaveTo="opacity-0"
+            leaveTo="opacity-80"
           >
-            <Dialog.Overlay className="fixed inset-0 bg-gray-900 bg-opacity-90 transition-opacity" />
-          </Transition.Child>
+            <div className="max-w-sm w-full opacity-80 bg-black border border-yellow-400 text-white shadow-lg rounded-lg pointer-events-auto ring-1 ring-black ring-opacity-5 overflow-hidden">
+              <div className="p-4">
+                <div className="flex items-start">
 
-          {/* This element is to trick the browser into centering the modal contents. */}
-          <span className="hidden sm:inline-block sm:align-middle sm:h-screen" aria-hidden="true">
-            &#8203;
-          </span>
-          <Transition.Child
-            as={Fragment}
-            enter="ease-out duration-300"
-            enterFrom="opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95"
-            enterTo="opacity-100 translate-y-0 sm:scale-100"
-            leave="ease-in duration-200"
-            leaveFrom="opacity-100 translate-y-0 sm:scale-100"
-            leaveTo="opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95"
-          >
-            <div className="inline-block align-bottom bg-gradient-to-br from-gray-800 to-black text-white rounded-lg pt-5 pb-4 text-left overflow-hidden shadow-xl transform transition-all sm:my-8 sm:align-middle sm:max-w-4xl sm:w-full">
-              <div className="sm:flex sm:items-start">
-            
-                <div className="mt-3 text-center sm:mt-0 sm:ml-4 sm:text-left">
-                  <Dialog.Title as="h3" className="text-xl leading-6 font-semibold">
-                  <i class="fas fa-door-open"></i> Onboarding
-                  </Dialog.Title>
-                  <div className="mt-2">
-                    <p className=" text-white">
-                      Hi, Pranav. We're so excited to see you exploring the world of cybersecurity. But, we need to ask you a few questions to create an effective learning model for you.
-
-                    
-                    </p>
-
-                    <button className="mt-4 px-6 py-2 border rounded-lg">Continue</button>  <button className="mt-4 px-6 py-2">No thanks!</button>
+                  <div className="ml-3 w-0 flex-1 pt-0.5">
+                    <p className="text-sm font-medium text-white"><i class="fas fa-exclamation-triangle"></i> We're still setting you up...</p>
+                    <p className="mt-1 text-sm text-gray-200">You won't be able to use our virtual terminals just yet.</p>
+                  </div>
+                  <div className="ml-4 flex-shrink-0 flex">
+                    <button
+                      className="bg-black px-1 py-1 rounded-md inline-flex text-gray-400 hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+                      onClick={() => {
+                        setShow(false)
+                      }}
+                    >
+                      <span className="sr-only">Close</span>
+                      <XIcon className="h-5 w-5" aria-hidden="true" />
+                    </button>
                   </div>
                 </div>
               </div>
-             
             </div>
-          </Transition.Child>
+          </Transition>
         </div>
-      </Dialog>
-    </Transition.Root>
-   
-    </div>
+      </div>
+       
+                      
+    </div> 
 
 
 

@@ -124,7 +124,7 @@ const Practice = () => {
   }
   const navigation = [
     { name: 'Dashboard', href: '../dashboard', current: false },
-    { name: 'Practice', href: '.. /practice', current: true },
+    { name: 'Practice', href: '../practice', current: false },
     { name: 'Classes', href: '#', current: false },
     { name: 'CTFLive', href: '#', current: false },
     { name: 'Friends', href: '#', current: false },
@@ -143,7 +143,7 @@ const Practice = () => {
   return (
 
     <div className="min-h-full" style={{ fontFamily: 'Space Grotesk, sans-serif' }}>
-      <Disclosure as="nav" className="bg-black">
+      <Disclosure as="nav" className="bg-gradient-to-br from-gray-900 to-black border border-gray-800">
         {({ open }) => (
           <>
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -298,10 +298,10 @@ const Practice = () => {
 
 
 
-            <div className="px-5 py-10 rounded-lg bg-gray-900">
+            <div className="px-5 py-10 rounded-lg  bg-gradient-to-br from-gray-900 to-black border border-gray-800">
               <h1 id="challengeName" className="text-4xl text-white mb-4 font-semibold"></h1>
 
-              <div id="suggestedLoader" className="mt-2 bg-gray-900 px-4 py-4 text-white rounded border border-blue-900">
+              <div id="suggestedLoader" className="mt-2 px-4 py-4 ">
                 <div className="flex items-center justify-between">
 
 
@@ -319,11 +319,12 @@ const Practice = () => {
                       
                     </p>
 
+                      <input placeholder="CTFGuide{flag}" className="text-white  focus-outline-none  outline-none px-4 py-1 rounded-lg mr-2 bg-black border border-gray-700"></input>
                       <button onClick={showTerminal} className="mt-4 border bg-black border-green-500  rounded-lg  hover:bg-gray-900 text-green-500 px-4 py-1">Submit Flag</button>
                       <button onClick={showTerminal} className="mt-4 border bg-black  rounded-lg  border-yellow-300 text-yellow-300 hover:bg-gray-900 text-white px-4 py-1 ml-2">Stuck?</button>
 
 
-                    <div id="terminal" className="bg-gray-900 mt-6 ">
+                    <div id="terminal" className=" mt-6 ">
                   <p className="text-gray-400 mb-2 hint">Your server credentials are the same as your CTFGuide account. <a style={{ cursor: 'pointer'}} className="hover:bg-black text-gray-300">Need help?</a></p>
                     <iframe className="w-full" height="500" src="https://terminal.ctfguide.com/wetty/ssh/root?pass=" ></iframe>
                        </div>
@@ -331,7 +332,7 @@ const Practice = () => {
 
             </div>
 
-            <div className="mt-5 bg-gray-900 rounded-lg px-5 py-10">
+            <div className="mt-5   bg-gradient-to-br from-gray-900 to-black border border-gray-800 rounded-lg px-5 py-10">
                     <h1 className="text-white text-4xl font-semibold">Comments</h1>
                     <textarea className="mt-4 text-white focus:outline-none outline-none block w-full bg-black rounded-lg"></textarea>
                     <button className="mt-4 border bg-black hover:bg-gray-900 rounded-lg text-white px-4 py-1">Post Comment</button>
@@ -341,7 +342,7 @@ const Practice = () => {
           </div>
 
 
-          <div className="px-4 py-4 sm:px-0">
+          <div className="px-4 py-4 sm:px-0 hidden">
             <div className=" rounded-lg h-96" />
 
 
@@ -350,6 +351,9 @@ const Practice = () => {
           {/* /End replace */}
         </div>
       </main>
+
+      <p className="mt-4 text-gray-500 py-4 text-center mx-auto">  &copy; CTFGuide 2022<br></br><a className="hover:text-white" href="../terms-of-service">Terms of Service</a> • <a className="hover:text-white" href="../privacy-policy">Privacy Policy</a> • <a className="hover:text-white" href="../ambassador-program">Ambassador Program</a><br></br>This is beta software. Problems will arise.</p>
+
     </div>
 
   )

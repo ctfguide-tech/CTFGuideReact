@@ -137,7 +137,8 @@ const Practice = () => {
   return (
 
     <div className="min-h-full" style={{ fontFamily: 'Space Grotesk, sans-serif' }}>
-      <Disclosure as="nav" className="bg-black">
+
+<Disclosure as="nav" className="bg-gradient-to-br from-gray-900 to-black border border-gray-800 ">
         {({ open }) => (
           <>
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -318,10 +319,11 @@ const Practice = () => {
                     onClick={() => {window.location.href = `./challenges/${item.id}`}}
                      style={{cursor: 'pointer'}}
                       key={item.title}
-                      className=" px-3 py-2 rounded-md bg-gray-900 mb-2 border border-blue-800 text-base font-medium text-white hover:text-white hover:bg-gray-800"
-                    >{item.title}
-                    <hr className="border-blue-900 text-gray-900 mb-2"></hr>
-                      <span className={"lowercase " +  (item.difficulty === 'hard' ? 'text-red-500' : item.difficulty === 'medium' ? ' text-yellow-500' : 'text-green-500')}> {item.difficulty}</span> <b>∙</b> <span className="bg-black rounded-lg px-2  lowercase">{item.category}</span>
+                      className="px-3 py-2  rounded-md bg-gradient-to-br from-gray-900 to-black border border-gray-800  mb-2  text-base font-medium text-white hover:text-white "
+                    ><span className="font-semibold">{item.title} </span>
+                  <br></br>
+                      <span className={"lowercase " +  (item.difficulty === 'hard' ? 'text-red-500' : item.difficulty === 'medium' ? ' text-yellow-500' : 'text-green-500')}> {item.difficulty}</span> <b>∙</b><span className="bg-black rounded-lg px-2  lowercase">{item.category}</span>
+                  
                     </div>
 
                   ))
@@ -334,8 +336,8 @@ const Practice = () => {
             </div>
 
 
-            <hr class="mt-10 ml-4 mr-4 mb-4 border-gray-700" />
-            <div className="mt-6">
+            <hr class="mt-10 ml-4 mr-4 mb-4 border-gray-700 hidden" />
+            <div className="mt-6 hidden">
               <h1 className="text-4xl text-white mb-4">Challenges by category</h1>
 
               <div className="mt-2 bg-gray-900 px-4 py-4 text-white rounded border border-blue-900">
@@ -356,14 +358,21 @@ const Practice = () => {
           </div>
 
 
-          <div className="px-4 py-4 sm:px-0">
+          <div className="hidden px-4 py-4 sm:px-0">
             <div className=" rounded-lg h-96" />
 
 
 
           </div>
           {/* /End replace */}
+
+
+          <p className="mt-4 text-gray-500 py-4 text-center mx-auto">  &copy; CTFGuide 2022<br></br><a className="hover:text-white" href="../terms-of-service">Terms of Service</a> • <a className="hover:text-white" href="../privacy-policy">Privacy Policy</a> • <a className="hover:text-white" href="../ambassador-program">Ambassador Program</a><br></br>This is beta software. Problems will arise.</p>
+
         </div>
+
+
+        
       </main>
     </div>
 
