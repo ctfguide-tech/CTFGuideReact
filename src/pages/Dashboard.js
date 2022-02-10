@@ -27,7 +27,7 @@ const Dashboard = () => {
 
   const auth = getAuth();
 
-  const socket = io("http://localhost:3002");
+  //const socket = io("http://localhost:3002");
 
   setTimeout(function() {
       document.getElementById("warning").classList.add("hidden")
@@ -121,7 +121,7 @@ const Dashboard = () => {
       
       xhttp.open("GET", `http://localhost:3001/users/data?uid=${firebaseUser.uid}`);
       xhttp.send();
-
+/*
 
       socket.emit('online', {
         uid: firebaseUser.uid,
@@ -132,6 +132,7 @@ const Dashboard = () => {
         uid: firebaseUser.uid,
       })}
       , 5000);
+      */
 
       } else {
         window.location.href = "../login";
@@ -167,10 +168,12 @@ const Dashboard = () => {
     return classes.filter(Boolean).join(' ')
   }
 
-  function dashboardTutorialDone() {
-    document.getElementById("dashboard_tutorial").classList.add("hidden")
+  function dashboardTutorial() {
+    document.getElementById("dashboard_tutorial").classList.remove("hidden")
   }
-
+  function dashboardTutorialDone() {
+    window.location.href = "../practice"
+  }
   return (
 
     <div className="min-h-full" style={{ fontFamily: 'Space Grotesk, sans-serif' }}>
@@ -338,7 +341,7 @@ const Dashboard = () => {
               onClick={() => {
                 localStorage.setItem("tutorial_active", true);
                 localStorage.setItem("tutorial_phase", 1) 
-                dashboardTutorialDone();
+                dashboardTutorial();
               }}
               href="#"
               className="mt-4 inline-flex items-center justify-center px-10 py-3 border border-transparent text-base font-medium rounded-md text-white bg-blue-600 hover:bg-blue-700"
@@ -600,35 +603,8 @@ const Dashboard = () => {
       </div>
        
 
-      <div className="fixed bottom-0 inset-x-0 pb-2 sm:pb-5 hidden">
-      <div className="max-w-7xl mx-auto px-2  sm:px-6 lg:px-8">
-        <div className="p-2 rounded-lg bg-black  border shadow-lg sm:p-3">
-          <div className="py-10 flex items-center justify-between flex-wrap">
-            <div className="w-0 flex-1 flex items-center">
-      
-              <p className="ml-3 font-medium text-white truncate">
-                <span className="md:hidden">Tutorial: </span>
-                <span className="hidden md:inline font-semibold">This is your dashboard.</span>
-                <iframe width="560" height="315" src="https://www.youtube.com/embed/P3TwUfUqc78" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-              </p>
-            </div>
-            <div className="order-3 mt-2 flex-shrink-0 w-full sm:order-2 sm:mt-0 sm:w-auto">
-              <a
-                href="#"
-                className="flex items-center justify-center px-4 py-2 border border-transparent rounded-md shadow-sm text-sm font-medium bg-gray-900 text-white border border-white"
-              >
-                Continue
-              </a>
-            </div>
-     
-          </div>
-        </div>
-      </div>
 
-
-    </div>
-
-    <div className="hidden fixed z-10 inset-0 overflow-y-auto" id="dashboard_tutorial" aria-labelledby="modal-title" role="dialog" aria-modal="true">
+    <div id="dashboard_tutorial" className="hidden fixed z-10 inset-0 overflow-y-auto" aria-labelledby="modal-title" role="dialog" aria-modal="true">
   <div className="flex items-end justify-center min-h-screen pt-4 px-4 pb-20 text-center sm:block sm:p-0">
    
     <div className="fixed inset-0 bg-gray-900 bg-opacity-95 transition-opacity" aria-hidden="true"></div>

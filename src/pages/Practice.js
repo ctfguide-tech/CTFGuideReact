@@ -133,6 +133,19 @@ const Practice = () => {
     return classes.filter(Boolean).join(' ')
   }
 
+  function practiceTutorialDone() {
+    window.location.href = "../challenges/2Hr3KHnaqUW6YFrvjwuc"
+  }
+
+  window.onload = function () {
+    if (localStorage.getItem("tutorial_phase") == 1) {
+      document.getElementById("practice_tutorial").classList.remove("hidden");
+  
+    }
+  
+  }
+
+
 
   return (
 
@@ -369,6 +382,33 @@ const Practice = () => {
 
           <p className="mt-4 text-gray-500 py-4 text-center mx-auto">  &copy; CTFGuide 2022<br></br><a className="hover:text-white" href="../terms-of-service">Terms of Service</a> • <a className="hover:text-white" href="../privacy-policy">Privacy Policy</a> • <a className="hover:text-white" href="../ambassador-program">Ambassador Program</a><br></br>This is beta software. Problems will arise.</p>
 
+
+
+          <div id="practice_tutorial" className="hidden fixed z-10 inset-0 overflow-y-auto" aria-labelledby="modal-title" role="dialog" aria-modal="true">
+  <div className="flex items-end justify-center min-h-screen pt-4 px-4 pb-20 text-center sm:block sm:p-0">
+   
+    <div className="fixed inset-0 bg-gray-900 bg-opacity-95 transition-opacity" aria-hidden="true"></div>
+
+    <span className="hidden sm:inline-block sm:align-middle sm:h-screen" aria-hidden="true">&#8203;</span>
+
+ 
+    <div className="inline-block align-bottom shadow-lg shadow-blue-900/50 bg-gradient-to-br from-gray-900 to-black border border-gray-800 rounded-lg px-4 pt-5 pb-4 text-left overflow-hidden shadow-xl transform transition-all sm:my-8 sm:align-middle sm:max-w-3xl sm:w-full sm:p-6">
+      <div>
+    
+        <div className="mt-3 text-center sm:mt-5">
+          <h3 className="text-4xl leading-6 font-semibold text-white" id="modal-title">Practice</h3>
+          <div className="mt-4">
+            <p className="text-xl px-5 text-white">CTFGuide has 100s of community uploaded challenges for you to use for <b>FREE</b>. There are three difficultes and various categories.</p>
+            <iframe className="mt-4 w-full px-5 mt-4 h-80" src="https://www.youtube-nocookie.com/embed/QU952BUA9Gk" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; hide-info;"></iframe>
+          </div>
+        </div>
+      </div>
+      <div className="mt-5 sm:mt-6 mx-auto text-center">
+        <button onClick={practiceTutorialDone} type="button" className="hover:bg-gray-800 mt-3 w-1/2 text-xl inline-flex justify-center rounded-md border border-gray-300 shadow-sm px-4 py-2 text-white text-base font-medium sm:mt-0 sm:col-start-1 ">Continue</button>
+      </div>
+    </div>
+  </div>
+</div>
         </div>
 
 
