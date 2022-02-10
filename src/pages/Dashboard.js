@@ -7,9 +7,9 @@ import { CheckCircleIcon } from '@heroicons/react/outline'
 import { initializeApp } from "firebase/app";
 import { getAnalytics } from "firebase/analytics";
 import { io } from "socket.io-client";
+import DashboardManager from "../modules/DashboardManager.js"
 
 const Dashboard = () => {
-
   const firebaseConfig = {
     apiKey: "AIzaSyBLAN84VP3jSA5dqhrU6Bjmfu5NiUDuNw4",
     authDomain: "cyberjags-8b081.firebaseapp.com",
@@ -45,7 +45,8 @@ const Dashboard = () => {
 
   const [userData, setUserData] = useState({
     streak: 0,
-    continueWorking: []
+    continueWorking: [],
+    username: "??"
   })
 
   
@@ -84,10 +85,17 @@ const Dashboard = () => {
         xhttp.onreadystatechange = function() {
           if (this.readyState === 4 & this.status === 200) {
             let data = JSON.parse(this.responseText);
+            console.log(data)
             if (!data.streak) data[`streak`] = 0;
             if (!data.continueWorking) data[`continueWorking`] = []
             document.getElementById("myInfo").innerText = JSON.stringify(data, null, 3);
+            
+            if (data.tutorial === "finished") {
+              document.getElementById("tutorial_banner").classList.add("hidden")
+            }
+
             setUserData({
+              username: data.username,
               streak: data.streak,
               continueWorking: data.continueWorking
             })
@@ -159,6 +167,9 @@ const Dashboard = () => {
     return classes.filter(Boolean).join(' ')
   }
 
+  function dashboardTutorialDone() {
+    document.getElementById("dashboard_tutorial").classList.add("hidden")
+  }
 
   return (
 
@@ -318,12 +329,17 @@ const Dashboard = () => {
         <p className="text-yellow-500 mb-3 hidden">If you are seeing this message it means the CTFGuide API is offline.</p>
         <p className="text-yellow-500 mb-3 hidden">This is a site wide broadcast. Hi!</p>
 
-      <div className="rounded-lg bg-gradient-to-br from-gray-900 to-black border border-gray-800 mb-10 max-w-7xl mx-auto py-12 px-4 sm:px-3 lg:py-12 lg:px-8 lg:flex lg:items-center lg:justify-between">
+      <div id="tutorial_banner" className="rounded-lg bg-gradient-to-br from-gray-900 to-black border border-gray-800 mb-10 max-w-7xl mx-auto py-12 px-4 sm:px-3 lg:py-12 lg:px-8 lg:flex lg:items-center lg:justify-between">
                     <div className="w-full">
                     <h2 className="text-3xl font-extrabold tracking-tight text-gray-900 md:text-4xl">
-          <span className="block text-white"><i class="fa-solid fa-hand-wave"></i> Welcome to CTFGuide!</span>
+          <span className="block text-white"><i className="fa-solid fa-hand-wave"></i> Welcome to CTFGuide!</span>
           <span className="block text-blue-600">Mind if we show you around?</span>
           <a
+              onClick={() => {
+                localStorage.setItem("tutorial_active", true);
+                localStorage.setItem("tutorial_phase", 1) 
+                dashboardTutorialDone();
+              }}
               href="#"
               className="mt-4 inline-flex items-center justify-center px-10 py-3 border border-transparent text-base font-medium rounded-md text-white bg-blue-600 hover:bg-blue-700"
             >
@@ -343,7 +359,7 @@ const Dashboard = () => {
     </div>
          <div className="bg-gradient-to-br from-gray-900 to-black border border-gray-800  px-6 py-10 rounded-lg flex align-middle">
 
-         <img className="rounded-full" src={user.imageUrl } alt="" /><h1 className="text-white text-4xl ml-4 mt-3">Hello Laphatize</h1>
+         <img className="rounded-full" src={user.imageUrl } alt="" /><h1 className="text-white text-4xl ml-4 mt-3">Hello { userData.username }</h1>
            </div>
  
           <div className="mt-5 grid lg:grid-cols-3 gap-10 sm:grid-cols-1">
@@ -438,8 +454,8 @@ const Dashboard = () => {
 <div className="flex items-center justify-between">
   <h1 className="text-xl w-full"><i className="fas fa-search"></i> Exploratory Cybersecurity</h1>
   <div className="ml-2 flex-shrink-0 flex w-1/2">
-  <div class="w-full bg-gray-900 border border-gray-700 rounded-full">
-  <div class="bg-gradient-to-br from-green-600 to-green-900  text-xs font-medium text-blue-100 text-center p-0.5 leading-none rounded-l-full" style={{width: '25%'}}> 25%</div>
+  <div className="w-full bg-gray-900 border border-gray-700 rounded-full">
+  <div className="bg-gradient-to-br from-green-600 to-green-900  text-xs font-medium text-blue-100 text-center p-0.5 leading-none rounded-l-full" style={{width: '25%'}}> 25%</div>
 
 </div>
 
@@ -450,7 +466,7 @@ const Dashboard = () => {
   <div className="flex items-center justify-between">
  <div>
    
-  <p class="mt-4 uppercase">Up next</p>
+  <p className="mt-4 uppercase">Up next</p>
   <i className="far fa-play-circle"></i> Video Lesson - Cyberwhatnow?
  </div>
   <div className="ml-2 flex-shrink-0 flex w-1/10">
@@ -464,8 +480,8 @@ const Dashboard = () => {
 <div className="flex items-center justify-between">
   <h1 className="text-xl"><i className="fab fa-linux"></i> Linux 101</h1>
   <div className="ml-2 flex-shrink-0 flex w-1/2">
-  <div class="w-full bg-gray-900 border border-gray-700 rounded-full">
-  <div class="bg-gradient-to-br from-green-600 to-green-900 text-xs font-medium text-blue-100 text-center p-0.5 leading-none rounded-l-full" style={{width: '25%'}}> 25%</div>
+  <div className="w-full bg-gray-900 border border-gray-700 rounded-full">
+  <div className="bg-gradient-to-br from-green-600 to-green-900 text-xs font-medium text-blue-100 text-center p-0.5 leading-none rounded-l-full" style={{width: '25%'}}> 25%</div>
 </div>
 
   </div>
@@ -475,7 +491,7 @@ const Dashboard = () => {
   <div className="flex items-center justify-between">
  <div>
    
-  <p class="mt-4 uppercase">Up next</p>
+  <p className="mt-4 uppercase">Up next</p>
   <i className="far fa-play-circle"></i> Video Lesson - Accessing other servers
  </div>
   <div className="ml-2 flex-shrink-0 flex w-1/10">
@@ -492,7 +508,7 @@ const Dashboard = () => {
                 bottom: 0,
                 right: '2%',   
               }}>
-                <h1 className="text-white flex hidden"><svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <h1 className="text-white flex hidden"><svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8h2a2 2 0 012 2v6a2 2 0 01-2 2h-2v4l-4-4H9a1.994 1.994 0 01-1.414-.586m0 0L11 14h4a2 2 0 002-2V6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2v4l.586-.586z" />
 </svg> <span className="ml-2">Chat</span> <span className="bg-black text-white ml-4 rounded-lg px-3 text-md">7</span></h1>
             
@@ -505,7 +521,7 @@ const Dashboard = () => {
                 right: '2%',   
               }}>
                 <div className="bg-gray-800 px-20 py-1 text-xl">
-                <h1 className="text-white flex"><svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <h1 className="text-white flex"><svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8h2a2 2 0 012 2v6a2 2 0 01-2 2h-2v4l-4-4H9a1.994 1.994 0 01-1.414-.586m0 0L11 14h4a2 2 0 002-2V6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2v4l.586-.586z" />
 </svg> <span className="ml-2">Chat</span> <span className="bg-black text-white ml-4 rounded-lg px-3 text-md">7</span></h1>
             </div>
@@ -562,7 +578,7 @@ const Dashboard = () => {
                 <div className="flex items-start">
 
                   <div className="ml-3 w-0 flex-1 pt-0.5">
-                    <p className="text-sm font-medium text-white"><i class="fas fa-exclamation-triangle"></i> We're still setting you up...</p>
+                    <p className="text-sm font-medium text-white"><i className="fas fa-exclamation-triangle"></i> We're still setting you up...</p>
                     <p className="mt-1 text-sm text-gray-200">You won't be able to use our virtual terminals just yet.</p>
                   </div>
                   <div className="ml-4 flex-shrink-0 flex">
@@ -583,14 +599,70 @@ const Dashboard = () => {
         </div>
       </div>
        
-                      
-    </div> 
+
+      <div className="fixed bottom-0 inset-x-0 pb-2 sm:pb-5 hidden">
+      <div className="max-w-7xl mx-auto px-2  sm:px-6 lg:px-8">
+        <div className="p-2 rounded-lg bg-black  border shadow-lg sm:p-3">
+          <div className="py-10 flex items-center justify-between flex-wrap">
+            <div className="w-0 flex-1 flex items-center">
+      
+              <p className="ml-3 font-medium text-white truncate">
+                <span className="md:hidden">Tutorial: </span>
+                <span className="hidden md:inline font-semibold">This is your dashboard.</span>
+                <iframe width="560" height="315" src="https://www.youtube.com/embed/P3TwUfUqc78" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+              </p>
+            </div>
+            <div className="order-3 mt-2 flex-shrink-0 w-full sm:order-2 sm:mt-0 sm:w-auto">
+              <a
+                href="#"
+                className="flex items-center justify-center px-4 py-2 border border-transparent rounded-md shadow-sm text-sm font-medium bg-gray-900 text-white border border-white"
+              >
+                Continue
+              </a>
+            </div>
+     
+          </div>
+        </div>
+      </div>
 
 
+    </div>
+
+    <div className="hidden fixed z-10 inset-0 overflow-y-auto" id="dashboard_tutorial" aria-labelledby="modal-title" role="dialog" aria-modal="true">
+  <div className="flex items-end justify-center min-h-screen pt-4 px-4 pb-20 text-center sm:block sm:p-0">
+   
+    <div className="fixed inset-0 bg-gray-900 bg-opacity-95 transition-opacity" aria-hidden="true"></div>
+
+    <span className="hidden sm:inline-block sm:align-middle sm:h-screen" aria-hidden="true">&#8203;</span>
+
+ 
+    <div className="inline-block align-bottom shadow-lg shadow-blue-900/50 bg-gradient-to-br from-gray-900 to-black border border-gray-800 rounded-lg px-4 pt-5 pb-4 text-left overflow-hidden shadow-xl transform transition-all sm:my-8 sm:align-middle sm:max-w-3xl sm:w-full sm:p-6">
+      <div>
+    
+        <div className="mt-3 text-center sm:mt-5">
+          <h3 className="text-4xl leading-6 font-semibold text-white" id="modal-title">Dashboard</h3>
+          <div className="mt-4">
+            <p className="text-xl px-5 text-white">The dashboard serves as an easy way for you to visualize your progress and helps find you the next thing to do. Your dashboard is specifically tailored for you.</p>
+            <iframe className="mt-4 w-full px-5 mt-4 h-80" src="https://www.youtube-nocookie.com/embed/QU952BUA9Gk" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; hide-info;"></iframe>
+          </div>
+        </div>
+      </div>
+      <div className="mt-5 sm:mt-6 mx-auto text-center">
+        <button onClick={dashboardTutorialDone} type="button" className="hover:bg-gray-800 mt-3 w-1/2 text-xl inline-flex justify-center rounded-md border border-gray-300 shadow-sm px-4 py-2 text-white text-base font-medium sm:mt-0 sm:col-start-1 ">Continue</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+    </div>
 
 
   )
+
+
 }
+
+
 
 
 export default Dashboard;
