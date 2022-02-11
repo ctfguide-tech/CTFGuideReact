@@ -1,13 +1,14 @@
 import { Link } from "react-router-dom";
 
 import { Fragment, useEffect, useState } from 'react'
-import { Disclosure, Menu, Transition } from '@headlessui/react'
+import { Disclosure, Menu, Transition , Dialog} from '@headlessui/react'
 import { BellIcon, MenuIcon, XIcon, FireIcon } from '@heroicons/react/outline'
 import { getAuth, onAuthStateChanged, signOut } from "firebase/auth";
 import { initializeApp } from "firebase/app";
 import { getAnalytics } from "firebase/analytics";
 
 const Practice = () => {
+  const [open, setOpen] = useState(false)
 
   const firebaseConfig = {
     apiKey: "AIzaSyBLAN84VP3jSA5dqhrU6Bjmfu5NiUDuNw4",
@@ -119,6 +120,45 @@ const Practice = () => {
   }, []);
 
 
+  function submitFlag() {
+
+    document.getElementById("enterFlagBTN").innerHTML = "Checking flag...";
+
+    var challengeID = window.location.href.split("/")[4];
+    var flag = document.getElementById("enteredFlag").value;
+    if (!flag) {
+      document.getElementById("enteredFlag").classList.add("border-red-600");
+      document.getElementById("enterFlagBTN").innerHTML = "Submit Flag";
+      
+      setTimeout(function() {
+        document.getElementById("enteredFlag").classList.remove("border-red-600");
+      }, 2000)
+    }
+
+
+    var xhttp = new XMLHttpRequest();
+    xhttp.onreadystatechange = function() {
+      if (this.readyState == 4 && this.status == 200) {
+        var serverResponse = JSON.parse(this.responseText);
+        if (serverResponse) {
+          if (serverResponse.response == "OK") {
+            document.getElementById("success").classList.remove("hidden");
+          } else {
+            document.getElementById("enteredFlag").classList.add("border-red-600");
+            document.getElementById("enterFlagBTN").innerHTML = "Submit Flag";
+
+            setTimeout(function() {
+              document.getElementById("enteredFlag").classList.remove("border-red-600");
+              
+            }, 2000)
+          }
+        }
+      }
+    }
+    xhttp.open("GET", `http://localhost:3001/challenges/check/${challengeID}?uid=${auth.currentUser.uid}&flag=${flag}`);
+    xhttp.send();
+  }
+
   function showTerminal() {
     document.getElementById("terminal").classList.remove("hidden");
   }
@@ -142,7 +182,7 @@ const Practice = () => {
 
   return (
 
-    <div className="min-h-full" style={{ fontFamily: 'Space Grotesk, sans-serif' }}>
+    <div className="min-h-full example" style={{ fontFamily: 'Space Grotesk, sans-serif' }}>
       <Disclosure as="nav" className="bg-gradient-to-br from-gray-900 to-black border border-gray-800">
         {({ open }) => (
           <>
@@ -319,11 +359,10 @@ const Practice = () => {
                       
                     </p>
 
-                      <input placeholder="CTFGuide{flag}" className="text-white  focus-outline-none  outline-none px-4 py-1 rounded-lg mr-2 bg-black border border-gray-700"></input>
-                      <button onClick={showTerminal} className="mt-4 border bg-black border-green-500  rounded-lg  hover:bg-gray-900 text-green-500 px-4 py-1">Submit Flag</button>
-                      <button onClick={showTerminal} className="mt-4 border bg-black  rounded-lg  border-yellow-300 text-yellow-300 hover:bg-gray-900 text-white px-4 py-1 ml-2">Stuck?</button>
-
-
+                      <input id="enteredFlag" placeholder="CTFGuide{flag}" className="text-white  focus-outline-none  outline-none px-4 py-1 rounded-lg mr-2 bg-black border border-gray-700"></input>
+                      <button id="enterFlagBTN" onClick={submitFlag} className="mt-4 border bg-black border-green-500  rounded-lg  hover:bg-gray-900 text-green-500 px-4 py-1">Submit Flag</button>
+                      <button onClick={() => setOpen(true)} className="mt-4 border bg-black  rounded-lg  border-yellow-300 text-yellow-300 hover:bg-gray-900 text-white px-4 py-1 ml-2">Stuck?</button>
+                      
                     <div id="terminal" className=" mt-6 ">
                   <p className="text-gray-400 mb-2 hint">Your server credentials are the same as your CTFGuide account. <a style={{ cursor: 'pointer'}} className="hover:bg-black text-gray-300">Need help?</a></p>
                     <iframe className="w-full" height="500" src="https://terminal.ctfguide.com/wetty/ssh/root?pass=" ></iframe>
@@ -339,20 +378,83 @@ const Practice = () => {
 
               </div>
 
+
+              
+          <Transition.Root show={open} as={Fragment} style={{ fontFamily: 'Space Grotesk, sans-serif', overflow:'hidden'}} className="test">
+      <Dialog as="div" className="fixed inset-0 overflow-hidden" onClose={setOpen}>
+        <div className="absolute inset-0 overflow-hidden">
+          <Transition.Child
+            as={Fragment}
+            enter="ease-in-out duration-500"
+            enterFrom="opacity-0"
+            enterTo="opacity-100"
+            leave="ease-in-out duration-500"
+            leaveFrom="opacity-100"
+            leaveTo="opacity-0"
+          >
+            <Dialog.Overlay className="absolute inset-0 bg-gray-900 bg-opacity-75 transition-opacity" />
+          </Transition.Child>
+          <div className="fixed inset-y-0 right-0 pl-10 max-w-full flex">
+            <Transition.Child
+              as={Fragment}
+              enter="transform transition ease-in-out duration-500 sm:duration-700"
+              enterFrom="translate-x-full"
+              enterTo="translate-x-0"
+              leave="transform transition ease-in-out duration-500 sm:duration-700"
+              leaveFrom="translate-x-0"
+              leaveTo="translate-x-full"
+            >
+              <div className="relative w-screen max-w-md">
+                <Transition.Child
+                  as={Fragment}
+                  enter="ease-in-out duration-500"
+                  enterFrom="opacity-0"
+                  enterTo="opacity-100"
+                  leave="ease-in-out duration-500"
+                  leaveFrom="opacity-100"
+                  leaveTo="opacity-0"
+                >
+                  <div className="absolute top-0 left-0 -ml-8 pt-4 pr-2 flex sm:-ml-10 sm:pr-4">
+                    <button
+                      type="button"
+                      className="rounded-md text-gray-300 hover:text-white focus:outline-none"
+                      onClick={() => setOpen(false)}
+                    >
+                      <span className="sr-only">Close panel</span>
+                      <XIcon className="h-6 w-6" aria-hidden="true" />
+                    </button>
+                  </div>
+                </Transition.Child>
+                <div className="test bg-gradient-to-br from-gray-900 to-black border border-gray-800 h-full flex flex-col py-6 bg-white shadow-xl overflow-y-scroll">
+                  <div className="px-4 sm:px-6">
+                    <Dialog.Title className="text-lg font-medium text-white text-2xl">Challenge Hint</Dialog.Title>
+                  </div>
+                  <div className="mt-6 relative flex-1 px-4 sm:px-6">
+                    {/* Replace with your content */}
+                    <div className="absolute inset-0 px-4 sm:px-6">
+                      <div className="h-full " aria-hidden="true" />
+                    </div>
+                    {/* /End replace */}
+                  </div>
+                </div>
+              </div>
+            </Transition.Child>
+          </div>
+        </div>
+      </Dialog>
+    </Transition.Root>
+
           </div>
 
 
-          <div className="px-4 py-4 sm:px-0 hidden">
-            <div className=" rounded-lg h-96" />
 
-
-
-          </div>
+          
           {/* /End replace */}
         </div>
       </main>
 
       <p className="mt-4 text-gray-500 py-4 text-center mx-auto">  &copy; CTFGuide 2022<br></br><a className="hover:text-white" href="../terms-of-service">Terms of Service</a> • <a className="hover:text-white" href="../privacy-policy">Privacy Policy</a> • <a className="hover:text-white" href="../ambassador-program">Ambassador Program</a><br></br>This is beta software. Problems will arise.</p>
+
 
     </div>
 

@@ -174,6 +174,17 @@ const Dashboard = () => {
   function dashboardTutorialDone() {
     window.location.href = "../practice"
   }
+
+  window.onload = function() {
+    if (localStorage.getItem("tutorial_phase") == 1) {
+      document.getElementById("dashboard_tutorial").classList.remove("hidden")
+    }
+
+    if (localStorage.getItem("tutorial_active")) {
+      document.getElementById("tutorial_banner").classList.add("hidden")
+    }
+  }
+
   return (
 
     <div className="min-h-full" style={{ fontFamily: 'Space Grotesk, sans-serif' }}>

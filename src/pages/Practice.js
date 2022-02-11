@@ -134,6 +134,10 @@ const Practice = () => {
   }
 
   function practiceTutorialDone() {
+    
+      localStorage.setItem("practiceTutorial", "true");
+    localStorage.setItem("tutorial_phase", "3");
+
     window.location.href = "../challenges/2Hr3KHnaqUW6YFrvjwuc"
   }
 
