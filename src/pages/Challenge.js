@@ -86,13 +86,13 @@ const Practice = () => {
                 window.location.reload();
               }
             }
-            xhttp.open("GET", `http://localhost:3001/users/register?uid=${firebaseUser.uid}`);
+            xhttp.open("GET", `${process.env.REACT_APP_API_URL}/users/register?uid=${firebaseUser.uid}`);
             xhttp.send();
 
           }
         }
 
-        xhttp.open("GET", `http://localhost:3001/users/data?uid=${firebaseUser.uid}`);
+        xhttp.open("GET", `${process.env.REACT_APP_API_URL}/users/data?uid=${firebaseUser.uid}`);
         xhttp.send();
 
         // ChallengeName ChallengeDetails
@@ -107,7 +107,7 @@ const Practice = () => {
             document.getElementById("suggestedLoader").classList.add("hidden");
           }
         }
-        xhttp.open("GET", "http://localhost:3001/challenges/specific/" + window.location.href.split("/")[4]);
+        xhttp.open("GET", `${process.env.REACT_APP_API_URL}/challenges/specific/` + window.location.href.split("/")[4]);
         xhttp.send();
 
 
@@ -428,6 +428,59 @@ const Practice = () => {
                 <div className="test bg-gradient-to-br from-gray-900 to-black border border-gray-800 h-full flex flex-col py-6 bg-white shadow-xl overflow-y-scroll">
                   <div className="px-4 sm:px-6">
                     <Dialog.Title className="text-lg font-medium text-white text-2xl">Challenge Hint</Dialog.Title>
+                    <div class="bg-gray-800 rounded-lg px-4 py-2 mt-4">
+
+
+                    <div class="flex items-center justify-between">
+                      <div>
+                        <p class="text-white  uppercase">Hint 1</p>
+                        
+                        </div>
+                        <div class="ml-2 flex-shrink-0 flex w-1/10">
+                          <button class="border text-white border-green-500 px-4 py-1 rounded-lg hover:bg-gray-900">Unlock Hint</button>
+                          </div>
+                          </div>
+                  
+                  
+                  
+                  
+                    </div>
+
+                    <div class="bg-gray-800 rounded-lg px-4 py-2 mt-4">
+
+
+<div class="flex items-center justify-between">
+  <div>
+    <p class="text-white  uppercase">Hint 2</p>
+    
+    </div>
+    <div class="ml-2 flex-shrink-0 flex w-1/10">
+      <button class="border text-white border-green-500 px-4 py-1 rounded-lg hover:bg-gray-900">Unlock Hint</button>
+      </div>
+      </div>
+
+
+
+
+</div>
+
+<div class="bg-gray-800 rounded-lg px-4 py-2 mt-4">
+
+
+<div class="flex items-center justify-between">
+  <div>
+    <p class="text-white  uppercase">Answer</p>
+    
+    </div>
+    <div class="ml-2 flex-shrink-0 flex w-1/10">
+      <button class="border text-white border-orange-500 px-4 py-1 rounded-lg hover:bg-gray-900">Upgrade to PRO</button>
+      </div>
+      </div>
+
+
+
+
+</div>
                   </div>
                   <div className="mt-6 relative flex-1 px-4 sm:px-6">
                     {/* Replace with your content */}
@@ -435,7 +488,24 @@ const Practice = () => {
                       <div className="h-full " aria-hidden="true" />
                     </div>
                     {/* /End replace */}
+               
+               
+                    <div className="text-white">
+                    <h1 className=" text-xl mb-2">How do hints work?</h1>
+                    <p>Your first hint will only allow you to earn 1/2 of the points avaliable for this challenge.</p>
+                    <br/>
+                    <p>Your second hint will only allow you to earn 1/3 of the points avaliable for this challenge.</p>
+                    <br/>
+                    <p>Viewing the answer will simply mark the challenge solved for you and not award you any points. This feature is only for pro members.</p>
+
+                 </div>
+
+
+
                   </div>
+
+
+               
                 </div>
               </div>
             </Transition.Child>

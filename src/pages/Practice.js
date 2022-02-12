@@ -85,13 +85,13 @@ const Practice = () => {
                 window.location.reload();
               }
             }
-            xhttp.open("GET", `http://localhost:3001/users/register?uid=${firebaseUser.uid}`);
+            xhttp.open("GET", `${process.env.REACT_APP_API_URL}/users/register?uid=${firebaseUser.uid}`);
             xhttp.send();
 
           }
         }
 
-        xhttp.open("GET", `http://localhost:3001/users/data?uid=${firebaseUser.uid}`);
+        xhttp.open("GET", `${process.env.REACT_APP_API_URL}/users/data?uid=${firebaseUser.uid}`);
         xhttp.send();
 
         var xhttp = new XMLHttpRequest();
@@ -105,7 +105,7 @@ const Practice = () => {
             document.getElementById("suggestedLoader").classList.add("hidden");
           }
         }
-        xhttp.open("GET", "http://localhost:3001/challenges/all");
+        xhttp.open("GET", `${process.env.REACT_APP_API_URL}/challenges/all`);
         xhttp.send();
 
 

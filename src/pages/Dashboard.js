@@ -46,7 +46,8 @@ const Dashboard = () => {
   const [userData, setUserData] = useState({
     streak: 0,
     continueWorking: [],
-    username: "??"
+    username: "??",
+    points: 0
   })
 
   
@@ -97,7 +98,8 @@ const Dashboard = () => {
             setUserData({
               username: data.username,
               streak: data.streak,
-              continueWorking: data.continueWorking
+              continueWorking: data.continueWorking,
+              points: data.points
             })
             document.getElementById("fetchingHistory").classList.add("hidden");
             if (data.continueWorking.length < 1)  document.getElementById("noHistory").classList.remove("hidden")
@@ -113,13 +115,13 @@ const Dashboard = () => {
                 window.location.reload();
               }
             }
-            xhttp.open("GET", `http://localhost:3001/users/register?uid=${firebaseUser.uid}`);
+            xhttp.open("GET", `${process.env.REACT_APP_API_URL}/users/register?uid=${firebaseUser.uid}`);
             xhttp.send();
             
           }
         }
       
-      xhttp.open("GET", `http://localhost:3001/users/data?uid=${firebaseUser.uid}`);
+      xhttp.open("GET", `${process.env.REACT_APP_API_URL}/users/data?uid=${firebaseUser.uid}`);
       xhttp.send();
 /*
 
@@ -224,14 +226,18 @@ const Dashboard = () => {
                 </div>
                 <div className="hidden md:block">
                   <div className="ml-4 flex items-center md:ml-6">
+              
+                  <p className="text-yellow-500 hover:text-yellow-400" style={{cursor:'pointer'}}>✨ Upgrade to pro</p>
                     <button
                       type="button"
-                      className="bg-gray-800 p-1 rounded-full text-gray-400 hover:text-white focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-800 focus:ring-white"
+                      className="ml-3 bg-gray-900 border border-gray-700 px-3 font-semibold rounded-full text-blue-500  focus:outline-none "
                     >
                       <span className="sr-only">View notifications</span>
-                      <BellIcon className="h-6 w-6" aria-hidden="true" />
+                      {userData.points} points
                     </button>
+                 
 
+              
                     {/* Profile dropdown */}
                     <Menu as="div" className="ml-3 relative">
                       <div>
@@ -249,15 +255,16 @@ const Dashboard = () => {
                         leaveFrom="transform opacity-100 scale-100"
                         leaveTo="transform opacity-0 scale-95"
                       >
-                        <Menu.Items className="origin-top-right absolute right-0 mt-2 w-48 rounded-md shadow-lg py-1 bg-white ring-1 ring-black ring-opacity-5 focus:outline-none">
+                        <Menu.Items className="origin-top-right absolute right-0 mt-2 w-48 rounded-md shadow-lg py-1 bg-gray-900 border border-gray-700 text-white focus:outline-none">
                           {userNavigation.map((item) => (
                             <Menu.Item key={item.name}>
                               {({ active }) => (
                                 <a
                                   href={item.href}
+                                  style={{cursor:'pointer'}}
                                   className={classNames(
-                                    active ? 'bg-gray-100' : '',
-                                    'block px-4 py-2 text-sm text-gray-700'
+                                    active ? 'bg-gray-800' : '',
+                                    'block px-4 py-2 text-sm text-gray-200'
                                   )}
                                   onClick={item.onClick}
                                 >
@@ -313,20 +320,26 @@ const Dashboard = () => {
                     <div className="text-base font-medium text-white">{user.name}</div>
                     <div className="text-sm font-medium text-gray-400">{user.email}</div>
                   </div>
-                  <button
-                    type="button"
-                    className="ml-auto bg-gray-800 flex-shrink-0 p-1 rounded-full text-gray-400 hover:text-white focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-800 focus:ring-white"
-                  >
-                    <span className="sr-only">View notifications</span>
-                    <BellIcon className="h-6 w-6" aria-hidden="true" />
-                  </button>
+               
+                 
                 </div>
+                <div className="mt-3 px-2 mx-auto text-center">
+                <p className="text-yellow-500 hover:text-yellow-400 mb-2" style={{cursor:'pointer'}}>✨ Upgrade to pro</p>
+                    <button
+                      type="button"
+                      className="ml-3  bg-gray-900 border border-gray-700 px-3 font-semibold rounded-full text-blue-500  focus:outline-none "
+                    >
+                     
+                      {userData.points} points
+                    </button>
+                    </div>
+
                 <div className="mt-3 px-2 space-y-1">
                   {userNavigation.map((item) => (
                     <a
                       key={item.name + "m"}
                       onClick={logout}
-                      className="block px-3 py-2 rounded-md text-base font-medium text-red-400 hover:text-white hover:bg-gray-700"
+                      className="block px-3 py-2 rounded-md text-base font-medium text-gray-200 hover:text-white hover:bg-gray-700"
                     >{item.name}</a>
                   ))}
                 </div>
@@ -545,7 +558,7 @@ const Dashboard = () => {
         {activityItems.map((activityItem) => (
           <li key={activityItem.id} className="w-full">
             <div className="flex space-x-3 py-4 px-4">
-              <img className="h-6 w-6 rounded-full" src={activityItem.person.imageUrl} alt="" />
+              <img className="h-6 w-6 rounded-full outline-none focus:outline-none" src={activityItem.person.imageUrl} alt="" />
               <div className="flex-1">
                 <div className="flex items-center justify-between">
                   <h3 className="text-sm font-medium text-white">{activityItem.person.name}</h3>
