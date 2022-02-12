@@ -1,6 +1,7 @@
+[![CTFGuide](https://cdn.glitch.global/4c2c02b2-7900-4318-89bf-6974b196f4c2/CTFGUIDE.png?v=1644705513060 "CTFGuide")](https://cdn.glitch.global/4c2c02b2-7900-4318-89bf-6974b196f4c2/CTFGUIDE.png?v=1644705513060 "CTFGuide")
 
-In the project directory, you can run:
 
+## Deploying on your machine
 ### `npm start`
 
 Runs the app in the development mode.\

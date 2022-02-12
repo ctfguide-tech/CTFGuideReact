@@ -156,6 +156,7 @@ const Dashboard = () => {
   const navigation = [
     { name: 'Dashboard', href: './dashboard', current: true },
     { name: 'Practice', href: './practice', current: false },
+    { name: 'Learn', href: './learn', current: false },
     { name: 'Classes', href: '#', current: false },
     { name: 'CTFLive', href: '#', current: false },
     { name: 'Friends', href: '#', current: false },
@@ -476,6 +477,7 @@ const Dashboard = () => {
 
 
           <div>
+         
      <h1 className="text-4xl text-white mt-6 mb-4"> Learning Path</h1>
      <div className="mt-2 bg-gradient-to-br from-gray-900 to-black border border-gray-800  px-4 py-4 text-white rounded ">
 <div className="flex items-center justify-between">
@@ -490,7 +492,11 @@ const Dashboard = () => {
                 
 
   </div>
+ 
   <div className="flex items-center justify-between">
+
+ 
+
  <div>
    
   <p className="mt-4 uppercase">Up next</p>
@@ -582,7 +588,10 @@ const Dashboard = () => {
           {/* /End replace */}
         </div>
         <p className="mt-4 text-gray-500 py-4 text-center mx-auto">  &copy; CTFGuide 2022<br></br><a className="hover:text-white" href="../terms-of-service">Terms of Service</a> • <a className="hover:text-white" href="../privacy-policy">Privacy Policy</a> • <a className="hover:text-white" href="../ambassador-program">Ambassador Program</a><br></br>This is beta software. Problems will arise.</p>
-      </main>
+        
+          
+        
+        </main>
       <div
         aria-live="assertive"
         id="warning"

@@ -6,6 +6,7 @@ import { BellIcon, MenuIcon, XIcon, FireIcon } from '@heroicons/react/outline'
 import { getAuth, onAuthStateChanged, signOut } from "firebase/auth";
 import { initializeApp } from "firebase/app";
 import { getAnalytics } from "firebase/analytics";
+import 'animate.css';
 
 const Practice = () => {
 
@@ -311,9 +312,9 @@ const Practice = () => {
 
 
             <div className="">
-              <h1 className="text-4xl text-white mb-4">Suggested for you</h1>
+              <h1 className="text-4xl text-white mb-4 ">Suggested for you</h1>
 
-              <div id="suggestedLoader" className="mt-2 bg-gray-900 px-4 py-4 text-white rounded border border-blue-900">
+              <div id="suggestedLoader" className="hidden mt-2 bg-gray-900 px-4 py-4 text-white rounded border border-blue-900">
                 <div className="flex items-center justify-between">
 
 
@@ -336,7 +337,7 @@ const Practice = () => {
                     onClick={() => {window.location.href = `./challenges/${item.id}`}}
                      style={{cursor: 'pointer'}}
                       key={item.title}
-                      className="px-3 py-2  rounded-md bg-gradient-to-br from-gray-900 to-black border border-gray-800  mb-2  text-base font-medium text-white hover:text-white "
+                      className="animate__animated animate__fadeIn px-3 py-2  rounded-md bg-gradient-to-br from-gray-900 to-black border border-gray-800  mb-2  text-base font-medium text-white hover:text-white "
                     ><span className="font-semibold">{item.title} </span>
                   <br></br>
                       <span className={"lowercase " +  (item.difficulty === 'hard' ? 'text-red-500' : item.difficulty === 'medium' ? ' text-yellow-500' : 'text-green-500')}> {item.difficulty}</span> <b>∙</b><span className="bg-black rounded-lg px-2  lowercase">{item.category}</span>
