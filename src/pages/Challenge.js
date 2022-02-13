@@ -39,7 +39,9 @@ const Practice = () => {
   })
 
   const [userData, setUserData] = useState({
-    points: 0
+    points: 0,
+    susername: 'Loading...',
+    spassword: 'Loading...',
   })
 
 
@@ -79,7 +81,9 @@ const Practice = () => {
           if (this.readyState === 4 & this.status === 200) {
             let data = JSON.parse(this.responseText);
             setUserData({
-              points: data.points
+              points: data.points,
+              susername: data.username,
+              spassword: data.vmPassword,
             })
 
           }
@@ -381,7 +385,7 @@ const Practice = () => {
                       <button onClick={() => setOpen(true)} className="mt-4 border bg-black  rounded-lg  border-yellow-300 text-yellow-300 hover:bg-gray-900 text-white px-4 py-1 ml-2">Stuck?</button>
                       
                     <div id="terminal" className=" mt-6 ">
-                  <p className="text-gray-400 mb-2 hint">Your server credentials are the same as your CTFGuide account. <a style={{ cursor: 'pointer'}} className="hover:bg-black text-gray-300">Need help?</a></p>
+                  <p className="text-gray-400 mb-2 hint">Login as <span className="text-yellow-400">{userData.susername}</span> using the password <span className="text-yellow-400">{userData.spassword}</span><a style={{ cursor: 'pointer'}} className="hidden hover:bg-black text-gray-300">Need help?</a></p>
                     <iframe className="w-full" height="500" src="https://terminal.ctfguide.com/wetty/ssh/root?pass=" ></iframe>
                        </div>
 

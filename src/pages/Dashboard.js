@@ -29,9 +29,6 @@ const Dashboard = () => {
 
   //const socket = io("http://localhost:3002");
 
-  setTimeout(function() {
-      document.getElementById("warning").classList.add("hidden")
-  },4000)
 
   const [open, setOpen] = useState(true)
   const [show, setShow] = useState(true)
@@ -93,6 +90,25 @@ const Dashboard = () => {
             
             if (data.tutorial === "finished") {
               document.getElementById("tutorial_banner").classList.add("hidden")
+            }
+
+            if (!data.vmPassword) {
+              document.getElementById("warning").classList.remove("hidden")
+            } else {
+              setTimeout(function() {
+                document.getElementById("warning").classList.add("hidden")
+            },4000)
+
+            // set up vm stuff
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function() {
+              if (this.readyState === 4 & this.status === 200) {
+                window.location.reload();
+              }
+            }
+            xhttp.open("GET", `${process.env.REACT_APP_API_URL}/users/createvm?uid=${firebaseUser.uid}`);
+            xhttp.send();
+          
             }
 
             setUserData({
@@ -593,7 +609,7 @@ const Dashboard = () => {
       <div
         aria-live="assertive"
         id="warning"
-        className="fixed inset-0 flex items-end px-4 py-6 pointer-events-none sm:p-6 sm:items-start"
+        className="hidden fixed inset-0 flex items-end px-4 py-6 pointer-events-none sm:p-6 sm:items-start"
       >
         <div className="w-full flex flex-col items-center space-y-4 sm:items-end">
           {/* Notification panel, dynamically insert this into the live region when it needs to be displayed */}
