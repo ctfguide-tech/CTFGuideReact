@@ -92,14 +92,16 @@ const Dashboard = () => {
               document.getElementById("tutorial_banner").classList.add("hidden")
             }
 
-            if (!data.vmPassword) {
-              document.getElementById("warning").classList.remove("hidden")
+            if (data.vmPassword) {
+              document.getElementById("warning").classList.add("hidden")
             } else {
+              console.log("EGg")
               setTimeout(function() {
                 document.getElementById("warning").classList.add("hidden")
             },4000)
 
             // set up vm stuff
+            console.log(firebaseUser.uid)
             var xhttp = new XMLHttpRequest();
             xhttp.onreadystatechange = function() {
               if (this.readyState === 4 & this.status === 200) {
