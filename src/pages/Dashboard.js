@@ -588,9 +588,7 @@ const Dashboard = () => {
           {/* /End replace */}
         </div>
         <p className="mt-4 text-gray-500 py-4 text-center mx-auto">  &copy; CTFGuide 2022<br></br><a className="hover:text-white" href="../terms-of-service">Terms of Service</a> • <a className="hover:text-white" href="../privacy-policy">Privacy Policy</a> • <a className="hover:text-white" href="../ambassador-program">Ambassador Program</a><br></br>This is beta software. Problems will arise.</p>
-        
-          
-        
+ 
         </main>
       <div
         aria-live="assertive"
