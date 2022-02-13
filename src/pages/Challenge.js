@@ -82,7 +82,7 @@ const Practice = () => {
             let data = JSON.parse(this.responseText);
             setUserData({
               points: data.points,
-              susername: data.username,
+              susername: data.vmUsername,
               spassword: data.vmPassword,
             })
 
