@@ -6,6 +6,7 @@ import { BellIcon, MenuIcon, XIcon, FireIcon } from '@heroicons/react/outline'
 import { getAuth, onAuthStateChanged, signOut } from "firebase/auth";
 import { initializeApp } from "firebase/app";
 import { getAnalytics } from "firebase/analytics";
+import 'animate.css';
 
 const Practice = () => {
   const [open, setOpen] = useState(false)
@@ -353,7 +354,7 @@ const Practice = () => {
 
 
       <main>
-        <div className="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
+        <div className="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8 animate__animated animate__fadeIn">
 
           <div>
 

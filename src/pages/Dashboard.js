@@ -8,6 +8,7 @@ import { initializeApp } from "firebase/app";
 import { getAnalytics } from "firebase/analytics";
 import { io } from "socket.io-client";
 import DashboardManager from "../modules/DashboardManager.js"
+import 'animate.css';
 
 const Dashboard = () => {
   const firebaseConfig = {
@@ -208,7 +209,7 @@ const Dashboard = () => {
 
   return (
 
-    <div className="min-h-full" style={{ fontFamily: 'Space Grotesk, sans-serif' }}>
+    <div className="min-h-full " style={{ fontFamily: 'Space Grotesk, sans-serif' }}>
 
       <Disclosure as="nav" className="bg-gradient-to-br from-gray-900 to-black border border-gray-800 ">
         {({ open }) => (
@@ -369,7 +370,7 @@ const Dashboard = () => {
       </Disclosure>
 
 
-      <main className="mt-6">
+      <main className="mt-6 animate__animated animate__fadeIn" >
         <div className="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
         <p className="text-yellow-500 mb-3 hidden"><i className="fas fa-tools"></i> <b>Developer Broadcast</b> The following services aren't avaliable: Learning Paths, Progress, Challenge Solving, Classes, CTFLive, Friends, Settings, Billing, Terminals and more.</p>
         <p className="text-yellow-500 mb-3 hidden">If you are seeing this message it means the CTFGuide API is offline.</p>

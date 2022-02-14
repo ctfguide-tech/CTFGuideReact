@@ -38,6 +38,12 @@ const Practice = () => {
     data: []
   })
 
+  const [userData, setUserData] = useState({
+    streak: 0,
+    continueWorking: [],
+    username: "??",
+    points: 0
+  })
 
   function logout() {
     signOut(auth).then(() => {
@@ -75,6 +81,12 @@ const Practice = () => {
           if (this.readyState === 4 & this.status === 200) {
             let data = JSON.parse(this.responseText);
 
+            setUserData({
+              username: data.username,
+              streak: data.streak,
+              continueWorking: data.continueWorking,
+              points: data.points
+            })
 
           }
 
@@ -191,14 +203,18 @@ const Practice = () => {
                 </div>
                 <div className="hidden md:block">
                   <div className="ml-4 flex items-center md:ml-6">
+              
+                  <p className="text-yellow-500 hover:text-yellow-400" style={{cursor:'pointer'}}>✨ Upgrade to pro</p>
                     <button
                       type="button"
-                      className="bg-gray-800 p-1 rounded-full text-gray-400 hover:text-white focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-800 focus:ring-white"
+                      className="ml-3 bg-gray-900 border border-gray-700 px-3 font-semibold rounded-full text-blue-500  focus:outline-none "
                     >
                       <span className="sr-only">View notifications</span>
-                      <BellIcon className="h-6 w-6" aria-hidden="true" />
+                      {userData.points} points
                     </button>
+                 
 
+              
                     {/* Profile dropdown */}
                     <Menu as="div" className="ml-3 relative">
                       <div>
@@ -216,15 +232,16 @@ const Practice = () => {
                         leaveFrom="transform opacity-100 scale-100"
                         leaveTo="transform opacity-0 scale-95"
                       >
-                        <Menu.Items className="origin-top-right absolute right-0 mt-2 w-48 rounded-md shadow-lg py-1 bg-white ring-1 ring-black ring-opacity-5 focus:outline-none">
+                        <Menu.Items className="origin-top-right absolute right-0 mt-2 w-48 rounded-md shadow-lg py-1 bg-gray-900 border border-gray-700 text-white focus:outline-none">
                           {userNavigation.map((item) => (
                             <Menu.Item key={item.name}>
                               {({ active }) => (
                                 <a
                                   href={item.href}
+                                  style={{cursor:'pointer'}}
                                   className={classNames(
-                                    active ? 'bg-gray-100' : '',
-                                    'block px-4 py-2 text-sm text-gray-700'
+                                    active ? 'bg-gray-800' : '',
+                                    'block px-4 py-2 text-sm text-gray-200'
                                   )}
                                   onClick={item.onClick}
                                 >
@@ -280,20 +297,26 @@ const Practice = () => {
                     <div className="text-base font-medium text-white">{user.name}</div>
                     <div className="text-sm font-medium text-gray-400">{user.email}</div>
                   </div>
-                  <button
-                    type="button"
-                    className="ml-auto bg-gray-800 flex-shrink-0 p-1 rounded-full text-gray-400 hover:text-white focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-800 focus:ring-white"
-                  >
-                    <span className="sr-only">View notifications</span>
-                    <BellIcon className="h-6 w-6" aria-hidden="true" />
-                  </button>
+               
+                 
                 </div>
+                <div className="mt-3 px-2 mx-auto text-center">
+                <p className="text-yellow-500 hover:text-yellow-400 mb-2" style={{cursor:'pointer'}}>✨ Upgrade to pro</p>
+                    <button
+                      type="button"
+                      className="ml-3  bg-gray-900 border border-gray-700 px-3 font-semibold rounded-full text-blue-500  focus:outline-none "
+                    >
+                     
+                      {userData.points} points
+                    </button>
+                    </div>
+
                 <div className="mt-3 px-2 space-y-1">
                   {userNavigation.map((item) => (
                     <a
                       key={item.name + "m"}
                       onClick={logout}
-                      className="block px-3 py-2 rounded-md text-base font-medium text-red-400 hover:text-white hover:bg-gray-700"
+                      className="block px-3 py-2 rounded-md text-base font-medium text-gray-200 hover:text-white hover:bg-gray-700"
                     >{item.name}</a>
                   ))}
                 </div>
@@ -312,7 +335,38 @@ const Practice = () => {
 
 
             <div className="">
-              <h1 className="text-4xl text-white mb-4 ">Suggested for you</h1>
+              <div>
+              <div className="flex items-center justify-between">
+              <h1 className="text-4xl text-white mb-4  ">Practice Problems</h1>
+
+              <div className="ml-2 flex-shrink-0 flex">
+                <select
+                  id="location"
+                  name="location"
+                  className="mt-1 mb-4  w-full pl-3 pr-20  py-2 text-base border-gray-700 text-white bg-gray-900 focus:outline-none  sm:text-sm rounded-md"
+                  defaultValue="All"
+                  onChange={(e) => {
+                    window.alert(e.target.value);
+                    switch (e.target.value) {
+                      case "Easy":
+                        document.getElementsByClassName("medium").forEach(element => {
+                          element.style.display = "none";
+                        })
+                        document.getElementsByClassName("hard").forEach(element => {
+                          element.style.display = "none";
+                        })
+                    }
+                  }}
+                >
+                  <option>All</option>
+                  <option>Easy</option>
+                  <option>Medium</option>
+                  <option>Hard</option>
+                </select>
+                </div>
+                </div>
+
+              </div>
 
               <div id="suggestedLoader" className="hidden mt-2 bg-gray-900 px-4 py-4 text-white rounded border border-blue-900">
                 <div className="flex items-center justify-between">
@@ -337,7 +391,7 @@ const Practice = () => {
                     onClick={() => {window.location.href = `./challenges/${item.id}`}}
                      style={{cursor: 'pointer'}}
                       key={item.title}
-                      className="animate__animated animate__fadeIn px-3 py-2  rounded-md bg-gradient-to-br from-gray-900 to-black border border-gray-800  mb-2  text-base font-medium text-white hover:text-white "
+                      className={(item.difficulty) + "animate__animated animate__fadeIn px-3 py-2  rounded-md bg-gradient-to-br from-gray-900 to-black border border-gray-800  mb-2  text-base font-medium text-white hover:text-white "}
                     ><span className="font-semibold">{item.title} </span>
                   <br></br>
                       <span className={"lowercase " +  (item.difficulty === 'hard' ? 'text-red-500' : item.difficulty === 'medium' ? ' text-yellow-500' : 'text-green-500')}> {item.difficulty}</span> <b>∙</b><span className="bg-black rounded-lg px-2  lowercase">{item.category}</span>
