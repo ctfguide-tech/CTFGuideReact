@@ -137,14 +137,14 @@ const Home = () => {
                 </span>
               </h1>
               <p style={{fontFamily: 'Space Grotesk, sans-serif'}} className="mt-3 text-base text-gray-200 sm:mt-5 sm:text-xl lg:text-lg xl:text-xl">
-                    Whether you're a cybersecurity expert or a complete newbie - we've got the website just for you.
+                   The learning platform made for cybersecurity enthusiasts.
 
               </p>
               <div style={{fontFamily: 'Space Grotesk, sans-serif'}} className="mt-8 sm:max-w-lg sm:mx-auto  sm:text-center lg:text-center lg:mx-auto">
         
                   <a
                     type="submit"
-                    className="shadow-lg shadow-blue-500/50 mt-4 w-full px-10 py-4 border border-2  text-base font-medium rounded-md text-white bg-gray-800 border-blue-600 border-2 text-xl shadow-sm hover:bg-gray-900 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 sm:mt-0  sm:flex-shrink-0 sm:inline-flex sm:items-center sm:w-auto"
+                    className="mt-4 w-full px-10 py-4 border border-2  text-base font-medium rounded-md text-white bg-blue-600 border-blue-600 border-2 text-xl shadow-sm hover:bg-blue-700  hover:border-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 sm:mt-0  sm:flex-shrink-0 sm:inline-flex sm:items-center sm:w-auto"
                   >
                     Create an account
                   </a> 
@@ -152,12 +152,14 @@ const Home = () => {
                   <a
                     href="./Login"
                     type="submit"
-                    className="shadow-lg shadow-blue-500/50 mt-3 lg:ml-2 sm:ml-0 w-full px-10 py-4 border border-2 text-base font-medium rounded-md text-white bg-gray-800 border-blue-600 border-2 text-xl shadow-sm hover:bg-gray-900 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 sm:mt-0  sm:flex-shrink-0 sm:inline-flex sm:items-center sm:w-auto"
+                    className="ml-2 mt-4 w-full px-10 py-4 border border-2  text-base font-medium rounded-md text-white bg-gray-900 border-gray-800 border-2 text-xl shadow-sm hover:bg-gray-900 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 sm:mt-0  sm:flex-shrink-0 sm:inline-flex sm:items-center sm:w-auto"
                   >
                      Login
                   </a>
             
               </div>
+    <br></br>
+              <a href="#" className="mt-10 sm:text-center  md:mx-auto  text-blue-500 lg:text-center lg:mx-auto "><i class="fas fa-play"></i> Watch Video</a>
             </div>
           
           </div>
@@ -168,6 +170,8 @@ const Home = () => {
       <div style={{fontFamily: 'Space Grotesk, sans-serif'}}  className="relative bg-black pt-5 pb-32 overflow-hidden">
       <div  style={{fontFamily: 'Space Grotesk, sans-serif'}}  className="relative">
         <div className="lg:mx-auto lg:max-w-7xl lg:px-8 lg:grid lg:grid-cols-2 lg:grid-flow-col-dense lg:gap-24">
+          
+        <div className="relative">
           <div className="px-4 max-w-xl mx-auto sm:px-6 lg:py-16 lg:max-w-none lg:mx-0 lg:px-0">
             <div>
               <div>
@@ -187,6 +191,30 @@ const Home = () => {
             </div>
       
           </div>
+
+          <div className="px-4 max-w-xl mx-auto sm:px-6 lg:py-16 lg:max-w-none lg:mx-0 lg:px-0">
+            <div>
+              <div>
+                <span className="h-12 w-12 rounded-md flex items-center justify-center bg-blue-600">
+                <i class="fas fa-terminal text-white"></i>
+                </span>
+              </div>
+              <div className="mt-6">
+                <h2 className="text-3xl font-extrabold tracking-tight text-white">
+                  Integrated Terminal
+                </h2>
+                <p className="mt-4 text-lg text-gray-200">
+                The terminal is integrated directly onto the website, meaning you can run linux commands from the comfort of your browser.
+                </p>
+               
+              </div>
+            </div>
+      
+          </div>
+
+          </div>
+
+          
     
 
 
@@ -225,7 +253,34 @@ const Home = () => {
 
 
             </div>
+
+            <div className="mt-6 px-4 max-w-xl mx-auto sm:px-6 lg:py-16 lg:max-w-none lg:mx-0 lg:px-0">
+            <div>
+              <div>
+                <span className="h-12 w-12 rounded-md flex items-center justify-center bg-blue-600">
+                <i class="fas fa-brain text-white text-xl"></i>
+                </span>
+              </div>
+              <div className="mt-6">
+                <h2 className="text-3xl font-extrabold tracking-tight text-white">
+                  ML Powered Learning
+                </h2>
+                <p className="mt-4 text-lg text-gray-200">
+                Get lessons tailored to your skillset. CTFGuide uses machine learning to generate lessons based of your past performance on activites.
+                </p>
+               
+              </div>
+            </div>
+      
           </div>
+
+
+          
+          </div>
+
+          
+
+          
         </div>
       </div>
 
