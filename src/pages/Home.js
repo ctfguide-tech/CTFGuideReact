@@ -62,12 +62,26 @@ const Home = () => {
                 </div>
               </div>
             </div>
+
+                
             <div className="hidden md:block text-right">
               <span className="inline-flex rounded-md shadow-md ring-1 ring-black ring-opacity-5">
                 <a
-                  to="./login"
-                  style={{fontFamily: 'Space Grotesk, sans-serif'}}
-                  className="inline-flex items-center px-10 py-2 border borde border-gray-600 text-base font-medium rounded-md text-white bg-gray-800 hover:bg-gray-900"
+                  href="./register"
+                  style={{fontFamily: 'Space Grotesk, sans-serif', cursor: 'pointer'}}
+                  className="inline-flex items-center px-10 py-2 text-base font-medium rounded-md text-white bg-blue-500 hover:bg-blue-600"
+                >
+                 <i class="mr-2 fas fa-user-plus"></i> Register
+                </a>
+              </span>
+            </div>
+
+            <div className="ml-2 hidden md:block text-right">
+              <span className="inline-flex rounded-md shadow-md ring-1 ring-black ring-opacity-5">
+                <a
+                  href="./login"
+                  style={{fontFamily: 'Space Grotesk, sans-serif', cursor: 'pointer'}}
+                  className="inline-flex items-center px-10 py-2 border borde border-gray-600 text-base font-medium rounded-md text-white bg-gray-800 hover:bg-gray-900 hover:border-gray-700"
                 >
                   <i class="fas fa-sign-in-alt mr-2"></i> Log in
                 </a>
@@ -110,7 +124,7 @@ const Home = () => {
                
                 <Link
                   to="./Login"
-                  className="block w-full px-5 py-3 text-sm text-center font-medium text-white bg-gray-900 hover:bg-gray-800 mt-4"
+                  className="block w-full px-5 py-3 text-sm text-center font-medium text-white bg-gray-900 hover:bg-gray-800  mt-4"
                   style={{fontFamily: 'Space Grotesk, sans-serif'}}
                 >
                   Log in
@@ -143,7 +157,9 @@ const Home = () => {
               <div style={{fontFamily: 'Space Grotesk, sans-serif'}} className="mt-8 sm:max-w-lg sm:mx-auto  sm:text-center lg:text-center lg:mx-auto">
         
                   <a
+                    style={{cursor:'pointer'}}
                     type="submit"
+                    href="./register"
                     className="mt-4 w-full px-10 py-4 border border-2  text-base font-medium rounded-md text-white bg-blue-600 border-blue-600 border-2 text-xl shadow-sm hover:bg-blue-700  hover:border-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 sm:mt-0  sm:flex-shrink-0 sm:inline-flex sm:items-center sm:w-auto"
                   >
                     Create an account
@@ -152,14 +168,16 @@ const Home = () => {
                   <a
                     href="./Login"
                     type="submit"
-                    className="ml-2 mt-4 w-full px-10 py-4 border border-2  text-base font-medium rounded-md text-white bg-gray-900 border-gray-800 border-2 text-xl shadow-sm hover:bg-gray-900 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 sm:mt-0  sm:flex-shrink-0 sm:inline-flex sm:items-center sm:w-auto"
+                    className="ml-2 mt-4 w-full px-10 py-4 border border-2  text-base font-medium rounded-md text-white bg-gray-800 border-gray-700 border-2 text-xl shadow-sm hover:bg-gray-900  hover:border-gray-800 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 sm:mt-0  sm:flex-shrink-0 sm:inline-flex sm:items-center sm:w-auto"
                   >
                      Login
                   </a>
             
               </div>
     <br></br>
-              <a href="#" className="mt-10 sm:text-center  md:mx-auto  text-blue-500 lg:text-center lg:mx-auto "><i class="fas fa-play"></i> Watch Video</a>
+              <a href="#"  onClick={() => {
+                        document.getElementById("video").classList.remove("hidden");
+        }}  className="mt-10 sm:text-center  md:mx-auto  text-blue-500 lg:text-center lg:mx-auto "><i class="fas fa-play"></i> Watch Video</a>
             </div>
           
           </div>
@@ -216,7 +234,31 @@ const Home = () => {
 
           
     
+          <div id="video" className="hidden fixed z-10 inset-0 overflow-y-auto" aria-labelledby="modal-title" role="dialog" aria-modal="true">
+  <div className="flex items-end justify-center min-h-screen pt-4 px-4 pb-20 text-center sm:block sm:p-0">
+   
+    <div onClick={() => {
+                        document.getElementById("video").classList.add("hidden");
+        }}  className="fixed inset-0 bg-gray-900 bg-opacity-95 transition-opacity" aria-hidden="true"></div>
 
+    <span className="hidden sm:inline-block sm:align-middle sm:h-screen" aria-hidden="true">&#8203;</span>
+
+ 
+    <div className="inline-block align-bottom rounded-lg px-4 pt-5 pb-4 text-left overflow-hidden  transform transition-all sm:my-8 sm:align-middle sm:max-w-3xl sm:w-full sm:p-6">
+      <div>
+    
+        <div className="mt-3 text-center sm:mt-5">
+       <iframe width="720" height="400" src="https://www.youtube-nocookie.com/embed/HrerCAcOblc" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; hide-info;"></iframe>
+        <button  onClick={() => {
+                        document.getElementById("video").classList.add("hidden");
+        }} class="mt-4 bg-black px-4 rounded-lg text-white hover:bg-gray-800">X Close</button> 
+        </div>
+        
+      </div>
+  
+    </div>
+  </div>
+</div>
 
             <div className="relative">
         <div className="lg:mx-auto lg:max-w-7xl">
