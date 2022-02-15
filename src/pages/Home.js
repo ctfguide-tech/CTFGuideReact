@@ -64,13 +64,13 @@ const Home = () => {
             </div>
             <div className="hidden md:block text-right">
               <span className="inline-flex rounded-md shadow-md ring-1 ring-black ring-opacity-5">
-                <Link
+                <a
                   to="./login"
                   style={{fontFamily: 'Space Grotesk, sans-serif'}}
-                  className="inline-flex items-center px-4 py-2 border border-2 border-blue-600 text-base font-medium rounded-md text-white bg-gray-800 hover:bg-gray-900"
+                  className="inline-flex items-center px-10 py-2 border borde border-gray-600 text-base font-medium rounded-md text-white bg-gray-800 hover:bg-gray-900"
                 >
-                  Log in
-                </Link>
+                  <i class="fas fa-sign-in-alt mr-2"></i> Log in
+                </a>
               </span>
             </div>
           </nav>
@@ -286,7 +286,42 @@ const Home = () => {
 
    
    
+      <div className="bg-black">
+      <div className="max-w-7xl mx-auto py-16 px-4 sm:px-6 lg:px-8">
+        <div className="bg-gray-900 border border-gray-800 rounded-lg shadow-xl overflow-hidden lg:grid lg:grid-cols-2 lg:gap-4">
+          <div className="pt-10 pb-12 px-6 sm:pt-16 sm:px-10 lg:py-16 lg:pr-0 xl:py-20 xl:px-10">
+            <div className="lg:self-center">
+              <h2 className="text-3xl font-extrabold text-white sm:text-4xl">
+             
+                <span className="block">Start a CTFGuide Chapter for your school</span>
+              </h2>
+              <p className="mt-4 text-lg leading-6 text-blue-200">
+                Want to start a community of hackers? CTFGuide is the perfect platform for you. We've got all the tools to get you started.
+              </p>
+              <a
+                href="#"
+                className="mt-8  border bg-gray-800 border-gray-700 rounded-md shadow px-10 py-3 inline-flex items-center text-base font-medium text-white"
+              >
+                Learn More
+              </a>
+            </div>
+          </div>
+          <div className="-mt-6 aspect-w-5 aspect-h-3 md:aspect-w-2 md:aspect-h-1">
+            <img
+              className="transform  rounded-md object-cover object-left-top h-full"
+              src="https://cdn.geekwire.com/wp-content/uploads/2017/04/highschoolhackathon24-1024x682.jpg"
+              alt="App screenshot"
+            />
+          </div>
+        </div>
+      </div>
     </div>
+  
+  
+    </div>
+
+
+    
     </div>
 
 
