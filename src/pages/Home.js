@@ -69,7 +69,7 @@ const Home = () => {
                 <a
                   href="./register"
                   style={{fontFamily: 'Space Grotesk, sans-serif', cursor: 'pointer'}}
-                  className="inline-flex items-center px-10 py-2 text-base font-medium rounded-md text-white bg-blue-500 hover:bg-blue-600"
+                  className="inline-flex items-center px-10 py-2 text-base font-medium rounded-md text-white bg-blue-600 hover:bg-blue-700"
                 >
                  <i class="mr-2 fas fa-user-plus"></i> Register
                 </a>
@@ -358,6 +358,9 @@ const Home = () => {
         </div>
       </div>
     </div>
+
+    <p className="mt-4 text-gray-500 py-6 text-center mx-auto">  &copy; CTFGuide 2022<br></br><a className="hover:text-white" href="../terms-of-service">Terms of Service</a> • <a className="hover:text-white" href="../privacy-policy">Privacy Policy</a> • <a className="hover:text-white" href="../ambassador-program">Ambassador Program</a><br></br>This is beta software. Problems will arise.</p>
+
   
   
     </div>

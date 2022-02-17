@@ -361,7 +361,21 @@ const Practice = () => {
 
 
             <div className="px-5 py-10 rounded-lg  bg-gradient-to-br from-gray-900 to-black border border-gray-800">
-              <h1 id="challengeName" className="text-4xl text-white mb-4 font-semibold"></h1>
+              <div>
+
+              <div className="flex items-center justify-between">
+              <h1 id="challengeName" className="text-4xl text-white mb-4 font-semibold"></h1> 
+              <div className="ml-2 flex-shrink-0 flex mb-5">
+              <p className="text-white bg-green-700 w-60 px-2 py-1 rounded-lg border-green-800 border"><i className="fas fa-check-circle text-white"></i> You solved this challenge.</p>
+              <p style={{cursor: 'pointer'}}className="ml-4 text-white font-semibold border-blue-600 w-50 py-1 px-3 rounded-lg hover:bg-gray-900 text-blue-500 border"><i class="fas fa-trophy text-blue-500"></i> Leaderboards</p>
+
+                    </div>
+              </div>
+
+              <hr className="border-gray-600 mt-3 "></hr>
+              <br></br>
+              </div>
+
 
               <div id="suggestedLoader" className="mt-2 px-4 py-4 ">
                 <div className="flex items-center justify-between">
@@ -369,7 +383,7 @@ const Practice = () => {
 
 
                   <div>
-                    <h1 className="text-xl">One second please...</h1>
+                    <h1 className="text-xl">One second please...</h1> 
                   </div>
 
 

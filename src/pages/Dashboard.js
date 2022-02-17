@@ -123,6 +123,8 @@ const Dashboard = () => {
             document.getElementById("fetchingHistory").classList.add("hidden");
             if (data.continueWorking.length < 1)  document.getElementById("noHistory").classList.remove("hidden")
 
+            document.getElementById("loader").classList.add("hidden");
+
 
           }
 
@@ -211,7 +213,7 @@ const Dashboard = () => {
 
     <div className="min-h-full " style={{ fontFamily: 'Space Grotesk, sans-serif' }}>
 
-      <Disclosure as="nav" className="bg-gradient-to-br from-gray-900 to-black border border-gray-800 ">
+      <Disclosure as="nav" className="z-20 bg-gradient-to-br from-gray-900 to-black border border-gray-800 ">
         {({ open }) => (
           <>
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -312,7 +314,7 @@ const Dashboard = () => {
               </div>
             </div>
 
-            <Disclosure.Panel className="md:hidden">
+            <Disclosure.Panel className="md:hidden z-20">
               <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3">
                 {navigation.map((item) => (
                   <Disclosure.Button
@@ -354,7 +356,7 @@ const Dashboard = () => {
                     </button>
                     </div>
 
-                <div className="mt-3 px-2 space-y-1">
+                <div className="mt-3 px-2 space-y-1 z-20">
                   {userNavigation.map((item) => (
                     <a
                       key={item.name + "m"}
@@ -370,8 +372,17 @@ const Dashboard = () => {
       </Disclosure>
 
 
-      <main className="mt-6 animate__animated animate__fadeIn" >
-        <div className="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
+      <main className="mt-6 " >
+     
+        <div className="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8 ">
+
+        <div id="loader" className="py-10 mb-10">
+        <h1 className="text-white text-4xl text-center"><i class="fas fa-spinner text-white  fa-spin"></i> Preparing for blast off</h1>
+        <p className="text-white text-center">You're probably going to see this a lot during the beta as our cache system hasn't been setup yet.</p>
+       
+        </div>
+
+
         <p className="text-yellow-500 mb-3 hidden"><i className="fas fa-tools"></i> <b>Developer Broadcast</b> The following services aren't avaliable: Learning Paths, Progress, Challenge Solving, Classes, CTFLive, Friends, Settings, Billing, Terminals and more.</p>
         <p className="text-yellow-500 mb-3 hidden">If you are seeing this message it means the CTFGuide API is offline.</p>
         <p className="text-yellow-500 mb-3 hidden">This is a site wide broadcast. Hi!</p>
