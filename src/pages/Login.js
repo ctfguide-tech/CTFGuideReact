@@ -82,7 +82,7 @@ const Login = () => {
               type="email"
               autoComplete="email"
               required
-              className="appearance-none rounded-none relative block w-full px-3 py-2 border bg-gray-900 border-gray-800 placeholder-gray-500 text-white rounded-t-md focus:outline-none  sm:text-sm"
+              className="appearance-none rounded-none relative block w-full px-3 py-2 border bg-gray-900 border-gray-800 placeholder-gray-500 text-white rounded-t-md focus:outline-none  sm:text-sm z-10"
               placeholder="Email address"
               autocomplete="off"
             />
