@@ -44,16 +44,16 @@ const Home = () => {
           >
             <div className="flex items-center flex-1">
               <div className="flex items-center justify-between w-full md:w-auto">
-                <a href="#">
+                <Link to="/">
                   <span className="sr-only">CTFGuide</span>
-                 
+
                   <div className="flex-shrink-0 flex items-center">
 				
                 <img src="./CTFGuide trans dark.png" width="70"/> <span style={{fontFamily: 'Space Grotesk, sans-serif'}} className="w-auto font-semibold text-3xl text-white">CTFGuide</span>
                 </div>
 
+                </Link>
 
-                </a>
                 <div className="-mr-2 flex items-center md:hidden">
                   <Popover.Button className="bg-gray-800 rounded-md p-2 inline-flex items-center justify-center text-gray-400 hover:text-white hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white">
                     <span className="sr-only">Open main menu</span>
@@ -66,25 +66,25 @@ const Home = () => {
                 
             <div className="hidden md:block text-right">
               <span className="inline-flex rounded-md shadow-md ring-1 ring-black ring-opacity-5">
-                <a
-                  href="./register"
+                <Link
+                  to="/register"
                   style={{fontFamily: 'Space Grotesk, sans-serif', cursor: 'pointer'}}
                   className="inline-flex items-center px-10 py-2 text-base font-medium rounded-md text-white bg-blue-600 hover:bg-blue-700"
                 >
                  <i class="mr-2 fas fa-user-plus"></i> Register
-                </a>
+                </Link>
               </span>
             </div>
 
             <div className="ml-2 hidden md:block text-right">
               <span className="inline-flex rounded-md shadow-md ring-1 ring-black ring-opacity-5">
-                <a
-                  href="./login"
+                <Link
+                  to="/login"
                   style={{fontFamily: 'Space Grotesk, sans-serif', cursor: 'pointer'}}
                   className="inline-flex items-center px-10 py-2 border borde border-gray-600 text-base font-medium rounded-md text-white bg-gray-800 hover:bg-gray-900 hover:border-gray-700"
                 >
                   <i class="fas fa-sign-in-alt mr-2"></i> Log in
-                </a>
+                </Link>
               </span>
             </div>
           </nav>
@@ -104,7 +104,7 @@ const Home = () => {
             >
               <div className="rounded-lg shadow-sm shadow-blue-600 bg-black ring-1 ring-black ring-opacity-5 overflow-hidden  border border-2 border-blue-700">
                 <div className="px-5 pt-4 flex items-center justify-between">
-                <a href="#">
+                <Link href="/">
                   <span className="sr-only">CTFGuide</span>
                  
                   <div className="flex-shrink-0 flex items-center">
@@ -113,7 +113,8 @@ const Home = () => {
                 </div>
 
 
-                </a>
+                </Link>
+
                   <div className="-mr-2">
                     <Popover.Button className="bg-gray-800 rounded-md p-2 inline-flex items-center justify-center text-gray-400 hover:text-white hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white">
                       <span className="sr-only">Close main menu</span>
@@ -156,28 +157,27 @@ const Home = () => {
               </p>
               <div style={{fontFamily: 'Space Grotesk, sans-serif'}} className="mt-8 sm:max-w-lg sm:mx-auto  sm:text-center lg:text-center lg:mx-auto">
         
-                  <a
+                  <Link to="register"
                     style={{cursor:'pointer'}}
                     type="submit"
-                    href="./register"
                     className="mt-4 w-full px-10 py-4 border border-2  text-base font-medium rounded-md text-white bg-blue-600 border-blue-600 border-2 text-xl shadow-sm hover:bg-blue-700  hover:border-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 sm:mt-0  sm:flex-shrink-0 sm:inline-flex sm:items-center sm:w-auto"
                   >
                     Create an account
-                  </a> 
+                  </Link> 
 
-                  <a
-                    href="./Login"
+                  <Link
+                    to="login"
                     type="submit"
                     className="ml-2 mt-4 w-full px-10 py-4 border border-2  text-base font-medium rounded-md text-white bg-gray-800 border-gray-700 border-2 text-xl shadow-sm hover:bg-gray-900  hover:border-gray-800 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 sm:mt-0  sm:flex-shrink-0 sm:inline-flex sm:items-center sm:w-auto"
                   >
                      Login
-                  </a>
+                  </Link>
             
               </div>
     <br></br>
-              <a href="#"  onClick={() => {
+              <Link to="#"  onClick={() => {
                         document.getElementById("video").classList.remove("hidden");
-        }}  className="mt-10 sm:text-center  md:mx-auto  text-blue-500 lg:text-center lg:mx-auto "><i class="fas fa-play"></i> Watch Video</a>
+        }}  className="mt-10 sm:text-center  md:mx-auto  text-blue-500 lg:text-center lg:mx-auto "><i class="fas fa-play"></i> Watch Video</Link>
             </div>
           
           </div>
@@ -340,12 +340,12 @@ const Home = () => {
               <p className="mt-4 text-lg leading-6 text-blue-200">
                 Want to start a community of hackers? CTFGuide is the perfect platform for you. We've got all the tools to get you started.
               </p>
-              <a
-                href="#"
+              <Link
+                to="#"
                 className="mt-8  border bg-gray-800 border-gray-700 rounded-md shadow px-10 py-3 inline-flex items-center text-base font-medium text-white"
               >
                 Learn More
-              </a>
+              </Link>
             </div>
           </div>
           <div className="-mt-6 aspect-w-5 aspect-h-3 md:aspect-w-2 md:aspect-h-1">
@@ -359,7 +359,7 @@ const Home = () => {
       </div>
     </div>
 
-    <p className="mt-4 text-gray-500 py-6 text-center mx-auto">  &copy; CTFGuide 2022<br></br><a className="hover:text-white" href="../terms-of-service">Terms of Service</a> • <a className="hover:text-white" href="../privacy-policy">Privacy Policy</a> • <a className="hover:text-white" href="../ambassador-program">Ambassador Program</a><br></br>This is beta software. Problems will arise.</p>
+    <p className="mt-4 text-gray-500 py-6 text-center mx-auto">  &copy; CTFGuide 2022<br></br><Link to="/terms-of-service" className="hover:text-white">Terms of Service</Link> • <Link to="/privacy-policy" className="hover:text-white">Privacy Policy</Link> • <Link to="../ambassador-program" className="hover:text-white">Ambassador Program</Link><br></br>This is beta software. Problems will arise.</p>
 
   
   
