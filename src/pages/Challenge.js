@@ -81,6 +81,13 @@ const Practice = () => {
 
           if (this.readyState === 4 & this.status === 200) {
             let data = JSON.parse(this.responseText);
+
+
+            if (data.solvedChallenges.includes(window.location.href.split("/")[4])) {
+              document.getElementById("solvedChallenge").classList.remove("hidden");
+            }
+
+
             setUserData({
               points: data.points,
               susername: data.vmUsername,
@@ -366,7 +373,7 @@ const Practice = () => {
               <div className="flex items-center justify-between">
               <h1 id="challengeName" className="text-4xl text-white mb-4 font-semibold"></h1> 
               <div className="ml-2 flex-shrink-0 flex mb-5">
-              <p className="text-white bg-green-700 w-60 px-2 py-1 rounded-lg border-green-800 border"><i className="fas fa-check-circle text-white"></i> You solved this challenge.</p>
+              <p id="solvedChallenge" className="hidden text-white bg-green-700 w-60 px-2 py-1 rounded-lg border-green-800 border"><i className="fas fa-check-circle text-white"></i> You solved this challenge.</p>
               <p style={{cursor: 'pointer'}}className="ml-4 text-white font-semibold border-blue-600 w-50 py-1 px-3 rounded-lg hover:bg-gray-900 text-blue-500 border"><i class="fas fa-trophy text-blue-500"></i> Leaderboards</p>
 
                     </div>
