@@ -180,6 +180,7 @@ const Dashboard = () => {
     { name: 'Learn', href: './learn', current: false },
     { name: 'Classes', href: '#', current: false },
     { name: 'CTFLive', href: '#', current: false },
+    { name: 'Leaderboards', href: '../leaderboards/global', current: false },
     { name: 'Friends', href: '#', current: false },
   ]
   const userNavigation = [
