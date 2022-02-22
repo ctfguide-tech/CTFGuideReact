@@ -26,8 +26,11 @@ const Leaderboards = () => {
     const app = initializeApp(firebaseConfig);
     const analytics = getAnalytics(app);
 
-    const auth = getAuth();
+    const [leaderboards, setLeaderboards] = useState({
+        data: []
+    })
 
+    const auth = getAuth();
     //const socket = io("http://localhost:3002");
 
 
@@ -58,6 +61,20 @@ const Leaderboards = () => {
 
     }
     useEffect(() => {
+
+        var xhttp = new XMLHttpRequest();
+        xhttp.onreadystatechange = function() {
+            if (this.readyState === 4 & this.status === 200) {
+                console.log(this.responseText)
+                setLeaderboards({
+                        data: JSON.parse(this.responseText)
+                    }
+                );
+
+            }
+        }
+        xhttp.open("GET", `${process.env.REACT_APP_API_URL}/challenges/leaderboards/global`);
+        xhttp.send();
 
 
         onAuthStateChanged(auth, (firebaseUser) => {
@@ -131,7 +148,12 @@ const Leaderboards = () => {
                 window.location.href = "../login";
             }
         });
+
+
     }, []);
+
+
+
     const people = [
         {
             name: 'Lindsay Walton',
@@ -354,7 +376,7 @@ const Leaderboards = () => {
                     </div>
 
                     <h1 className="text-white text-4xl">🌎 Global    Leaderboards</h1>
-                    <table className="table-auto text-white w-full mt-10 text-center mx-auto">
+                    <table className="table-auto text-white w-full mt-10">
                         <thead>
                         <tr className={("text-2xl")}>
                             <th>Username</th>
@@ -364,36 +386,16 @@ const Leaderboards = () => {
                         </tr>
                         </thead>
                         <tbody className="mt-4 text-xl  ">
-                        <tr>
-                            <td><a href="https://test.com" className={("rainbow-text font-semibold")} >laphatize</a></td>
-                            <td>Gold</td>
-                            <td>2500</td>
-                            <td>USA </td>
-                        </tr>
-                        <tr>
-                            <td><a href="https://test.com" className={("rainbow-text font-semibold")} >laphatize</a></td>
-                            <td>Gold</td>
-                            <td>2500</td>
-                            <td>USA </td>
-                        </tr>
-                        <tr>
-                            <td><a href="https://test.com" className={("rainbow-text font-semibold")} >laphatize</a></td>
-                            <td>Gold</td>
-                            <td>2500</td>
-                            <td>USA </td>
-                        </tr>
-                        <tr>
-                            <td><a href="https://test.com" className={("rainbow-text font-semibold")} >laphatize</a></td>
-                            <td>Gold</td>
-                            <td>2500</td>
-                            <td>USA </td>
-                        </tr>
-                        <tr>
-                            <td><a href="https://test.com" className={("rainbow-text font-semibold")} >laphatize</a></td>
-                            <td>Gold</td>
-                            <td>2500</td>
-                            <td>USA </td>
-                        </tr>
+
+                        {leaderboards.data.map((item) => (
+                            <tr>
+                                <td className={"inline-flex"}><img className={"w-6 mr-2"} src={"https://ui-avatars.com/api/?name="+ (item.username) + "&background=random"}/><a href="https://test.com" className={("rainbow-text font-semibold")} >{item.username}</a></td>
+                                <td>Gold</td>
+                                <td>{item.points}</td>
+                                <td>USA </td>
+                            </tr>
+                        ))}
+
 
                         </tbody>
                     </table>

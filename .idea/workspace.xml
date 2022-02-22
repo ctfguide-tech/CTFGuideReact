@@ -5,16 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="2a619e03-1857-49d9-a44f-125ea2e0e666" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/pages/Leaderboards.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/CTFGuideReact.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/CTFGuideReact.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.env" beforeDir="false" afterPath="$PROJECT_DIR$/.env" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/index.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/index.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/Challenge.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/Challenge.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/Dashboard.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/Dashboard.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/Practice.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/Practice.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/Leaderboards.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/Leaderboards.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -69,7 +62,7 @@
       <option name="presentableId" value="Default" />
       <updated>1645394407198</updated>
       <workItem from="1645394413065" duration="2000" />
-      <workItem from="1645463567985" duration="6675000" />
+      <workItem from="1645463567985" duration="14017000" />
     </task>
     <servers />
   </component>
