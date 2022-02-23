@@ -375,30 +375,31 @@ const Leaderboards = () => {
 
                     </div>
 
-                    <h1 className="text-white text-4xl">🌎 Global    Leaderboards</h1>
-                    <table className="table-auto text-white w-full mt-10">
-                        <thead>
-                        <tr className={("text-2xl")}>
-                            <th>Username</th>
-                            <th>Rank</th>
-                            <th>Points</th>
-                            <th>Country</th>
-                        </tr>
-                        </thead>
+                    <h1 className="text-white text-4xl">🌎 Global Leaderboards</h1>
+                    <table className="table-auto text-white w-full mt-4">
+
                         <tbody className="mt-4 text-xl  ">
+                        <tr className={("text-2xl font-semibold py-3")}>
+                            <td>Username</td>
+                            <td>Rank</td>
+                            <td>Points</td>
+                            <td>Country</td>
+                        </tr>
 
                         {leaderboards.data.map((item) => (
-                            <tr>
-                                <td className={"inline-flex"}><img className={"w-6 mr-2"} src={"https://ui-avatars.com/api/?name="+ (item.username) + "&background=random"}/><a href="https://test.com" className={("rainbow-text font-semibold")} >{item.username}</a></td>
+                            <tr className={"hover:bg-gray-900 rounded-lg"}>
+                                <td className={"inline-flex"}><img className={"w-6 mr-2"} src={"https://ui-avatars.com/api/?name="+ (item.username) + "&background=random"}/><a href="https://test.com" className={(item.pro ? "rainbow-text" : "") + " font-semibold"} >{item.username}</a></td>
                                 <td>Gold</td>
                                 <td>{item.points}</td>
-                                <td>USA </td>
+                                <td>{item.country} </td>
                             </tr>
                         ))}
 
 
                         </tbody>
                     </table>
+
+                    <p className={"text-white mt-4"}>On 2/21/22 - major point recalculations were done. If you weren't in the top three for any of the challenges on our website the amount of points you had got reset to 0. Such resets will never occur again - we purely did this because we didn't have enough existing data for us to port into the leaderboards.</p>
 
                     <p className="text-yellow-500 mb-3 hidden"><i className="fas fa-tools"></i> <b>Developer Broadcast</b> The following services aren't avaliable: Learning Paths, Progress, Challenge Solving, Classes, CTFLive, Friends, Settings, Billing, Terminals and more.</p>
                     <p className="text-yellow-500 mb-3 hidden">If you are seeing this message it means the CTFGuide API is offline.</p>
