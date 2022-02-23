@@ -5,11 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="2a619e03-1857-49d9-a44f-125ea2e0e666" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/../CTFGuideAPI/models/user.js" beforeDir="false" afterPath="$PROJECT_DIR$/../CTFGuideAPI/models/user.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../CTFGuideAPI/src/challenge.js" beforeDir="false" afterPath="$PROJECT_DIR$/../CTFGuideAPI/src/challenge.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.env" beforeDir="false" afterPath="$PROJECT_DIR$/.env" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/Leaderboards.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/Leaderboards.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -65,7 +61,7 @@
       <updated>1645394407198</updated>
       <workItem from="1645394413065" duration="2000" />
       <workItem from="1645463567985" duration="18347000" />
-      <workItem from="1645623452747" duration="6527000" />
+      <workItem from="1645623452747" duration="6680000" />
     </task>
     <servers />
   </component>
