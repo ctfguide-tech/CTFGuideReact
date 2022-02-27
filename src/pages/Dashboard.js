@@ -175,9 +175,9 @@ const Dashboard = () => {
     // More items...
   ]
   const navigation = [
-    { name: 'Dashboard', href: './dashboard', current: true },
-    { name: 'Practice', href: './practice', current: false },
-    { name: 'Learn', href: './learn', current: false },
+    { name: 'Dashboard', href: '../dashboard', current: true },
+    { name: 'Practice', href: '../practice', current: false },
+    { name: 'Learn', href: '../learn', current: false },
     { name: 'Classes', href: '#', current: false },
     { name: 'CTFLive', href: '#', current: false },
     { name: 'Leaderboards', href: '../leaderboards/global', current: false },
@@ -230,9 +230,9 @@ const Dashboard = () => {
                   <div className="hidden md:block">
                     <div className="ml-10 flex items-baseline space-x-4">
                       {navigation.map((item) => (
-                        <a
+                        <Link
                           key={item.name}
-                          href={item.href}
+                          to={item.href}
                           className={classNames(
                             item.current
                               ? 'bg-gray-900 text-white'
@@ -242,7 +242,7 @@ const Dashboard = () => {
                           aria-current={item.current ? 'page' : undefined}
                         >
                           {item.name}
-                        </a>
+                        </Link>
                       ))}
                     </div>
                   </div>
@@ -415,10 +415,11 @@ const Dashboard = () => {
                     </div>
     
       <img width="300" className="" src="../egg.svg"></img>
-    </div>
+    </div>f
          <div className="bg-gradient-to-br from-gray-900 to-black border border-gray-800  px-6 py-10 rounded-lg flex align-middle">
+           <input id="file-input" type="file" name="name" className={"hidden"} onChange={() => {window.alert("recieved but not saved. this is intended behavior.")}} accept={"image/png"}/>
 
-         <img className="rounded-full" src={user.imageUrl } alt="" /><h1 className="text-white text-4xl ml-4 mt-3">Hello { userData.username }</h1>
+         <div onMouseOver={ () => { document.getElementById('editpfp').classList.remove('hidden')}} onMouseLeave={ () => { document.getElementById('editpfp').classList.add('hidden')}} className={"relative"}><img className="rounded-full w-full" src={user.imageUrl } alt="" /><div  id={"editpfp"} onClick={() => {document.getElementById('file-input').click();}} style={ {bottom: "0px", cursor: 'pointer'}} className={"hidden rounded-b-full text-white absolute  px-4 opacity-80  bg-black"}><p>Edit</p></div></div><h1 className="text-white text-4xl ml-4 mt-3">Hello { userData.username }</h1>
            </div>
  
           <div className="mt-5 grid lg:grid-cols-3 gap-10 sm:grid-cols-1">

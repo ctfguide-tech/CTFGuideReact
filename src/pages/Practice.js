@@ -239,7 +239,7 @@ const Practice = () => {
                             <Menu.Item key={item.name}>
                               {({ active }) => (
                                 <a
-                                  href={item.href}
+
                                   style={{cursor:'pointer'}}
                                   className={classNames(
                                     active ? 'bg-gray-800' : '',
@@ -390,7 +390,7 @@ const Practice = () => {
 
 
                     <div
-                    onClick={() => {window.location.href = `./challenges/${item.id}`}}
+                    onClick={() => {window.location = `./challenges/${item.id}`}}
                      style={{cursor: 'pointer'}}
                       key={item.title}
                       className={(item.difficulty) + "animate__animated animate__fadeIn px-3 py-2  rounded-md bg-gradient-to-br from-gray-900 to-black border border-gray-800  mb-2  text-base font-medium text-white hover:text-white "}

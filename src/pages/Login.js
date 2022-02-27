@@ -31,7 +31,7 @@ const Login = () => {
     signInWithPopup(auth, provider).then((userCredential) => {
       // Signed in 
       const user = userCredential.user;
-      window.location.href = "./dashboard"
+      window.location = "./dashboard"
     })
     .catch((error) => {
       const errorCode = error.code;

@@ -183,7 +183,7 @@ const Practice = () => {
   const navigation = [
     { name: 'Dashboard', href: '../dashboard', current: false },
     { name: 'Practice', href: '../practice', current: false },
-    { name: 'Learb', href: '../learn', current: false },
+    { name: 'Learn', href: '../learn', current: false },
     { name: 'Classes', href: '#', current: false },
     { name: 'CTFLive', href: '#', current: false },
     { name: 'Leaderboards', href: '../leaderboards/global', current: false },
