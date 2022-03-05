@@ -9,7 +9,7 @@ export class Navigation extends Component {
     render() {
 
         const navigation = [
-            { name: 'Dashboard', href: '../dashboard', current: true },
+            { name: 'Dashboard', href: '../dashboard', current: false },
             { name: 'Practice', href: '../practice', current: false },
             { name: 'Learn', href: '../learn', current: false },
             { name: 'Classes', href: '#', current: false },
@@ -40,7 +40,7 @@ export class Navigation extends Component {
         }
 
         return(
-            <Disclosure as="nav" className="z-20 bg-gradient-to-br from-gray-900 to-black border border-gray-800 ">
+            <Disclosure as="nav" className="z-20 bg-gray-900 border-b  border-gray-700 ">
                 {({ open }) => (
                     <>
                         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -49,7 +49,7 @@ export class Navigation extends Component {
                                     <div className="flex-shrink-0">
                                         <img
                                             className="h-14 w-14"
-                                            src="./CTFGuide trans dark.png"
+                                            src="../CTFGuide trans dark.png"
                                             alt="CTFGuide"
                                         />
                                     </div>
@@ -82,7 +82,7 @@ export class Navigation extends Component {
                                             className="ml-3 bg-gray-900 border border-gray-700 px-3 font-semibold rounded-full text-blue-500  focus:outline-none "
                                         >
                                             <span className="sr-only">View notifications</span>
-                                             points
+                                            <span id={"navPoints"}><i className="fas fa-spinner fa-pulse"></i></span>  points
                                         </button>
 
 
@@ -92,7 +92,7 @@ export class Navigation extends Component {
                                             <div>
                                                 <Menu.Button className="max-w-xs bg-gray-800 rounded-full flex items-center text-sm text-white focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-800 focus:ring-white">
                                                     <span className="sr-only">Open user menu</span>
-                                                    <img className="h-8 w-8 rounded-full" src="" alt="" />
+                                                    <img id="pfp1" className="h-8 w-8 rounded-full" src="" alt="" />
                                                 </Menu.Button>
                                             </div>
                                             <Transition
@@ -163,7 +163,7 @@ export class Navigation extends Component {
                             <div className="pt-4 pb-3 border-t border-gray-700">
                                 <div className="flex items-center px-5">
                                     <div className="flex-shrink-0">
-                                        <img className="h-10 w-10 rounded-full" src="" alt="" />
+                                        <img  className="h-10 w-10 rounded-full" src="" alt="" />
                                     </div>
                                     <div className="ml-3">
                                         <div className="text-base font-medium text-white"></div>
@@ -179,7 +179,7 @@ export class Navigation extends Component {
                                         className="ml-3  bg-gray-900 border border-gray-700 px-3 font-semibold rounded-full text-blue-500  focus:outline-none "
                                     >
 
-                                         points
+                                      points
                                     </button>
                                 </div>
 

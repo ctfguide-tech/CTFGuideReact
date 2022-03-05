@@ -65,6 +65,7 @@ const Dashboard = () => {
             email: firebaseUser.email,
             imageUrl: firebaseUser.photoURL,
           });
+          document.getElementById("pfp1").src = firebaseUser.photoURL
         } else {
           setUser({
             name: firebaseUser.displayName,
@@ -72,12 +73,14 @@ const Dashboard = () => {
             imageUrl:
               `https://ui-avatars.com/api/?name=${firebaseUser.email}&background=random`,
           });
+          document.getElementById("pfp1").src = `https://ui-avatars.com/api/?name=${firebaseUser.email}&background=random`
         }
 
         var xhttp = new XMLHttpRequest();
         xhttp.onreadystatechange = function() {
           if (this.readyState === 4 & this.status === 200) {
             let data = JSON.parse(this.responseText);
+            document.getElementById("navPoints").innerHTML = data.points;
             console.log(data)
             if (!data.streak) data[`streak`] = 0;
             if (!data.continueWorking) data[`continueWorking`] = []
@@ -211,7 +214,7 @@ const Dashboard = () => {
         <p className="text-yellow-500 mb-3 hidden">If you are seeing this message it means the CTFGuide API is offline.</p>
         <p className="text-yellow-500 mb-3 hidden">This is a site wide broadcast. Hi!</p>
 
-      <div id="tutorial_banner" className="rounded-lg bg-gradient-to-br from-gray-900 to-black border border-gray-800 mb-10 max-w-7xl mx-auto py-12 px-4 sm:px-3 lg:py-12 lg:px-8 lg:flex lg:items-center lg:justify-between">
+      <div id="tutorial_banner" className="rounded-xl bg-gray-900 border  border-gray-700 mb-10 max-w-7xl mx-auto py-12 px-4 sm:px-3 lg:py-12 lg:px-8 lg:flex lg:items-center lg:justify-between">
                     <div className="w-full">
                     <h2 className="text-3xl font-extrabold tracking-tight text-gray-900 md:text-4xl">
           <span className="block text-white"><i className="fa-solid fa-hand-wave"></i> Welcome to CTFGuide!</span>
@@ -239,7 +242,7 @@ const Dashboard = () => {
     
       <img width="300" className="" src="../egg.svg"></img>
     </div>f
-         <div className="bg-gradient-to-br from-gray-900 to-black border border-gray-800  px-6 py-10 rounded-lg flex align-middle">
+         <div className="bg-gray-900 border  border-gray-700 px-6 py-10 rounded-lg flex align-middle">
            <input id="file-input" type="file" name="name" className={"hidden"} onChange={() => {window.alert("recieved but not saved. this is intended behavior.")}} accept={"image/png"}/>
 
          <div onMouseOver={ () => { document.getElementById('editpfp').classList.remove('hidden')}} onMouseLeave={ () => { document.getElementById('editpfp').classList.add('hidden')}} className={"relative"}><img className="rounded-full w-full" src={user.imageUrl } alt="" /><div  id={"editpfp"} onClick={() => {document.getElementById('file-input').click();}} style={ {bottom: "0px", cursor: 'pointer'}} className={"hidden rounded-b-full text-white absolute  px-4 opacity-80  bg-black"}><p>Edit</p></div></div><h1 className="text-white text-4xl ml-4 mt-3">Hello { userData.username }</h1>
@@ -249,9 +252,9 @@ const Dashboard = () => {
 
 
             <div className="lg:col-span-2 sm:col-span-1">
-              <h1 className="text-4xl text-white mb-4 "> Continue working on</h1>
+              <h1 className="text-4xl text-white mb-4 mt-4 "> Continue working on</h1>
               
-              <div id="fetchingHistory" className="mt-2 bg-gradient-to-br from-gray-900 to-black border border-gray-800  px-4 py-4 text-white rounded">
+              <div id="fetchingHistory" className="mt-2 bg-gray-900 border  border-gray-700  px-4 py-4 text-white rounded">
                   <div className="flex items-center justify-between">
                     <div>
                       <h1 className="text-xl">Fetching History...</h1>
@@ -261,7 +264,7 @@ const Dashboard = () => {
                   </div>
                 </div>
 
-                <div id="noHistory" className="hidden mt-2 bg-gradient-to-br from-gray-900 to-black border border-gray-800   px-4 py-6 text-white rounded ">
+                <div id="noHistory" className="hidden mt-2 bg-gray-900 border  border-gray-700   px-4 py-6 text-white rounded ">
                   <div className="flex items-center justify-between">
                     <div>
                       <h1 className="text-xl">☹️ Nothing here yet. Head on to the <span>Practice</span> page to get started.</h1>
@@ -314,8 +317,8 @@ const Dashboard = () => {
 
 
             <div className="">
-              <h1 className="text-4xl text-white mb-4"> Progress</h1>
-              <div  className="mt-4 bg-gradient-to-br from-gray-900 to-black border border-gray-800  px-4 py-4 text-white rounded ">
+              <h1 className="text-4xl text-white mb-4 mt-4"> Progress</h1>
+              <div  className="mt-4 bg-gray-900 border  border-gray-700  px-4 py-4 text-white rounded ">
                 <h1 className="text-xl font-semibold text-yellow-500 inline-flex text-center"> <FireIcon className="h-6 w-6 text-center mr-1" aria-hidden="true" />  {userData.streak} day streak</h1>
                 <p>No activity today, yet!</p>
               </div>
@@ -334,7 +337,7 @@ const Dashboard = () => {
           <div>
          
      <h1 className="text-4xl text-white mt-6 mb-4"> Learning Path</h1>
-     <div className="mt-2 bg-gradient-to-br from-gray-900 to-black border border-gray-800  px-4 py-4 text-white rounded ">
+     <div className="mt-2 bg-gray-900 border  border-gray-700  px-4 py-4 text-white rounded ">
 <div className="flex items-center justify-between">
   <h1 className="text-xl w-full"><i className="fas fa-search"></i> Exploratory Cybersecurity</h1>
   <div className="ml-2 flex-shrink-0 flex w-1/2">
@@ -364,7 +367,7 @@ const Dashboard = () => {
 </div>
 
 
-<div className=" mt-4 bg-gradient-to-br from-gray-900 to-black border border-gray-800  px-4 py-4 text-white rounded ">
+<div className=" mt-4 bg-gray-900 border  border-gray-700   px-4 py-4 text-white rounded ">
 <div className="flex items-center justify-between">
   <h1 className="text-xl"><i className="fab fa-linux"></i> Linux 101</h1>
   <div className="ml-2 flex-shrink-0 flex w-1/2">
