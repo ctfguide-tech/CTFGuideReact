@@ -6,12 +6,8 @@
   <component name="ChangeListManager">
     <list default="true" id="2a619e03-1857-49d9-a44f-125ea2e0e666" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/Challenge.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/Challenge.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/navigation.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/navigation.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/pages/Dashboard.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/Dashboard.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/Home.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/Home.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/Leaderboards.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/Leaderboards.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/Login.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/Login.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/Practice.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/Practice.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -40,7 +36,9 @@
     <option name="stateVersion" value="1" />
   </component>
   <component name="ProjectId" id="25ONvtdvT9DZuL2RlNgqyG9oUpy" />
-  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
@@ -69,7 +67,9 @@
       <workItem from="1645463567985" duration="18347000" />
       <workItem from="1645623452747" duration="14097000" />
       <workItem from="1645723198604" duration="4558000" />
-      <workItem from="1645986614390" duration="3619000" />
+      <workItem from="1645986614390" duration="3653000" />
+      <workItem from="1646065775041" duration="538000" />
+      <workItem from="1646099177972" duration="4996000" />
     </task>
     <servers />
   </component>

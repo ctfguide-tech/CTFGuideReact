@@ -6,6 +6,8 @@ import { getAuth, onAuthStateChanged, signOut } from "firebase/auth";
 import { CheckCircleIcon } from '@heroicons/react/outline'
 import { initializeApp } from "firebase/app";
 import { getAnalytics } from "firebase/analytics";
+import { Navigation } from '../components/navigation';
+
 import { io } from "socket.io-client";
 import DashboardManager from "../modules/DashboardManager.js"
 import 'animate.css';
@@ -48,15 +50,7 @@ const Dashboard = () => {
     points: 0
   })
 
-  
-  function logout() {
-    signOut(auth).then(() => {
-      // Sign-out successful.
-    }).catch((error) => {
-      // An error happened.
-    });
 
-  }
   useEffect(() => {
 
     
@@ -71,6 +65,7 @@ const Dashboard = () => {
             email: firebaseUser.email,
             imageUrl: firebaseUser.photoURL,
           });
+          document.getElementById("pfp1").src = firebaseUser.photoURL
         } else {
           setUser({
             name: firebaseUser.displayName,
@@ -78,12 +73,14 @@ const Dashboard = () => {
             imageUrl:
               `https://ui-avatars.com/api/?name=${firebaseUser.email}&background=random`,
           });
+          document.getElementById("pfp1").src = `https://ui-avatars.com/api/?name=${firebaseUser.email}&background=random`
         }
 
         var xhttp = new XMLHttpRequest();
         xhttp.onreadystatechange = function() {
           if (this.readyState === 4 & this.status === 200) {
             let data = JSON.parse(this.responseText);
+            document.getElementById("navPoints").innerHTML = data.points;
             console.log(data)
             if (!data.streak) data[`streak`] = 0;
             if (!data.continueWorking) data[`continueWorking`] = []
@@ -174,20 +171,6 @@ const Dashboard = () => {
     { id: 1, person: people[0], project: 'Workcation', commit: '2d89f0c8', environment: 'production', time: '1h' },
     // More items...
   ]
-  const navigation = [
-    { name: 'Dashboard', href: '../dashboard', current: true },
-    { name: 'Practice', href: '../practice', current: false },
-    { name: 'Learn', href: '../learn', current: false },
-    { name: 'Classes', href: '#', current: false },
-    { name: 'CTFLive', href: '#', current: false },
-    { name: 'Leaderboards', href: '../leaderboards/global', current: false },
-    { name: 'Friends', href: '#', current: false },
-  ]
-  const userNavigation = [
-    { name: 'Your Profile', href: '#' },
-    { name: 'Settings', href: '#' },
-    { name: 'Sign out', onClick: logout },
-  ]
 
   function classNames(...classes) {
     return classes.filter(Boolean).join(' ')
@@ -214,164 +197,7 @@ const Dashboard = () => {
 
     <div className="min-h-full " style={{ fontFamily: 'Space Grotesk, sans-serif' }}>
 
-      <Disclosure as="nav" className="z-20 bg-gradient-to-br from-gray-900 to-black border border-gray-800 ">
-        {({ open }) => (
-          <>
-            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-              <div className="flex items-center justify-between h-16">
-                <div className="flex items-center">
-                  <div className="flex-shrink-0">
-                    <img
-                      className="h-14 w-14"
-                      src="./CTFGuide trans dark.png"
-                      alt="CTFGuide"
-                    />
-                  </div>
-                  <div className="hidden md:block">
-                    <div className="ml-10 flex items-baseline space-x-4">
-                      {navigation.map((item) => (
-                        <Link
-                          key={item.name}
-                          to={item.href}
-                          className={classNames(
-                            item.current
-                              ? 'bg-gray-900 text-white'
-                              : 'text-gray-300 hover:bg-gray-800 hover:text-white',
-                            'px-3 py-2 rounded-md text-sm font-medium'
-                          )}
-                          aria-current={item.current ? 'page' : undefined}
-                        >
-                          {item.name}
-                        </Link>
-                      ))}
-                    </div>
-                  </div>
-                </div>
-                <div className="hidden md:block">
-                  <div className="ml-4 flex items-center md:ml-6">
-              
-                  <p className="text-yellow-500 hover:text-yellow-400" style={{cursor:'pointer'}}>✨ Upgrade to pro</p>
-                    <button
-                      type="button"
-                      className="ml-3 bg-gray-900 border border-gray-700 px-3 font-semibold rounded-full text-blue-500  focus:outline-none "
-                    >
-                      <span className="sr-only">View notifications</span>
-                      {userData.points} points
-                    </button>
-                 
-
-              
-                    {/* Profile dropdown */}
-                    <Menu as="div" className="ml-3 relative shrink-0">
-                      <div>
-                        <Menu.Button className="max-w-xs bg-gray-800 rounded-full flex items-center text-sm text-white focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-800 focus:ring-white">
-                          <span className="sr-only">Open user menu</span>
-                          <img className="h-8 w-8 rounded-full" src={user.imageUrl} alt="" />
-                        </Menu.Button>
-                      </div>
-                      <Transition
-                        as={Fragment}
-                        enter="transition ease-out duration-100"
-                        enterFrom="transform opacity-0 scale-95"
-                        enterTo="transform opacity-100 scale-100"
-                        leave="transition ease-in duration-75"
-                        leaveFrom="transform opacity-100 scale-100"
-                        leaveTo="transform opacity-0 scale-95"
-                      >
-                        <Menu.Items className="origin-top-right absolute right-0 mt-2 w-48 rounded-md shadow-lg py-1 bg-gray-900 border border-gray-700 text-white focus:outline-none z-50">
-                          {userNavigation.map((item) => (
-                            <Menu.Item key={item.name}>
-                              {({ active }) => (
-                                <a
-                                  href={item.href}
-                                  style={{cursor:'pointer'}}
-                                  className={classNames(
-                                    active ? 'bg-gray-800' : '',
-                                    'block px-4 py-2 text-sm text-gray-200'
-                                  )}
-                                  onClick={item.onClick}
-                                >
-                                  {item.name}
-                                </a>
-                              )}
-                            </Menu.Item>
-                          ))}
-                        </Menu.Items>
-                      </Transition>
-                    </Menu>
-                  </div>
-                </div>
-                <div className="-mr-2 flex md:hidden">
-                  {/* Mobile menu button */}
-                  <Disclosure.Button className="bg-gray-800 inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-white hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-800 focus:ring-white">
-                    <span className="sr-only">Open main menu</span>
-                    {open ? (
-                      <XIcon className="block h-6 w-6" aria-hidden="true" />
-                    ) : (
-                      <MenuIcon className="block h-6 w-6" aria-hidden="true" />
-                    )}
-                  </Disclosure.Button>
-                </div>
-              </div>
-            </div>
-
-            <Disclosure.Panel className="md:hidden z-20">
-              <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3">
-                {navigation.map((item) => (
-                  <Disclosure.Button
-                    key={item.name}
-                    as="a"
-                    href={item.href}
-                    className={classNames(
-                      item.current ? 'bg-gray-900 text-white' : 'text-gray-300 hover:bg-gray-700 hover:text-white',
-                      'block px-3 py-2 rounded-md text-base font-medium'
-                    )}
-                    aria-current={item.current ? 'page' : undefined}
-                    onClick={item.onClick}
-
-                  >
-                    {item.name}
-                  </Disclosure.Button>
-                ))}
-              </div>
-              <div className="pt-4 pb-3 border-t border-gray-700">
-                <div className="flex items-center px-5">
-                  <div className="flex-shrink-0">
-                    <img className="h-10 w-10 rounded-full" src={user.imageUrl} alt="" />
-                  </div>
-                  <div className="ml-3">
-                    <div className="text-base font-medium text-white">{user.name}</div>
-                    <div className="text-sm font-medium text-gray-400">{user.email}</div>
-                  </div>
-               
-                 
-                </div>
-                <div className="mt-3 px-2 mx-auto text-center">
-                <p className="text-yellow-500 hover:text-yellow-400 mb-2" style={{cursor:'pointer'}}>✨ Upgrade to pro</p>
-                    <button
-                      type="button"
-                      className="ml-3  bg-gray-900 border border-gray-700 px-3 font-semibold rounded-full text-blue-500  focus:outline-none "
-                    >
-                     
-                      {userData.points} points
-                    </button>
-                    </div>
-
-                <div className="mt-3 px-2 space-y-1 z-20">
-                  {userNavigation.map((item) => (
-                    <a
-                      key={item.name + "m"}
-                      onClick={logout}
-                      className="block px-3 py-2 rounded-md text-base font-medium text-gray-200 hover:text-white hover:bg-gray-700"
-                    >{item.name}</a>
-                  ))}
-                </div>
-              </div>
-            </Disclosure.Panel>
-          </>
-        )}
-      </Disclosure>
-
+      <Navigation/>
 
       <main className="mt-6 " >
      
@@ -388,7 +214,7 @@ const Dashboard = () => {
         <p className="text-yellow-500 mb-3 hidden">If you are seeing this message it means the CTFGuide API is offline.</p>
         <p className="text-yellow-500 mb-3 hidden">This is a site wide broadcast. Hi!</p>
 
-      <div id="tutorial_banner" className="rounded-lg bg-gradient-to-br from-gray-900 to-black border border-gray-800 mb-10 max-w-7xl mx-auto py-12 px-4 sm:px-3 lg:py-12 lg:px-8 lg:flex lg:items-center lg:justify-between">
+      <div id="tutorial_banner" className="rounded-xl bg-gray-900 border  border-gray-700 mb-10 max-w-7xl mx-auto py-12 px-4 sm:px-3 lg:py-12 lg:px-8 lg:flex lg:items-center lg:justify-between">
                     <div className="w-full">
                     <h2 className="text-3xl font-extrabold tracking-tight text-gray-900 md:text-4xl">
           <span className="block text-white"><i className="fa-solid fa-hand-wave"></i> Welcome to CTFGuide!</span>
@@ -416,7 +242,7 @@ const Dashboard = () => {
     
       <img width="300" className="" src="../egg.svg"></img>
     </div>f
-         <div className="bg-gradient-to-br from-gray-900 to-black border border-gray-800  px-6 py-10 rounded-lg flex align-middle">
+         <div className="bg-gray-900 border  border-gray-700 px-6 py-10 rounded-lg flex align-middle">
            <input id="file-input" type="file" name="name" className={"hidden"} onChange={() => {window.alert("recieved but not saved. this is intended behavior.")}} accept={"image/png"}/>
 
          <div onMouseOver={ () => { document.getElementById('editpfp').classList.remove('hidden')}} onMouseLeave={ () => { document.getElementById('editpfp').classList.add('hidden')}} className={"relative"}><img className="rounded-full w-full" src={user.imageUrl } alt="" /><div  id={"editpfp"} onClick={() => {document.getElementById('file-input').click();}} style={ {bottom: "0px", cursor: 'pointer'}} className={"hidden rounded-b-full text-white absolute  px-4 opacity-80  bg-black"}><p>Edit</p></div></div><h1 className="text-white text-4xl ml-4 mt-3">Hello { userData.username }</h1>
@@ -426,9 +252,9 @@ const Dashboard = () => {
 
 
             <div className="lg:col-span-2 sm:col-span-1">
-              <h1 className="text-4xl text-white mb-4 "> Continue working on</h1>
+              <h1 className="text-4xl text-white mb-4 mt-4 "> Continue working on</h1>
               
-              <div id="fetchingHistory" className="mt-2 bg-gradient-to-br from-gray-900 to-black border border-gray-800  px-4 py-4 text-white rounded">
+              <div id="fetchingHistory" className="mt-2 bg-gray-900 border  border-gray-700  px-4 py-4 text-white rounded">
                   <div className="flex items-center justify-between">
                     <div>
                       <h1 className="text-xl">Fetching History...</h1>
@@ -438,7 +264,7 @@ const Dashboard = () => {
                   </div>
                 </div>
 
-                <div id="noHistory" className="hidden mt-2 bg-gradient-to-br from-gray-900 to-black border border-gray-800   px-4 py-6 text-white rounded ">
+                <div id="noHistory" className="hidden mt-2 bg-gray-900 border  border-gray-700   px-4 py-6 text-white rounded ">
                   <div className="flex items-center justify-between">
                     <div>
                       <h1 className="text-xl">☹️ Nothing here yet. Head on to the <span>Practice</span> page to get started.</h1>
@@ -491,8 +317,8 @@ const Dashboard = () => {
 
 
             <div className="">
-              <h1 className="text-4xl text-white mb-4"> Progress</h1>
-              <div  className="mt-4 bg-gradient-to-br from-gray-900 to-black border border-gray-800  px-4 py-4 text-white rounded ">
+              <h1 className="text-4xl text-white mb-4 mt-4"> Progress</h1>
+              <div  className="mt-4 bg-gray-900 border  border-gray-700  px-4 py-4 text-white rounded ">
                 <h1 className="text-xl font-semibold text-yellow-500 inline-flex text-center"> <FireIcon className="h-6 w-6 text-center mr-1" aria-hidden="true" />  {userData.streak} day streak</h1>
                 <p>No activity today, yet!</p>
               </div>
@@ -511,7 +337,7 @@ const Dashboard = () => {
           <div>
          
      <h1 className="text-4xl text-white mt-6 mb-4"> Learning Path</h1>
-     <div className="mt-2 bg-gradient-to-br from-gray-900 to-black border border-gray-800  px-4 py-4 text-white rounded ">
+     <div className="mt-2 bg-gray-900 border  border-gray-700  px-4 py-4 text-white rounded ">
 <div className="flex items-center justify-between">
   <h1 className="text-xl w-full"><i className="fas fa-search"></i> Exploratory Cybersecurity</h1>
   <div className="ml-2 flex-shrink-0 flex w-1/2">
@@ -541,7 +367,7 @@ const Dashboard = () => {
 </div>
 
 
-<div className=" mt-4 bg-gradient-to-br from-gray-900 to-black border border-gray-800  px-4 py-4 text-white rounded ">
+<div className=" mt-4 bg-gray-900 border  border-gray-700   px-4 py-4 text-white rounded ">
 <div className="flex items-center justify-between">
   <h1 className="text-xl"><i className="fab fa-linux"></i> Linux 101</h1>
   <div className="ml-2 flex-shrink-0 flex w-1/2">
