@@ -1,8 +1,8 @@
 import { Link } from "react-router-dom";
 
 import { Fragment, useEffect, useState } from 'react'
-import { Disclosure, Menu, Transition } from '@headlessui/react'
-import { BellIcon, MenuIcon, XIcon, FireIcon } from '@heroicons/react/outline'
+import { Disclosure, Menu, Transition, Combobox, Dialog} from '@headlessui/react'
+import { BellIcon, MenuIcon, XIcon, FireIcon, UsersIcon } from '@heroicons/react/outline'
 import { getAuth, onAuthStateChanged, signOut } from "firebase/auth";
 import { initializeApp } from "firebase/app";
 import { getAnalytics } from "firebase/analytics";
@@ -21,6 +21,10 @@ const Practice = () => {
     appId: "1:166652277588:web:e08b9e19916451e14dcec1",
     measurementId: "G-7ZNKM9VFN2"
   };
+  const people = [
+    { id: 1, name: 'this is like so in beta bruh', url: '#' },
+    // More people...
+  ]
 
   // Initialize Firebase
   const app = initializeApp(firebaseConfig);
@@ -39,12 +43,22 @@ const Practice = () => {
     data: []
   })
 
+
   const [userData, setUserData] = useState({
     streak: 0,
     continueWorking: [],
     username: "??",
     points: 0
   })
+
+  
+  
+  let filteredChallenges = ''
+
+
+  const [open, setOpen] = useState(true)
+  const [query, setQuery] = useState('')
+
 
   function logout() {
     signOut(auth).then(() => {
@@ -91,6 +105,15 @@ const Practice = () => {
               continueWorking: data.continueWorking,
               points: data.points
             })
+
+           filteredChallenges =
+            query === ''
+            ? []
+            : challenge.data.filter((challenge) => {
+                return challenge.data.title.toLowerCase().includes(query.toLowerCase())
+              })
+              
+             
 
           }
 
@@ -173,7 +196,72 @@ const Practice = () => {
   return (
 
     <div className="min-h-full" style={{ fontFamily: 'Space Grotesk, sans-serif' }}>
+   <Transition.Root show={open} as={Fragment} afterLeave={() => setQuery('')}>
+      <Dialog as="div" className="fixed inset-0 z-10 overflow-y-auto p-4 sm:p-6 md:p-20" onClose={setOpen}>
+        <Transition.Child
+          as={Fragment}
+          enter="ease-out duration-300"
+          enterFrom="opacity-0"
+          enterTo="opacity-100"
+          leave="ease-in duration-200"
+          leaveFrom="opacity-100"
+          leaveTo="opacity-0"
+        >
+          <Dialog.Overlay className="fixed inset-0 bg-black bg-opacity-80 transition-opacity" />
+        </Transition.Child>
 
+        <Transition.Child
+          as={Fragment}
+          enter="ease-out duration-300"
+          enterFrom="opacity-0 scale-95"
+          enterTo="opacity-100 scale-100"
+          leave="ease-in duration-200"
+          leaveFrom="opacity-100 scale-100"
+          leaveTo="opacity-0 scale-95"
+        >
+          <Combobox
+            as="div"
+            className="mx-auto max-w-xl transform rounded-xl bg-gray-900  shadow-2xl  border-gray-700 transition-all"
+            onChange={(challenge) => (window.location = challenge.data.id)}
+          >
+            <Combobox.Input
+              className=" focus:ring-0 focus:border-gray-700  w-full rounded-md border border-gray-700 bg-gray-900 px-4 py-2.5 text-white sm:text-sm"
+              placeholder="Search for a challenge"
+              onChange={(event) => setQuery(event.target.value)}
+            />
+
+            {filteredChallenges.length > 0 && (
+              <Combobox.Options
+                static
+                className="-mb-2 max-h-72 scroll-py-2 overflow-y-auto py-2 text-sm text-white"
+              >
+                {filteredChallenges.map((challenge) => (
+                  <Combobox.Option
+                    key={challenge.id}
+                    value={challenge}
+                    className={({ active }) =>
+                      classNames(
+                        'cursor-pointer select-none rounded-md px-4 py-2',
+                        active && ' text-white'
+                      )
+                    }
+                  >
+                    {challenge.title}
+                  </Combobox.Option>
+                ))}
+              </Combobox.Options>
+            )}
+
+            {query !== '' && filteredChallenges.length === 0 && (
+              <div className="py-14 px-4 text-center sm:px-14">
+                <UsersIcon className="hidden mx-auto h-6 w-6 text-gray-400" aria-hidden="true" />
+                <p className="mt-4 text-3xl text-gray-400">😢 No challenges found.</p>
+              </div>
+            )}
+          </Combobox>
+        </Transition.Child>
+      </Dialog>
+    </Transition.Root>
 <Navigation/>
 
       <main>

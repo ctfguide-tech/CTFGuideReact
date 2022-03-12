@@ -5,8 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="2a619e03-1857-49d9-a44f-125ea2e0e666" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/navigation.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/navigation.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../CTFGuideAPI/models/user.js" beforeDir="false" afterPath="$PROJECT_DIR$/../CTFGuideAPI/models/user.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../CTFGuideAPI/src/user.js" beforeDir="false" afterPath="$PROJECT_DIR$/../CTFGuideAPI/src/user.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/pages/Dashboard.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/Dashboard.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -70,6 +70,7 @@
       <workItem from="1645986614390" duration="3653000" />
       <workItem from="1646065775041" duration="538000" />
       <workItem from="1646099177972" duration="4996000" />
+      <workItem from="1646520268097" duration="5000" />
     </task>
     <servers />
   </component>
