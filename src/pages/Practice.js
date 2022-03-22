@@ -181,7 +181,7 @@ const Practice = () => {
     localStorage.setItem("tutorial_phase", "3");
 
     window.location.href = "../challenges/2Hr3KHnaqUW6YFrvjwuc"
-  }
+  }+
 
   window.onload = function () {
     if (localStorage.getItem("tutorial_phase") == 1) {
