@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 import { Fragment, useEffect, useState } from 'react'
 import { Disclosure, Menu, Transition, Combobox, Dialog} from '@headlessui/react'
@@ -10,7 +10,10 @@ import { Navigation } from '../components/navigation';
 import 'animate.css';
 
 const Practice = () => {
-
+  function move(hn, path) {
+    !!hn.navigate ? hn.navigate(path) : hn.push(path);
+  }
+  let navigate = useNavigate();
   const firebaseConfig = {
     apiKey: "AIzaSyBLAN84VP3jSA5dqhrU6Bjmfu5NiUDuNw4",
     authDomain: "cyberjags-8b081.firebaseapp.com",
@@ -68,8 +71,25 @@ const Practice = () => {
     });
 
   }
+
   useEffect(() => {
 
+    function loadChallenges(difficulty) {
+      var xhttp = new XMLHttpRequest();
+      xhttp.onreadystatechange = function () {
+        if (this.readyState === 4 && this.status === 200) {
+          // Success!
+          console.log(JSON.parse(this.responseText));
+          challenge.data = []
+          setChallenges({
+            data: JSON.parse(this.responseText)
+          })
+          document.getElementById("suggestedLoader").classList.add("hidden");
+        }
+     }
+      xhttp.open("GET", `${process.env.REACT_APP_API_URL}/challenges/type/${difficulty}`);
+      xhttp.send();
+    }
 
     onAuthStateChanged(auth, (firebaseUser) => {
       if (firebaseUser) {
@@ -134,28 +154,16 @@ const Practice = () => {
         xhttp.open("GET", `${process.env.REACT_APP_API_URL}/users/data?uid=${firebaseUser.uid}`);
         xhttp.send();
 
-        var xhttp = new XMLHttpRequest();
-        xhttp.onreadystatechange = function () {
-          if (this.readyState === 4 && this.status === 200) {
-            // Success!
-            console.log(JSON.parse(this.responseText));
-            setChallenges({
-              data: JSON.parse(this.responseText)
-            })
-            document.getElementById("suggestedLoader").classList.add("hidden");
-          }
-        }
-        xhttp.open("GET", `${process.env.REACT_APP_API_URL}/challenges/all`);
-        xhttp.send();
 
 
+      loadChallenges(window.location.href.split("/")[4])
 
 
       } else {
         window.location.href = "../login";
       }
     });
-  }, []);
+  }, [navigate]);
   const navigation = [
     { name: 'Dashboard', href: './dashboard', current: false },
     { name: 'Practice', href: './practice', current: true },
@@ -181,7 +189,7 @@ const Practice = () => {
     localStorage.setItem("tutorial_phase", "3");
 
     window.location.href = "../challenges/2Hr3KHnaqUW6YFrvjwuc"
-  }+
+  }
 
   window.onload = function () {
     if (localStorage.getItem("tutorial_phase") == 1) {
@@ -283,22 +291,15 @@ const Practice = () => {
                   className="mt-1 mb-4  w-full pl-3 pr-20  py-2 text-base border-gray-700 text-white bg-gray-900 focus:outline-none  sm:text-sm rounded-md"
                   defaultValue="All"
                   onChange={(e) => {
-                    window.alert(e.target.value);
-                    switch (e.target.value) {
-                      case "Easy":
-                        document.getElementsByClassName("medium").forEach(element => {
-                          element.style.display = "none";
-                        })
-                        document.getElementsByClassName("hard").forEach(element => {
-                          element.style.display = "none";
-                        })
-                    }
+                    window.alert(e.target.value)
+           
+                    navigate('/practice/' + e.target.value)
                   }}
                 >
-                  <option>All</option>
-                  <option>Easy</option>
-                  <option>Medium</option>
-                  <option>Hard</option>
+                  <option value="all">All</option>
+                  <option value="easy">Easy</option>
+                  <option value="medium">Medium</option>
+                  <option value="hard">Hard</option>
                 </select>
                 </div>
                 </div>

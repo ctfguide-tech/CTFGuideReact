@@ -357,7 +357,9 @@ const Dashboard = () => {
           </div>
 
 
-          <div>
+          <h1 className="text-xl text-gray-700  italic mt-6 mb-4"> 🚧 Your Learning Path will be here. Just not at the moment. We're hard at work - and we apologize for this akward blank space.</h1>
+
+          <div className="hidden">
          
      <h1 className="text-4xl text-white mt-6 mb-4"> Learning Path</h1>
      <div className="mt-2 bg-gray-900 border  border-gray-700  px-4 py-4 text-white rounded ">
@@ -468,7 +470,7 @@ const Dashboard = () => {
 
           {/* /End replace */}
         </div>
-        <p className="mt-4 text-gray-500 py-4 text-center mx-auto">  &copy; CTFGuide 2022<br></br><a className="hover:text-white" href="../terms-of-service">Terms of Service</a> • <a className="hover:text-white" href="../privacy-policy">Privacy Policy</a> • <a className="hover:text-white" href="../ambassador-program">Ambassador Program</a><br></br>This is beta software. Problems will arise.</p>
+        <p className="hidden mt-4 text-gray-500 py-4 text-center mx-auto">  &copy; CTFGuide 2022<br></br><a className="hover:text-white" href="../terms-of-service">Terms of Service</a> • <a className="hover:text-white" href="../privacy-policy">Privacy Policy</a> • <a className="hover:text-white" href="../ambassador-program">Ambassador Program</a><br></br>This is beta software. Problems will arise.</p>
  
         </main>
       <div
