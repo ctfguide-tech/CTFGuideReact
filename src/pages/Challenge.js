@@ -185,7 +185,7 @@ const Practice = () => {
         }
       }
     }
-    xhttp.open("GET", `http://localhost:3001/challenges/check/${challengeID}?uid=${auth.currentUser.uid}&flag=${flag}`);
+    xhttp.open("GET", `http://localhost:3001/challenges/check/${window.location.href.split("/")[4]}?uid=${auth.currentUser.uid}&flag=${flag}`);
     xhttp.send();
   }
 
@@ -210,6 +210,9 @@ const Practice = () => {
   function classNames(...classes) {
     return classes.filter(Boolean).join(' ')
   }
+
+
+
 
 
   return (
@@ -273,7 +276,15 @@ const Practice = () => {
             <div className="mt-5 bg-gray-900 border border-gray-700 rounded-lg px-5 py-10">
                     <h1 className="text-white text-4xl font-semibold">Comments</h1>
                     <textarea className="mt-4 text-white border border-gray-700 focus-outline-none outline-none block w-full bg-black rounded-lg"></textarea>
-                    <button className="mt-4 border border-gray-700 bg-black hover:bg-gray-900 rounded-lg text-white px-4 py-1">Post Comment</button>
+                    <button onClick={ () => {
+                        var xhttp = new XMLHttpRequest();
+                        xhttp.onreadystatechange = function() {
+                          if (this.status === 200 && this.readyState === 4) {
+                            window.location.reload();
+                          }
+                        }
+                        xhttp.open("GET", `http://localhost:3001/challenges/comments/post?comment=${document.getElementById("comment").value}&uid=${auth.currentUser.uid}&challengeID=${challengeID}`);
+                    }} id="commentButton" className="mt-4 border border-gray-700 bg-black hover:bg-gray-900 rounded-lg text-white px-4 py-1">Post Comment</button>
 
               </div>
 

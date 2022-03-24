@@ -59,7 +59,7 @@ const Practice = () => {
   let filteredChallenges = ''
 
 
-  const [open, setOpen] = useState(true)
+  const [open, setOpen] = useState(false)
   const [query, setQuery] = useState('')
 
 
@@ -289,11 +289,10 @@ const Practice = () => {
                   id="location"
                   name="location"
                   className="mt-1 mb-4  w-full pl-3 pr-20  py-2 text-base border-gray-700 text-white bg-gray-900 focus:outline-none  sm:text-sm rounded-md"
-                  defaultValue="All"
+                  defaultValue={window.location.href.split("/")[4]}
                   onChange={(e) => {
-                    window.alert(e.target.value)
-           
-                    navigate('/practice/' + e.target.value)
+        
+                    window.location.href = "../practice/" + e.target.value
                   }}
                 >
                   <option value="all">All</option>
@@ -330,7 +329,7 @@ const Practice = () => {
                   to={`../challenges/${item.id}`}
                      style={{cursor: 'pointer'}}
                       key={item.title}
-                      className={(item.difficulty) + "animate__animated animate__fadeIn px-3 py-2  rounded-md bg-gray-900 border border-gray-700  mb-2  text-base font-medium text-white hover:text-white "}
+                      className={(item.difficulty) + "  animate__animated animate__fadeIn px-3 py-2  rounded-md bg-gray-900 border border-gray-700  mb-2  text-base font-medium text-white hover:text-white "}
                     ><span className="font-semibold">{item.title} </span>
                   <br></br>
                       <span className={"lowercase " +  (item.difficulty === 'hard' ? 'text-red-500' : item.difficulty === 'medium' ? ' text-yellow-500' : 'text-green-500')}> {item.difficulty}</span> <b>∙</b><span className="bg-black rounded-lg px-2  lowercase">{item.category}</span>
