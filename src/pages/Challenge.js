@@ -283,7 +283,7 @@ const Practice = () => {
                             window.location.reload();
                           }
                         }
-                        xhttp.open("GET", `http://localhost:3001/challenges/comments/post?comment=${document.getElementById("comment").value}&uid=${auth.currentUser.uid}&challengeID=${challengeID}`);
+                        xhttp.open("GET", `http://localhost:3001/challenges/comments/post?comment=${document.getElementById("comment").value}&uid=${auth.currentUser.uid}&challengeID=${window.location.href.split("/")[4]}`);
                     }} id="commentButton" className="mt-4 border border-gray-700 bg-black hover:bg-gray-900 rounded-lg text-white px-4 py-1">Post Comment</button>
 
               </div>
