@@ -2,16 +2,17 @@ import { Link } from "react-router-dom";
 
 import { Fragment, useEffect, useState } from 'react'
 import { Disclosure, Menu, Transition , Dialog} from '@headlessui/react'
-import { BellIcon, MenuIcon, XIcon, FireIcon } from '@heroicons/react/outline'
+import { BellIcon, MenuIcon, XIcon, FireIcon, StarIcon } from '@heroicons/react/outline'
 import { getAuth, onAuthStateChanged, signOut } from "firebase/auth";
 import { initializeApp } from "firebase/app";
 import { getAnalytics } from "firebase/analytics";
 import { Navigation } from "../components/navigation";
+import { SuccessModal } from "../components/successModal";
 import 'animate.css';
 
 const Practice = () => {
   const [open, setOpen] = useState(false)
-
+  const [open2, setOpen2] = useState(false)
   const firebaseConfig = {
     apiKey: "AIzaSyBLAN84VP3jSA5dqhrU6Bjmfu5NiUDuNw4",
     authDomain: "cyberjags-8b081.firebaseapp.com",
@@ -162,8 +163,16 @@ const Practice = () => {
       if (this.readyState == 4 && this.status == 200) {
         var serverResponse = JSON.parse(this.responseText);
         if (serverResponse) {
-          if (serverResponse.response == "OK") {
-            document.getElementById("success").classList.remove("hidden");
+          console.log(serverResponse.message)
+          if (serverResponse.message == "OK") {
+           // document.getElementById("success").classList.remove("hidden");
+            document.getElementById("enteredFlag").classList.add("border-green-600");
+            document.getElementById("enterFlagBTN").innerHTML = "Submit Flag";
+            setOpen2(true)
+            setTimeout(function() {
+              document.getElementById("enteredFlag").classList.remove("border-green-600");
+              
+            }, 2000)
           } else {
             document.getElementById("enteredFlag").classList.add("border-red-600");
             document.getElementById("enterFlagBTN").innerHTML = "Submit Flag";
@@ -176,7 +185,7 @@ const Practice = () => {
         }
       }
     }
-    xhttp.open("GET", `http://localhost:3001/challenges/check/${challengeID}?uid=${auth.currentUser.uid}&flag=${flag}`);
+    xhttp.open("GET", `http://localhost:3001/challenges/check/${window.location.href.split("/")[4]}?uid=${auth.currentUser.uid}&flag=${flag}`);
     xhttp.send();
   }
 
@@ -203,6 +212,9 @@ const Practice = () => {
   }
 
 
+
+
+
   return (
 
     <div className="min-h-full example" style={{ fontFamily: 'Space Grotesk, sans-serif' }}>
@@ -216,7 +228,7 @@ const Practice = () => {
 
 
 
-            <div className="px-5 py-10 rounded-lg  bg-gradient-to-br from-gray-900 to-black border border-gray-800">
+            <div className="px-5 py-10 rounded-lg  bg-gray-900 border border-gray-700">
               <div>
 
               <div className="flex items-center justify-between">
@@ -227,9 +239,7 @@ const Practice = () => {
 
                     </div>
               </div>
-
-              <hr className="border-gray-600 mt-3 "></hr>
-              <br></br>
+      
               </div>
 
 
@@ -263,10 +273,18 @@ const Practice = () => {
 
             </div>
 
-            <div className="mt-5   bg-gradient-to-br from-gray-900 to-black border border-gray-800 rounded-lg px-5 py-10">
+            <div className="mt-5 bg-gray-900 border border-gray-700 rounded-lg px-5 py-10">
                     <h1 className="text-white text-4xl font-semibold">Comments</h1>
-                    <textarea className="mt-4 text-white focus:outline-none outline-none block w-full bg-black rounded-lg"></textarea>
-                    <button className="mt-4 border bg-black hover:bg-gray-900 rounded-lg text-white px-4 py-1">Post Comment</button>
+                    <textarea className="mt-4 text-white border border-gray-700 focus-outline-none outline-none block w-full bg-black rounded-lg"></textarea>
+                    <button onClick={ () => {
+                        var xhttp = new XMLHttpRequest();
+                        xhttp.onreadystatechange = function() {
+                          if (this.status === 200 && this.readyState === 4) {
+                            window.location.reload();
+                          }
+                        }
+                        xhttp.open("GET", `http://localhost:3001/challenges/comments/post?comment=${document.getElementById("comment").value}&uid=${auth.currentUser.uid}&challengeID=${window.location.href.split("/")[4]}`);
+                    }} id="commentButton" className="mt-4 border border-gray-700 bg-black hover:bg-gray-900 rounded-lg text-white px-4 py-1">Post Comment</button>
 
               </div>
 
@@ -417,7 +435,71 @@ const Practice = () => {
 
       <p className="mt-4 text-gray-500 py-4 text-center mx-auto">  &copy; CTFGuide 2022<br></br><a className="hover:text-white" href="../terms-of-service">Terms of Service</a> • <a className="hover:text-white" href="../privacy-policy">Privacy Policy</a> • <a className="hover:text-white" href="../ambassador-program">Ambassador Program</a><br></br>This is beta software. Problems will arise.</p>
 
+      <Transition.Root show={open2} as={Fragment}>
+      <Dialog as="div" className="fixed z-10 inset-0 overflow-y-auto" onClose={setOpen2}>
+        <div className="flex items-end justify-center min-h-screen pt-4 px-4 pb-20 text-center sm:block sm:p-0">
+          <Transition.Child
+            as={Fragment}
+            enter="ease-out duration-300"
+            enterFrom="opacity-0"
+            enterTo="opacity-100"
+            leave="ease-in duration-200"
+            leaveFrom="opacity-100"
+            leaveTo="opacity-0"
+          >
+            <Dialog.Overlay className="fixed inset-0 bg-gray-900 bg-opacity-75 transition-opacity" />
+          </Transition.Child>
 
+          {/* This element is to trick the browser into centering the modal contents. */}
+          <span className="hidden sm:inline-block sm:align-middle sm:h-screen" aria-hidden="true">
+            &#8203;
+          </span>
+          <Transition.Child
+            as={Fragment}
+            enter="ease-out duration-300"
+            enterFrom="opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95"
+            enterTo="opacity-100 translate-y-0 sm:scale-100"
+            leave="ease-in duration-200"
+            leaveFrom="opacity-100 translate-y-0 sm:scale-100"
+            leaveTo="opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95"
+          >
+            <div className="relative inline-block align-bottom bg-gray-900 border border-gray-700 rounded-lg px-4 pt-5 pb-4 text-left overflow-hidden shadow-xl transform transition-all sm:my-8 sm:align-middle sm:max-w-sm sm:w-full sm:p-6">
+              <div>
+                <div className="mx-auto flex items-center justify-center rounded-full ">
+                  <StarIcon className="h-12 w-12 text-yellow-600" aria-hidden="true" />
+                </div>
+                <div className="mt-3 text-center sm:mt-5">
+                  <Dialog.Title as="h3" className="text-lg leading-6 font-medium text-gray-100">
+                   Nice hackin', partner!
+                  </Dialog.Title>
+                  <div className="mt-2">
+                    <p className="text-gray-200">
+                     You were awarded 100 points.
+                    </p>
+                  </div>
+                </div>
+              </div>
+              <div className="mt-5 sm:mt-6 mx-auto text-center">
+                <button
+                  type="button"
+                  className="inline-flex justify-center w-1/2 rounded-md shadow-sm px-4 py-2 bg-gray-800 border border-gray-700 text-base font-medium text-white  focus:outline-none  sm:text-sm"
+                  onClick={() => setOpen2(false)}
+                >
+                  View Leaderboards
+                </button>
+                <button
+                  type="button"
+                  className="ml-2 inline-flex justify-center   rounded-md shadow-sm px-4 py-2 bg-gray-800 border border-gray-700 text-base font-medium text-white  focus:outline-none  sm:text-sm"
+                  onClick={() => setOpen2(false)}
+                >
+                  Back to Challenges
+                </button>
+              </div>
+            </div>
+          </Transition.Child>
+        </div>
+      </Dialog>
+    </Transition.Root>
     </div>
 
   )

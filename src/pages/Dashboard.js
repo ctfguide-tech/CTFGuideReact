@@ -11,6 +11,7 @@ import { Navigation } from '../components/navigation';
 import { io } from "socket.io-client";
 import DashboardManager from "../modules/DashboardManager.js"
 import 'animate.css';
+import { data } from "autoprefixer";
 
 const Dashboard = () => {
   const firebaseConfig = {
@@ -47,7 +48,8 @@ const Dashboard = () => {
     streak: 0,
     continueWorking: [],
     username: "??",
-    points: 0
+    points: 0,
+    tutorialCompleted: false
   })
 
 
@@ -86,9 +88,7 @@ const Dashboard = () => {
             if (!data.continueWorking) data[`continueWorking`] = []
             document.getElementById("myInfo").innerText = JSON.stringify(data, null, 3);
             
-            if (data.tutorial === "finished") {
-              document.getElementById("tutorial_banner").classList.add("hidden")
-            }
+            
 
             if (data.vmPassword) {
               document.getElementById("warning").classList.add("hidden")
@@ -111,12 +111,27 @@ const Dashboard = () => {
           
             }
 
+            console.log(data.tutorialCompleted)
+            
             setUserData({
               username: data.username,
               streak: data.streak,
               continueWorking: data.continueWorking,
-              points: data.points
+              points: data.points,
+              tutorialCompleted: data.tutorialCompleted
             })
+
+            if (!data.tutorialCompleted) {
+              if (localStorage.getItem("tutorial_phase") == 1) {
+                document.getElementById("dashboard_tutorial").classList.remove("hidden")
+              }
+          
+              if (localStorage.getItem("tutorial_active")) {
+                console.log("tutoraila ctivito ")
+                document.getElementById("tutorial_banner").classList.add("hidden")
+              }
+            }
+
             document.getElementById("fetchingHistory").classList.add("hidden");
             if (data.continueWorking.length < 1)  document.getElementById("noHistory").classList.remove("hidden")
 
@@ -184,13 +199,8 @@ const Dashboard = () => {
   }
 
   window.onload = function() {
-    if (localStorage.getItem("tutorial_phase") == 1) {
-      document.getElementById("dashboard_tutorial").classList.remove("hidden")
-    }
 
-    if (localStorage.getItem("tutorial_active")) {
-      document.getElementById("tutorial_banner").classList.add("hidden")
-    }
+  
   }
 
   return (
@@ -214,7 +224,9 @@ const Dashboard = () => {
         <p className="text-yellow-500 mb-3 hidden">If you are seeing this message it means the CTFGuide API is offline.</p>
         <p className="text-yellow-500 mb-3 hidden">This is a site wide broadcast. Hi!</p>
 
-      <div id="tutorial_banner" className="rounded-xl bg-gray-900 border  border-gray-700 mb-10 max-w-7xl mx-auto py-12 px-4 sm:px-3 lg:py-12 lg:px-8 lg:flex lg:items-center lg:justify-between">
+<div id="tutorial_banner_core"   className={(userData.tutorialCompleted  ? "hidden" : "")}>
+
+      <div id="tutorial_banner" className={ " rounded-xl bg-gray-900 border  border-gray-700 mb-10 max-w-7xl mx-auto py-12 px-4 sm:px-3 lg:py-12 lg:px-8 lg:flex lg:items-center lg:justify-between"}>
                     <div className="w-full">
                     <h2 className="text-3xl font-extrabold tracking-tight text-gray-900 md:text-4xl">
           <span className="block text-white"><i className="fa-solid fa-hand-wave"></i> Welcome to CTFGuide!</span>
@@ -223,6 +235,7 @@ const Dashboard = () => {
               onClick={() => {
                 localStorage.setItem("tutorial_active", true);
                 localStorage.setItem("tutorial_phase", 1) 
+                
                 dashboardTutorial();
               }}
               href="#"
@@ -241,12 +254,22 @@ const Dashboard = () => {
                     </div>
     
       <img width="300" className="" src="../egg.svg"></img>
-    </div>f
+    </div>
+
+    </div>
          <div className="bg-gray-900 border  border-gray-700 px-6 py-10 rounded-lg flex align-middle">
            <input id="file-input" type="file" name="name" className={"hidden"} onChange={() => {window.alert("recieved but not saved. this is intended behavior.")}} accept={"image/png"}/>
-
-         <div onMouseOver={ () => { document.getElementById('editpfp').classList.remove('hidden')}} onMouseLeave={ () => { document.getElementById('editpfp').classList.add('hidden')}} className={"relative"}><img className="rounded-full w-full" src={user.imageUrl } alt="" /><div  id={"editpfp"} onClick={() => {document.getElementById('file-input').click();}} style={ {bottom: "0px", cursor: 'pointer'}} className={"hidden rounded-b-full text-white absolute  px-4 opacity-80  bg-black"}><p>Edit</p></div></div><h1 className="text-white text-4xl ml-4 mt-3">Hello { userData.username }</h1>
+           
+         <div onMouseOver={ () => { document.getElementById('editpfp').classList.remove('hidden')}} onMouseLeave={ () => { 
+           document.getElementById('editpfp').classList.add('hidden')}} className={"relative"}>
+             <img className="rounded-full w-full" src={user.imageUrl } alt="" />
+             <div  id={"editpfp"} onClick={() => {document.getElementById('file-input').click();}} style={ {bottom: "0px", cursor: 'pointer'}} className={"hidden rounded-b-full text-white absolute  px-4 opacity-80  bg-black"}>
+               <p>Edit</p></div></div>
+               <h1 className="text-white text-4xl ml-4 mt-3">Hello { userData.username }</h1>
+          
            </div>
+
+
  
           <div className="mt-5 grid lg:grid-cols-3 gap-10 sm:grid-cols-1">
 
@@ -334,7 +357,9 @@ const Dashboard = () => {
           </div>
 
 
-          <div>
+          <h1 className="text-xl text-gray-700  italic mt-6 mb-4"> 🚧 Your Learning Path will be here. Just not at the moment. We're hard at work - and we apologize for this akward blank space.</h1>
+
+          <div className="hidden">
          
      <h1 className="text-4xl text-white mt-6 mb-4"> Learning Path</h1>
      <div className="mt-2 bg-gray-900 border  border-gray-700  px-4 py-4 text-white rounded ">
@@ -445,7 +470,7 @@ const Dashboard = () => {
 
           {/* /End replace */}
         </div>
-        <p className="mt-4 text-gray-500 py-4 text-center mx-auto">  &copy; CTFGuide 2022<br></br><a className="hover:text-white" href="../terms-of-service">Terms of Service</a> • <a className="hover:text-white" href="../privacy-policy">Privacy Policy</a> • <a className="hover:text-white" href="../ambassador-program">Ambassador Program</a><br></br>This is beta software. Problems will arise.</p>
+        <p className="hidden mt-4 text-gray-500 py-4 text-center mx-auto">  &copy; CTFGuide 2022<br></br><a className="hover:text-white" href="../terms-of-service">Terms of Service</a> • <a className="hover:text-white" href="../privacy-policy">Privacy Policy</a> • <a className="hover:text-white" href="../ambassador-program">Ambassador Program</a><br></br>This is beta software. Problems will arise.</p>
  
         </main>
       <div

@@ -10,7 +10,7 @@ export class Navigation extends Component {
 
         const navigation = [
             { name: 'Dashboard', href: '../dashboard', current: false },
-            { name: 'Practice', href: '../practice', current: false },
+            { name: 'Practice', href: '../practice/all', current: false },
             { name: 'Learn', href: '../learn', current: false },
             { name: 'Classes', href: '#', current: false },
             { name: 'CTFLive', href: '#', current: false },
@@ -40,7 +40,7 @@ export class Navigation extends Component {
         }
 
         return(
-            <Disclosure as="nav" className="z-20 bg-gray-900 border-b  border-gray-700 ">
+            <Disclosure as="nav" className="z-20 bg-black border-b  border-gray-700 ">
                 {({ open }) => (
                     <>
                         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -61,7 +61,7 @@ export class Navigation extends Component {
                                                     to={item.href}
                                                     className={classNames(
                                                         item.current
-                                                            ? 'bg-gray-900 text-white'
+                                                            ? 'bg-black text-white'
                                                             : 'text-gray-300 hover:bg-gray-800 hover:text-white',
                                                         'px-3 py-2 rounded-md text-sm font-medium'
                                                     )}
@@ -79,7 +79,7 @@ export class Navigation extends Component {
                                         <p className="text-yellow-500 hover:text-yellow-400" style={{cursor:'pointer'}}>✨ Upgrade to pro</p>
                                         <button
                                             type="button"
-                                            className="ml-3 bg-gray-900 border border-gray-700 px-3 font-semibold rounded-full text-blue-500  focus:outline-none "
+                                            className="ml-3 bg-black border border-gray-700 px-3 font-semibold rounded-full text-blue-500  focus:outline-none "
                                         >
                                             <span className="sr-only">View notifications</span>
                                             <span id={"navPoints"}><i className="fas fa-spinner fa-pulse"></i></span>  points
@@ -104,7 +104,7 @@ export class Navigation extends Component {
                                                 leaveFrom="transform opacity-100 scale-100"
                                                 leaveTo="transform opacity-0 scale-95"
                                             >
-                                                <Menu.Items className="origin-top-right absolute right-0 mt-2 w-48 rounded-md shadow-lg py-1 bg-gray-900 border border-gray-700 text-white focus:outline-none z-50">
+                                                <Menu.Items className="origin-top-right absolute right-0 mt-2 w-48 rounded-md shadow-lg py-1 bg-black border border-gray-700 text-white focus:outline-none z-50">
                                                     {userNavigation.map((item) => (
                                                         <Menu.Item key={item.name}>
                                                             {({ active }) => (
@@ -149,7 +149,7 @@ export class Navigation extends Component {
                                         as="a"
                                         href={item.href}
                                         className={classNames(
-                                            item.current ? 'bg-gray-900 text-white' : 'text-gray-300 hover:bg-gray-700 hover:text-white',
+                                            item.current ? 'bg-black text-white' : 'text-gray-300 hover:bg-gray-700 hover:text-white',
                                             'block px-3 py-2 rounded-md text-base font-medium'
                                         )}
                                         aria-current={item.current ? 'page' : undefined}
@@ -176,7 +176,7 @@ export class Navigation extends Component {
                                     <p className="text-yellow-500 hover:text-yellow-400 mb-2" style={{cursor:'pointer'}}>✨ Upgrade to pro</p>
                                     <button
                                         type="button"
-                                        className="ml-3  bg-gray-900 border border-gray-700 px-3 font-semibold rounded-full text-blue-500  focus:outline-none "
+                                        className="ml-3  bg-black border border-gray-700 px-3 font-semibold rounded-full text-blue-500  focus:outline-none "
                                     >
 
                                       points

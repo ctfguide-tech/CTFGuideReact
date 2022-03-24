@@ -1,8 +1,8 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 import { Fragment, useEffect, useState } from 'react'
-import { Disclosure, Menu, Transition } from '@headlessui/react'
-import { BellIcon, MenuIcon, XIcon, FireIcon } from '@heroicons/react/outline'
+import { Disclosure, Menu, Transition, Combobox, Dialog} from '@headlessui/react'
+import { BellIcon, MenuIcon, XIcon, FireIcon, UsersIcon } from '@heroicons/react/outline'
 import { getAuth, onAuthStateChanged, signOut } from "firebase/auth";
 import { initializeApp } from "firebase/app";
 import { getAnalytics } from "firebase/analytics";
@@ -10,7 +10,10 @@ import { Navigation } from '../components/navigation';
 import 'animate.css';
 
 const Practice = () => {
-
+  function move(hn, path) {
+    !!hn.navigate ? hn.navigate(path) : hn.push(path);
+  }
+  let navigate = useNavigate();
   const firebaseConfig = {
     apiKey: "AIzaSyBLAN84VP3jSA5dqhrU6Bjmfu5NiUDuNw4",
     authDomain: "cyberjags-8b081.firebaseapp.com",
@@ -21,6 +24,10 @@ const Practice = () => {
     appId: "1:166652277588:web:e08b9e19916451e14dcec1",
     measurementId: "G-7ZNKM9VFN2"
   };
+  const people = [
+    { id: 1, name: 'this is like so in beta bruh', url: '#' },
+    // More people...
+  ]
 
   // Initialize Firebase
   const app = initializeApp(firebaseConfig);
@@ -39,12 +46,22 @@ const Practice = () => {
     data: []
   })
 
+
   const [userData, setUserData] = useState({
     streak: 0,
     continueWorking: [],
     username: "??",
     points: 0
   })
+
+  
+  
+  let filteredChallenges = ''
+
+
+  const [open, setOpen] = useState(false)
+  const [query, setQuery] = useState('')
+
 
   function logout() {
     signOut(auth).then(() => {
@@ -54,8 +71,25 @@ const Practice = () => {
     });
 
   }
+
   useEffect(() => {
 
+    function loadChallenges(difficulty) {
+      var xhttp = new XMLHttpRequest();
+      xhttp.onreadystatechange = function () {
+        if (this.readyState === 4 && this.status === 200) {
+          // Success!
+          console.log(JSON.parse(this.responseText));
+          challenge.data = []
+          setChallenges({
+            data: JSON.parse(this.responseText)
+          })
+          document.getElementById("suggestedLoader").classList.add("hidden");
+        }
+     }
+      xhttp.open("GET", `${process.env.REACT_APP_API_URL}/challenges/type/${difficulty}`);
+      xhttp.send();
+    }
 
     onAuthStateChanged(auth, (firebaseUser) => {
       if (firebaseUser) {
@@ -92,6 +126,15 @@ const Practice = () => {
               points: data.points
             })
 
+           filteredChallenges =
+            query === ''
+            ? []
+            : challenge.data.filter((challenge) => {
+                return challenge.data.title.toLowerCase().includes(query.toLowerCase())
+              })
+              
+             
+
           }
 
           if (this.readyState === 4 & this.status === 500) {
@@ -111,28 +154,16 @@ const Practice = () => {
         xhttp.open("GET", `${process.env.REACT_APP_API_URL}/users/data?uid=${firebaseUser.uid}`);
         xhttp.send();
 
-        var xhttp = new XMLHttpRequest();
-        xhttp.onreadystatechange = function () {
-          if (this.readyState === 4 && this.status === 200) {
-            // Success!
-            console.log(JSON.parse(this.responseText));
-            setChallenges({
-              data: JSON.parse(this.responseText)
-            })
-            document.getElementById("suggestedLoader").classList.add("hidden");
-          }
-        }
-        xhttp.open("GET", `${process.env.REACT_APP_API_URL}/challenges/all`);
-        xhttp.send();
 
 
+      loadChallenges(window.location.href.split("/")[4])
 
 
       } else {
         window.location.href = "../login";
       }
     });
-  }, []);
+  }, [navigate]);
   const navigation = [
     { name: 'Dashboard', href: './dashboard', current: false },
     { name: 'Practice', href: './practice', current: true },
@@ -173,7 +204,72 @@ const Practice = () => {
   return (
 
     <div className="min-h-full" style={{ fontFamily: 'Space Grotesk, sans-serif' }}>
+   <Transition.Root show={open} as={Fragment} afterLeave={() => setQuery('')}>
+      <Dialog as="div" className="fixed inset-0 z-10 overflow-y-auto p-4 sm:p-6 md:p-20" onClose={setOpen}>
+        <Transition.Child
+          as={Fragment}
+          enter="ease-out duration-300"
+          enterFrom="opacity-0"
+          enterTo="opacity-100"
+          leave="ease-in duration-200"
+          leaveFrom="opacity-100"
+          leaveTo="opacity-0"
+        >
+          <Dialog.Overlay className="fixed inset-0 bg-black bg-opacity-80 transition-opacity" />
+        </Transition.Child>
 
+        <Transition.Child
+          as={Fragment}
+          enter="ease-out duration-300"
+          enterFrom="opacity-0 scale-95"
+          enterTo="opacity-100 scale-100"
+          leave="ease-in duration-200"
+          leaveFrom="opacity-100 scale-100"
+          leaveTo="opacity-0 scale-95"
+        >
+          <Combobox
+            as="div"
+            className="mx-auto max-w-xl transform rounded-xl bg-gray-900  shadow-2xl  border-gray-700 transition-all"
+            onChange={(challenge) => (window.location = challenge.data.id)}
+          >
+            <Combobox.Input
+              className=" focus:ring-0 focus:border-gray-700  w-full rounded-md border border-gray-700 bg-gray-900 px-4 py-2.5 text-white sm:text-sm"
+              placeholder="Search for a challenge"
+              onChange={(event) => setQuery(event.target.value)}
+            />
+
+            {filteredChallenges.length > 0 && (
+              <Combobox.Options
+                static
+                className="-mb-2 max-h-72 scroll-py-2 overflow-y-auto py-2 text-sm text-white"
+              >
+                {filteredChallenges.map((challenge) => (
+                  <Combobox.Option
+                    key={challenge.id}
+                    value={challenge}
+                    className={({ active }) =>
+                      classNames(
+                        'cursor-pointer select-none rounded-md px-4 py-2',
+                        active && ' text-white'
+                      )
+                    }
+                  >
+                    {challenge.title}
+                  </Combobox.Option>
+                ))}
+              </Combobox.Options>
+            )}
+
+            {query !== '' && filteredChallenges.length === 0 && (
+              <div className="py-14 px-4 text-center sm:px-14">
+                <UsersIcon className="hidden mx-auto h-6 w-6 text-gray-400" aria-hidden="true" />
+                <p className="mt-4 text-3xl text-gray-400">😢 No challenges found.</p>
+              </div>
+            )}
+          </Combobox>
+        </Transition.Child>
+      </Dialog>
+    </Transition.Root>
 <Navigation/>
 
       <main>
@@ -193,24 +289,16 @@ const Practice = () => {
                   id="location"
                   name="location"
                   className="mt-1 mb-4  w-full pl-3 pr-20  py-2 text-base border-gray-700 text-white bg-gray-900 focus:outline-none  sm:text-sm rounded-md"
-                  defaultValue="All"
+                  defaultValue={window.location.href.split("/")[4]}
                   onChange={(e) => {
-                    window.alert(e.target.value);
-                    switch (e.target.value) {
-                      case "Easy":
-                        document.getElementsByClassName("medium").forEach(element => {
-                          element.style.display = "none";
-                        })
-                        document.getElementsByClassName("hard").forEach(element => {
-                          element.style.display = "none";
-                        })
-                    }
+        
+                    window.location.href = "../practice/" + e.target.value
                   }}
                 >
-                  <option>All</option>
-                  <option>Easy</option>
-                  <option>Medium</option>
-                  <option>Hard</option>
+                  <option value="all">All</option>
+                  <option value="easy">Easy</option>
+                  <option value="medium">Medium</option>
+                  <option value="hard">Hard</option>
                 </select>
                 </div>
                 </div>
@@ -241,7 +329,7 @@ const Practice = () => {
                   to={`../challenges/${item.id}`}
                      style={{cursor: 'pointer'}}
                       key={item.title}
-                      className={(item.difficulty) + "animate__animated animate__fadeIn px-3 py-2  rounded-md bg-gray-900 border border-gray-700  mb-2  text-base font-medium text-white hover:text-white "}
+                      className={(item.difficulty) + "  animate__animated animate__fadeIn px-3 py-2  rounded-md bg-gray-900 border border-gray-700  mb-2  text-base font-medium text-white hover:text-white "}
                     ><span className="font-semibold">{item.title} </span>
                   <br></br>
                       <span className={"lowercase " +  (item.difficulty === 'hard' ? 'text-red-500' : item.difficulty === 'medium' ? ' text-yellow-500' : 'text-green-500')}> {item.difficulty}</span> <b>∙</b><span className="bg-black rounded-lg px-2  lowercase">{item.category}</span>
