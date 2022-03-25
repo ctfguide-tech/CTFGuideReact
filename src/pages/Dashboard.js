@@ -208,8 +208,40 @@ const Dashboard = () => {
     <div className="min-h-full " style={{ fontFamily: 'Space Grotesk, sans-serif' }}>
 
       <Navigation/>
+      <div id="message" className="relative bg-blue-900">
+      <div className="max-w-7xl mx-auto py-3 px-3 sm:px-6 lg:px-8">
+        <div className="pr-16 sm:text-center sm:px-16">
+          <p className="font-medium text-white">
+            <span className="md:hidden">Welcome to the new CTFGuide.</span>
+            <span className="hidden md:inline">Welcome to the new CTFGuide! We're still working on releasing all the new features.</span>
+            <span className="block sm:ml-2 sm:inline-block">
+              <a href="https://www.notion.so/ctfguide/CTFGuide-V2-Preview-397bddf3083d4eb6ae1f6b58d3af2e23" className="text-white font-bold underline">
+                {' '}
+                Learn more <span aria-hidden="true">&rarr;</span>
+              </a>
+            </span>
+          </p>
+        </div>
+        <div className="absolute inset-y-0 right-0 pt-1 pr-1 flex items-start sm:pt-1 sm:pr-2 sm:items-start">
+          <button
+            type="button"
+            className="flex p-2 rounded-md hover:bg-blue-900 focus:outline-none focus:ring-2 focus:ring-white"
+            onClick={() => {
+              document.getElementById("message").classList.add("hidden")
+            }
+          }
+          >
+            <span className="sr-only">Dismiss</span>
+            <XIcon className="h-6 w-6 text-white" aria-hidden="true" />
+          </button>
+        </div>
+      </div>
+    </div>
+      <main className="mt-6" >
+     
 
-      <main className="mt-6 " >
+
+
      
         <div className="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8 ">
 
@@ -357,7 +389,7 @@ const Dashboard = () => {
           </div>
 
 
-          <h1 className="text-xl text-gray-700  italic mt-6 mb-4"> 🚧 Your Learning Path will be here. Just not at the moment. We're hard at work - and we apologize for this akward blank space.</h1>
+          <h1 className="hidden text-xl text-gray-700  italic mt-6 mb-4"> 🚧 Your Learning Path will be here. Just not at the moment. We're hard at work - and we apologize for this akward blank space.</h1>
 
           <div className="hidden">
          
@@ -473,6 +505,9 @@ const Dashboard = () => {
         <p className="hidden mt-4 text-gray-500 py-4 text-center mx-auto">  &copy; CTFGuide 2022<br></br><a className="hover:text-white" href="../terms-of-service">Terms of Service</a> • <a className="hover:text-white" href="../privacy-policy">Privacy Policy</a> • <a className="hover:text-white" href="../ambassador-program">Ambassador Program</a><br></br>This is beta software. Problems will arise.</p>
  
         </main>
+
+
+        
       <div
         aria-live="assertive"
         id="warning"
@@ -500,7 +535,7 @@ const Dashboard = () => {
                   </div>
                   <div className="ml-4 flex-shrink-0 flex">
                     <button
-                      className="bg-black px-1 py-1 rounded-md inline-flex text-gray-400 hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+                      className="bg-black px-1 py-1 rounded-md inline-flex text-gray-400 hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500"
                       onClick={() => {
                         setShow(false)
                       }}
@@ -533,8 +568,7 @@ const Dashboard = () => {
           <h3 className="text-4xl leading-6 font-semibold text-white" id="modal-title">Dashboard</h3>
           <div className="mt-4">
             <p className="text-xl px-5 text-white">The dashboard serves as an easy way for you to visualize your progress and helps find you the next thing to do. Your dashboard is specifically tailored for you.</p>
-            <iframe className="mt-4 w-full px-5 mt-4 h-80" src="https://www.youtube-nocookie.com/embed/QU952BUA9Gk" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; hide-info;"></iframe>
-          </div>
+       </div>
         </div>
       </div>
       <div className="mt-5 sm:mt-6 mx-auto text-center">

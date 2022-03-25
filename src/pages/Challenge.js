@@ -222,6 +222,35 @@ const Practice = () => {
 
 
       <main>
+      <div id="message" className="relative bg-blue-900">
+      <div className="max-w-7xl mx-auto py-3 px-3 sm:px-6 lg:px-8">
+        <div className="pr-16 sm:text-center sm:px-16">
+          <p className="font-medium text-white">
+            <span className="md:hidden">Welcome to the new CTFGuide.</span>
+            <span className="hidden md:inline">Welcome to the new CTFGuide! We're still working on releasing all the new features.</span>
+            <span className="block sm:ml-2 sm:inline-block">
+              <a href="https://www.notion.so/ctfguide/CTFGuide-V2-Preview-397bddf3083d4eb6ae1f6b58d3af2e23" className="text-white font-bold underline">
+                {' '}
+                Learn more <span aria-hidden="true">&rarr;</span>
+              </a>
+            </span>
+          </p>
+        </div>
+        <div className="absolute inset-y-0 right-0 pt-1 pr-1 flex items-start sm:pt-1 sm:pr-2 sm:items-start">
+          <button
+            type="button"
+            className="flex p-2 rounded-md hover:bg-blue-900 focus:outline-none focus:ring-2 focus:ring-white"
+            onClick={() => {
+              document.getElementById("message").classList.add("hidden")
+            }
+          }
+          >
+            <span className="sr-only">Dismiss</span>
+            <XIcon className="h-6 w-6 text-white" aria-hidden="true" />
+          </button>
+        </div>
+      </div>
+    </div>
         <div className="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8 animate__animated animate__fadeIn">
 
           <div>
@@ -234,8 +263,8 @@ const Practice = () => {
               <div className="flex items-center justify-between">
               <h1 id="challengeName" className="text-4xl text-white mb-4 font-semibold"></h1> 
               <div className="ml-2 flex-shrink-0 flex mb-5">
-              <p id="solvedChallenge" className="hidden text-white bg-green-700 w-60 px-2 py-1 rounded-lg border-green-800 border"><i className="fas fa-check-circle text-white"></i> You solved this challenge.</p>
-              <p style={{cursor: 'pointer'}}className="ml-4 text-white font-semibold border-blue-600 w-50 py-1 px-3 rounded-lg hover:bg-gray-900 text-blue-500 border"><i class="fas fa-trophy text-blue-500"></i> Leaderboards</p>
+              <p id="solvedChallenge" className="hidden text-white bg-green-700 w-60 px-2 py-1 rounded-lg border-green-800 border"><i className="fas fa-check-circle text-white"></i> You solved this challenge</p>
+              <p style={{cursor: 'pointer'}}className="hidden ml-4 text-white font-semibold border-blue-600 w-50 py-1 px-3 rounded-lg hover:bg-gray-900 text-blue-500 border"><i class="fas fa-trophy text-blue-500"></i> Leaderboards</p>
 
                     </div>
               </div>
@@ -265,7 +294,7 @@ const Practice = () => {
                       <button id="enterFlagBTN" onClick={submitFlag} className="mt-4 border bg-black border-green-500  rounded-lg  hover:bg-gray-900 text-green-500 px-4 py-1">Submit Flag</button>
                       <button onClick={() => setOpen(true)} className="mt-4 border bg-black  rounded-lg  border-yellow-300 text-yellow-300 hover:bg-gray-900 text-white px-4 py-1 ml-2">Stuck?</button>
                       
-                    <div id="terminal" className=" mt-6 ">
+                    <div id="terminal" className="hidden mt-6 ">
                   <p className="text-gray-400 mb-2 hint">Login as <span className="text-yellow-400">{userData.susername}</span> using the password <span className="text-yellow-400">{userData.spassword}</span><a style={{ cursor: 'pointer'}} className="hidden hover:bg-black text-gray-300">Need help?</a></p>
                     <iframe className="w-full" height="500" src="https://terminal.ctfguide.com/wetty/ssh/root?pass=" ></iframe>
                        </div>
@@ -273,8 +302,8 @@ const Practice = () => {
 
             </div>
 
-            <div className="mt-5 bg-gray-900 border border-gray-700 rounded-lg px-5 py-10">
-                    <h1 className="text-white text-4xl font-semibold">Comments</h1>
+            <div className="hidden mt-5 bg-gray-900 border border-gray-700 rounded-lg px-5 py-10">
+                    <h1 className="text-white text-3xl font-semibold">Comments</h1>
                     <textarea className="mt-4 text-white border border-gray-700 focus-outline-none outline-none block w-full bg-black rounded-lg"></textarea>
                     <button onClick={ () => {
                         var xhttp = new XMLHttpRequest();
@@ -338,7 +367,7 @@ const Practice = () => {
                 <div className="test bg-gradient-to-br from-gray-900 to-black border border-gray-800 h-full flex flex-col py-6 bg-white shadow-xl overflow-y-scroll">
                   <div className="px-4 sm:px-6">
                     <Dialog.Title className="text-lg font-medium text-white text-2xl">Challenge Hint</Dialog.Title>
-                    <div class="bg-gray-800 rounded-lg px-4 py-2 mt-4">
+                    <div class="hidden bg-gray-800 rounded-lg px-4 py-2 mt-4">
 
 
                     <div class="flex items-center justify-between">
@@ -356,7 +385,7 @@ const Practice = () => {
                   
                     </div>
 
-                    <div class="bg-gray-800 rounded-lg px-4 py-2 mt-4">
+                    <div class="hidden bg-gray-800 rounded-lg px-4 py-2 mt-4">
 
 
 <div class="flex items-center justify-between">
@@ -374,7 +403,7 @@ const Practice = () => {
 
 </div>
 
-<div class="bg-gray-800 rounded-lg px-4 py-2 mt-4">
+<div class="hidden bg-gray-800 rounded-lg px-4 py-2 mt-4">
 
 
 <div class="flex items-center justify-between">
@@ -394,13 +423,17 @@ const Practice = () => {
                   </div>
                   <div className="mt-6 relative flex-1 px-4 sm:px-6">
                     {/* Replace with your content */}
-                    <div className="absolute inset-0 px-4 sm:px-6">
-                      <div className="h-full " aria-hidden="true" />
-                    </div>
+                    <div className="text-white">
+                    <h1 className=" text-xl mb-2">There are no hints for this challenge.</h1>
+                 
+                      Feel free to join our <a className="text-yellow-400 hover:text-white" href="https://discord.gg/q3hgRBvgkX">Discord server</a> for help.
+                    
+                   
+                 </div>
                     {/* /End replace */}
                
                
-                    <div className="text-white">
+                    <div className="text-white hidden">
                     <h1 className=" text-xl mb-2">How do hints work?</h1>
                     <p>Your first hint will only allow you to earn 1/2 of the points avaliable for this challenge.</p>
                     <br/>
@@ -409,6 +442,9 @@ const Practice = () => {
                     <p>Viewing the answer will simply mark the challenge solved for you and not award you any points. This feature is only for pro members.</p>
 
                  </div>
+
+                 
+          
 
 
 

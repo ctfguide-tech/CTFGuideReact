@@ -11,13 +11,25 @@ export class Navigation extends Component {
         const navigation = [
             { name: 'Dashboard', href: '../dashboard', current: false },
             { name: 'Practice', href: '../practice/all', current: false },
+
+        ]
+
+        const navigation2 = [
+            { name: 'Dashboard', href: '../dashboard', current: false },
+            { name: 'Practice', href: '../practice/all', current: false },
             { name: 'Learn', href: '../learn', current: false },
             { name: 'Classes', href: '#', current: false },
             { name: 'CTFLive', href: '#', current: false },
             { name: 'Leaderboards', href: '../leaderboards/global', current: false },
             { name: 'Friends', href: '#', current: false },
         ]
+
         const userNavigation = [
+
+            { name: 'Sign out', onClick: logout },
+        ]
+
+        const userNavigation2 = [
             { name: 'Your Profile', href: '#' },
             { name: 'Settings', href: '#' },
             { name: 'Sign out', onClick: logout },
@@ -76,7 +88,7 @@ export class Navigation extends Component {
                                 <div className="hidden md:block">
                                     <div className="ml-4 flex items-center md:ml-6">
 
-                                        <p className="text-yellow-500 hover:text-yellow-400" style={{cursor:'pointer'}}>✨ Upgrade to pro</p>
+                                        <p className="hidden text-yellow-500 hover:text-yellow-400" style={{cursor:'pointer'}}>✨ Upgrade to pro</p>
                                         <button
                                             type="button"
                                             className="ml-3 bg-black border border-gray-700 px-3 font-semibold rounded-full text-blue-500  focus:outline-none "
@@ -173,7 +185,7 @@ export class Navigation extends Component {
 
                                 </div>
                                 <div className="mt-3 px-2 mx-auto text-center">
-                                    <p className="text-yellow-500 hover:text-yellow-400 mb-2" style={{cursor:'pointer'}}>✨ Upgrade to pro</p>
+                                    <p className="hidden text-yellow-500 hover:text-yellow-400 mb-2" style={{cursor:'pointer'}}>✨ Upgrade to pro</p>
                                     <button
                                         type="button"
                                         className="ml-3  bg-black border border-gray-700 px-3 font-semibold rounded-full text-blue-500  focus:outline-none "
