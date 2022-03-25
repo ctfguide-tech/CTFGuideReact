@@ -165,10 +165,15 @@ const Practice = () => {
         if (serverResponse) {
           console.log(serverResponse.message)
           if (serverResponse.message == "OK") {
-           // document.getElementById("success").classList.remove("hidden");
+
+            localStorage.setItem("award", serverResponse.award);
+
+            // document.getElementById("success").classList.remove("hidden");
             document.getElementById("enteredFlag").classList.add("border-green-600");
             document.getElementById("enterFlagBTN").innerHTML = "Submit Flag";
-            setOpen2(true)
+
+            setOpen2(true);
+
             setTimeout(function() {
               document.getElementById("enteredFlag").classList.remove("border-green-600");
               
@@ -510,7 +515,7 @@ const Practice = () => {
                   </Dialog.Title>
                   <div className="mt-2">
                     <p className="text-gray-200">
-                     You were awarded 100 points.
+                     You were awarded <span>{localStorage.getItem("award")}</span> points.
                     </p>
                   </div>
                 </div>

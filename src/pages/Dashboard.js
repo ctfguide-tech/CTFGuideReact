@@ -195,7 +195,7 @@ const Dashboard = () => {
     document.getElementById("dashboard_tutorial").classList.remove("hidden")
   }
   function dashboardTutorialDone() {
-    window.location.href = "../practice"
+    window.location.href = "../practice/all"
   }
 
   window.onload = function() {
