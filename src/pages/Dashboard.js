@@ -28,10 +28,22 @@ const Dashboard = () => {
   // Initialize Firebase
   const app = initializeApp(firebaseConfig);
   const analytics = getAnalytics(app);
-
+  let uid = "pending"
   const auth = getAuth();
 
   //const socket = io("http://localhost:3002");
+
+  function tutorialDone() {
+    // send http request
+    var xhttp = new XMLHttpRequest();
+    xhttp.onreadystatechange = function() {
+      if (this.readyState === 4 & this.status === 200) {
+        window.location.reload();
+      }
+    }
+    xhttp.open("GET", `${process.env.REACT_APP_API_URL}/users/tutorial?uid=${localStorage.getItem('token')}&status=complete`);
+    xhttp.send();
+  }
 
 
   const [open, setOpen] = useState(true)
@@ -57,8 +69,9 @@ const Dashboard = () => {
 
     
     onAuthStateChanged(auth, (firebaseUser) => {
+
+      localStorage.setItem("token", firebaseUser.uid)
       if (firebaseUser) {
-        const uid = firebaseUser.uid;
         console.log(firebaseUser.photoURL);
    
         if (firebaseUser.photoURL) {
@@ -100,6 +113,7 @@ const Dashboard = () => {
 
             // set up vm stuff
             console.log(firebaseUser.uid)
+            uid = firebaseUser.uid;
             var xhttp = new XMLHttpRequest();
             xhttp.onreadystatechange = function() {
               if (this.readyState === 4 & this.status === 200) {
@@ -121,7 +135,24 @@ const Dashboard = () => {
               tutorialCompleted: data.tutorialCompleted
             })
 
-            if (!data.tutorialCompleted) {
+            // get challenge date given history
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function() {
+              if (this.readyState === 4 & this.status === 200) {
+                let data2 = JSON.parse(this.responseText);
+                console.log(data)
+                document.getElementById("noHistory").classList.add("hidden")
+
+                document.getElementById("history").classList.remove("hidden")
+                document.getElementById("history_title").innerHTML = data2.title;
+
+              }
+            }
+            xhttp.open("GET", `${process.env.REACT_APP_API_URL}/challenges/specific/${data.history[data.history.length - 1]}`);
+            xhttp.send();
+
+            if (data.tutorialCompleted === false) {
+              document.getElementById("tutorial_banner_core").classList.remove("hidden")
               if (localStorage.getItem("tutorial_phase") == 1) {
                 document.getElementById("dashboard_tutorial").classList.remove("hidden")
               }
@@ -195,7 +226,7 @@ const Dashboard = () => {
     document.getElementById("dashboard_tutorial").classList.remove("hidden")
   }
   function dashboardTutorialDone() {
-    window.location.href = "../practice"
+    window.location.href = "../practice/all"
   }
 
   window.onload = function() {
@@ -208,8 +239,40 @@ const Dashboard = () => {
     <div className="min-h-full " style={{ fontFamily: 'Space Grotesk, sans-serif' }}>
 
       <Navigation/>
+      <div id="message" className="relative bg-blue-900">
+      <div className="max-w-7xl mx-auto py-3 px-3 sm:px-6 lg:px-8">
+        <div className="pr-16 sm:text-center sm:px-16">
+          <p className="font-medium text-white">
+            <span className="md:hidden">Welcome to the new CTFGuide.</span>
+            <span className="hidden md:inline">Welcome to the new CTFGuide! We're still working on releasing all the new features.</span>
+            <span className="block sm:ml-2 sm:inline-block">
+              <a href="https://www.notion.so/ctfguide/CTFGuide-V2-Preview-397bddf3083d4eb6ae1f6b58d3af2e23" className="text-white font-bold underline">
+                {' '}
+                Learn more <span aria-hidden="true">&rarr;</span>
+              </a>
+            </span>
+          </p>
+        </div>
+        <div className="absolute inset-y-0 right-0 pt-1 pr-1 flex items-start sm:pt-1 sm:pr-2 sm:items-start">
+          <button
+            type="button"
+            className="flex p-2 rounded-md hover:bg-blue-900 focus:outline-none focus:ring-2 focus:ring-white"
+            onClick={() => {
+              document.getElementById("message").classList.add("hidden")
+            }
+          }
+          >
+            <span className="sr-only">Dismiss</span>
+            <XIcon className="h-6 w-6 text-white" aria-hidden="true" />
+          </button>
+        </div>
+      </div>
+    </div>
+      <main className="mt-6" >
+     
 
-      <main className="mt-6 " >
+
+
      
         <div className="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8 ">
 
@@ -224,7 +287,7 @@ const Dashboard = () => {
         <p className="text-yellow-500 mb-3 hidden">If you are seeing this message it means the CTFGuide API is offline.</p>
         <p className="text-yellow-500 mb-3 hidden">This is a site wide broadcast. Hi!</p>
 
-<div id="tutorial_banner_core"   className={(userData.tutorialCompleted  ? "hidden" : "")}>
+<div id="tutorial_banner_core" className="hidden">
 
       <div id="tutorial_banner" className={ " rounded-xl bg-gray-900 border  border-gray-700 mb-10 max-w-7xl mx-auto py-12 px-4 sm:px-3 lg:py-12 lg:px-8 lg:flex lg:items-center lg:justify-between"}>
                     <div className="w-full">
@@ -245,7 +308,7 @@ const Dashboard = () => {
             </a>
 
             <a
-              href="#"
+              onClick={() => { tutorialDone() }}
               className="mt-4 ml-2 inline-flex border  border-gray-100 items-center justify-center px-10 py-3 border border-transparent text-base font-medium rounded-md text-white "
             >
               No thanks
@@ -299,21 +362,20 @@ const Dashboard = () => {
                     
                     
 
-              {userData.continueWorking.map((activity1) => (
+              
 
-                <div key={activity1.name} className="mt-2 bg-gray-900 px-4 py-4 text-white rounded border border-blue-900">
+                <div id="history"  className="hidden mt-2 bg-gray-900 border  border-gray-700   px-4 py-6 text-white rounded">
                   <div className="flex items-center justify-between">
                     <div>
-                      <h1 className="text-xl"><span className="font-semibold">CTF Activity:</span> {activity1.name}</h1>
-                      <p className="text-blue-600">@{activity1.author} <span className="text-gray-400">·</span> <span className="text-green-500">{activity1.difficulty}</span></p>
-                    </div>
+                      <h1 className="text-xl"> <span id="history_title"></span></h1>
+                  </div>
 
                     <div className="ml-2 flex-shrink-0 flex">
-                      <button className="px-2 py-1 bg-green-700 rounded-lg hover:bg-green-600"> Start Activity</button>
+                      <button className="px-2 py-1 bg-green-700 rounded-lg hover:bg-green-600"> Resume Activity</button>
                     </div>
                   </div>
                 </div>
-              ))}
+           
 
 
 
@@ -357,7 +419,7 @@ const Dashboard = () => {
           </div>
 
 
-          <h1 className="text-xl text-gray-700  italic mt-6 mb-4"> 🚧 Your Learning Path will be here. Just not at the moment. We're hard at work - and we apologize for this akward blank space.</h1>
+          <h1 className="hidden text-xl text-gray-700  italic mt-6 mb-4"> 🚧 Your Learning Path will be here. Just not at the moment. We're hard at work - and we apologize for this akward blank space.</h1>
 
           <div className="hidden">
          
@@ -473,6 +535,9 @@ const Dashboard = () => {
         <p className="hidden mt-4 text-gray-500 py-4 text-center mx-auto">  &copy; CTFGuide 2022<br></br><a className="hover:text-white" href="../terms-of-service">Terms of Service</a> • <a className="hover:text-white" href="../privacy-policy">Privacy Policy</a> • <a className="hover:text-white" href="../ambassador-program">Ambassador Program</a><br></br>This is beta software. Problems will arise.</p>
  
         </main>
+
+
+        
       <div
         aria-live="assertive"
         id="warning"
@@ -500,7 +565,7 @@ const Dashboard = () => {
                   </div>
                   <div className="ml-4 flex-shrink-0 flex">
                     <button
-                      className="bg-black px-1 py-1 rounded-md inline-flex text-gray-400 hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+                      className="bg-black px-1 py-1 rounded-md inline-flex text-gray-400 hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500"
                       onClick={() => {
                         setShow(false)
                       }}
@@ -533,8 +598,7 @@ const Dashboard = () => {
           <h3 className="text-4xl leading-6 font-semibold text-white" id="modal-title">Dashboard</h3>
           <div className="mt-4">
             <p className="text-xl px-5 text-white">The dashboard serves as an easy way for you to visualize your progress and helps find you the next thing to do. Your dashboard is specifically tailored for you.</p>
-            <iframe className="mt-4 w-full px-5 mt-4 h-80" src="https://www.youtube-nocookie.com/embed/QU952BUA9Gk" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; hide-info;"></iframe>
-          </div>
+       </div>
         </div>
       </div>
       <div className="mt-5 sm:mt-6 mx-auto text-center">

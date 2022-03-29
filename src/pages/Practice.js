@@ -273,6 +273,35 @@ const Practice = () => {
 <Navigation/>
 
       <main>
+      <div id="message" className="relative bg-blue-900">
+      <div className="max-w-7xl mx-auto py-3 px-3 sm:px-6 lg:px-8">
+        <div className="pr-16 sm:text-center sm:px-16">
+          <p className="font-medium text-white">
+            <span className="md:hidden">Welcome to the new CTFGuide.</span>
+            <span className="hidden md:inline">Welcome to the new CTFGuide! We're still working on releasing all the new features.</span>
+            <span className="block sm:ml-2 sm:inline-block">
+              <a href="https://www.notion.so/ctfguide/CTFGuide-V2-Preview-397bddf3083d4eb6ae1f6b58d3af2e23" className="text-white font-bold underline">
+                {' '}
+                Learn more <span aria-hidden="true">&rarr;</span>
+              </a>
+            </span>
+          </p>
+        </div>
+        <div className="absolute inset-y-0 right-0 pt-1 pr-1 flex items-start sm:pt-1 sm:pr-2 sm:items-start">
+          <button
+            type="button"
+            className="flex p-2 rounded-md hover:bg-blue-900 focus:outline-none focus:ring-2 focus:ring-white"
+            onClick={() => {
+              document.getElementById("message").classList.add("hidden")
+            }
+          }
+          >
+            <span className="sr-only">Dismiss</span>
+            <XIcon className="h-6 w-6 text-white" aria-hidden="true" />
+          </button>
+        </div>
+      </div>
+    </div>
         <div className="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
 
           <div>
@@ -396,8 +425,7 @@ const Practice = () => {
           <h3 className="text-4xl leading-6 font-semibold text-white" id="modal-title">Practice</h3>
           <div className="mt-4">
             <p className="text-xl px-5 text-white">CTFGuide has 100s of community uploaded challenges for you to use for <b>FREE</b>. There are three difficultes and various categories.</p>
-            <iframe className="mt-4 w-full px-5 mt-4 h-80" src="https://www.youtube-nocookie.com/embed/QU952BUA9Gk" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; hide-info;"></iframe>
-          </div>
+       </div>
         </div>
       </div>
       <div className="mt-5 sm:mt-6 mx-auto text-center">

@@ -7,6 +7,9 @@ import Practice from "./pages/Practice";
 import NoPage from "./pages/NoPage";
 import Dashboard from "./pages/Dashboard";
 import Login from "./pages/Login";
+import Register from "./pages/Register";
+import Onboarding from "./pages/Onboarding";
+
 import Challenge from "./pages/Challenge";
 import Leaderboards from "./pages/Leaderboards";
 
@@ -21,6 +24,9 @@ export default function App() {
         <Route path="/" element={<Layout />}>
           <Route index element={<Home />} />
           <Route path="/login" element={<Login />} />
+          <Route path="/register" element={<Register />} />
+          <Route path="/onboarding" element={<Onboarding />} />
+
           <Route path="/dashboard" element={<Dashboard />} />
           <Route path="/practice/all" element={<Practice />} />
           <Route path="/practice/easy" element={<Practice type="easy" />} />
