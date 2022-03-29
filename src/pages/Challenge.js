@@ -129,7 +129,7 @@ const Practice = () => {
             document.getElementById("suggestedLoader").classList.add("hidden");
           }
         }
-        xhttp.open("GET", `${process.env.REACT_APP_API_URL}/challenges/specific/` + window.location.href.split("/")[4]);
+        xhttp.open("GET", `${process.env.REACT_APP_API_URL}/challenges/specific/` + window.location.href.split("/")[4] + `?uid=${firebaseUser.uid}`);
         xhttp.send();
 
 

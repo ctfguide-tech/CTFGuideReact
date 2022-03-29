@@ -28,10 +28,22 @@ const Dashboard = () => {
   // Initialize Firebase
   const app = initializeApp(firebaseConfig);
   const analytics = getAnalytics(app);
-
+  let uid = "pending"
   const auth = getAuth();
 
   //const socket = io("http://localhost:3002");
+
+  function tutorialDone() {
+    // send http request
+    var xhttp = new XMLHttpRequest();
+    xhttp.onreadystatechange = function() {
+      if (this.readyState === 4 & this.status === 200) {
+        window.location.reload();
+      }
+    }
+    xhttp.open("GET", `${process.env.REACT_APP_API_URL}/users/tutorial?uid=${localStorage.getItem('token')}&status=complete`);
+    xhttp.send();
+  }
 
 
   const [open, setOpen] = useState(true)
@@ -57,8 +69,9 @@ const Dashboard = () => {
 
     
     onAuthStateChanged(auth, (firebaseUser) => {
+
+      localStorage.setItem("token", firebaseUser.uid)
       if (firebaseUser) {
-        const uid = firebaseUser.uid;
         console.log(firebaseUser.photoURL);
    
         if (firebaseUser.photoURL) {
@@ -100,6 +113,7 @@ const Dashboard = () => {
 
             // set up vm stuff
             console.log(firebaseUser.uid)
+            uid = firebaseUser.uid;
             var xhttp = new XMLHttpRequest();
             xhttp.onreadystatechange = function() {
               if (this.readyState === 4 & this.status === 200) {
@@ -121,7 +135,24 @@ const Dashboard = () => {
               tutorialCompleted: data.tutorialCompleted
             })
 
-            if (!data.tutorialCompleted) {
+            // get challenge date given history
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function() {
+              if (this.readyState === 4 & this.status === 200) {
+                let data2 = JSON.parse(this.responseText);
+                console.log(data)
+                document.getElementById("noHistory").classList.add("hidden")
+
+                document.getElementById("history").classList.remove("hidden")
+                document.getElementById("history_title").innerHTML = data2.title;
+
+              }
+            }
+            xhttp.open("GET", `${process.env.REACT_APP_API_URL}/challenges/specific/${data.history[data.history.length - 1]}`);
+            xhttp.send();
+
+            if (data.tutorialCompleted === false) {
+              document.getElementById("tutorial_banner_core").classList.remove("hidden")
               if (localStorage.getItem("tutorial_phase") == 1) {
                 document.getElementById("dashboard_tutorial").classList.remove("hidden")
               }
@@ -256,7 +287,7 @@ const Dashboard = () => {
         <p className="text-yellow-500 mb-3 hidden">If you are seeing this message it means the CTFGuide API is offline.</p>
         <p className="text-yellow-500 mb-3 hidden">This is a site wide broadcast. Hi!</p>
 
-<div id="tutorial_banner_core"   className={(userData.tutorialCompleted  ? "hidden" : "")}>
+<div id="tutorial_banner_core" className="hidden">
 
       <div id="tutorial_banner" className={ " rounded-xl bg-gray-900 border  border-gray-700 mb-10 max-w-7xl mx-auto py-12 px-4 sm:px-3 lg:py-12 lg:px-8 lg:flex lg:items-center lg:justify-between"}>
                     <div className="w-full">
@@ -277,7 +308,7 @@ const Dashboard = () => {
             </a>
 
             <a
-              href="#"
+              onClick={() => { tutorialDone() }}
               className="mt-4 ml-2 inline-flex border  border-gray-100 items-center justify-center px-10 py-3 border border-transparent text-base font-medium rounded-md text-white "
             >
               No thanks
@@ -331,21 +362,20 @@ const Dashboard = () => {
                     
                     
 
-              {userData.continueWorking.map((activity1) => (
+              
 
-                <div key={activity1.name} className="mt-2 bg-gray-900 px-4 py-4 text-white rounded border border-blue-900">
+                <div id="history"  className="hidden mt-2 bg-gray-900 border  border-gray-700   px-4 py-6 text-white rounded">
                   <div className="flex items-center justify-between">
                     <div>
-                      <h1 className="text-xl"><span className="font-semibold">CTF Activity:</span> {activity1.name}</h1>
-                      <p className="text-blue-600">@{activity1.author} <span className="text-gray-400">·</span> <span className="text-green-500">{activity1.difficulty}</span></p>
-                    </div>
+                      <h1 className="text-xl"> <span id="history_title"></span></h1>
+                  </div>
 
                     <div className="ml-2 flex-shrink-0 flex">
-                      <button className="px-2 py-1 bg-green-700 rounded-lg hover:bg-green-600"> Start Activity</button>
+                      <button className="px-2 py-1 bg-green-700 rounded-lg hover:bg-green-600"> Resume Activity</button>
                     </div>
                   </div>
                 </div>
-              ))}
+           
 
 
 
