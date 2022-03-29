@@ -531,7 +531,7 @@ const Practice = () => {
                 <button
                   type="button"
                   className="ml-2 inline-flex justify-center   rounded-md shadow-sm px-4 py-2 bg-gray-800 border border-gray-700 text-base font-medium text-white  focus:outline-none  sm:text-sm"
-                  onClick={() => setOpen2(false)}
+                  onClick={() => window.location.href = "../challenges/all"}
                 >
                   Back to Challenges
                 </button>

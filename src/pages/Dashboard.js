@@ -145,7 +145,7 @@ const Dashboard = () => {
 
                 document.getElementById("history").classList.remove("hidden")
                 document.getElementById("history_title").innerHTML = data2.title;
-
+                document.getElementById("historylink").href = "./challenges/" + data2.id;
               }
             }
             xhttp.open("GET", `${process.env.REACT_APP_API_URL}/challenges/specific/${data.history[data.history.length - 1]}`);
@@ -371,7 +371,7 @@ const Dashboard = () => {
                   </div>
 
                     <div className="ml-2 flex-shrink-0 flex">
-                      <button className="px-2 py-1 bg-green-700 rounded-lg hover:bg-green-600"> Resume Activity</button>
+                      <a id="historylink" className="px-2 py-1 bg-green-700 rounded-lg hover:bg-green-600"> Resume Activity</a>
                     </div>
                   </div>
                 </div>
