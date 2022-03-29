@@ -136,6 +136,7 @@ const Dashboard = () => {
             })
 
             // get challenge date given history
+            if (data.history) {
             var xhttp = new XMLHttpRequest();
             xhttp.onreadystatechange = function() {
               if (this.readyState === 4 & this.status === 200) {
@@ -150,6 +151,7 @@ const Dashboard = () => {
             }
             xhttp.open("GET", `${process.env.REACT_APP_API_URL}/challenges/specific/${data.history[data.history.length - 1]}`);
             xhttp.send();
+          }
 
             if (data.tutorialCompleted === false) {
               document.getElementById("tutorial_banner_core").classList.remove("hidden")
