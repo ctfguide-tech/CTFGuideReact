@@ -190,7 +190,7 @@ const Practice = () => {
         }
       }
     }
-    xhttp.open("GET", `http://localhost:3001/challenges/check/${window.location.href.split("/")[4]}?uid=${auth.currentUser.uid}&flag=${flag}`);
+    xhttp.open("GET", `${process.env.REACT_APP_API_URL}/challenges/check/${window.location.href.split("/")[4]}?uid=${auth.currentUser.uid}&flag=${flag}`);
     xhttp.send();
   }
 
