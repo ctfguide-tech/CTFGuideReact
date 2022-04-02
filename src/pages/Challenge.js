@@ -125,7 +125,10 @@ const Practice = () => {
             let data = JSON.parse(this.responseText);
             document.getElementById("challengeName").innerHTML = data.title;
             document.getElementById("challengeDetails").innerHTML = data.problem;
-
+            setChallenges({
+              data: data.comments
+            });
+        //    window.alert(JSON.stringify(data.comments))
             document.getElementById("suggestedLoader").classList.add("hidden");
           }
         }
@@ -307,9 +310,9 @@ const Practice = () => {
 
             </div>
 
-            <div className="hidden mt-5 bg-gray-900 border border-gray-700 rounded-lg px-5 py-10">
+            <div className="mt-5 bg-gray-900 border border-gray-700 rounded-lg px-5 py-10">
                     <h1 className="text-white text-3xl font-semibold">Comments</h1>
-                    <textarea className="mt-4 text-white border border-gray-700 focus-outline-none outline-none block w-full bg-black rounded-lg"></textarea>
+                    <textarea id="comment" className="mt-4 text-white border border-gray-700 focus-outline-none outline-none block w-full bg-black rounded-lg"></textarea>
                     <button onClick={ () => {
                         var xhttp = new XMLHttpRequest();
                         xhttp.onreadystatechange = function() {
@@ -317,8 +320,25 @@ const Practice = () => {
                             window.location.reload();
                           }
                         }
-                        xhttp.open("GET", `http://localhost:3001/challenges/comments/post?comment=${document.getElementById("comment").value}&uid=${auth.currentUser.uid}&challengeID=${window.location.href.split("/")[4]}`);
-                    }} id="commentButton" className="mt-4 border border-gray-700 bg-black hover:bg-gray-900 rounded-lg text-white px-4 py-1">Post Comment</button>
+                        xhttp.open("GET", `${process.env.REACT_APP_API_URL}/challenges/comments/post?comment=${document.getElementById("comment").value}&uid=${localStorage.getItem("token")}&challengeID=${window.location.href.split("/")[4]}`);
+                        xhttp.send();
+                   }} id="commentButton" className="mt-4 border border-gray-700 bg-black hover:bg-gray-900 rounded-lg text-white px-4 py-1">Post Comment</button>
+
+                
+
+                      {
+
+challenge.data.map((item) => (
+
+  <div className="mt-4 bg-black rounded-lg border border-gray-700">
+  <h1 className="text-white px-5 pt-4 text-xl">@{ item.username }</h1>
+  <p className="px-5 text-white pb-4 space-y-10"><span className="mb-5">{ item.comment }</span><br className="mt-10"></br><a href="" className="mt-4 text-red-600 hover:text-red-500  ">Report Comment</a></p>
+  </div>
+
+))
+
+}
+
 
               </div>
 
@@ -524,14 +544,14 @@ const Practice = () => {
                 <button
                   type="button"
                   className="inline-flex justify-center w-1/2 rounded-md shadow-sm px-4 py-2 bg-gray-800 border border-gray-700 text-base font-medium text-white  focus:outline-none  sm:text-sm"
-                  onClick={() => setOpen2(false)}
+                  onClick={() => window.location.href = "../leaderboards/global"}
                 >
                   View Leaderboards
                 </button>
                 <button
                   type="button"
                   className="ml-2 inline-flex justify-center   rounded-md shadow-sm px-4 py-2 bg-gray-800 border border-gray-700 text-base font-medium text-white  focus:outline-none  sm:text-sm"
-                  onClick={() => window.location.href = "../challenges/all"}
+                  onClick={() => window.location.href = "../practice/all"}
                 >
                   Back to Challenges
                 </button>

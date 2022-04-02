@@ -112,6 +112,7 @@ const Leaderboards = () => {
                             points: data.points
                         })
 
+                        document.getElementById("navPoints").innerHTML = data.points
 
                         document.getElementById("loader").classList.add("hidden");
 

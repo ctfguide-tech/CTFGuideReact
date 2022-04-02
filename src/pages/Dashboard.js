@@ -63,7 +63,7 @@ const Dashboard = () => {
     points: 0,
     tutorialCompleted: false
   })
-
+  
 
   useEffect(() => {
 
@@ -340,8 +340,8 @@ const Dashboard = () => {
 
 
             <div className="lg:col-span-2 sm:col-span-1">
-              <h1 className="text-4xl text-white mb-4 mt-4 "> Continue working on</h1>
-              
+                <h1 className="text-4xl text-white mb-4 mt-4 "> Continue working on</h1>
+                
               <div id="fetchingHistory" className="mt-2 bg-gray-900 border  border-gray-700  px-4 py-4 text-white rounded">
                   <div className="flex items-center justify-between">
                     <div>
@@ -378,7 +378,22 @@ const Dashboard = () => {
                   </div>
                 </div>
            
+           <div id="admin" className="hidden border border-gray-500 mt-6 px-5 py-5">
+                <h1 className="text-4xl text-white mb-2  "> Admin Menu</h1>
+                <input class="bg-gray-800 rounded-lg border border-gray-700 px-2 py-1 text-white"></input>
+                 <button class="bg-yellow-600 px-4 py-2 rounded-lg text-white mr-4 ml-4 mb-4">
+                  Disable Account
+                </button>
+         
+                <button class="bg-red-600 px-4 py-2 rounded-lg text-white ">
+                  Warn
+                </button>
 
+          <br></br>
+                <textarea class="bg-gray-900 text-yellow-400 w-full" disabled>Site Logs</textarea>
+
+                <button class="bg-red-500 tex-white font-semibold text-white  rounded-lg  px-4 py-2" >RESTART SERVER</button>
+                </div>
 
 
                 <div className="hidden bg-gray-900 px-5 py-3 border border-blue-800 rounded">
