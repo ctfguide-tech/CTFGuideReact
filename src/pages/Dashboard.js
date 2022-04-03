@@ -376,8 +376,78 @@ const Dashboard = () => {
                       <a id="historylink" className="px-2 py-1 bg-green-700 rounded-lg hover:bg-green-600"> Resume Activity</a>
                     </div>
                   </div>
+            
                 </div>
-           
+
+
+                <div className="">
+         
+         <h1 className="text-4xl text-white mt-6 mb-4 align-middle"> Learning Path <span className="align-middle text-xl font-semibold italic text-yellow-500">Coming soon!</span></h1>
+
+
+         
+
+<div className="blur-sm" disabled>
+         <div className="mt-2 bg-gray-900 border  border-gray-700  px-4 py-4 text-white rounded ">
+    <div className="flex items-center justify-between">
+      <h1 className="text-xl w-full"><i className="fas fa-search"></i> Exploratory Cybersecurity</h1>
+      <div className="ml-2 flex-shrink-0 flex w-1/2">
+      <div className="w-full bg-gray-900 border border-gray-700 rounded-full">
+      <div className="bg-gradient-to-br from-green-600 to-green-900  text-xs font-medium text-blue-100 text-center p-0.5 leading-none rounded-l-full" style={{width: '25%'}}> 25%</div>
+    
+    </div>
+    
+      </div>
+                    
+    
+      </div>
+     
+      <div className="flex items-center justify-between">
+    
+     
+    
+     <div>
+       
+      <p className="mt-4 uppercase">Up next</p>
+      <i className="far fa-play-circle"></i> Video Lesson - Cyberwhatnow?
+     </div>
+      <div className="ml-2 flex-shrink-0 flex w-1/10">
+                    <button className="border border-green-600 px-4 py-1 rounded-lg hover:bg-gray-800">Start Lesson</button>
+      </div>
+      </div>
+    </div>
+    
+    
+    <div className=" mt-4 bg-gray-900 border  border-gray-700   px-4 py-4 text-white rounded ">
+      
+    <div className="flex items-center justify-between">
+      <h1 className="text-xl"><i className="fab fa-linux"></i> Linux 101</h1>
+      <div className="ml-2 flex-shrink-0 flex w-1/2">
+      <div className="w-full bg-gray-900 border border-gray-700 rounded-full">
+      <div className="bg-gradient-to-br from-green-600 to-green-900 text-xs font-medium text-blue-100 text-center p-0.5 leading-none rounded-l-full" style={{width: '25%'}}> 25%</div>
+    </div>
+    
+      </div>
+                    
+    
+      </div>
+      <div className="flex items-center justify-between">
+     <div>
+       
+      <p className="mt-4 uppercase">Up next</p>
+      <i className="far fa-play-circle"></i> Video Lesson - Accessing other servers
+     </div>
+      <div className="ml-2 flex-shrink-0 flex w-1/10">
+                    <button className="border border-green-600 px-4 py-1 rounded-lg hover:bg-gray-800">Start Lesson</button>
+      </div>
+      </div>
+    </div>
+
+
+    </div>
+    </div>
+          
+            
            <div id="admin" className="hidden border border-gray-500 mt-6 px-5 py-5">
                 <h1 className="text-4xl text-white mb-2  "> Admin Menu</h1>
                 <input class="bg-gray-800 rounded-lg border border-gray-700 px-2 py-1 text-white"></input>
@@ -426,7 +496,19 @@ const Dashboard = () => {
               </div>
        
         
-    
+       
+              <div id=""  className="mt-2 text-white rounded">
+                  <div className="flex items-center justify-between mx-auto text-centered text-white">
+                    <div className="mx-auto text-center">
+          
+                    <div className="text-white dark raised" data-ea-publisher="ctfguidecom" data-ea-type="text"></div>
+                    
+                  </div>
+
+              
+                  </div>
+            
+                </div>
             
             
             </div>
@@ -436,66 +518,7 @@ const Dashboard = () => {
           </div>
 
 
-          <h1 className="hidden text-xl text-gray-700  italic mt-6 mb-4"> 🚧 Your Learning Path will be here. Just not at the moment. We're hard at work - and we apologize for this akward blank space.</h1>
-
-          <div className="hidden">
-         
-     <h1 className="text-4xl text-white mt-6 mb-4"> Learning Path</h1>
-     <div className="mt-2 bg-gray-900 border  border-gray-700  px-4 py-4 text-white rounded ">
-<div className="flex items-center justify-between">
-  <h1 className="text-xl w-full"><i className="fas fa-search"></i> Exploratory Cybersecurity</h1>
-  <div className="ml-2 flex-shrink-0 flex w-1/2">
-  <div className="w-full bg-gray-900 border border-gray-700 rounded-full">
-  <div className="bg-gradient-to-br from-green-600 to-green-900  text-xs font-medium text-blue-100 text-center p-0.5 leading-none rounded-l-full" style={{width: '25%'}}> 25%</div>
-
-</div>
-
-  </div>
-                
-
-  </div>
- 
-  <div className="flex items-center justify-between">
-
- 
-
- <div>
-   
-  <p className="mt-4 uppercase">Up next</p>
-  <i className="far fa-play-circle"></i> Video Lesson - Cyberwhatnow?
- </div>
-  <div className="ml-2 flex-shrink-0 flex w-1/10">
-                <button className="border border-green-600 px-4 py-1 rounded-lg hover:bg-gray-800">Start Lesson</button>
-  </div>
-  </div>
-</div>
-
-
-<div className=" mt-4 bg-gray-900 border  border-gray-700   px-4 py-4 text-white rounded ">
-<div className="flex items-center justify-between">
-  <h1 className="text-xl"><i className="fab fa-linux"></i> Linux 101</h1>
-  <div className="ml-2 flex-shrink-0 flex w-1/2">
-  <div className="w-full bg-gray-900 border border-gray-700 rounded-full">
-  <div className="bg-gradient-to-br from-green-600 to-green-900 text-xs font-medium text-blue-100 text-center p-0.5 leading-none rounded-l-full" style={{width: '25%'}}> 25%</div>
-</div>
-
-  </div>
-                
-
-  </div>
-  <div className="flex items-center justify-between">
- <div>
-   
-  <p className="mt-4 uppercase">Up next</p>
-  <i className="far fa-play-circle"></i> Video Lesson - Accessing other servers
- </div>
-  <div className="ml-2 flex-shrink-0 flex w-1/10">
-                <button className="border border-green-600 px-4 py-1 rounded-lg hover:bg-gray-800">Start Lesson</button>
-  </div>
-  </div>
-</div>
-</div>
-
+    
               <div className="hidden bg-gray-800 px-20 py-1 text-xl rounded-t-lg hover:bg-gray-700 hidden" style={{
                 display:'none',
                 cursor: 'pointer',
