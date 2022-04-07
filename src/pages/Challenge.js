@@ -298,7 +298,7 @@ const Practice = () => {
                       
                     </p>
 
-                      <input id="enteredFlag" placeholder="CTFGuide{flag}" className="text-white  focus-outline-none  outline-none px-4 py-1 rounded-lg mr-2 bg-black border border-gray-700"></input>
+                      <input id="enteredFlag" placeholder="Flag Here" className="text-white  focus-outline-none  outline-none px-4 py-1 rounded-lg mr-2 bg-black border border-gray-700"></input>
                       <button id="enterFlagBTN" onClick={submitFlag} className="mt-4 border bg-black border-green-500  rounded-lg  hover:bg-gray-900 text-green-500 px-4 py-1">Submit Flag</button>
                       <button onClick={() => setOpen(true)} className="mt-4 border bg-black  rounded-lg  border-yellow-300 text-yellow-300 hover:bg-gray-900 text-white px-4 py-1 ml-2">Stuck?</button>
                       
