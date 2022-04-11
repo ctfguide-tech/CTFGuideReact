@@ -273,7 +273,7 @@ const Practice = () => {
 <Navigation/>
 
       <main>
-      <div id="message" className="relative bg-blue-900">
+      <div id="message" className="hidden relative bg-blue-900">
       <div className="max-w-7xl mx-auto py-3 px-3 sm:px-6 lg:px-8">
         <div className="pr-16 sm:text-center sm:px-16">
           <p className="font-medium text-white">
