@@ -1,6 +1,6 @@
 
 import { Link } from "react-router-dom";
-import { getAuth, signInWithEmailAndPassword, signInWithPopup, GoogleAuthProvider } from "firebase/auth";
+import { getAuth, signInWithEmailAndPassword, signInWithPopup, GoogleAuthProvider, sendPasswordResetEmail } from "firebase/auth";
 import { initializeApp } from "firebase/app";
 import { getAnalytics } from "firebase/analytics";
 
@@ -36,9 +36,26 @@ const Login = () => {
     .catch((error) => {
       const errorCode = error.code;
       const errorMessage = error.message;
-      window.alert(errorMessage);
+      document.getElementById("loginError").classList.remove("hidden")
+      document.getElementById("loginError").innerHTML = errorMessage
+   //   window.alert(errorMessage);
     });
     
+  }
+
+  function resetPassword() {
+
+    const auth = getAuth();
+    const email = document.getElementById("email-address").value;
+   // window.alert(email)
+    sendPasswordResetEmail(auth, email).then(() => {
+      document.getElementById("passwordReset").classList.remove("hidden")
+    }
+    ).catch((error) => {
+      document.getElementById("passwordReset").classList.remove("hidden")
+      document.getElementById("passwordReset").innerHTML = error
+    }
+    );
   }
   function login() {
     const auth = getAuth();
@@ -51,7 +68,7 @@ const Login = () => {
       .catch((error) => {
         const errorCode = error.code;
         const errorMessage = error.message;
-        window.alert(errorMessage);
+        document.getElementById("loginError").classList.remove("hidden")
       });
   }
 
@@ -70,6 +87,13 @@ const Login = () => {
         </p>
       </div>
       <div className="mt-8 space-y-6">
+        <div id="loginError" className="hidden bg-red-900 border border-red-500 px-2 py-2 rounded-lg">
+          <p className="text-white text-center">There was an error when trying to log you in.</p>
+        </div>
+
+        <div id="passwordReset" className="text-white hidden bg-blue-900 border border-blue-500 px-2 py-2 rounded-lg">
+          <p className="text-white text-center">Check your email for a password reset link.</p>
+        </div>
         <input type="hidden" name="remember" defaultValue="true" />
         <div className="rounded-md shadow-sm -space-y-px">
           <div>
@@ -118,9 +142,9 @@ const Login = () => {
           </div>
 
           <div className="text-sm">
-            <a href="#" className="font-medium text-blue-600 hover:text-blue-500">
+            <p onClick={resetPassword}  className="font-medium text-blue-600 hover:text-blue-500">
               Forgot your password?
-            </a>
+            </p>
           </div>
         </div>
 
