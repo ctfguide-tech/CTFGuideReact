@@ -11,6 +11,8 @@ import Register from "./pages/Register";
 import Onboarding from "./pages/Onboarding";
 
 import Challenge from "./pages/Challenge";
+import EditChallenge from "./pages/EditChallenge"
+
 import Leaderboards from "./pages/Leaderboards";
 
 import Learn from "./pages/Learn";
@@ -35,6 +37,7 @@ export default function App() {
 
           <Route path="/learn" element={<Learn />} />
           <Route path="/challenges/:id" element={<Challenge />} />
+          <Route path="/challenges/:id/edit" element={<EditChallenge />} />
           <Route path="/leaderboards/:id" element={<Leaderboards />} />
           <Route path="*" element={<NoPage />} />
         </Route>

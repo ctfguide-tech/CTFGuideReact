@@ -62,7 +62,7 @@ export class Navigation extends Component {
                                     <div className="flex-shrink-0">
                                         <img
                                             className="h-14 w-14"
-                                            src="../CTFGuide trans dark.png"
+                                            src="../../CTFGuide trans dark.png"
                                             alt="CTFGuide"
                                         />
                                     </div>
@@ -105,7 +105,7 @@ export class Navigation extends Component {
                                             <div>
                                                 <Menu.Button className="max-w-xs bg-gray-800 rounded-full flex items-center text-sm text-white focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-800 focus:ring-white">
                                                     <span className="sr-only">Open user menu</span>
-                                                    <img id="pfp1" className="h-8 w-8 rounded-full" src="../defaultpfp.png" alt="profile picture" />
+                                                    <img id="pfp1" className="h-8 w-8 rounded-full" src="../../defaultpfp.png" alt="profile picture" />
                                                 </Menu.Button>
                                             </div>
                                             <Transition

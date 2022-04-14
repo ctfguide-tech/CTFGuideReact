@@ -17,3 +17,57 @@
     0%{background-position:0% 50%}
     50%{background-position:100% 25%}
  }
+
+ .CodeMirror {
+     background-color: rgb(17 24 39 / var(--tw-bg-opacity));
+     color:white;
+     border:none;
+
+
+ }
+ .EasyMDEContainer .CodeMirror {
+     border-color: rgb(55 65 81 / var(--tw-border-opacity));
+     border-radius:8px;
+
+ }
+
+ .editor-preview-side {
+     border:none;
+ }
+ .EasyMDEContainer
+ {
+     border:none;
+
+ }
+
+ .editor-toolbar {
+     border:none;
+     padding-left:0
+ }
+
+ .editor-toolbar .preview {
+     display:none;
+ }
+ .editor-toolbar .side-by-side {
+    display:none;
+}
+.editor-toolbar .fullscreen {
+    display:none;
+}
+
+
+ .editor-toolbar button {
+        color: white;
+        background-color:  rgb(17 24 39 / var(--tw-bg-opacity));
+ }
+
+ .editor-toolbar button:hover {
+    color: white;
+    background-color:  rgb(17 24 39 / var(--tw-bg-opacity));
+}
+
+
+.editor-toolbar button:active {
+    color: white;
+    background-color:  rgb(17 24 39 / var(--tw-bg-opacity));
+}
