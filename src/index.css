@@ -19,9 +19,10 @@
  }
 
  .CodeMirror {
-     background-color: rgb(17 24 39 / var(--tw-bg-opacity));
+     background-color: black;
      color:white;
      border:none;
+        font-family: 'Space Grotesk', sans-serif;
 
 
  }
@@ -42,7 +43,8 @@
 
  .editor-toolbar {
      border:none;
-     padding-left:0
+     padding-left:0;
+     display:none;
  }
 
  .editor-toolbar .preview {

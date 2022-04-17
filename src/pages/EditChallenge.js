@@ -25,6 +25,7 @@ const EditChallenge = () => {
         appId: "1:166652277588:web:e08b9e19916451e14dcec1",
         measurementId: "G-7ZNKM9VFN2"
     };
+    const [value, setValue] = useState("Loading...");
 
     // Initialize Firebase
     const app = initializeApp(firebaseConfig);
@@ -128,9 +129,13 @@ const EditChallenge = () => {
                     if (this.readyState === 4 && this.status === 200) {
                         // Success!
                         let data = JSON.parse(this.responseText);
+                        console.log(data)
                         document.getElementById("challengeName").innerHTML = data.title;
-                        document.getElementById("challengeDetails").innerHTML = data.problem;
-
+                        document.getElementById("challengeViews").innerHTML = data.views;
+                        document.getElementById("challengeAttempts").innerHTML = data.attempts;
+                        document.getElementById("challengeGoodAttempts").innerHTML = data.goodAttempts;
+                     //   document.getElementById("challengeDetails").innerHTML = data.problem;
+                     setValue(data.problem);
                         //    window.alert(JSON.stringify(data.comments))
                         document.getElementById("suggestedLoader").classList.add("hidden");
                     }
@@ -207,6 +212,49 @@ const EditChallenge = () => {
     function showTerminal() {
         document.getElementById("terminal").classList.remove("hidden");
     }
+
+    function saveChanges() {
+        document.getElementById("loaderz").classList.remove("hidden")
+    
+        console.log(document.getElementsByClassName("CodeMirror")[0].innerText)
+
+        var xhr = new XMLHttpRequest();
+        xhr.open("POST", `${process.env.REACT_APP_API_URL}/challenges/update/${window.location.href.split("/")[4]}`)
+        xhr.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+        xhr.send(`uid=${auth.currentUser.uid}&problem=${encodeURI(document.getElementsByClassName("CodeMirror")[0].innerText)}&title=${document.getElementById("challengeName").innerText}&hint1=${document.getElementById("hint1").value}&hint2=${document.getElementById("hint2").value}&hint3=${document.getElementById("hint3").value}`)
+    
+        xhr.onreadystatechange = function () {
+            if (this.readyState == 4 && this.status == 200) {
+                var serverResponse = JSON.parse(this.responseText);
+                if (serverResponse) {
+                    if (serverResponse.message == "OK") {
+                        document.getElementById("saved").classList.remove("hidden")
+                        document.getElementById("loaderz").classList.add("hidden")
+                    } else {
+                    
+                        document.getElementById("loaderz").innerHTML = "Something went wrong. Your changes did not save. Please try saving again."
+                    }
+                } else {
+                    
+                    document.getElementById("loaderz").innerHTML = "Something went wrong. Your changes did not save. Please try saving again."
+                }
+            }
+
+            if (this.readyState == 4 && this.status != 200) {
+             
+                    
+                    document.getElementById("loaderz").innerHTML = "Something went wrong. Your changes did not save. Please try saving again.\n" + this.responseText;
+                }
+        }
+    }
+
+
+
+
+
+
+
+
     const navigation = [
         { name: 'Dashboard', href: '../dashboard', current: false },
         { name: 'EditChallenge', href: '../EditChallenge', current: false },
@@ -267,7 +315,7 @@ const EditChallenge = () => {
                     </div>
                 </div>
                 <div className="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8 animate__animated animate__fadeIn">
-
+                                <p id="loaderz" className="hidden text-white mb-4"><i class="fas fa-spinner text-white  fa-spin"></i> One moment please</p>
                     <div>
 
                          
@@ -278,7 +326,7 @@ const EditChallenge = () => {
                                 <div>
 
                                 <div class="flex items-center justify-between">
-                                <h3 className="text-4xl leading-6 font-semibold text-white">Challenge Name   <span className="bg-yellow-800 text-yellow-200 text-sm rounded-full px-2 py-1">• PENDING REVIEW</span>  <span className="bg-blue-800 text-blue-200 text-sm rounded-full px-2 py-1">• DRAFT</span> </h3>
+                                <h3 className="text-4xl leading-6 font-semibold text-white"><span id="challengeName" className="bg-black px-3" contenteditable="true">   </span> <span className="hidden ml-3 bg-yellow-800 text-yellow-200 text-sm rounded-full px-2 py-1">• PENDING REVIEW</span>  <span className="hidden bg-blue-800 text-blue-200 text-sm rounded-full px-2 py-1">• DRAFT</span> </h3>
                             
                             
                             <div class="ml-2 flex-shrink-0 flex">
@@ -286,8 +334,8 @@ const EditChallenge = () => {
                                   
 
                               
-                            <button className="mr-2 bg-green-700 border-green-600 hover:bg-green-800 px-3 py-1 text-white rounded-lg"><i class="fas fa-plus-circle"></i> Invite Collaborator</button>
-                            <button className="bg-red-700 border-red-600 hover:bg-red-800 px-3 py-1 text-white rounded-lg"><i class="fas fa-trash"></i> Delete Challenge</button>
+                            <button onClick={saveChanges} className="mr-2 bg-green-700 border-green-600 hover:bg-green-800 px-3 py-1 text-white rounded-lg"><i class="fas fa-save"></i> Save Changes</button>
+                            <button className="hidden bg-red-700 border-red-600 hover:bg-red-800 px-3 py-1 text-white rounded-lg"><i class="fas fa-trash"></i> Delete Challenge</button>
 
                             </div>
                           </div>
@@ -297,23 +345,22 @@ const EditChallenge = () => {
                             
                
 
-                                    <h3 className="mt-12 text-3xl leading-6 font-medium text-white">Challenge Statistics</h3>
-
+                            
                                <dl className="mt-5 grid grid-cols-1 gap-5 sm:grid-cols-3">
-                                        <div className="px-4 py-5 bg-gray-900 border  border-gray-700 rounded-lg overflow-hidden sm:p-6">
+                                        <div className="px-4 py-5 bg-black border  border-gray-700 rounded-lg overflow-hidden sm:p-6">
                                             <dt className="text-sm font-medium text-white truncate">Challenge Views</dt>
-                                            <dd className="mt-1 text-3xl font-semibold text-white">--</dd>
+                                            <dd id="challengeViews" className="mt-1 text-3xl font-semibold text-white">--</dd>
                                         </div>
 
-                                        <div className="px-4 py-5 bg-gray-900 border  border-gray-700 rounded-lg overflow-hidden sm:p-6">
+                                        <div className="px-4 py-5 bg-black border  border-gray-700 rounded-lg overflow-hidden sm:p-6">
                                             <dt className="text-sm font-medium text-white truncate">Challenge Attempts</dt>
-                                            <dd className="mt-1 text-3xl font-semibold text-white">--</dd>
+                                            <dd id="challengeAttempts" className="mt-1 text-3xl font-semibold text-white">--</dd>
                                         </div>
 
 
-                                        <div className="px-4 py-5 bg-gray-900 border  border-gray-700 rounded-lg overflow-hidden sm:p-6">
+                                        <div className="px-4 py-5 bg-black border  border-gray-700 rounded-lg overflow-hidden sm:p-6">
                                             <dt className="text-sm font-medium text-white truncate">Successful Attempts</dt>
-                                            <dd className="mt-1 text-3xl font-semibold text-white">--</dd>
+                                            <dd id="challengeGoodAttempts" className="mt-1 text-3xl font-semibold text-white">--</dd>
                                         </div>
 
                                     </dl>
@@ -321,11 +368,28 @@ const EditChallenge = () => {
                     
                             </div>
 
-                               <br></br>
-                               <h3 className="mt-6 text-3xl leading-6 font-medium text-white mb-2">Challenge Content</h3>
+                  
+                     
+                     </div>
+                     <div className="px-5 py-4 mt-5 rounded-lg  bg-gray-900 border border-gray-700">
+                     <h3 className="mt-6  text-3xl leading-6 font-medium text-white mb-5">Challenge Content</h3>
+                            <p className="text-gray-400"> You can use markdown!</p>
+            <SimpleMDE  value={value} />
+            </div>
 
-                            <SimpleMDE />
 
+            <div className="px-5 py-4 mt-5 rounded-lg  bg-gray-900 border border-gray-700">
+                            <h3 className="mt-6 text-3xl leading-6 font-medium text-white mb-6">Challenge Hints</h3>
+
+                                            <dt className="text-xl font-medium text-white truncate">Hint 1</dt>
+                                            <textarea id="hint1" className="mt-1 w-full rounded-lg border-gray-700 bg-black text-white">No hint set</textarea>
+
+                                            <dt className="mt-4 text-xl font-medium text-white truncate">Hint 2</dt>
+                                            <textarea id="hint2" className="mt-1 w-full rounded-lg border-gray-700 bg-black  text-white">No hint set</textarea>
+
+                                            <dt className="mt-4 text-xl font-medium text-white truncate">Hint 3</dt>
+                                            <textarea id="hint3" className="mt-1 w-full rounded-lg border-gray-700 bg-black text-white">No hint set</textarea>
+                                 
 
 
                         </div>
@@ -339,6 +403,31 @@ const EditChallenge = () => {
 
 
                     {/* /End replace */}
+
+
+
+                    <div id="saved" aria-live="assertive" className="hidden fixed inset-0 flex items-end px-4 py-6 pointer-events-none sm:p-6 sm:items-start">
+  <div className="w-full flex flex-col items-center space-y-4 sm:items-end">
+
+    <div className="max-w-sm w-full bg-gray-900 border border-gray-700 shadow-lg rounded-lg pointer-events-auto ring-1 ring-black ring-opacity-5 overflow-hidden">
+      <div className="p-4">
+        <div className="flex items-start">
+          <div className="flex-shrink-0">
+
+            <svg className="h-6 w-6 text-green-400" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+            </svg>
+          </div>
+          <div className="ml-3 w-0 flex-1 pt-0.5">
+            <p className="text-sm font-medium text-white">All changes saved</p>
+            <p className="mt-1 text-sm text-gray-300">It may take a few minutes for your changes to be visible.</p>
+          </div>
+     
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
                 </div>
             </main>
 

@@ -10,19 +10,18 @@ export class Navigation extends Component {
 
         const navigation = [
             { name: 'Dashboard', href: '../dashboard', current: false },
+         
             { name: 'Practice', href: '../practice/all', current: false },
             { name: 'Leaderboards', href: '../leaderboards/global', current: false },
-
+            { name: 'Create', href: '../create', current: false },
         ]
 
         const navigation2 = [
             { name: 'Dashboard', href: '../dashboard', current: false },
+          
             { name: 'Practice', href: '../practice/all', current: false },
-            { name: 'Learn', href: '../learn', current: false },
-            { name: 'Classes', href: '#', current: false },
-            { name: 'CTFLive', href: '#', current: false },
             { name: 'Leaderboards', href: '../leaderboards/global', current: false },
-            { name: 'Friends', href: '#', current: false },
+            { name: 'Create', href: '../create', current: false },
         ]
 
         const userNavigation = [
@@ -135,6 +134,8 @@ export class Navigation extends Component {
                                                             )}
                                                         </Menu.Item>
                                                     ))}
+
+                                                    
                                                 </Menu.Items>
                                             </Transition>
                                         </Menu>

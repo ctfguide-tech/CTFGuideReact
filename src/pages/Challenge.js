@@ -98,6 +98,18 @@ const Practice = () => {
               spassword: data.vmPassword,
             })
 
+
+            if (data.createdChallenges) {
+              data.createdChallenges.forEach(challenge => {
+                 if (challenge == window.location.href.split("/")[4]) {
+                  document.getElementById("editButton").classList.remove("hidden");
+                }
+              });
+
+          }
+
+
+
           }
 
           if (this.readyState === 4 & this.status === 500) {
@@ -197,6 +209,10 @@ const Practice = () => {
     xhttp.send();
   }
 
+  function editChallenge() {
+    window.location.href =  "/challenges/" + window.location.href.split("/")[4] + "/edit";
+  }
+
   function showTerminal() {
     document.getElementById("terminal").classList.remove("hidden");
   }
@@ -272,7 +288,7 @@ const Practice = () => {
               <h1 id="challengeName" className="text-4xl text-white mb-4 font-semibold"></h1> 
               <div className="ml-2 flex-shrink-0 flex mb-5">
               <p id="solvedChallenge" className="hidden text-white bg-green-700 w-60 px-2 py-1 rounded-lg border-green-800 border"><i className="fas fa-check-circle text-white"></i> You solved this challenge</p>
-              <p id="editButton" style={{cursor: 'pointer'}} className="ml-3 text-white hover:bg-blue-800 w-60 px-2 py-1 rounded-lg border-blue-800 bg-blue-900 border mx-auto text-center"><i className="fas fa-pencil-alt text-white"></i> Edit Challenge</p>
+              <p id="editButton" onClick={editChallenge} style={{cursor: 'pointer'}} className="hidden ml-3 border border-gray-700 bg-black hover:bg-gray-900 rounded-lg text-white px-2 py-1 w-40  border mx-auto text-center"><i className="fas fa-pencil-alt text-white"></i> Edit Challenge</p>
 
               <p style={{cursor: 'pointer'}}className="hidden ml-4 text-white font-semibold border-blue-600 w-50 py-1 px-3 rounded-lg hover:bg-gray-900 text-blue-500 border"><i class="fas fa-trophy text-blue-500"></i> Leaderboards</p>
 
