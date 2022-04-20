@@ -14,7 +14,7 @@ import Challenge from "./pages/Challenge";
 import EditChallenge from "./pages/EditChallenge"
 
 import Leaderboards from "./pages/Leaderboards";
-
+import Ab from "./pages/Ab";
 import Learn from "./pages/Learn";
 import "./index.css";
 
@@ -28,6 +28,7 @@ export default function App() {
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
           <Route path="/onboarding" element={<Onboarding />} />
+          <Route path="/ambassador-program" element={<Ab />} />
 
           <Route path="/dashboard" element={<Dashboard />} />
           <Route path="/create" element={<Create />} />
