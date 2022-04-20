@@ -378,8 +378,7 @@ const Dashboard = () => {
                   </div>
             
                 </div>
-
-
+     
                 <div className="">
          
          <h1 className="text-4xl text-white mt-6 mb-4 align-middle"> Learning Path <span className="align-middle text-xl font-semibold italic text-yellow-500">Coming soon!</span></h1>
@@ -497,7 +496,7 @@ const Dashboard = () => {
        
         
        
-              <div id=""  className="mt-2 text-white rounded">
+              <div id=""  className="mt-2 mb-2 text-white rounded">
                   <div className="flex items-center justify-between mx-auto text-centered text-white">
                     <div className="mx-auto text-center">
           
@@ -510,7 +509,10 @@ const Dashboard = () => {
             
                 </div>
             
+          <div className="mx-auto text-center  w-full flex">
+          <a href="https://discord.gg/q3hgRBvgkX" className=" w-full px-10 mx-auto  text-xl px-2 py-3  text-white rounded-lg border border-gray-700 bg-gray-900"><i  class="fab fa-discord mr-1"></i> Join our Discord</a>
             
+            </div>
             </div>
 
             
