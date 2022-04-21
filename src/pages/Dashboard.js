@@ -558,7 +558,6 @@ const Dashboard = () => {
                   <p className="text-sm text-gray-500">{activityItem.time}</p>
                 </div>
                 <p className="text-sm text-gray-500">
-                  wtf bruh why did u...
                 </p>
               </div>
             </div>

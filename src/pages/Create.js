@@ -201,7 +201,13 @@ function loadchallenge(id) {
             
                     <h1 className="text-4xl text-white mb-4  ">Creator Dashboard</h1>
 
+                    <div className="flex items-center justify-between">
+
                     <h1  className="text-3xl text-white mb-4  ">Your Challenges</h1>     
+                    <div className="ml-2 flex-shrink-0 flex w-1/10">
+                    <button className="bg-green-900 border border-green-800 rounded-lg px-2 py-1 text-xl text-white">Create Challenge</button>
+</div>
+</div>
                         <div style={{cursor: 'pointer'}} id="challBase" className="hidden bg-gray-900 border border-gray-700 rounded-lg text-white px-4 py-2 shadow-lg hover:shadow-gray-700/50 ">
                             <h1 className="text-xl">Challenge Name</h1>
                         </div>
