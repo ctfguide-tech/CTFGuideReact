@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import { Fragment, useEffect, useRef, useState } from 'react'
 import { Disclosure, Menu, Transition, Dialog } from '@headlessui/react'
-import { BellIcon, MenuIcon, XIcon, FireIcon, ExclamationIcon } from '@heroicons/react/outline'
+import { BellIcon, MenuIcon, XIcon, FireIcon, ExclamationIcon, CheckIcon } from '@heroicons/react/outline'
 import { getAuth, onAuthStateChanged, signOut } from "firebase/auth";
 import { CheckCircleIcon } from '@heroicons/react/outline'
 import { initializeApp } from "firebase/app";
@@ -157,7 +157,11 @@ const LearnView = () => {
     }, []);
 
 
-
+    const steps = [
+        { id: '', name: 'Introduction', href: '#', status: 'learning' },
+        { id: '', name: 'Review Activity', href: '#', status: 'activity' },
+        { id: '', name: 'Using CTFGuide', href: '#', status: 'learning' },
+      ]
     const people = [
         {
             name: 'Lindsay Walton',
@@ -215,7 +219,100 @@ const LearnView = () => {
 
             <main className="mt-3" >
 
+            <div className="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8   ">
+
+            <nav aria-label="Progress">
+      <ol role="list" className="border bg-gray-900 border-gray-700 rounded-md divide-y divide-gray-900 md:flex md:divide-y-0">
+        {steps.map((step, stepIdx) => (
+          <li key={step.name} className="relative md:flex-1 md:flex">
+            {step.status === 'complete' ? (
+              <a href={step.href} className="group flex items-center w-full">
+                <span className="px-6 py-4 flex items-center text-sm font-medium">
+                  <span className="flex-shrink-0 w-10 h-10 flex items-center justify-center bg-green-600 rounded-full ">
+                    <CheckIcon className="w-6 h-6 text-white" aria-hidden="true" />
+                  </span>
+                  <span className="ml-4 text-sm font-medium text-white">{step.name}</span>
+                </span>
+              </a>
+            ) : step.status === 'learning' ? (
+              <a href={step.href} className="px-6 py-4 flex items-center text-sm font-medium" aria-current="step">
+                <span className="flex-shrink-0 w-10 h-10 flex items-center justify-center border-2 border-white rounded-full">
+                  <span className="text-white"><i class="fas fa-book"></i> {step.id}</span>
+                </span>
+                <span className="ml-4 text-sm font-medium text-white">{step.name}</span>
+           </a>
+            ) : step.status === 'activity' ? (
+              <a href={step.href} className="px-6 py-4 flex items-center text-sm font-medium" aria-current="step">
+                <span className="flex-shrink-0 w-10 h-10 flex items-center justify-center border-2 border-white rounded-full">
+                  <span className="text-white"><i class="fas fa-pencil-alt"></i>  {step.id}</span>
+                </span>
+                <span className="ml-4 text-sm font-medium text-white">{step.name}</span>
+              </a>
+            ) : (
+              <a href={step.href} className="group flex items-center">
+                <span className="px-6 py-4 flex items-center font-medium">
+                  <span className="flex-shrink-0 w-10 h-10 flex items-center justify-center border-2 border-gray-300 rounded-full ">
+                    <span className="text-white ">{step.id}</span>
+                  </span>
+                  <span className="ml-4 text-2xl text-white ">{step.name}</span>
+                </span>
+              </a>
+            )}
+
+            {stepIdx !== steps.length - 1 ? (
+              <>
+                {/* Arrow separator for lg screens and up */}
+                <div className="hidden md:block absolute top-0 right-0 h-full w-5" aria-hidden="true">
+                  <svg
+                    className="h-full w-full text-gray-700"
+                    viewBox="0 0 22 80"
+                    fill="none"
+                    preserveAspectRatio="none"
+                  >
+                    <path
+                      d="M0 -2L20 40L0 82"
+                      vectorEffect="non-scaling-stroke"
+                      stroke="currentcolor"
+                      strokeLinejoin="round"
+                    />
+                  </svg>
+                </div>
+              </>
+            ) : null}
+          </li>
+        ))}
+      </ol>
+    </nav>
+
+              <div className="text-white">
+              <br></br>
+                <h1 className="text-4xl font-semibold ">Introduction</h1>
+                <p className="text-xl mt-3">
+                  Welcome to CTFGuide's Introduction to Cybersecurity course. This course is designed to teach you the basics of cybersecurity. At the end of this course, you'll have a solid understanding on what cybersecurity is, connect to servers, and solve basic CTF's.
+                </p>
+              </div>
+
+
+              <div className="text-white">
+              <br></br>
+                <h1 className="text-4xl font-semibold ">The CTFGuide Terminal</h1> 
+                <p className="text-xl mt-3">
+               For some challenges, you'll need to use a terminal. You can use the one built into your computer or use the one built in right here.
+               Our terminals have most security tools preinstalled and are ready to use.
+                  </p>
+
                     
+                  <div id="terminal" className=" mt-6 ">
+                  <p className="text-gray-400 mb-2 hint"><span className="text-white ">Terminal (Beta)</span> Login as <span className="text-yellow-400">{userData.susername}</span> using the password <span className="text-yellow-400">{userData.spassword}</span><a style={{ cursor: 'pointer'}} className="hidden hover:bg-black text-gray-300">Need help?</a></p>
+                    <iframe className="w-full" height="500" src="https://terminal.ctfguide.com/wetty/ssh/root?pass=" ></iframe>
+                       </div>
+
+              </div>
+
+
+
+
+                </div>    
                 
             </main>
 
