@@ -11,7 +11,7 @@ import DashboardManager from "../modules/DashboardManager.js"
 import 'animate.css';
 import { Navigation } from '../components/navigation';
 
-const Learn = () => {
+const LearnView = () => {
     const firebaseConfig = {
         apiKey: "AIzaSyBLAN84VP3jSA5dqhrU6Bjmfu5NiUDuNw4",
         authDomain: "cyberjags-8b081.firebaseapp.com",
@@ -215,78 +215,7 @@ const Learn = () => {
 
             <main className="mt-3" >
 
-                <div className="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8   ">
-
-              
-    
-                    <p className={" text-white mt-4 text-4xl mb-4 font-semibold"}>Learning path</p>
-          
-     <div className="" >
-     <div className="hidden mt-4 bg-gray-900 border  border-gray-700   px-4 py-1 text-white rounded mx-auto text-center mb-4 ">
-             Looking to do your homework for a class? You'll need to make sure you've joined your class on CTFGuide.
-                </div>
-
-         <div className="mt-2 bg-gray-900 border  border-gray-700  px-4 py-4 text-white rounded ">
-    <div className="flex items-center justify-between">
-      <h1 className="text-xl w-full"><i className="fas fa-search"></i> Exploratory Cybersecurity</h1>
-      <div className="ml-2 flex-shrink-0 flex w-1/2">
-      <div className="w-full bg-gray-900 border border-gray-700 rounded-full">
-      <div className="bg-gradient-to-br from-green-600 to-green-900  text-xs font-medium text-blue-100 text-center p-0.5 leading-none rounded-l-full" style={{width: '25%'}}> 25%</div>
-    
-    </div>
-    
-      </div>
                     
-    
-      </div>
-     
-      <div className="flex items-center justify-between">
-    
-     
-    
-     <div>
-       
-      <p className="mt-4 uppercase">Up next</p>
-      <i className="fas fa-book"></i> Reading - Cyberwhatnow?
-     </div>
-      <div className="ml-2 flex-shrink-0 flex w-1/10">
-                    <button className="border border-green-600 px-4 py-1 rounded-lg hover:bg-gray-800">Start Lesson</button>
-      </div>
-      </div>
-    </div>
-    
-    
-    <div className=" mt-4 bg-gray-900 border  border-gray-700   px-4 py-4 text-white rounded ">
-      
-    <div className="flex items-center justify-between">
-      <h1 className="text-xl"><i className="fab fa-linux"></i> Linux 101</h1>
-      <div className="ml-2 flex-shrink-0 flex w-1/2">
-      <div className="w-full bg-gray-900 border border-gray-700 rounded-full">
-      <div className="bg-gradient-to-br from-green-600 to-green-900 text-xs font-medium text-blue-100 text-center p-0.5 leading-none rounded-l-full" style={{width: '25%'}}> 25%</div>
-    </div>
-    
-      </div>
-                    
-    
-      </div>
-      <div className="flex items-center justify-between">
-     <div>
-       
-      <p className="mt-4 uppercase">Up next</p>
-      <i className="far fa-play-circle"></i> Video Lesson - Accessing other servers
-     </div>
-      <div className="ml-2 flex-shrink-0 flex w-1/10">
-                    <button className="border border-green-600 px-4 py-1 rounded-lg hover:bg-gray-800">Start Lesson</button>
-      </div>
-      </div>
-    </div>
-
-
-    </div>
-
-
-                </div>
-
                 
             </main>
 
@@ -302,4 +231,4 @@ const Learn = () => {
 
 
 
-export default Learn;
+export default LearnView;

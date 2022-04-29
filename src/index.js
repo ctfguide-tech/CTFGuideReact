@@ -12,6 +12,7 @@ import Onboarding from "./pages/Onboarding";
 import Create from "./pages/Create";
 import Challenge from "./pages/Challenge";
 import EditChallenge from "./pages/EditChallenge"
+import LearnView from "./pages/LearnView"
 
 import Leaderboards from "./pages/Leaderboards";
 import Ab from "./pages/Ab";
@@ -39,6 +40,7 @@ export default function App() {
           <Route path="/practice/hard" element={<Practice type="hard" />} />
 
           <Route path="/learn" element={<Learn />} />
+          <Route path="/learn/:section/:activity" element={<LearnView />} />
           <Route path="/challenges/:id" element={<Challenge />} />
           <Route path="/challenges/:id/edit" element={<EditChallenge />} />
           <Route path="/leaderboards/:id" element={<Leaderboards />} />
