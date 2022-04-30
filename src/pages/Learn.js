@@ -247,7 +247,7 @@ const Learn = () => {
      <div>
        
       <p className="mt-4 uppercase">Up next</p>
-      <i className="fas fa-book"></i> Reading - Cyberwhatnow?
+      <i className="fas fa-book"></i> Reading - Introduction
      </div>
       <div className="ml-2 flex-shrink-0 flex w-1/10">
                     <button className="border border-green-600 px-4 py-1 rounded-lg hover:bg-gray-800">Start Lesson</button>
