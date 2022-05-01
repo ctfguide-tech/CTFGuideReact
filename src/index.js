@@ -23,6 +23,8 @@ import "./index.css";
 
 // LESSONS!!!
 import Ch1_1 from "./pages/content/Ch1_1"
+import Ch1_Linux from "./pages/content/Ch1_Linux
+import Ch1_SSH from "./pages/content/Ch1_SSH
 
 
 
