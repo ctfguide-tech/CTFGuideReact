@@ -7,10 +7,10 @@ import {signOut, getAuth, onAuthStateChanged} from "firebase/auth";
 export class Navigation extends Component {
 
     render() {
-
+// { name: 'Learn', href: '../learn', current: false },
         const navigation = [
             { name: 'Dashboard', href: '../dashboard', current: false },
-            { name: 'Learn', href: '../learn', current: false },
+           
             { name: 'Practice', href: '../practice/all', current: false },
             { name: 'Leaderboards', href: '../leaderboards/global', current: false },
             { name: 'Create', href: '../create', current: false },
