@@ -56,6 +56,8 @@ export default function App() {
 
           <Route path="/learn" element={<Learn />} />
           <Route path="/learn/chapter1/lesson1" element={<Ch1_1 />} />
+          <Route path="/learn/chapter1/lesson2" element={<Ch2_Linux />} />
+           <Route path="/learn/chapter1/lesson3" element={<Ch2_SSH />} />
           <Route path="/challenges/:id" element={<Challenge />} />
           <Route path="/challenges/:id/edit" element={<EditChallenge />} />
           <Route path="/leaderboards/:id" element={<Leaderboards />} />
