@@ -9,7 +9,7 @@ import { getAnalytics } from "firebase/analytics";
 import { Navigation } from "../components/navigation";
 import { SuccessModal } from "../components/successModal";
 import 'animate.css';
-
+import { marked } from 'marked';
 const Practice = () => {
   const [open, setOpen] = useState(false)
   const [open2, setOpen2] = useState(false)
@@ -136,7 +136,8 @@ const Practice = () => {
             // Success!
             let data = JSON.parse(this.responseText);
             document.getElementById("challengeName").innerHTML = data.title;
-            document.getElementById("challengeDetails").innerHTML = data.problem;
+       
+            document.getElementById("challengeDetails").innerHTML = marked.parse(data.problem);
             setChallenges({
               data: data.comments
             });

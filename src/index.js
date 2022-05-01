@@ -12,11 +12,27 @@ import Onboarding from "./pages/Onboarding";
 import Create from "./pages/Create";
 import Challenge from "./pages/Challenge";
 import EditChallenge from "./pages/EditChallenge"
+import Learn from "./pages/Learn"
 
 import Leaderboards from "./pages/Leaderboards";
 import Ab from "./pages/Ab";
-import Learn from "./pages/Learn";
+
 import "./index.css";
+
+
+
+// LESSONS!!!
+import Ch1_1 from "./pages/content/Ch1_1"
+import Ch2_Linux from "./pages/content/Ch2_Linux"
+import Ch2_SSH from "./pages/content/Ch2_SSH"
+
+
+
+
+
+
+
+
 
 
 export default function App() {
@@ -39,6 +55,9 @@ export default function App() {
           <Route path="/practice/hard" element={<Practice type="hard" />} />
 
           <Route path="/learn" element={<Learn />} />
+          <Route path="/learn/chapter1/lesson1" element={<Ch1_1 />} />
+          <Route path="/learn/chapter2/lesson2" element={<Ch2_Linux />} />
+           <Route path="/learn/chapter2/lesson3" element={<Ch2_SSH />} />
           <Route path="/challenges/:id" element={<Challenge />} />
           <Route path="/challenges/:id/edit" element={<EditChallenge />} />
           <Route path="/leaderboards/:id" element={<Leaderboards />} />
