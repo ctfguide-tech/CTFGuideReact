@@ -11,7 +11,7 @@ import DashboardManager from "../../modules/DashboardManager.js"
 import 'animate.css';
 import { Navigation } from '../../components/navigation';
 
-const Ch1_SSH = () => {
+const Ch2_SSH = () => {
   const firebaseConfig = {
     apiKey: "AIzaSyBLAN84VP3jSA5dqhrU6Bjmfu5NiUDuNw4",
     authDomain: "cyberjags-8b081.firebaseapp.com",
@@ -327,4 +327,4 @@ const Ch1_SSH = () => {
 
 
 
-export default Ch1_SSH;
+export default Ch2_SSH;
