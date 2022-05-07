@@ -25,6 +25,8 @@ import "./index.css";
 import Ch1_1 from "./pages/content/Ch1_1"
 import Ch2_Linux from "./pages/content/Ch2_Linux"
 import Ch2_SSH from "./pages/content/Ch2_SSH"
+import Ch2_wget from "./pages/content/Ch2_wget"
+
 
 
 
@@ -57,7 +59,8 @@ export default function App() {
           <Route path="/learn" element={<Learn />} />
           <Route path="/learn/chapter1/lesson1" element={<Ch1_1 />} />
           <Route path="/learn/chapter2/lesson2" element={<Ch2_Linux />} />
-           <Route path="/learn/chapter2/lesson3" element={<Ch2_SSH />} />
+          <Route path="/learn/chapter2/lesson3" element={<Ch2_SSH />} />
+          <Route path="/learn/chapter2/lesson4" element={<Ch2_wget />} />
           <Route path="/challenges/:id" element={<Challenge />} />
           <Route path="/challenges/:id/edit" element={<EditChallenge />} />
           <Route path="/leaderboards/:id" element={<Leaderboards />} />
