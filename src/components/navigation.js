@@ -7,10 +7,11 @@ import {signOut, getAuth, onAuthStateChanged} from "firebase/auth";
 export class Navigation extends Component {
 
     render() {
-// { name: 'Learn', href: '../learn', current: false },
+        //    { name: 'Learn', href: '../learn', current: false },
         const navigation = [
             { name: 'Dashboard', href: '../dashboard', current: false },
-           
+     
+
             { name: 'Practice', href: '../practice/all', current: false },
             { name: 'Leaderboards', href: '../leaderboards/global', current: false },
             { name: 'Create', href: '../create', current: false },
@@ -27,6 +28,8 @@ export class Navigation extends Component {
         const userNavigation = [
 
             { name: 'Sign out', onClick: logout },
+            { name: 'Settings', href: './settings' },
+
         ]
 
         const userNavigation2 = [
@@ -176,9 +179,7 @@ export class Navigation extends Component {
                             </div>
                             <div className="pt-4 pb-3 border-t border-gray-700">
                                 <div className="flex items-center px-5">
-                                    <div className="flex-shrink-0">
-                                        <img  className="h-10 w-10 rounded-full" src="" alt="" />
-                                    </div>
+                                            
                                     <div className="ml-3">
                                         <div className="text-base font-medium text-white"></div>
                                         <div className="text-sm font-medium text-gray-400"></div>
@@ -186,17 +187,11 @@ export class Navigation extends Component {
 
 
                                 </div>
-                                <div className="mt-3 px-2 mx-auto text-center">
-                                    <p className="hidden text-yellow-500 hover:text-yellow-400 mb-2" style={{cursor:'pointer'}}>✨ Upgrade to pro</p>
-                                    <button
-                                        type="button"
-                                        className="ml-3  bg-black border border-gray-700 px-3 font-semibold rounded-full text-blue-500  focus:outline-none "
-                                    >
-
-                                      points
-                                    </button>
-                                </div>
-
+                     <div className=" px-2 space-y-1 z-20 hidden">
+                                        <a className='block px-3 py-2 rounded-md text-base font-medium text-gray-200  '>
+                                        <span id={"navPoints2"}> 0 </span>  points
+                                        </a>
+                                        </div>
                                 <div className="mt-3 px-2 space-y-1 z-20">
                                     {userNavigation.map((item) => (
                                         <a

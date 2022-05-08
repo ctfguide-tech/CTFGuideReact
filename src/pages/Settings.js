@@ -11,7 +11,7 @@ import DashboardManager from "../modules/DashboardManager.js"
 import 'animate.css';
 import { Navigation } from '../components/navigation';
 
-const Learn = () => {
+const Settings = () => {
     const firebaseConfig = {
         apiKey: "AIzaSyBLAN84VP3jSA5dqhrU6Bjmfu5NiUDuNw4",
         authDomain: "cyberjags-8b081.firebaseapp.com",
@@ -219,11 +219,9 @@ const Learn = () => {
 
               
     
-                    <p className={" text-white mt-4 text-4xl font-semibold"}>Learning path</p>
+                    <p className={" text-white  text-4xl font-semibold"}> Settings</p>
           
-                    <p className="hidden text-blue-400 mb-4"><i class="fas fa-spinner   fa-spin"></i> Retrieving your progress. Our servers are under high load at the moment.</p>
-
-
+                 
 
      <div className="" >
 
@@ -232,115 +230,49 @@ const Learn = () => {
  
 
     <div className="mt-4 bg-gray-900 border  border-gray-700  px-4 py-4 text-white rounded ">
-    <div className="flex items-center justify-between">
-      <h1 className="text-xl w-full"><i className="fas fa-search"></i> Exploratory Cybersecurity</h1>
-      <div className="ml-2 flex-shrink-0 flex w-1/2">
-      <div className="w-full bg-gray-900 border border-gray-700 rounded-full">
-      <div className="bg-gradient-to-br from-green-600 to-green-900  text-xs font-medium text-blue-100 text-center p-0.5 leading-none rounded-l-full" style={{width: '0%'}}> 0%</div>
-    
-    </div>
-    
-      </div>
+    <div className=" items-center justify-between">
+      <h1 className="text-2xl w-full"><i class="fas fa-shield-alt"></i> Account Settings</h1>
+        <ul>
+            <li><a className=""> <i class="fas fa-arrow-right"></i> Change your account password</a></li>
+            <li><a className=""> <i class="fas fa-arrow-right"></i> Change your username</a></li>
+            <li><a className=""> <i class="fas fa-arrow-right"></i> Submit request for email change</a></li>
+            <li><a className=""> <i class="fas fa-arrow-right"></i> Terminal Password Recovery</a></li>
+            <li><a className=""> <i class="fas fa-arrow-right"></i> View authorized connections</a></li>
+
+        </ul>
                     
     
       </div>
      
-      <div className="flex items-center justify-between">
-    
-     
-    
-     <div>
-       
-      <p className="mt-4 uppercase">Up next</p>
-      <i className="fas fa-book"></i> Reading - Introduction
-     </div>
-      <div className="ml-2 flex-shrink-0 flex w-1/10">
-                    <Link to="./chapter1/lesson1" className="border border-gray-700 bg-black px-4 py-1 rounded-lg hover:bg-gray-900">Start Lesson</Link>
-      </div>
-      </div>
     </div>
-    
-    <div className=" mt-5 bg-gray-900 border  border-gray-700   px-4 py-4 text-white rounded ">
-      
-      <div className="flex items-center justify-between">
-        <h1 className="text-xl"><i className="fab fa-linux"></i> Basic Linux</h1>
-        <div className="ml-2 flex-shrink-0 flex w-1/2">
-        <div className="w-full bg-gray-900 border border-gray-700 rounded-full">
-        <div className="bg-gradient-to-br from-green-600 to-green-900 text-xs font-medium text-blue-100 text-center p-0.5 leading-none rounded-l-full" style={{width: '0%'}}> 0%</div>
-      </div>
-      
-        </div>
-                      
-      
-        </div>
-        <div className="flex items-center justify-between">
-       <div>
-         
-        <p className="mt-4 uppercase">Up next</p>
-        <i className="far fa-play-circle"></i> Video Lesson - Accessing other servers
-       </div>
-        <div className="ml-2 flex-shrink-0 flex w-1/10">
-                      <button className="">Coming Soon</button>
-        </div>
-        </div>
-      </div>
-
-
     <div className="mt-4 bg-gray-900 border  border-gray-700  px-4 py-4 text-white rounded ">
-    <div className="flex items-center justify-between">
-      <h1 className="text-xl w-full"><i className="fas fa-search"></i> Exploratory Cybersecurity</h1>
-      <div className="ml-2 flex-shrink-0 flex w-1/2">
-      <div className="w-full bg-gray-900 border border-gray-700 rounded-full">
-      <div className="bg-gradient-to-br from-green-600 to-green-900  text-xs font-medium text-blue-100 text-center p-0.5 leading-none rounded-l-full" style={{width: '0%'}}> 0%</div>
-    
-    </div>
-    
-      </div>
-                    
-    
-      </div>
-     
-      <div className="flex items-center justify-between">
-    
-     
-    
-     <div>
-       
-      <p className="mt-4 uppercase">Up next</p>
-      <i className="fas fa-book"></i> Reading - Introduction
-     </div>
-      <div className="ml-2 flex-shrink-0 flex w-1/10">
-      <button className="">Coming Soon</button>      </div>
-      </div>
-    </div>
+    <div className=" items-center justify-between">
+      <h1 className="text-2xl w-full"><i class="fas fa-file-invoice-dollar"></i> Billing Settings</h1>
+        <ul>
+            <li><a className="font-semibold"> <i class="fas fa-arrow-right"></i> Upgrade to CTFGuide Pro</a></li>
+            <li><a className=""> <i class="fas fa-arrow-right"></i> Manage Payments</a></li>
+            <li><a className=""> <i class="fas fa-arrow-right"></i> Purchase Order</a></li>
 
-    <div className="mt-4 bg-gray-900 border  border-gray-700  px-4 py-4 text-white rounded ">
-    <div className="flex items-center justify-between">
-      <h1 className="text-xl w-full"><i className="fas fa-search"></i> Exploratory Cybersecurity</h1>
-      <div className="ml-2 flex-shrink-0 flex w-1/2">
-      <div className="w-full bg-gray-900 border border-gray-700 rounded-full">
-      <div className="bg-gradient-to-br from-green-600 to-green-900  text-xs font-medium text-blue-100 text-center p-0.5 leading-none rounded-l-full" style={{width: '0%'}}> 0%</div>
-    
-    </div>
-    
-      </div>
+        </ul>
                     
     
-      </div>
+      </div>    
      
-      <div className="flex items-center justify-between">
-    
-     
-    
-     <div>
-       
-      <p className="mt-4 uppercase">Up next</p>
-      <i className="fas fa-book"></i> Reading - Introduction
-     </div>
-      <div className="ml-2 flex-shrink-0 flex w-1/10">
-      <button className="">Coming Soon</button>      </div>
-      </div>
     </div>
+    <div className="mt-4 bg-gray-900 border  border-gray-700  px-4 py-4 text-white rounded ">
+    <div className=" items-center justify-between">
+      <h1 className="text-2xl w-full"><i class="fas fa-terminal"></i> Developer Settings</h1>
+        <ul>
+            <li><a className=""> <i class="fas fa-arrow-right"></i> Generate API Key</a></li>
+
+
+        </ul>
+                    
+    
+      </div>    
+     
+    </div>
+  
 
     </div>
 
@@ -362,4 +294,4 @@ const Learn = () => {
 
 
 
-export default Learn;
+export default Settings;

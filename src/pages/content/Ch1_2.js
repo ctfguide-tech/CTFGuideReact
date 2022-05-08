@@ -11,7 +11,7 @@ import DashboardManager from "../../modules/DashboardManager.js"
 import 'animate.css';
 import { Navigation } from '../../components/navigation';
 
-const Ch1_1 = () => {
+const Ch1_2 = () => {
   const firebaseConfig = {
     apiKey: "AIzaSyBLAN84VP3jSA5dqhrU6Bjmfu5NiUDuNw4",
     authDomain: "cyberjags-8b081.firebaseapp.com",
@@ -159,11 +159,9 @@ const Ch1_1 = () => {
   }, []);
 
 
-
-  
   const steps = [
-    { id: '', name: 'Introduction', href: '/learn/chapter1/lesson1', status: 'inprogress' },
-    { id: '', name: 'Review Activity', href: '/learn/chapter1/activity1', status: 'activity' },
+    { id: '', name: 'Introduction', href: '/learn/chapter1/lesson1', status: 'learning' },
+    { id: '', name: 'Review Activity', href: '/learn/chapter1/activity1', status: 'inprogress_a' },
     { id: '', name: 'Using CTFGuide', href: '#', status: 'learning' },
   ]
 
@@ -213,8 +211,6 @@ const Ch1_1 = () => {
       <main className="mt-3" >
 
         <div className="max-w-7xl mx-auto py-4 px-4 sm:px-6 lg:px-8   ">
-
-        
         <nav aria-label="Progress">
             <ol role="list" className="border bg-gray-900 border-gray-700 rounded-md divide-y divide-gray-900 md:flex md:divide-y-0">
               {steps.map((step, stepIdx) => (
@@ -297,39 +293,30 @@ const Ch1_1 = () => {
 
 
 
+
           {/*  YOU CONTENT STARTS HERE */}
           <div className="text-white">
             <br></br>
 
             <div className="flex items-center justify-between">
               <div>
-            <h1 className="text-4xl font-semibold ">Introduction</h1>
-            <p><i class="fas fa-info-circle"></i>  This lesson includes <a href="https://github.com/ctfguide-tech/Information/blob/main/lessons/lesson1.md" className="text-blue-300">externally sourced</a> content.</p>
+            <h1 className="text-4xl font-semibold ">Activity</h1>
+            <p><i class="fas fa-info-circle"></i>  This lesson references content from lesson 1.</p>
             </div>
             <div className="ml-2 flex-shrink-0 flex w-1/10">
             <button className=" text-white text-xl border border-gray-500 px-6 py-3 hover:bg-gray-900 rounded-lg"><i class="fas fa-spinner text-white  fa-spin"></i> Awaiting Completion</button>
                     </div>
                     </div>
-           
-            <p className="text-xl mt-6">
-              Welcome to CTFGuide's Introduction to Cybersecurity course. This course is designed to teach you the basics of cybersecurity. At the end of this course, you'll have a solid understanding on what cybersecurity is, how it works, and how to protect your data.
 
-              <br></br><br></br>
 
-              So what is cybersecurity?        Cybersecurity is the practice of protecting electronic information by mitigating information risks and vulnerabilities. Information risks can include unauthorized access, use, disclosure, interception, or destruction of data.
-              <br></br>
+                  <div id="quiz" className="mt-5 bg-gray-900 px-10 py-10 rounded-lg border border-gray-700">
+                      
+                      <h1 className="text-xl font-semibold">What is Cybersecurity?</h1>
+                      <button className="mt-4 px-8 py-3 bg-gray-800 border border-gray-700 rounded-lg hover:bg-gray-900">A - A nutmeg egg.</button><button className="ml-4 mt-4 px-8 py-3 bg-gray-800 border border-gray-700 rounded-lg hover:bg-gray-900">B - A nutmeg egg.</button>
+                        <br></br>
+                      <button className="mt-4 px-8 py-3 bg-gray-800 border border-gray-700 rounded-lg hover:bg-gray-900">C - A nutmeg egg.</button><button className="ml-4 mt-4 px-8 py-3 bg-gray-800 border border-gray-700 rounded-lg hover:bg-gray-900">D - A nutmeg egg.</button>
 
-              <br></br>
-              There are many different areas of cybersecurity. One area is application security, which focuses on securing applications from attacks. Another area is network security, which focuses on securing networks from attack. Another area is endpoint security, which focuses on securing devices from attack.
-            </p>
-
-            <div class="mx-auto text-center mt-10 text-xl">
-                    <p>Watch the video below to complete this lesson.</p>
-                    <iframe class="mt-4 mx-auto" width="700" height="400" src="https://www.youtube-nocookie.com/embed/sdpxddDzXfE?start=0&end=154.8" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-                 
-
-             
-                    </div>
+                      </div>  
            <br></br>
                
 
@@ -354,4 +341,4 @@ const Ch1_1 = () => {
 
 
 
-export default Ch1_1;
+export default Ch1_2;

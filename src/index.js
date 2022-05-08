@@ -13,7 +13,7 @@ import Create from "./pages/Create";
 import Challenge from "./pages/Challenge";
 import EditChallenge from "./pages/EditChallenge"
 import Learn from "./pages/Learn"
-
+import Settings from "./pages/Settings"
 import Leaderboards from "./pages/Leaderboards";
 import Ab from "./pages/Ab";
 
@@ -21,11 +21,8 @@ import "./index.css";
 
 
 
-// LESSONS!!!
-import Ch1_1 from "./pages/content/Ch1_1"
-import Ch2_Linux from "./pages/content/Ch2_Linux"
-import Ch2_SSH from "./pages/content/Ch2_SSH"
-
+import Ch1_1 from "./pages/content/Ch1_1"; // Lesson 1
+import Ch1_2 from "./pages/content/Ch1_2"; // Activity 1
 
 
 
@@ -47,6 +44,8 @@ export default function App() {
           <Route path="/ambassador-program" element={<Ab />} />
 
           <Route path="/dashboard" element={<Dashboard />} />
+          <Route path="/settings" element={<Settings />} />
+
           <Route path="/create" element={<Create />} />
 
           <Route path="/practice/all" element={<Practice />} />
@@ -55,9 +54,13 @@ export default function App() {
           <Route path="/practice/hard" element={<Practice type="hard" />} />
 
           <Route path="/learn" element={<Learn />} />
+
           <Route path="/learn/chapter1/lesson1" element={<Ch1_1 />} />
-          <Route path="/learn/chapter2/lesson2" element={<Ch2_Linux />} />
-           <Route path="/learn/chapter2/lesson3" element={<Ch2_SSH />} />
+   
+          <Route path="/learn/chapter1/activity1" element={<Ch1_2 />} />
+   
+          
+          
           <Route path="/challenges/:id" element={<Challenge />} />
           <Route path="/challenges/:id/edit" element={<EditChallenge />} />
           <Route path="/leaderboards/:id" element={<Leaderboards />} />

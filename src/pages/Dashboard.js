@@ -89,13 +89,23 @@ const Dashboard = () => {
               `https://ui-avatars.com/api/?name=${firebaseUser.email}&background=random`,
           });
           document.getElementById("pfp1").src = `https://ui-avatars.com/api/?name=${firebaseUser.email}&background=random`
+   
         }
 
         var xhttp = new XMLHttpRequest();
         xhttp.onreadystatechange = function() {
           if (this.readyState === 4 & this.status === 200) {
             let data = JSON.parse(this.responseText);
+        
+            if (document.getElementById("navPoints")) {
             document.getElementById("navPoints").innerHTML = data.points;
+            }
+            console.log("data", data);
+
+            if (document.getElementById("navPoints2")) {
+              console.log("mobile")
+            document.getElementById("navPoints2").innerHTML = data.points;
+            }
             console.log(data)
             if (!data.streak) data[`streak`] = 0;
             if (!data.continueWorking) data[`continueWorking`] = []
@@ -169,7 +179,8 @@ const Dashboard = () => {
             if (data.continueWorking.length < 1)  document.getElementById("noHistory").classList.remove("hidden")
 
             document.getElementById("loader").classList.add("hidden");
-
+            document.getElementById("navPoints").innerHTML = data.points;
+            document.getElementById("navPoints2").innerHTML = data.points;
 
           }
 
@@ -178,7 +189,7 @@ const Dashboard = () => {
             var xhttp = new XMLHttpRequest();
             xhttp.onreadystatechange = function() {
               if (this.readyState === 4 & this.status === 200) {
-                window.location.reload();
+                window.location.reload(); 
               }
             }
             xhttp.open("GET", `${process.env.REACT_APP_API_URL}/users/register?uid=${firebaseUser.uid}`);
