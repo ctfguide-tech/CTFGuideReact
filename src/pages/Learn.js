@@ -218,9 +218,13 @@ const Learn = () => {
                 <div className="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8   ">
 
               
-    
+                <div className="bg-red-900 border border-red-600 px-4 py-2 rounded-lg">
+                        <p className={" text-white  text-center"}>
+                        <i class="fas fa-exclamation-triangle"></i>  You're exploring a very experiemental feature. There are so many bugs that we lost count. 
+                        </p>
+                    </div>
                     <p className={" text-white mt-4 text-4xl font-semibold"}>Learning path</p>
-          
+      
                     <p className="hidden text-blue-400 mb-4"><i class="fas fa-spinner   fa-spin"></i> Retrieving your progress. Our servers are under high load at the moment.</p>
 
 
@@ -286,66 +290,11 @@ const Learn = () => {
       </div>
 
 
-    <div className="mt-4 bg-gray-900 border  border-gray-700  px-4 py-4 text-white rounded ">
-    <div className="flex items-center justify-between">
-      <h1 className="text-xl w-full"><i className="fas fa-search"></i> Exploratory Cybersecurity</h1>
-      <div className="ml-2 flex-shrink-0 flex w-1/2">
-      <div className="w-full bg-gray-900 border border-gray-700 rounded-full">
-      <div className="bg-gradient-to-br from-green-600 to-green-900  text-xs font-medium text-blue-100 text-center p-0.5 leading-none rounded-l-full" style={{width: '0%'}}> 0%</div>
-    
+   
+   </div>
     </div>
-    
-      </div>
-                    
-    
-      </div>
      
-      <div className="flex items-center justify-between">
-    
-     
-    
-     <div>
-       
-      <p className="mt-4 uppercase">Up next</p>
-      <i className="fas fa-book"></i> Reading - Introduction
-     </div>
-      <div className="ml-2 flex-shrink-0 flex w-1/10">
-      <button className="">Coming Soon</button>      </div>
-      </div>
-    </div>
 
-    <div className="mt-4 bg-gray-900 border  border-gray-700  px-4 py-4 text-white rounded ">
-    <div className="flex items-center justify-between">
-      <h1 className="text-xl w-full"><i className="fas fa-search"></i> Exploratory Cybersecurity</h1>
-      <div className="ml-2 flex-shrink-0 flex w-1/2">
-      <div className="w-full bg-gray-900 border border-gray-700 rounded-full">
-      <div className="bg-gradient-to-br from-green-600 to-green-900  text-xs font-medium text-blue-100 text-center p-0.5 leading-none rounded-l-full" style={{width: '0%'}}> 0%</div>
-    
-    </div>
-    
-      </div>
-                    
-    
-      </div>
-     
-      <div className="flex items-center justify-between">
-    
-     
-    
-     <div>
-       
-      <p className="mt-4 uppercase">Up next</p>
-      <i className="fas fa-book"></i> Reading - Introduction
-     </div>
-      <div className="ml-2 flex-shrink-0 flex w-1/10">
-      <button className="">Coming Soon</button>      </div>
-      </div>
-    </div>
-
-    </div>
-
-
-                </div>
 
                 
             </main>

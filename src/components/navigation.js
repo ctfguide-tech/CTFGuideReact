@@ -7,10 +7,9 @@ import {signOut, getAuth, onAuthStateChanged} from "firebase/auth";
 export class Navigation extends Component {
 
     render() {
-        //    { name: 'Learn', href: '../learn', current: false },
         const navigation = [
             { name: 'Dashboard', href: '../dashboard', current: false },
-     
+            { name: 'Learn', href: '../learn', current: false },
 
             { name: 'Practice', href: '../practice/all', current: false },
             { name: 'Leaderboards', href: '../leaderboards/global', current: false },
@@ -187,7 +186,7 @@ export class Navigation extends Component {
 
 
                                 </div>
-                     <div className=" px-2 space-y-1 z-20 hidden">
+                     <div className=" px-2 space-y-1 z-20">
                                         <a className='block px-3 py-2 rounded-md text-base font-medium text-gray-200  '>
                                         <span id={"navPoints2"}> 0 </span>  points
                                         </a>

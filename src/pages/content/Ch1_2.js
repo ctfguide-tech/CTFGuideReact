@@ -10,6 +10,7 @@ import { io } from "socket.io-client";
 import DashboardManager from "../../modules/DashboardManager.js"
 import 'animate.css';
 import { Navigation } from '../../components/navigation';
+import { getMouseEventOptions } from "@testing-library/user-event/dist/utils";
 
 const Ch1_2 = () => {
   const firebaseConfig = {
@@ -63,6 +64,7 @@ const Ch1_2 = () => {
     });
 
   }
+
   useEffect(() => {
 
     var xhttp = new XMLHttpRequest();
@@ -107,6 +109,14 @@ const Ch1_2 = () => {
           if (this.readyState === 4 & this.status === 200) {
             let data = JSON.parse(this.responseText);
             document.getElementById("navPoints").innerHTML = data.points;
+
+            if (data.lessonsCompleted) {
+                if (data.lessonsCompleted.includes("c1a1")) {
+                    document.getElementById("nextstep").innerHTML = "Onward!"
+                    localStorage.setItem("cdone", true)
+                }
+                
+            }
 
             setUserData({
               username: data.username,
@@ -189,9 +199,203 @@ const Ch1_2 = () => {
   }
   function dashboardTutorialDone() {
     window.location.href = "../practice"
+
+
   }
 
-  window.onload = function () {
+var problemSet = 0;
+var currentlySelected = "nothing";
+var score = 0;
+function selectA(arg1) {
+    currentlySelected = arg1
+
+    if (arg1 == "a") {
+        document.getElementById("b").classList.remove("border-blue-500");
+        document.getElementById("c").classList.remove("border-blue-500");
+        document.getElementById("d").classList.remove("border-blue-500");
+        document.getElementById(currentlySelected).classList.add("border-blue-500")
+    } else if (arg1 == "b") {
+        document.getElementById("a").classList.remove("border-blue-500");
+        document.getElementById("c").classList.remove("border-blue-500");
+        document.getElementById("d").classList.remove("border-blue-500");
+        document.getElementById(currentlySelected).classList.add("border-blue-500")
+    } else if (arg1 == "c") {
+        document.getElementById("b").classList.remove("border-blue-500");
+        document.getElementById("a").classList.remove("border-blue-500");
+        document.getElementById("d").classList.remove("border-blue-500");
+        document.getElementById(currentlySelected).classList.add("border-blue-500")
+    } else if (arg1 == "d") {
+        document.getElementById("b").classList.remove("border-blue-500");
+        document.getElementById("c").classList.remove("border-blue-500");
+        document.getElementById("a").classList.remove("border-blue-500");
+        document.getElementById(currentlySelected).classList.add("border-blue-500")
+    }
+  
+
+}
+
+function next() {
+    console.log(problemSet)
+
+    document.getElementById("next_btn").classList.add("hidden")
+    document.getElementById("check_btn").classList.remove("hidden")
+    document.getElementById("a").classList.remove("border-blue-500");
+    document.getElementById("b").classList.remove("border-blue-500");
+    document.getElementById("c").classList.remove("border-blue-500");
+    document.getElementById("d").classList.remove("border-blue-500");
+
+    document.getElementById("a").classList.remove("bg-green-600")
+    document.getElementById("a").classList.add("hover:bg-gray-900")
+
+    document.getElementById("b").classList.remove("bg-green-600")
+    document.getElementById("b").classList.add("hover:bg-gray-900")
+
+    document.getElementById("c").classList.remove("bg-green-600")
+    document.getElementById("c").classList.add("hover:bg-gray-900")
+
+    document.getElementById("d").classList.remove("bg-green-600")
+    document.getElementById("d").classList.add("hover:bg-gray-900")
+
+
+    document.getElementById("a").classList.remove("bg-red-900")
+    document.getElementById("a").classList.add("hover:bg-gray-900")
+    document.getElementById("b").classList.remove("bg-red-900")
+    document.getElementById("b").classList.add("hover:bg-gray-900")
+    document.getElementById("c").classList.remove("bg-red-900")
+    document.getElementById("c").classList.add("hover:bg-gray-900")
+    document.getElementById("d").classList.remove("bg-red-900")
+    document.getElementById("d").classList.add("hover:bg-gray-900")
+
+
+    if (problemSet == 1 ) {
+    document.getElementById("question").innerHTML = "Q2: What was the original intent of the internet?"
+    document.getElementById("a").innerHTML = `<span class="rounded-lg bg-black px-3 py-1 mr-1">A</span> Send GIF's to people all over the globe.`;
+    document.getElementById("b").innerHTML = `<span class="rounded-lg bg-black px-3 py-1 mr-1">B</span> Sharing of important academic information/research to different universities.`;
+    document.getElementById("c").innerHTML = `<span class="rounded-lg bg-black px-3 py-1 mr-1">C</span> Making the telephone more powerful.`;
+    document.getElementById("d").innerHTML = `<span class="rounded-lg bg-black px-3 py-1 mr-1">D</span> Communicating with aliens.`
+    } else if (problemSet == 2) {
+        document.getElementById("question").innerHTML = "Q3: What is the internet?"
+        document.getElementById("a").innerHTML = `<span class="rounded-lg bg-black px-3 py-1 mr-1">A</span> A network of computers that can be connected to each other.`;
+        document.getElementById("b").innerHTML = `<span class="rounded-lg bg-black px-3 py-1 mr-1">B</span> The enemies in a videogame.`;
+        document.getElementById("c").innerHTML = `<span class="rounded-lg bg-black px-3 py-1 mr-1">C</span> 12G fiber waves traveling through the air.`;
+        document.getElementById("d").innerHTML = `<span class="rounded-lg bg-black px-3 py-1 mr-1">D</span> Carrier pigeons that carry radio signals.`
+} else if (problemSet == 3) {
+    document.getElementById("question").innerHTML = "Q4: Which of the following are three specific areas of cybersecurity?"
+    document.getElementById("a").innerHTML = `<span class="rounded-lg bg-black px-3 py-1 mr-1">A</span> Application Security, Network Security, and Endpoint Security.`;    
+    document.getElementById("b").innerHTML = `<span class="rounded-lg bg-black px-3 py-1 mr-1">B</span> Bit Security, Wirefrail Security, Nougat Security.`;
+    document.getElementById("c").innerHTML = `<span class="rounded-lg bg-black px-3 py-1 mr-1">C</span> RAT, HAM, LIDAR.`;
+    document.getElementById("d").innerHTML = `<span class="rounded-lg bg-black px-3 py-1 mr-1">D</span> 5G, 4G, 3G.`
+}
+
+}
+
+//a
+function p1() {
+    document.getElementById("check_btn").classList.add("hidden")
+
+    if (problemSet == 0 ) {
+         if (currentlySelected == "a") score++;
+    document.getElementById("a").classList.add("bg-green-600")
+    document.getElementById("a").classList.remove("hover:bg-gray-900")
+    document.getElementById("b").classList.add("bg-red-900")
+    document.getElementById("b").classList.remove("hover:bg-gray-900")
+    document.getElementById("c").classList.add("bg-red-900")
+    document.getElementById("c").classList.remove("hover:bg-gray-900")
+    document.getElementById("d").classList.add("bg-red-900")
+    document.getElementById("d").classList.remove("hover:bg-gray-900")
+    document.getElementById("next_btn").classList.remove("hidden")
+
+    } 
+
+    if (problemSet == 1 ) {
+        if (currentlySelected == "b") score++;
+
+        document.getElementById("b").classList.add("bg-green-600")
+        document.getElementById("b").classList.remove("hover:bg-gray-900")
+        document.getElementById("a").classList.add("bg-red-900")
+        document.getElementById("a").classList.remove("hover:bg-gray-900")
+        document.getElementById("c").classList.add("bg-red-900")
+        document.getElementById("c").classList.remove("hover:bg-gray-900")
+        document.getElementById("d").classList.add("bg-red-900")
+        document.getElementById("d").classList.remove("hover:bg-gray-900")
+
+        document.getElementById("next_btn").classList.remove("hidden")
+    }
+
+    if (problemSet == 2 ) {
+        if (currentlySelected == "a") score++;
+
+        document.getElementById("a").classList.add("bg-green-600")
+        document.getElementById("a").classList.remove("hover:bg-gray-900")
+        document.getElementById("b").classList.add("bg-red-900")
+        document.getElementById("b").classList.remove("hover:bg-gray-900")
+        document.getElementById("c").classList.add("bg-red-900")
+        document.getElementById("c").classList.remove("hover:bg-gray-900")
+        document.getElementById("d").classList.add("bg-red-900")
+        document.getElementById("d").classList.remove("hover:bg-gray-900")
+        document.getElementById("next_btn").classList.remove("hidden")
+
+    }
+
+    
+    if (problemSet == 3 ) {
+        if (currentlySelected == "a") score++;
+
+        document.getElementById("a").classList.add("bg-green-600")
+        document.getElementById("a").classList.remove("hover:bg-gray-900")
+        document.getElementById("b").classList.add("bg-red-900")
+        document.getElementById("b").classList.remove("hover:bg-gray-900")
+        document.getElementById("c").classList.add("bg-red-900")
+        document.getElementById("c").classList.remove("hover:bg-gray-900")
+        document.getElementById("d").classList.add("bg-red-900")
+        document.getElementById("d").classList.remove("hover:bg-gray-900")
+
+        document.getElementById("next_btn").classList.add("hidden")
+        document.getElementById("score_btn").classList.remove("hidden")
+        
+    }
+
+
+    problemSet++;
+    
+}
+
+function showScore() {
+    document.getElementById("quiz").classList.add("hidden")
+    document.getElementById("score").classList.remove("hidden")
+    document.getElementById("score_amt").innerHTML = score;
+
+    if (score < 3) {
+        document.getElementById("phrase").innerHTML = "Nice try, but you can do better!";
+        document.getElementById("tryagain").classList.remove("hidden");
+    } else {
+
+    var xhttp = new XMLHttpRequest();
+    xhttp.onreadystatechange = function() {
+    if (this.readyState == 4 && this.status == 200) {
+        document.getElementById("nextstep").innerHTML = "Continue"
+        document.getElementById("nextstep").onclick = function() {
+            window.location.href = "./lesson2"
+        }
+    }
+    };
+    xhttp.open("GET", `${process.env.REACT_APP_API_URL}/users/progress?uid=${localStorage.getItem("token")}&lessoncode=c1a1`, true);
+    xhttp.send();
+}
+
+}
+
+function moveForward() {
+
+ if (score > 3 || localStorage.getItem('cdone')) {
+    window.location.href = "./lesson2"
+ }
+}
+
+  window.onload = function () { 
+
+
+
     if (localStorage.getItem("tutorial_phase") == 1) {
       document.getElementById("dashboard_tutorial").classList.remove("hidden")
     }
@@ -304,19 +508,41 @@ const Ch1_2 = () => {
             <p><i class="fas fa-info-circle"></i>  This lesson references content from lesson 1.</p>
             </div>
             <div className="ml-2 flex-shrink-0 flex w-1/10">
-            <button className=" text-white text-xl border border-gray-500 px-6 py-3 hover:bg-gray-900 rounded-lg"><i class="fas fa-spinner text-white  fa-spin"></i> Awaiting Completion</button>
+            <button id="nextstep" onClick={() => {moveForward()}} className=" text-white text-xl border border-gray-500 px-6 py-3 hover:bg-gray-900 rounded-lg"><i class="fas fa-spinner text-white  fa-spin"></i> Awaiting Completion</button>
                     </div>
                     </div>
 
 
-                  <div id="quiz" className="mt-5 bg-gray-900 px-10 py-10 rounded-lg border border-gray-700">
+                  <div id="quiz" className=" mt-5 bg-gray-900 px-10 py-10 rounded-lg border border-gray-700">
                       
-                      <h1 className="text-xl font-semibold">What is Cybersecurity?</h1>
-                      <button className="mt-4 px-8 py-3 bg-gray-800 border border-gray-700 rounded-lg hover:bg-gray-900">A - A nutmeg egg.</button><button className="ml-4 mt-4 px-8 py-3 bg-gray-800 border border-gray-700 rounded-lg hover:bg-gray-900">B - A nutmeg egg.</button>
-                        <br></br>
-                      <button className="mt-4 px-8 py-3 bg-gray-800 border border-gray-700 rounded-lg hover:bg-gray-900">C - A nutmeg egg.</button><button className="ml-4 mt-4 px-8 py-3 bg-gray-800 border border-gray-700 rounded-lg hover:bg-gray-900">D - A nutmeg egg.</button>
+                      <h1 id="question" className="text-2xl font-semibold">Q1: What is Cybersecurity?</h1>
+
+            
+                      <button id="a" onClick={() => {selectA('a')}} className="mt-4 px-6 py-3 bg-gray-800 border border-gray-700 rounded-lg hover:bg-gray-900"><span className="rounded-lg bg-black px-3 py-1 mr-1">A</span>   Cybersecurity is the practice of protecting electronic information by mitigating information risks and vulnerabilities. </button>
+                      <br></br>
+                      <button id="b" onClick={() => {selectA('b')}} className=" mt-4 px-6 py-3 bg-gray-800 border border-gray-700 rounded-lg hover:bg-gray-900"><span className="rounded-lg bg-black px-3 py-1 mr-1">B</span> Cybersecurity is about making sure the inner workings of security stays cyber.</button>
+                      <br></br>
+                      <button id="c" onClick={() => {selectA('c')}} className="mt-4 px-6 py-3 bg-gray-800 border border-gray-700 rounded-lg hover:bg-gray-900"><span className="rounded-lg bg-black px-3 py-1 mr-1">C</span> Cybersecurity is what the TSA uses to make sure only safe passengers board the plane.</button>
+                      <br></br>
+                      <button id="d"onClick={() => {selectA('d')}}  className=" mt-4 px-6 py-3 bg-gray-800 border border-gray-700 rounded-lg hover:bg-gray-900"><span className="rounded-lg bg-black px-3 py-1 mr-1">D</span>  Cybersecurity is responsible for giving electricity to our computers.</button>
+
+<br></br>
+<button onClick={p1} id="check_btn" className="mt-4 px-10 py-2 bg-blue-800 border border-blue-700 rounded-lg hover:bg-blue-900"><i class="fas fa-check-double"></i> Check Answer</button>
+<button onClick={next} id="next_btn" className="hidden mt-4 px-10 py-2  border border-blue-700 rounded-lg hover:bg-black"> Next Question</button>
+<button onClick={showScore}  id="score_btn" className="hidden  mt-4 px-10 py-2  border border-blue-700 rounded-lg hover:bg-black"><i class="fas fa-file-alt"></i> View Score</button>
 
                       </div>  
+
+                      <div id="score" className="hidden mt-5 bg-gray-900 px-10 py-10 rounded-lg border border-gray-700 mx-auto text-center">
+                      <h1  className="text-center text-6xl font-semibold"><span id="score_amt"></span> / 4</h1>
+                      <h1  id="phrase" className="text-center text-4xl mt-4">Awesome work!</h1>
+                      <button className="hidden mt-4 mx-auto text-white text-xl border border-gray-500 px-6 py-3 hover:bg-gray-800 rounded-lg">Share with teacher</button>
+                    <div id="tryagain" className="hidden">
+                      <br></br>                      <br></br>
+                      <a href="./activity1"  className=" mt-6 mx-auto text-white text-xl border border-gray-500 px-6 py-3 hover:bg-gray-800 rounded-lg"><i class="fas fa-redo"></i> Try Again</a>
+                      </div>
+               </div>
+                 
            <br></br>
                
 
