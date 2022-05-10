@@ -287,7 +287,7 @@ const Dashboard = () => {
 
 
      
-        <div className="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8 ">
+        <div className="max-w-7xl mx-auto p y-6 px-4 sm:px-6 lg:px-8 ">
 
         <div id="loader" className="py-10 mb-10">
         <h1 className="text-white text-4xl text-center"><i class="fas fa-spinner text-white  fa-spin"></i> Preparing for blast off</h1>
@@ -389,8 +389,65 @@ const Dashboard = () => {
                   </div>
             
                 </div>
-     
-                <div className="">
+
+                <h1 className="text-4xl text-white mt-6 mb-4 align-middle"> Learn  <span className="align-middle hidden text-xl font-semibold italic text-yellow-500">N E W !</span></h1>
+
+
+         
+                <div className="mt-5 grid grid-cols-1 gap-4 sm:grid-cols-2">
+
+<div
+    onClick={() => {window.location.href = './learn/chapter1/lesson1'}}
+  className="relative rounded-lg border border-gray-700 bg-gray-900  px-6 py-5 shadow-sm flex space-x-3 hover:border-gray-600 "
+>
+ <div className="flex-shrink-0">
+  
+  </div>
+  <div className="flex-1 min-w-0">
+      
+    <a href="./learn/chapter1/lesson1" className="focus:outline-none">
+      <span className="absolute inset-0" aria-hidden="true" />
+      <p className="text-xl font-medium text-gray-100">Cybersecurity Basics <span id="c1done" className="hidden text-sm bg-green-800 rounded-lg px-2">Completed</span></p>
+      <hr className="border-gray-700 mt-2 mb-2"></hr>
+    <ul className="text-white">
+        <li>C1L1 - What is Cybersecurity?   </li>
+        <li>C1A1 - Review Activity   </li>
+        <li>C1L2 - Staying Safe Online   </li>
+    </ul>
+    </a>
+  </div>
+</div>
+
+<div
+
+className="relative rounded-lg border border-gray-700 bg-gray-900  px-6 py-5 shadow-sm flex  space-x-3 hover:border-gray-600 focus-within:ring-2 focus-within:ring-offset-2 focus-within:ring-indigo-500"
+>
+<div className="flex-shrink-0">
+
+</div>
+<div className="flex-1 min-w-0">
+
+<a href="#" className="focus:outline-none">
+
+<p className="text-xl font-medium text-gray-100">Linux Basics</p>
+<hr className="border-gray-700 mt-2 mb-2"></hr>
+<ul className="text-white">
+<li>This lesson isn't avaliable yet.  </li>
+
+</ul>
+</a>
+</div>
+
+</div>
+
+
+
+
+</div>
+<br></br>
+<Link to="../learn" className="text-white mt-10 px-3 rounded-lg   py-1 bg-blue-700 rounded-lg ">Looking for more lessons?</Link>
+
+                <div className="hidden">
          
          <h1 className="text-4xl text-white mt-6 mb-4 align-middle"> Learning Path <span className="align-middle text-xl font-semibold italic text-yellow-500">Coming soon!</span></h1>
 

@@ -23,6 +23,7 @@ import "./index.css";
 
 import Ch1_1 from "./pages/content/Ch1_1"; // Lesson 1
 import Ch1_2 from "./pages/content/Ch1_2"; // Activity 1
+import Ch1_3 from "./pages/content/Ch1_3"; // Lesson 2
 
 
 
@@ -59,7 +60,8 @@ export default function App() {
    
           <Route path="/learn/chapter1/activity1" element={<Ch1_2 />} />
    
-          
+          <Route path="/learn/chapter1/lesson2" element={<Ch1_3/>} />
+
           
           <Route path="/challenges/:id" element={<Challenge />} />
           <Route path="/challenges/:id/edit" element={<EditChallenge />} />

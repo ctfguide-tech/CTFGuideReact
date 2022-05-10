@@ -12,7 +12,7 @@ import 'animate.css';
 import { Navigation } from '../../components/navigation';
 import YouTube  from "react-youtube";
 
-const Ch1_1 = () => {
+const Ch1_3 = () => {
   const firebaseConfig = {
     apiKey: "AIzaSyBLAN84VP3jSA5dqhrU6Bjmfu5NiUDuNw4",
     authDomain: "cyberjags-8b081.firebaseapp.com",
@@ -50,18 +50,15 @@ const Ch1_1 = () => {
     points: 0
   })
 
-  function next() {
-   
+  function nextstep() {
     var xhttp = new XMLHttpRequest();
     xhttp.onreadystatechange = function() {
     if (this.readyState == 4 && this.status == 200) {
-        document.getElementById("nextstep").innerHTML = "Continue"
-        document.getElementById("nextstep").onclick = function() {
-            window.location.href = "./activity1";
-        }
+    window.location.href = "../../learn";
+  
     }
     };
-    xhttp.open("GET", `${process.env.REACT_APP_API_URL}/users/progress?uid=${localStorage.getItem("token")}&lessoncode=c1l1`, true);
+    xhttp.open("GET", `${process.env.REACT_APP_API_URL}/users/progress?uid=${localStorage.getItem("token")}&lessoncode=c1l2`, true);
     xhttp.send();
 
 
@@ -72,7 +69,7 @@ const Ch1_1 = () => {
 
     playerVars: {
       // https://developers.google.com/youtube/player_parameters
-      autoplay: 0,
+      autoplay: 1,
     },
   }
 
@@ -141,15 +138,7 @@ const Ch1_1 = () => {
               points: data.points
             })
 
-            if (data.lessonsCompleted) {
-              if (data.lessonsCompleted.includes("c1l1")) {
-                  document.getElementById("nextstep").innerHTML = "Onward!"
-                  document.getElementById("nextstep").onclick = function() {
-                    window.location.href = "./activity1";
-                }
-              }
-              
-          }
+        
             document.getElementById("loader").classList.add("hidden");
 
 
@@ -197,9 +186,11 @@ const Ch1_1 = () => {
 
   
   const steps = [
-    { id: '', name: 'What is Cybersecurity?', href: '/learn/chapter1/lesson1', status: 'inprogress' },
+
+
+    { id: '', name: 'What Is Cybersecurity?', href: '/learn/chapter1/lesson1', status: 'learning' },
     { id: '', name: 'Review Activity', href: '/learn/chapter1/activity1', status: 'activity' },
-    { id: '', name: 'Staying Safe Online', href: '/learn/chapter1/lesson2', status: 'learning' },
+    { id: '', name: 'Staying Safe Online', href: '/learn/chapter1/lesson2', status: 'inprogress' },
   ]
 
   const navigation = [
@@ -342,40 +333,26 @@ const Ch1_1 = () => {
 
             <div className="flex items-center justify-between">
               <div>
-            <h1 className="text-4xl font-semibold ">Introduction</h1>
-            <p><i class="fas fa-info-circle"></i>  This lesson includes <a href="https://github.com/ctfguide-tech/Information/blob/main/lessons/lesson1.md" className="text-blue-300">externally sourced</a> content.</p>
-            </div>
+            <h1 className="text-4xl font-semibold ">Surfin' Safe</h1>
+          </div>
             <div className="ml-2 flex-shrink-0 flex w-1/10">
-            <button id="nextstep" className=" text-white text-xl border border-gray-500 px-6 py-3 hover:bg-gray-900 rounded-lg"><i class="fas fa-spinner text-white  fa-spin"></i> Awaiting Completion</button>
+            <button onClick={nextstep} className=" text-white text-xl border border-gray-500 px-6 py-3 hover:bg-gray-900 rounded-lg"><i class="fas fa-check text-white"></i> Finish Course</button>
                     </div>
                     </div>
            
             <p className="text-xl mt-6">
-              Welcome to CTFGuide's Introduction to Cybersecurity course. This course is designed to teach you the basics of cybersecurity. At the end of this course, you'll have a solid understanding on what cybersecurity is, how it works, and how to protect your data.
+         
+                    The internet is a pretty great place. It's probably the only place where you'll find teenagers laughing at an oversatured image of a frog. But, it also has a lot of bad stuff like malware, phishing, and scams. Let's learn how you can protect yourself from these attacks.
 
               <br></br><br></br>
 
-              So what is cybersecurity?        Cybersecurity is the practice of protecting electronic information by mitigating information risks and vulnerabilities. Information risks can include unauthorized access, use, disclosure, interception, or destruction of data.
-              <br></br>
+              There are a few things you can do to stay safe on the internet. First, make sure that you have a strong password for all of your accounts and that you never use the same password for more than one account. Second, be careful about what information you share online and make sure that you only share information with people who you know and trust. Finally, be aware of the potential dangers of clicking on links or downloading files from unknown sources. If you follow these guidelines, you should be able to stay safe while using the internet.   <br></br>
 
               <br></br>
-              There are many different areas of cybersecurity. One area is application security, which focuses on securing applications from attacks. Another area is network security, which focuses on securing networks from attack. Another area is endpoint security, which focuses on securing devices from attack.
+              There are a few things you can do in order to detect if a link is legitimate or not. The first step is to check the URL of the link to see if it is a valid website. If the website looks legitimate, the next step is to hover over the link to see where it is taking you. If the destination looks legitimate, then you can click on the link. However, if at any point during these steps you feel like something is not right, it is probably best to not click on the link.
             </p>
 
-            <div class="mx-auto text-center mt-10 text-xl">
-                    <p>Watch the video below to complete this lesson.</p>
-
-                    <div className="text-center mx-auto">
-                    <YouTube
-            videoId="sdpxddDzXfE" opts={opts} onEnd={next} className="text-center mx-auto mt-5"  style={{
-              display: 'flex',
-              alignItems: 'center',
-              justifyContent: 'center',
-          }}
-          /> 
-          </div>
-             
-                    </div>
+    
            <br></br>
                
 
@@ -400,4 +377,4 @@ const Ch1_1 = () => {
 
 
 
-export default Ch1_1;
+export default Ch1_3;

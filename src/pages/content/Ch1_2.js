@@ -11,7 +11,7 @@ import DashboardManager from "../../modules/DashboardManager.js"
 import 'animate.css';
 import { Navigation } from '../../components/navigation';
 import { getMouseEventOptions } from "@testing-library/user-event/dist/utils";
-
+import YoutubePlayer from "react-youtube"
 const Ch1_2 = () => {
   const firebaseConfig = {
     apiKey: "AIzaSyBLAN84VP3jSA5dqhrU6Bjmfu5NiUDuNw4",
@@ -51,6 +51,8 @@ const Ch1_2 = () => {
   })
 
 
+
+  
   const [Learn, setLearn] = useState({
     data: []
   })
@@ -64,6 +66,9 @@ const Ch1_2 = () => {
     });
 
   }
+  var player;
+
+
 
   useEffect(() => {
 
@@ -170,9 +175,9 @@ const Ch1_2 = () => {
 
 
   const steps = [
-    { id: '', name: 'Introduction', href: '/learn/chapter1/lesson1', status: 'learning' },
+    { id: '', name: 'What Is Cybersecurity?', href: '/learn/chapter1/lesson1', status: 'learning' },
     { id: '', name: 'Review Activity', href: '/learn/chapter1/activity1', status: 'inprogress_a' },
-    { id: '', name: 'Using CTFGuide', href: '#', status: 'learning' },
+    { id: '', name: 'Staying Safe Online', href: '/learn/chapter1/lesson2', status: 'learning' },
   ]
 
   const navigation = [

@@ -113,7 +113,15 @@ const Learn = () => {
                             points: data.points
                         })
 
+//c1done
 
+
+if (data.lessonsCompleted) {
+    if (data.lessonsCompleted.includes("c1l1") && data.lessonsCompleted.includes("c1a1") && data.lessonsCompleted.includes("c1l2")) {
+        document.getElementById("c1done").classList.remove("hidden");
+
+    }
+}
                         document.getElementById("loader").classList.add("hidden");
 
 
@@ -218,82 +226,160 @@ const Learn = () => {
                 <div className="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8   ">
 
               
-                <div className="bg-red-900 border border-red-600 px-4 py-2 rounded-lg">
+                <div className="hidden bg-red-900 border border-red-600 px-4 py-2 rounded-lg">
                         <p className={" text-white  text-center"}>
                         <i class="fas fa-exclamation-triangle"></i>  You're exploring a very experiemental feature. There are so many bugs that we lost count. 
                         </p>
                     </div>
-                    <p className={" text-white mt-4 text-4xl font-semibold"}>Learning path</p>
+                    <p className={" text-white mt-4 text-4xl font-semibold"}>Learn</p>
       
-                    <p className="hidden text-blue-400 mb-4"><i class="fas fa-spinner   fa-spin"></i> Retrieving your progress. Our servers are under high load at the moment.</p>
+                    <div className="mt-5 grid grid-cols-1 gap-4 sm:grid-cols-2">
+
+        <div
+            onClick={() => {window.location.href = './learn/chapter1/lesson1'}}
+          className="relative rounded-lg border border-gray-700 bg-gray-900  px-6 py-5 shadow-sm flex space-x-3 hover:border-gray-600 "
+        >
+         <div className="flex-shrink-0">
+          
+          </div>
+          <div className="flex-1 min-w-0">
+              
+            <a href="./learn/chapter1/lesson1" className="focus:outline-none">
+              <span className="absolute inset-0" aria-hidden="true" />
+              <p className="text-xl font-medium text-gray-100">Cybersecurity Basics <span id="c1done" className="hidden text-sm bg-green-800 rounded-lg px-2">Completed</span></p>
+              <hr className="border-gray-700 mt-2 mb-2"></hr>
+            <ul className="text-white">
+                <li>C1L1 - What is Cybersecurity?   </li>
+                <li>C1A1 - Review Activity   </li>
+                <li>C1L2 - Staying Safe Online   </li>
+            </ul>
+            </a>
+          </div>
+        </div>
+
+        <div
+  
+  className="relative rounded-lg border border-gray-700 bg-gray-900  px-6 py-5 shadow-sm flex  space-x-3 hover:border-gray-600 focus-within:ring-2 focus-within:ring-offset-2 focus-within:ring-indigo-500"
+>
+ <div className="flex-shrink-0">
+  
+  </div>
+  <div className="flex-1 min-w-0">
+      
+    <a href="#" className="focus:outline-none">
+
+      <p className="text-xl font-medium text-gray-100">Linux Basics</p>
+      <hr className="border-gray-700 mt-2 mb-2"></hr>
+    <ul className="text-white">
+        <li>This lesson isn't avaliable yet.  </li>
+
+    </ul>
+    </a>
+  </div>
+</div>
+
+
+<div
+  
+  className="relative rounded-lg border border-gray-700 bg-gray-900  px-6 py-5 shadow-sm flex  space-x-3 hover:border-gray-600 focus-within:ring-2 focus-within:ring-offset-2 focus-within:ring-indigo-500"
+>
+ <div className="flex-shrink-0">
+  
+  </div>
+  <div className="flex-1 min-w-0">
+      
+    <a href="#" className="focus:outline-none">
+
+      <p className="text-xl font-medium text-gray-100">Introduction to CTF</p>
+      <hr className="border-gray-700 mt-2 mb-2"></hr>
+    <ul className="text-white">
+        <li>This lesson isn't avaliable yet.  </li>
+
+    </ul>
+    </a>
+  </div>
+</div>
 
 
 
-     <div className="" >
+<div
+  
+  className="relative rounded-lg border border-gray-700 bg-gray-900  px-6 py-5 shadow-sm flex  space-x-3 hover:border-gray-600 focus-within:ring-2 focus-within:ring-offset-2 focus-within:ring-indigo-500"
+>
+ <div className="flex-shrink-0">
+  
+  </div>
+  <div className="flex-1 min-w-0">
+      
+    <a href="#" className="focus:outline-none">
+
+      <p className="text-xl font-medium text-gray-100">Forensics</p>
+      <hr className="border-gray-700 mt-2 mb-2"></hr>
+    <ul className="text-white">
+        <li>This lesson isn't avaliable yet.  </li>
+
+    </ul>
+    </a>
+  </div>
+</div>
+
+<div
+  
+  className="relative rounded-lg border border-gray-700 bg-gray-900  px-6 py-5 shadow-sm flex  space-x-3 hover:border-gray-600 focus-within:ring-2 focus-within:ring-offset-2 focus-within:ring-indigo-500"
+>
+ <div className="flex-shrink-0">
+  
+  </div>
+  <div className="flex-1 min-w-0">
+      
+    <a href="#" className="focus:outline-none">
+
+      <p className="text-xl font-medium text-gray-100">Cryptography</p>
+      <hr className="border-gray-700 mt-2 mb-2"></hr>
+    <ul className="text-white">
+        <li>This lesson isn't avaliable yet.  </li>
+
+    </ul>
+    </a>
+  </div>
+</div>
 
 
-    
- 
 
-    <div className="mt-4 bg-gray-900 border  border-gray-700  px-4 py-4 text-white rounded ">
-    <div className="flex items-center justify-between">
-      <h1 className="text-xl w-full"><i className="fas fa-search"></i> Exploratory Cybersecurity</h1>
-      <div className="ml-2 flex-shrink-0 flex w-1/2">
-      <div className="w-full bg-gray-900 border border-gray-700 rounded-full">
-      <div className="bg-gradient-to-br from-green-600 to-green-900  text-xs font-medium text-blue-100 text-center p-0.5 leading-none rounded-l-full" style={{width: '0%'}}> 0%</div>
-    
+
+
+<div
+  
+  className="relative rounded-lg border border-gray-700 bg-gray-900  px-6 py-5 shadow-sm flex  space-x-3 hover:border-gray-600 focus-within:ring-2 focus-within:ring-offset-2 focus-within:ring-indigo-500"
+>
+ <div className="flex-shrink-0">
+  
+  </div>
+  <div className="flex-1 min-w-0">
+      
+    <a href="#" className="focus:outline-none">
+
+      <p className="text-xl font-medium text-gray-100">Reverse Engineering</p>
+      <hr className="border-gray-700 mt-2 mb-2"></hr>
+    <ul className="text-white">
+        <li>This lesson isn't avaliable yet.  </li>
+
+    </ul>
+    </a>
+  </div>
+</div>
+
+
     </div>
-    
-      </div>
-                    
-    
-      </div>
-     
-      <div className="flex items-center justify-between">
-    
-     
-    
-     <div>
-       
-      <p className="mt-4 uppercase">Up next</p>
-      <i className="fas fa-book"></i> Reading - Introduction
-     </div>
-      <div className="ml-2 flex-shrink-0 flex w-1/10">
-                    <Link to="./chapter1/lesson1" className="border border-gray-700 bg-black px-4 py-1 rounded-lg hover:bg-gray-900">Start Lesson</Link>
-      </div>
-      </div>
-    </div>
-    
-    <div className=" mt-5 bg-gray-900 border  border-gray-700   px-4 py-4 text-white rounded ">
-      
-      <div className="flex items-center justify-between">
-        <h1 className="text-xl"><i className="fab fa-linux"></i> Basic Linux</h1>
-        <div className="ml-2 flex-shrink-0 flex w-1/2">
-        <div className="w-full bg-gray-900 border border-gray-700 rounded-full">
-        <div className="bg-gradient-to-br from-green-600 to-green-900 text-xs font-medium text-blue-100 text-center p-0.5 leading-none rounded-l-full" style={{width: '0%'}}> 0%</div>
-      </div>
-      
-        </div>
-                      
-      
-        </div>
-        <div className="flex items-center justify-between">
-       <div>
-         
-        <p className="mt-4 uppercase">Up next</p>
-        <i className="far fa-play-circle"></i> Video Lesson - Accessing other servers
-       </div>
-        <div className="ml-2 flex-shrink-0 flex w-1/10">
-                      <button className="">Coming Soon</button>
-        </div>
-        </div>
-      </div>
 
 
-   
-   </div>
-    </div>
-     
+
+  
+  
+  
+  
+            </div>
+
 
 
                 
