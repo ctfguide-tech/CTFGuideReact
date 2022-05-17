@@ -445,8 +445,8 @@ className="relative rounded-lg border border-gray-700 bg-gray-900  px-6 py-5 sha
 
 </div>
 <br></br>
-<Link to="../learn" className="text-white mt-10 px-3 rounded-lg   py-1 bg-blue-700 rounded-lg ">Looking for more lessons?</Link>
-
+<Link to="../learn" className="text-white mt-10 px-3 rounded-lg   py-1 bg-blue-900 rounded-lg ">Looking for more lessons?</Link>
+<br></br><br></br>
                 <div className="hidden">
          
          <h1 className="text-4xl text-white mt-6 mb-4 align-middle"> Learning Path <span className="align-middle text-xl font-semibold italic text-yellow-500">Coming soon!</span></h1>
