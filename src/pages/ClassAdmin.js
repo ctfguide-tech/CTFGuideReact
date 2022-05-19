@@ -217,7 +217,7 @@ const ClassAdmin = () => {
 
                 <div className="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8   ">
 
-              <h1 className="text-white text-2xl"><i class="fas fa-save"></i> Saving your changes. Please do not leave this page!</h1>
+              <h1 className="text-white text-2xl hidden"><i class="fas fa-save"></i> Saving your changes. Please do not leave this page!</h1>
     
                     <p className={" text-white  text-4xl font-semibold"}> Class Name <span className="bg-gray-900 text-lg rounded-full border border-gray-700 px-5 font-normal">Admin View</span></p>
           
