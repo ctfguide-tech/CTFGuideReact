@@ -35,6 +35,10 @@ const Classes = () => {
     //const socket = io("http://localhost:3002");
 
 
+    const [classes, setClasses] = useState({
+        data: []
+      })
+    
     const [open, setOpen] = useState(true)
     const [show, setShow] = useState(true)
     const cancelButtonRef = useRef(null)
@@ -131,6 +135,34 @@ const Classes = () => {
                         xhttp.send();
 
                     }
+
+
+
+
+                    var xhttp = new XMLHttpRequest();
+                    xhttp.onreadystatechange = function () {
+                      if (this.readyState === 4 && this.status === 200) {
+                        // Success!
+                        console.log(JSON.parse(this.responseText));
+                        classes.data = []
+
+                        setClasses({
+                          data: JSON.parse(this.responseText)
+                        })
+                        document.getElementById("suggestedLoader").classList.add("hidden");
+                      } 
+
+                      if (this.readyState === 4 && this.status === 400) {
+
+                        document.getElementById("noClasses").classList.remove("hidden");
+
+                      }
+                   }
+                    xhttp.open("GET", `${process.env.REACT_APP_API_URL}/classes/student/my-classes?uid=${localStorage.getItem("token")}`);
+                    xhttp.send();
+
+
+
                 }
 
                 xhttp.open("GET", `${process.env.REACT_APP_API_URL}/users/data?uid=${firebaseUser.uid}`);
@@ -218,20 +250,28 @@ const Classes = () => {
                 <div className="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8   ">
 
               
-    
+                <div className="flex items-center justify-between">
                     <p className={" text-white  text-4xl font-semibold"}> Enrolled Classes</p>
-          
+                    <div className="ml-2 flex-shrink-0 flex">
+                    <input id="classCode" className="text-white border border-gray-700 bg-gray-900  px-4 text-xl py-1 rounded-lg focus:outline-none" placeholder="Class Code"></input>
+                    <button className="ml-4 text-white border border-gray-700 bg-gray-900 hover:bg-gray-800 px-4 text-xl py-1 rounded-lg"><i class="fas fa-sign-in-alt mr-1"></i> Join Class</button>
+                    <button className="ml-4 text-white border border-gray-700 bg-gray-900 px-4 text-xl py-1 rounded-lg hover:bg-gray-800"><i class="fas fa-plus-circle mr-1"></i> Create a Class</button>
+                    </div>
+          </div>
                  
 
      <div className="" >
 
 
     
-        <div className="text-center mx-auto">
-        <img src="../../teacherAssist.png" className="hidden text-center mx-auto" width={900}></img>
+        <div id="noClasses" className="hidden text-center mx-auto mt-20">
+        <i class="fas fa-question-circle text-white text-7xl mb-4"></i>
+        <h1 className="text-4xl w-full text-white">You are not enrolled in any classes.</h1>
+        <p className="text-white mt-4 hidden">If you were told that you would be enrolled in your courses automatically. You may need to connect your LMS to CTFGuide.</p>
+
         </div>
 
-    <div style={{cursor:'pointer'}} className="mt-4 hover:border-blue-500 bg-gray-900 border  border-gray-700  px-4 py-4 text-white rounded ">
+    <div style={{cursor:'pointer'}} className=" hidden mt-4 hover:border-blue-500 bg-gray-900 border  border-gray-700  px-4 py-4 text-white rounded ">
     <div className=" items-center justify-between">
       <h1 className="text-2xl w-full">CYBSEC 121</h1>
   <a className=""><i class="ml-1 fas fa-calendar-alt"></i> Enrolled 5/14/22 - 12/2/22</a> • <a className=""><i class="fas fa-chalkboard-teacher"></i> Instructed by Paul C, Santiago L <br></br> <i className="fa fa-check"></i> Issued by Garnet Valley SD</a>
@@ -241,7 +281,35 @@ const Classes = () => {
       </div>
      
     </div>
+
+
+    {
+
+            classes.data.map((item) => (
+
+
   
+
+
+
+<div style={{cursor:'pointer'}} className=" mt-4 hover:border-blue-500 bg-gray-900 border  border-gray-700  px-4 py-4 text-white rounded ">
+<div className=" items-center justify-between">
+  <h1 className="text-2xl w-full">{item.name} </h1> 
+  <a className=""><i class="fas fa-chalkboard-teacher"></i> Instructed by {item.teachers} - <i className="fa fa-check"></i> Issued by {item.organization}</a>
+<p>
+                {item.description}
+    </p> 
+
+  </div>
+ 
+</div>
+
+
+
+
+
+            ))
+    }
   
 
     </div>
