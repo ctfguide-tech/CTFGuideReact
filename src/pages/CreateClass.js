@@ -11,7 +11,7 @@ import DashboardManager from "../modules/DashboardManager.js"
 import 'animate.css';
 import { Navigation } from '../components/navigation';
 
-const Classes = () => {
+const CreateClass = () => {
     const firebaseConfig = {
         apiKey: "AIzaSyBLAN84VP3jSA5dqhrU6Bjmfu5NiUDuNw4",
         authDomain: "cyberjags-8b081.firebaseapp.com",
@@ -275,12 +275,12 @@ const Classes = () => {
 
    <div className="flex items-center justify-between">
                   
-                    <p className={" text-white  text-4xl font-semibold"}> Enrolled Classes</p>
+                    <p className={" text-white  text-4xl font-semibold"}> Create a new class</p>
                     <div className="ml-2 flex-shrink-0 flex">
                
                     <input id="classCode" className="text-white border border-gray-700 bg-gray-900  px-4 text-xl py-1 rounded-lg focus:outline-none" placeholder="Class Code"></input>
                     <button onClick={joinClass} className="ml-4 text-white border border-gray-700 bg-gray-900 hover:bg-gray-800 px-4 text-xl py-1 rounded-lg"><i class="fas fa-sign-in-alt mr-1"></i> Join Class</button>
-                    <Link to="../create-class" className="ml-4 text-white border border-gray-700 bg-gray-900 px-4 text-xl py-1 rounded-lg hover:bg-gray-800"><i class="fas fa-plus-circle mr-1"></i> Create a Class</Link>
+                    <button className="ml-4 text-white border border-gray-700 bg-gray-900 px-4 text-xl py-1 rounded-lg hover:bg-gray-800"><i class="fas fa-plus-circle mr-1"></i> Create a Class</button>
   
                     </div>
                     
@@ -315,35 +315,33 @@ const Classes = () => {
      
     </div>
 
+        <h1 className="mt-5 mb-1 text-white text-2xl">Class Name</h1>
+        <input className="w-1/2 text-white bg-gray-900 py-1 px-5 focus:outline-none border border-gray-700 rounded-lg" placeholder="Students should be able to identify your course easily"></input>
+  
+        <h1 className="mt-5 mb-1 text-white text-2xl">Organization ID</h1>
+        <input className="w-1/2 text-white bg-gray-900 py-1 px-5 focus:outline-none border border-gray-700 rounded-lg" placeholder="This will link your class to an organization"></input>
+        
+        <div class="mt-4 bg-gray-900 rounded-lg  py-4 border border-gray-700 text-white px-3 w-2/4">
+            <p class="text-md">The ID you entered is for the following organization.</p>
+            <ul>
+                <li>Organization Name: <span id="orgName"> ?</span></li>
+                <li>Organization Owner: <span id="orgOwner"> ?</span></li>
+                <li>Please ensure that this information is correct.</li>
+            </ul>
+        </div>
 
-    {
-
-            classes.data.map((item) => (
-
-
+        
+        <h1 className="mt-5 mb-1 text-white text-2xl">Course Description</h1>
+        <input className="w-1/2 text-white bg-gray-900 py-1 px-5 focus:outline-none border border-gray-700 rounded-lg" placeholder="Briefly explain on what your class offers"></input>
   
 
+        <h1 className="mt-5 mb-1 text-white text-2xl flex ">Organization Lock    <div className="ml-4 form-check focus:outline-none form-switch">
+    <input className="form-check-input appearance-none w-16 rounded-full float-left h-8 align-top bg-gray-900 bg-no-repeat bg-contain bg-gray-900 focus:outline-none cursor-pointer shadow-sm" type="checkbox" role="switch" id="flexSwitchCheckDefault"></input>
+  </div></h1>
+        <p className="text-sm text-white italic">This will allow for only students in your organization to join your class even if they have the class code.</p>
+     
+     
 
-
-<div style={{cursor:'pointer'}} className=" mt-4 hover:border-blue-500 bg-gray-900 border  border-gray-700  px-4 py-4 text-white rounded ">
-<div className=" items-center justify-between">
-  <h1 className="text-2xl w-full">{item.name} </h1> 
-  <a className=""><i class="fas fa-chalkboard-teacher"></i> Instructed by {item.teachers} - <i className="fa fa-check"></i> Issued by {item.organization}</a>
-<p>
-                {item.description}
-    </p> 
-
-  </div>
- 
-</div>
-
-
-
-
-
-            ))
-    }
-  
 
     </div>
 
@@ -365,4 +363,4 @@ const Classes = () => {
 
 
 
-export default Classes;
+export default CreateClass;

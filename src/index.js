@@ -19,6 +19,7 @@ import Ab from "./pages/Ab";
 import Classes from "./pages/Classes" 
 import ClassView from "./pages/ClassView"
 import ClassAdmin from "./pages/ClassAdmin";
+import CreateClass from "./pages/CreateClass";
 import "./index.css";
 
 
@@ -55,6 +56,8 @@ export default function App() {
           <Route path="/classes/:id" element={<ClassView />} />
 
           <Route path="/create" element={<Create />} />
+
+          <Route path="/create-class" element={<CreateClass />} />
 
           <Route path="/practice/all" element={<Practice />} />
           <Route path="/practice/easy" element={<Practice type="easy" />} />
