@@ -57,6 +57,12 @@ const Classes = () => {
     })
 
 
+    function joinClass() {
+        if (2 < 3) {
+
+        }
+    }
+
     function logout() {
         signOut(auth).then(() => {
             // Sign-out successful.
@@ -249,17 +255,26 @@ const Classes = () => {
 
                 <div className="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8   ">
 
-              
-                <div className="flex items-center justify-between">
+   <div className="flex items-center justify-between">
+                  
                     <p className={" text-white  text-4xl font-semibold"}> Enrolled Classes</p>
                     <div className="ml-2 flex-shrink-0 flex">
+               
                     <input id="classCode" className="text-white border border-gray-700 bg-gray-900  px-4 text-xl py-1 rounded-lg focus:outline-none" placeholder="Class Code"></input>
                     <button className="ml-4 text-white border border-gray-700 bg-gray-900 hover:bg-gray-800 px-4 text-xl py-1 rounded-lg"><i class="fas fa-sign-in-alt mr-1"></i> Join Class</button>
                     <button className="ml-4 text-white border border-gray-700 bg-gray-900 px-4 text-xl py-1 rounded-lg hover:bg-gray-800"><i class="fas fa-plus-circle mr-1"></i> Create a Class</button>
+  
                     </div>
+                    
           </div>
-                 
+          <div className="flex items-center justify-between">
+              <p></p>
+          <div className="ml-2 flex-shrink-0 flex">
+   
+          <p className="text-xl font-bold text-red-700 mt-4 mb-4">Something went wrong trying to do an action.</p>
 
+           </div>     
+</div>
      <div className="" >
 
 
