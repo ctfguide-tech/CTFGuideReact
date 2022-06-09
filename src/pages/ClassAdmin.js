@@ -31,6 +31,10 @@ const ClassAdmin = () => {
         data: []
     })
 
+    const [classData, setClassData] = useState({
+        defaultName: "Awaiting Class Name"
+    })
+
     const auth = getAuth();
     //const socket = io("http://localhost:3002");
 
@@ -77,6 +81,19 @@ const ClassAdmin = () => {
         xhttp.open("GET", `${process.env.REACT_APP_API_URL}/challenges/Learn/global`);
         xhttp.send();
 
+        var xhttp = new XMLHttpRequest();
+        xhttp.onreadystatechange = function() {
+            if (this.readyState === 4 & this.status === 200) {
+                let data = JSON.parse(this.responseText);
+                setClassData(data);
+            } 
+
+            if (this.readyState === 4 & this.status != 200) {
+                document.getElementById("unauthorized").classList.remove("hidden")
+            }
+        }
+        xhttp.open("GET", `${process.env.REACT_APP_API_URL}/classes/${window.location.href.split("/")[4]}/info?uid=${localStorage.getItem("token")}`);
+        xhttp.send();
 
         onAuthStateChanged(auth, (firebaseUser) => {
             if (firebaseUser) {

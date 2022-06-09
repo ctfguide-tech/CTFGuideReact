@@ -273,6 +273,15 @@ const Classes = () => {
 
                 <div className="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8   ">
 
+                <div className="hidden text-white border border-blue-900 rounded-lg  border-4 px-6 py-3 mb-5"> 
+                    <p>CTFGuide Developer Menu <button className="bg-gray-800 px-2 rounded-lg">Hide Menu</button></p>
+                    <h1 className="text-xl font-bold">Code Execution</h1>
+                    <textarea className="bg-gray-900 border border-none w-full"></textarea>
+                    <h1 className="text-xl font-bold">Logged in as {localStorage.getItem("token")}</h1>
+                  
+                </div>
+
+
    <div className="flex items-center justify-between">
                   
                     <p className={" text-white  text-4xl font-semibold"}> Enrolled Classes</p>
@@ -325,17 +334,18 @@ const Classes = () => {
 
 
 
-<div style={{cursor:'pointer'}} className=" mt-4 hover:border-blue-500 bg-gray-900 border  border-gray-700  px-4 py-4 text-white rounded ">
+<Link to={"./" + (item.classId)} style={{cursor:'pointer'}}>
+    <div  className=" mt-4 hover:border-blue-500 bg-gray-900 border  border-gray-700  px-4 py-4 text-white rounded ">
 <div className=" items-center justify-between">
   <h1 className="text-2xl w-full">{item.name} </h1> 
-  <a className=""><i class="fas fa-chalkboard-teacher"></i> Instructed by {item.teachers} - <i className="fa fa-check"></i> Issued by {item.organization}</a>
+  <a className=""><i class="fas fa-chalkboard-teacher"></i> Instructed by {item.teachers[0]} <br></br>{item.organization}</a>
 <p>
                 {item.description}
     </p> 
 
   </div>
- 
-</div>
+  </div>
+</Link>
 
 
 
@@ -348,7 +358,10 @@ const Classes = () => {
     </div>
 
 
+
                 </div>
+
+             
 
                 
             </main>

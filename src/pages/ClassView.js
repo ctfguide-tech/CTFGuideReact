@@ -52,6 +52,9 @@ const ClassView = () => {
         points: 0
     })
 
+    const [classData, setClassData] = useState({
+    });
+
 
     function logout() {
         signOut(auth).then(() => {
@@ -74,7 +77,28 @@ const ClassView = () => {
 
             }
         }
+
         xhttp.open("GET", `${process.env.REACT_APP_API_URL}/challenges/Learn/global`);
+        xhttp.send();
+        
+        
+        var xhttp = new XMLHttpRequest();
+        xhttp.onreadystatechange = function() {
+            if (this.readyState === 4 & this.status === 200) {
+                let data = JSON.parse(this.responseText);
+
+                console.log("DEBUG CLASS INFO")
+                console.log(data)
+                setClassData(data);
+
+
+            } 
+
+            if (this.readyState === 4 & this.status != 200) {
+                document.getElementById("unauthorized").classList.remove("hidden")
+            }
+        }
+        xhttp.open("GET", `${process.env.REACT_APP_API_URL}/classes/${window.location.href.split("/")[4]}/info?uid=${localStorage.getItem("token")}`);
         xhttp.send();
 
 
@@ -135,6 +159,10 @@ const ClassView = () => {
 
                 xhttp.open("GET", `${process.env.REACT_APP_API_URL}/users/data?uid=${firebaseUser.uid}`);
                 xhttp.send();
+
+
+
+     
                 /*
 
                       socket.emit('online', {
@@ -217,9 +245,12 @@ const ClassView = () => {
 
                 <div className="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8   ">
 
-              
-    
-                    <p className={" text-white  text-4xl font-semibold"}> Class Name</p>
+                <div id="unauthorized" className="hidden">
+                <p className={" text-white  text-4xl font-semibold"}> Unauthorized</p>
+                <p className={" text-white  text-2xl font-semibold"}> You are not authorized to view this page. </p>
+                </div>
+          
+                    <p className={" text-white  text-4xl font-semibold"}> {classData.name}</p>
           
                  
 

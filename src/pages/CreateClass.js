@@ -245,6 +245,32 @@ const CreateClass = () => {
         return classes.filter(Boolean).join(' ')
     }
 
+    function saveClass() {
+        let className = document.getElementById("className").value;
+        let classDescription = document.getElementById("courseDesc").value;
+        let orgID = document.getElementById("orgID").value;
+        let orgLock = document.getElementById("orgLock").checked;
+
+        if (!className || !classDescription) {
+            alert("Please fill out all fields");
+            return;
+        }
+
+        var xhttp = new XMLHttpRequest();
+        xhttp.onreadystatechange = function() {
+
+
+            if (this.readyState == 4 && this.status != 200) {
+                alert("Error creating class");
+            } else {
+              //  window.location.href = "../classes";
+            }
+ 
+        }
+        xhttp.open("GET", `${process.env.REACT_APP_API_URL}/classes/create-class/standard?name=${className}&description=${classDescription}&orgID=${orgID}&orgLock=${orgLock}&uid=${localStorage.getItem("token")}`);
+        xhttp.send();
+    }
+
     function dashboardTutorial() {
         document.getElementById("dashboard_tutorial").classList.remove("hidden")
     }
@@ -278,12 +304,12 @@ const CreateClass = () => {
                     <p className={" text-white  text-4xl font-semibold"}> Create a new class</p>
                     <div className="ml-2 flex-shrink-0 flex">
                
-                    <input id="classCode" className="text-white border border-gray-700 bg-gray-900  px-4 text-xl py-1 rounded-lg focus:outline-none" placeholder="Class Code"></input>
-                    <button onClick={joinClass} className="ml-4 text-white border border-gray-700 bg-gray-900 hover:bg-gray-800 px-4 text-xl py-1 rounded-lg"><i class="fas fa-sign-in-alt mr-1"></i> Join Class</button>
-                    <button className="ml-4 text-white border border-gray-700 bg-gray-900 px-4 text-xl py-1 rounded-lg hover:bg-gray-800"><i class="fas fa-plus-circle mr-1"></i> Create a Class</button>
+                    <input id="classCode" className="hidden text-white border border-gray-700 bg-gray-900  px-4 text-xl py-1 rounded-lg focus:outline-none" placeholder="Class Code"></input>
+                    <button onClick={joinClass} className="hidden ml-4 text-white border border-gray-700 bg-gray-900 hover:bg-gray-800 px-4 text-xl py-1 rounded-lg"><i class="fas fa-sign-in-alt mr-1"></i> Join Class</button>
+                    <button className="ml-4 text-white border border-gray-700 bg-gray-900 px-4 text-xl py-1 rounded-lg hover:bg-gray-800"> Cancel Class Creation</button>
   
                     </div>
-                    
+                     
           </div>
           <div id="error" className="hidden flex items-center justify-between">
               <p></p>
@@ -297,12 +323,7 @@ const CreateClass = () => {
 
 
     
-        <div id="noClasses" className="hidden text-center mx-auto mt-20">
-        <i class="fas fa-question-circle text-white text-7xl mb-4"></i>
-        <h1 className="text-4xl w-full text-white">You are not enrolled in any classes.</h1>
-        <p className="text-white mt-4 hidden">If you were told that you would be enrolled in your courses automatically. You may need to connect your LMS to CTFGuide.</p>
 
-        </div>
 
     <div style={{cursor:'pointer'}} className=" hidden mt-4 hover:border-blue-500 bg-gray-900 border  border-gray-700  px-4 py-4 text-white rounded ">
     <div className=" items-center justify-between">
@@ -315,13 +336,13 @@ const CreateClass = () => {
      
     </div>
 
-        <h1 className="mt-5 mb-1 text-white text-2xl">Class Name</h1>
-        <input className="w-1/2 text-white bg-gray-900 py-1 px-5 focus:outline-none border border-gray-700 rounded-lg" placeholder="Students should be able to identify your course easily"></input>
+        <h1 className="mt-5 mb-1 text-white text-2xl">Class Name<span className="text-red-500">*</span></h1>
+        <input id="className" className="w-1/2 text-white bg-gray-900 py-1 px-5 focus:outline-none border border-gray-700 rounded-lg" placeholder="Students should be able to identify your course easily"></input>
   
         <h1 className="mt-5 mb-1 text-white text-2xl">Organization ID</h1>
-        <input className="w-1/2 text-white bg-gray-900 py-1 px-5 focus:outline-none border border-gray-700 rounded-lg" placeholder="This will link your class to an organization"></input>
+        <input id="orgID" className="w-1/2 text-white bg-gray-900 py-1 px-5 focus:outline-none border border-gray-700 rounded-lg" placeholder="This will link your class to an organization"></input>
         
-        <div class="mt-4 bg-gray-900 rounded-lg  py-4 border border-gray-700 text-white px-3 w-2/4">
+        <div id="orgDetails" class="hidden mt-4 bg-gray-900 rounded-lg  py-4 border border-gray-700 text-white px-3 w-2/4">
             <p class="text-md">The ID you entered is for the following organization.</p>
             <ul>
                 <li>Organization Name: <span id="orgName"> ?</span></li>
@@ -331,20 +352,21 @@ const CreateClass = () => {
         </div>
 
         
-        <h1 className="mt-5 mb-1 text-white text-2xl">Course Description</h1>
-        <input className="w-1/2 text-white bg-gray-900 py-1 px-5 focus:outline-none border border-gray-700 rounded-lg" placeholder="Briefly explain on what your class offers"></input>
+        <h1  className="mt-5 mb-1 text-white text-2xl">Course Description<span className="text-red-500">*</span></h1>
+        <input id="courseDesc" className="w-1/2 text-white bg-gray-900 py-1 px-5 focus:outline-none border border-gray-700 rounded-lg" placeholder="Briefly explain on what your class offers"></input>
   
 
         <h1 className="mt-5 mb-1 text-white text-2xl flex ">Organization Lock    <div className="ml-4 form-check focus:outline-none form-switch">
-    <input className="form-check-input appearance-none w-16 rounded-full float-left h-8 align-top bg-gray-900 bg-no-repeat bg-contain bg-gray-900 focus:outline-none cursor-pointer shadow-sm" type="checkbox" role="switch" id="flexSwitchCheckDefault"></input>
+    <input id="orgLock" className="form-check-input appearance-none w-16 rounded-full float-left h-8 align-top bg-gray-900 bg-no-repeat bg-contain bg-gray-900 focus:outline-none cursor-pointer shadow-sm" type="checkbox" role="switch"></input>
   </div></h1>
         <p className="text-sm text-white italic">This will allow for only students in your organization to join your class even if they have the class code.</p>
      
+
+     <button onClick={saveClass} className="mt-5 px-5 py-2 bg-green-900 hover:bg-green-800 border-green-700 rounded-lg text-white">Save Changes</button>
      
 
 
     </div>
-
 
                 </div>
 
