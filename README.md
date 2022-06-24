@@ -2,6 +2,11 @@
 
 
 ## Deploying on your machine
+
+### `npm install`
+
+This will install all needed dependencies.
+
 ### `npm start`
 
 Runs the app in the development mode.\

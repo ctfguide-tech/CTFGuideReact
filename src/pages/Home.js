@@ -154,7 +154,7 @@ const Home = () => {
                    The learning platform made for cybersecurity enthusiasts.
 
               </p>
-              <div style={{fontFamily: 'Space Grotesk, sans-serif'}} className="mt-8 sm:max-w-lg sm:mx-auto  sm:text-center lg:text-center lg:mx-auto">
+              <div style={{fontFamily: 'Space Grotesk, sans-serif'}} className="hidden mt-8 sm:max-w-lg sm:mx-auto  sm:text-center lg:text-center lg:mx-auto">
         
                   <Link
                     style={{cursor:'pointer'}}
@@ -168,7 +168,7 @@ const Home = () => {
                   <Link
                     to="./Login"
                     type="submit"
-                    className="ml-2 mt-4 w-full px-10 py-4 border border-2  text-base font-medium rounded-md text-white bg-gray-800 border-gray-700 border-2 text-xl shadow-sm hover:bg-gray-900  hover:border-gray-800 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 sm:mt-0  sm:flex-shrink-0 sm:inline-flex sm:items-center sm:w-auto"
+                    className="lg:ml-2 md:ml-2 mt-4 w-full px-10 py-4 border border-2  text-base font-medium rounded-md text-white bg-gray-800 border-gray-700 border-2 text-xl shadow-sm hover:bg-gray-900  hover:border-gray-800 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 sm:mt-0  sm:flex-shrink-0 sm:inline-flex sm:items-center sm:w-auto"
                   >
                      Login
                   </Link>
@@ -187,10 +187,10 @@ const Home = () => {
 
       <div style={{fontFamily: 'Space Grotesk, sans-serif'}}  className="relative bg-black pt-5 pb-32 overflow-hidden">
       <div  style={{fontFamily: 'Space Grotesk, sans-serif'}}  className="relative">
-        <div className="lg:mx-auto lg:max-w-7xl lg:px-8 lg:grid lg:grid-cols-2 lg:grid-flow-col-dense lg:gap-24">
+        <div className="lg:mx-auto lg:max-w-7xl lg:px-8 lg:grid lg:grid-cols-2 lg:grid-flow-col-dense lg:gap-24 ">
           
         <div className="relative">
-          <div className="px-4 max-w-xl mx-auto sm:px-6 lg:py-16 lg:max-w-none lg:mx-0 lg:px-0">
+          <div className="mt-6 px-4 pb-3 max-w-xl mx-auto sm:px-6 lg:py-16 lg:max-w-none lg:mx-0 lg:px-0">
             <div>
               <div>
                 <span className="h-12 w-12 rounded-md flex items-center justify-center bg-blue-600">
@@ -210,7 +210,7 @@ const Home = () => {
       
           </div>
 
-          <div className="px-4 max-w-xl mx-auto sm:px-6 lg:py-16 lg:max-w-none lg:mx-0 lg:px-0">
+          <div className="mt-6 px-4 max-w-xl mx-auto sm:px-6 lg:py-16 lg:max-w-none lg:mx-0 lg:px-0">
             <div>
               <div>
                 <span className="h-12 w-12 rounded-md flex items-center justify-center bg-blue-600">
@@ -262,7 +262,7 @@ const Home = () => {
 
             <div className="relative">
         <div className="lg:mx-auto lg:max-w-7xl">
-          <div className="px-4 max-w-xl mx-auto sm:px-6 lg:py-16 lg:max-w-none lg:mx-0 lg:px-0">
+          <div className="mt-6 px-4 max-w-xl mx-auto sm:px-6 lg:py-16 lg:max-w-none lg:mx-0 lg:px-0">
             <div>
               <div>
                 <span className="h-12 w-12 rounded-md flex items-center justify-center bg-blue-600">
@@ -281,11 +281,7 @@ const Home = () => {
             </div>
       
           </div>
-          <div className="mt-12 sm:mt-16 lg:mt-0">
-            <div className="pl-4 -mr-48 sm:pl-6 md:-mr-16 lg:px-0 lg:m-0 lg:relative lg:h-full">
-         
-            </div>
-          </div>
+
         
 
 
@@ -330,7 +326,7 @@ const Home = () => {
    
       <div className="bg-black">
       <div className="max-w-7xl mx-auto py-16 px-4 sm:px-6 lg:px-8">
-        <div className="bg-gray-900 border border-gray-800 rounded-lg shadow-xl overflow-hidden lg:grid lg:grid-cols-2 lg:gap-4">
+        <div className="bg-gray-900 border border-gray-800 rounded-lg shadow-xl overflow-hidden">
           <div className="pt-10 pb-12 px-6 sm:pt-16 sm:px-10 lg:py-16 lg:pr-0 xl:py-20 xl:px-10">
             <div className="lg:self-center">
               <h2 className="text-3xl font-extrabold text-white sm:text-4xl">
@@ -344,17 +340,11 @@ const Home = () => {
                 to="#"
                 className="mt-8  border bg-gray-800 border-gray-700 rounded-md shadow px-10 py-3 inline-flex items-center text-base font-medium text-white"
               >
-                Learn More
+                Coming Soon
               </Link>
             </div>
           </div>
-          <div className="-mt-6 aspect-w-5 aspect-h-3 md:aspect-w-2 md:aspect-h-1">
-            <img
-              className="transform  rounded-md object-cover object-left-top h-full"
-              src="https://cdn.geekwire.com/wp-content/uploads/2017/04/highschoolhackathon24-1024x682.jpg"
-              alt="App screenshot"
-            />
-          </div>
+     
         </div>
       </div>
     </div>
