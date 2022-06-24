@@ -55,11 +55,15 @@ const Dashboard = () => {
     email: 'Loading...',
     imageUrl: 'https://ctfguide.com/demopfp.png'
   });
+  var username = "??"
+  if (localStorage.getItem("username")) {
+    username = localStorage.getItem("username");
+  }
 
   const [userData, setUserData] = useState({
     streak: 0,
     continueWorking: [],
-    username: "??",
+    username: username,
     points: 0,
     tutorialCompleted: false
   })
@@ -289,7 +293,7 @@ const Dashboard = () => {
      
         <div className="max-w-7xl mx-auto p y-6 px-4 sm:px-6 lg:px-8 ">
 
-        <div id="loader" className="py-10 mb-10">
+        <div id="loader" className="py-10 mb-10 hidden">
         <h1 className="text-white text-4xl text-center"><i class="fas fa-spinner text-white  fa-spin"></i> Preparing for blast off</h1>
         <p className="text-white text-center">You're probably going to see this a lot during the beta as our cache system hasn't been setup yet.</p>
        
@@ -445,8 +449,8 @@ className="relative rounded-lg border border-gray-700 bg-gray-900  px-6 py-5 sha
 
 </div>
 <br></br>
-<Link to="../learn" className="text-white mt-10 px-3 rounded-lg   py-1 bg-blue-700 rounded-lg ">Looking for more lessons?</Link>
-
+<Link to="../learn" className="text-white mt-10 px-3 rounded-lg   py-1 bg-blue-900 rounded-lg ">Looking for more lessons?</Link>
+<br></br><br></br>
                 <div className="hidden">
          
          <h1 className="text-4xl text-white mt-6 mb-4 align-middle"> Learning Path <span className="align-middle text-xl font-semibold italic text-yellow-500">Coming soon!</span></h1>

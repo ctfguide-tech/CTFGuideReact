@@ -4,6 +4,11 @@
 This repository serves as the home for the CTFGuide React Client. This repository serves as a way for us to be transparent with our users. If you are deploying this on your machine, the website should not be accessed by the public.
 
 ## Deploying on your machine
+
+### `npm install`
+
+This will install all needed dependencies.
+
 ### `npm start`
 
 Runs the app in the development mode.\
