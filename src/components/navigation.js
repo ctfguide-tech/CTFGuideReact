@@ -10,7 +10,7 @@ export class Navigation extends Component {
         const navigation = [
             { name: 'Dashboard', href: '../dashboard', current: false },
             { name: 'Learn', href: '../learn', current: false },
-            { name: 'Classes', href: '../classes', current: false },
+          //  { name: 'Classes', href: '../classes', current: false },
 
             { name: 'Practice', href: '../practice/all', current: false },
             { name: 'Leaderboards', href: '../leaderboards/global', current: false },
@@ -19,7 +19,7 @@ export class Navigation extends Component {
 
         const navigation2 = [
             { name: 'Dashboard', href: '../dashboard', current: false },
-          
+            { name: 'Learn', href: '../learn', current: false },
             { name: 'Practice', href: '../practice/all', current: false },
             { name: 'Leaderboards', href: '../leaderboards/global', current: false },
             { name: 'Create', href: '../create', current: false },
@@ -28,13 +28,12 @@ export class Navigation extends Component {
         const userNavigation = [
 
             { name: 'Sign out', onClick: logout },  
-            { name: 'Settings', href: '../../settings' },
+         //   { name: 'Settings', href: '../../settings' },
 
         ]
 
         const userNavigation2 = [
-            { name: 'Your Profile', href: '#' },
-            { name: 'Settings', href: '#' },
+        //    { name: 'Settings', href: '../../settings' },
             { name: 'Sign out', onClick: logout },
         ]
 

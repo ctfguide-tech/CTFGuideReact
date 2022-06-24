@@ -263,7 +263,7 @@ const CreateClass = () => {
             if (this.readyState == 4 && this.status != 200) {
                 alert("Error creating class");
             } else {
-              //  window.location.href = "../classes";
+                window.location.href = "../classes";
             }
  
         }

@@ -340,7 +340,7 @@ const Home = () => {
                 to="#"
                 className="mt-8  border bg-gray-800 border-gray-700 rounded-md shadow px-10 py-3 inline-flex items-center text-base font-medium text-white"
               >
-                Learn More
+                Coming Soon
               </Link>
             </div>
           </div>

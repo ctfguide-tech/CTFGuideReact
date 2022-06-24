@@ -250,11 +250,17 @@ const ClassView = () => {
                 <p className={" text-white  text-2xl font-semibold"}> You are not authorized to view this page. </p>
                 </div>
           
-                    <p className={" text-white  text-4xl font-semibold"}> {classData.name}</p>
+                <div id="" className="">
+                <p className={" text-white  text-4xl font-semibold"}> Catastrophic Failure</p>
+                <p className={" text-white  text-2xl font-semibold"}> It seems that this class exists but hasn't been fully processed. Please try again later. </p>
+                </div>
+
+
+                    <p className={" hidden text-white  text-4xl font-semibold"}> {classData.name}</p>
           
                  
 
-     <div className="" >
+     <div className="hidden" >
 
 
      <p className={"mt-6 text-white  text-2xl font-semibold"}><i class="fas fa-bullhorn"></i> Class Announcements</p>
