@@ -3,9 +3,89 @@ import {Disclosure, Menu, Transition} from "@headlessui/react";
 import {Link} from "react-router-dom";
 import {MenuIcon, XIcon} from "@heroicons/react/outline";
 import {signOut, getAuth, onAuthStateChanged} from "firebase/auth";
-
+import { initializeApp } from 'firebase/app';
+import { getAnalytics } from 'firebase/analytics';
+import 'animate.css';
 
 const Onboarding = () => {
+  
+  const firebaseConfig = {
+    apiKey: "AIzaSyBLAN84VP3jSA5dqhrU6Bjmfu5NiUDuNw4",
+    authDomain: "cyberjags-8b081.firebaseapp.com",
+    databaseURL: "https://cyberjags-8b081.firebaseio.com",
+    projectId: "cyberjags-8b081",
+    storageBucket: "cyberjags-8b081.appspot.com",
+    messagingSenderId: "166652277588",
+    appId: "1:166652277588:web:e08b9e19916451e14dcec1",
+    measurementId: "G-7ZNKM9VFN2"
+  };
+
+  // Initialize Firebase
+  const app = initializeApp(firebaseConfig);
+  const analytics = getAnalytics(app);
+  let uid = "pending"
+  const auth = getAuth();
+  const animateCSS = (element, animation, prefix = 'animate__') =>
+  // We create a Promise and return it
+  new Promise((resolve, reject) => {
+    const animationName = `${prefix}${animation}`;
+    const node = document.querySelector(element);
+
+    node.classList.add(`${prefix}animated`, animationName);
+
+
+    
+    // When the animation ends, we clean the classes and resolve the Promise
+    function handleAnimationEnd(event) {
+      event.stopPropagation();
+      node.classList.remove(`${prefix}animated`, animationName);
+      resolve('Animation ended');
+    }
+
+    node.addEventListener('animationend', handleAnimationEnd, {once: true});
+  });
+
+
+  function loadStep2() {
+    
+  //  window.alert("test")
+
+  if (checkUsername()) {
+    animateCSS(".step1", "fadeOutLeft").then((message) => {
+      document.querySelector(".step1").style.display = "none";
+      document.querySelector(".step2").classList.remove("hidden");
+
+
+      animateCSS(".step2", "fadeInRight").then((message) => {
+        document.querySelector(".step2").style.opacity = "1";
+      }
+
+      );
+
+    });
+    
+  } else {
+    document.getElementById("step1error").classList.remove("hidden")
+    document.getElementById("step1error").innerText = "Your username must be between 5-15 characters long and contain only letters, numbers, and underscores"
+  }
+}
+
+
+  function checkUsername() {
+      var username = document.getElementById("username").value;
+      let badChar = /[!@#$%^&*()+\-=\[\]{};':"\\|,.<>\/?]+/;
+
+
+      if (!username || username.length < 5 || username.length > 15 ||  badChar.test(username)) {
+
+        return false;
+      } else {
+
+      return true;
+
+      }
+  }
+
     return (
       <>
      
@@ -58,7 +138,11 @@ const Onboarding = () => {
 
              <br></br>  
            
-           <div id="step1" className="hidden">
+           <div id="step1" className="step1">
+
+           <div id="step1error" className="hidden mb-4 border border-red-500 rounded-lg w-1/2 bg-red-900 text-red-100 px-2 py-1">
+                                            <h1><i class="fas fa-times"></i> Something went wrong.</h1>
+                                          </div>
              <div className="px-3">
           <p className="text-4xl font-semibold text-white sm:text-5xl">Hi there!</p>
           <p className="text-white text-lg mx-auto text-enter text-2xl">
@@ -67,7 +151,7 @@ const Onboarding = () => {
 
                       <span id="ok"><i class="hidden fas fa-check text-green-400 mr-4"></i></span> 
                       <span id="bad"><i class="hidden fas fa-times text-red-400 mr-4"></i></span>
-                      <input placeholder="Username" className="focus-outline-none outline-none mt-5 w-2/3 text-white rounded-lg px-5 py-2 text-xl bg-gray-900 border border-gray-700"></input> <span style={{cursor:'pointer'}} className="ml-4 px-2  bg-gray-900  border border-gray-700 rounded-lg py-1 text-xl text-white">Continue</span>
+                      <input id="username" placeholder="Username" className="focus-outline-none outline-none mt-5 w-2/3 text-white rounded-lg px-5 py-2 text-xl bg-gray-900 border border-gray-700"></input> <span style={{cursor:'pointer'}} onClick={loadStep2} className="ml-4 px-2  bg-gray-900  border border-gray-700 rounded-lg py-1 text-xl text-white">Continue</span>
                                   
                         <p className="text-white text-lg mx-auto text-enter text-xl mt-4">
                           This is how people will recognize you on CTFGuide. Make sure your username is unique and friendly!
@@ -77,10 +161,10 @@ const Onboarding = () => {
           <img width="400" src="../onboarding/cardPreview.png"></img>
           </div>
 
-          <div id="step2" className="">
+          <div id="step2" className="step2 hidden   " style={{opacity:'0'}}>
              <div className="px-3">
 
-                                          <div className="mb-4 border border-red-500 rounded-lg w-1/2 bg-red-900 text-red-100 px-2 py-1">
+                                          <div id="step2error" className="hidden mb-4 border border-red-500 rounded-lg w-1/2 bg-red-900 text-red-100 px-2 py-1">
                                             <h1><i class="fas fa-times"></i> Something went wrong.</h1>
                                           </div>
 
