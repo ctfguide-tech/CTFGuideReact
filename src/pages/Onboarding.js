@@ -45,47 +45,117 @@ const Onboarding = () => {
     node.addEventListener('animationend', handleAnimationEnd, {once: true});
   });
 
+  document.addEventListener("DOMContentLoaded", function(event) {
 
-  function loadStep2() {
+    function OTPInput() {
+    const inputs = document.querySelectorAll('#otp > *[id]');
+    for (let i = 0; i < inputs.length; i++) { inputs[i].addEventListener('keydown', function(event) { if (event.key==="Backspace" ) { inputs[i].value='' ; if (i !==0) inputs[i - 1].focus(); } else { if (i===inputs.length - 1 && inputs[i].value !=='' ) { return true; } else if (event.keyCode> 47 && event.keyCode < 58) { inputs[i].value=event.key; if (i !==inputs.length - 1) inputs[i + 1].focus(); event.preventDefault(); } else if (event.keyCode> 64 && event.keyCode < 91) { inputs[i].value=String.fromCharCode(event.keyCode); if (i !==inputs.length - 1) inputs[i + 1].focus(); event.preventDefault(); } } }); } } OTPInput(); });
+  
+  
+      var accountTemplate = {
+        username: "", 
+        age: 0,
+        fullName: "",
+        country: ""
+      }
+  
+  
+    function loadStep2() {
     
   //  window.alert("test")
+  var username = (document.getElementById("username").value).toLowerCase();
+  document.getElementById("usernameDisplay").innerText = username;
+  var badChar = /[!@#$%^&*()+\-=\[\]{};':"\\|,.<>\/?]+/;
 
-  if (checkUsername()) {
-    animateCSS(".step1", "fadeOutLeft").then((message) => {
-      document.querySelector(".step1").style.display = "none";
-      document.querySelector(".step2").classList.remove("hidden");
+// client side checks to reduce server load
+  if (!username || username.length < 5 || username.length > 15 ||  badChar.test(username)) {
+    document.getElementById("step1error").classList.remove("hidden")
+    document.getElementById("step1error").innerText = "Your username must be unique, between 5-15 characters long, and contain only letters, numbers, and underscores"
+
+  } else {
+    var xhttp = new XMLHttpRequest();
+    xhttp.onreadystatechange =  function() {
+      if (this.readyState == 4 && this.status == 200) {
+        animateCSS(".step1", "fadeOutLeft").then((message) => {
 
 
-      animateCSS(".step2", "fadeInRight").then((message) => {
-        document.querySelector(".step2").style.opacity = "1";
+          accountTemplate.username = username;
+          document.querySelector(".step1").style.display = "none";
+          document.querySelector(".step2").classList.remove("hidden");
+    
+    
+          animateCSS(".step2", "fadeInRight").then((message) => {
+            document.querySelector(".step2").style.opacity = "1";
+          }
+    
+          );
+    
+        });
+        
       }
 
-      );
-
-    });
+      if (this.readyState == 4 && this.status != 200) {
+        document.getElementById("step1error").classList.remove("hidden")
+        document.getElementById("step1error").innerText = "Your username must be unique, between 5-15 characters long, and contain only letters, numbers, and underscores"
     
-  } else {
-    document.getElementById("step1error").classList.remove("hidden")
-    document.getElementById("step1error").innerText = "Your username must be between 5-15 characters long and contain only letters, numbers, and underscores"
+      }
+    }
+    xhttp.open("GET", `${process.env.REACT_APP_API_URL}/users/checkusername?username=` + username, true);
+    xhttp.send();
   }
+
+
 }
 
+  function loadStep3() {
+    let age = document.getElementById("age").value;
+    let fullName = document.getElementById("fullName").value;
+    let country = document.getElementById("country").value;
+    let tosChecked = document.getElementById("tos").checked;
+    let ppChecked = document.getElementById("pp").checked;
 
-  function checkUsername() {
-      var username = document.getElementById("username").value;
-      let badChar = /[!@#$%^&*()+\-=\[\]{};':"\\|,.<>\/?]+/;
 
+    accountTemplate.age = age;
+    accountTemplate.fullName = fullName;
+    accountTemplate.country = country;
 
-      if (!username || username.length < 5 || username.length > 15 ||  badChar.test(username)) {
+    if (!age || !fullName || !country || !tosChecked || !ppChecked) {
+      document.getElementById("step2error").classList.remove("hidden")
+      document.getElementById("step2error").innerText = "All fields are required."
+  
+  
+    } else {
+      animateCSS(".step2", "fadeOutLeft").then((message) => {
 
-        return false;
+        // the step is email otp so lets just create the account with the details now
+        var xhttp = new XMLHttpRequest();
+        xhttp.onreadystatechange =  function() {
+          if (this.readyState == 4 && this.status == 200) {
+            
+        document.querySelector(".step2").style.display = "none";
+
+        document.querySelector(".step3").classList.remove("hidden");
+    
+    
+        animateCSS(".step3", "fadeInRight").then((message) => {
+          document.querySelector(".step3").style.opacity = "1";
+        });
+
       } else {
-
-      return true;
-
+        window.location.href = "../login"
       }
-  }
+    };
 
+    xhttp.open("POST", `${process.env.REACT_APP_API_URL}/users/sendOtp?uid=`, true);
+    
+
+  
+
+      });
+    }
+
+
+  }
     return (
       <>
      
@@ -168,28 +238,67 @@ const Onboarding = () => {
                                             <h1><i class="fas fa-times"></i> Something went wrong.</h1>
                                           </div>
 
-          <p className="text-4xl font-semibold text-white sm:text-5xl">Glad to meet you, Laphatize.</p>
+          <p className="text-4xl font-semibold text-white sm:text-5xl">Glad to meet you, <span id="usernameDisplay"></span>.</p>
           <p className="text-white text-lg mx-auto text-enter text-2xl">
                           Please fill in your personal information
                           </p>
 
          
-                      <input placeholder="Age" type="number" className="focus-outline-none outline-none mt-5 w-2/3 text-white rounded-lg px-5 py-1 text-xl bg-gray-900 border border-gray-700"></input> 
-                      <input placeholder="Full Name" type="string" className="focus-outline-none outline-none mt-5 w-2/3 text-white rounded-lg px-5 py-1 text-xl bg-gray-900 border border-gray-700"></input> 
-                      <input placeholder="Country" type="country" className="focus-outline-none outline-none mt-5 w-2/3 text-white rounded-lg px-5 py-1 text-xl bg-gray-900 border border-gray-700"></input> 
+                      <input id="age" placeholder="Age" type="number" className="focus-outline-none outline-none mt-5 w-2/3 text-white rounded-lg px-5 py-1 text-xl bg-gray-900 border border-gray-700"></input> 
+                      <input id="fullName" placeholder="Full Name" type="string" className="focus-outline-none outline-none mt-5 w-2/3 text-white rounded-lg px-5 py-1 text-xl bg-gray-900 border border-gray-700"></input> 
+                      <input id="country" placeholder="Country" type="country" className="focus-outline-none outline-none mt-5 w-2/3 text-white rounded-lg px-5 py-1 text-xl bg-gray-900 border border-gray-700"></input> 
 
                         <p className="text-white  mx-auto   mt-4">
-                       <input type="checkbox" className="bg-gray-900 rounded-lg border-gray-700 mr-2"></input>You've reviewed CTFGuide's <a href="./privacy-policy" className="text-blue-500">Privacy Policy</a>.
-                       <input type="checkbox" className="ml-5 bg-gray-900 rounded-lg border-gray-700 mr-2"></input> You've reviewed CTFGuide's <a href="./terms-of-service" className="text-blue-500">Terms of Service</a>.
+                       <input id="pp" type="checkbox" className="bg-gray-900 rounded-lg border-gray-700 mr-2"></input>You've reviewed CTFGuide's <a href="./privacy-policy" className="text-blue-500">Privacy Policy</a>.
+                       <input id="tos" type="checkbox" className="ml-5 bg-gray-900 rounded-lg border-gray-700 mr-2"></input> You've reviewed CTFGuide's <a href="./terms-of-service" className="text-blue-500">Terms of Service</a>.
 
                           </p>
                           <br></br>
-
-                          <span style={{cursor:'pointer'}} className="mt-5 px-2  bg-gray-900  border border-gray-700 rounded-lg py-1 text-xl text-white">Continue</span>  
+                          
+                          <span  onClick={loadStep3} style={{cursor:'pointer'}} className="mt-5 px-2  bg-gray-900  border border-gray-700 rounded-lg py-1 text-xl text-white">Continue</span>  
           </div>
 
           </div>
 
+
+          <div id="step3" className="step3 hidden   " style={{opacity:'0'}}>
+             <div className="px-3">
+
+                                          <div id="step3error" className="hidden mb-4 border border-red-500 rounded-lg w-1/2 bg-red-900 text-red-100 px-2 py-1">
+                                            <h1><i class="fas fa-times"></i> Something went wrong.</h1>
+                                          </div>
+
+          <p className="text-4xl font-semibold text-white sm:text-5xl">Email Verification</p>
+          <p className="text-white text-lg mx-auto text-enter text-2xl">
+          Please check your email for a verification code
+
+          </p>
+          <div id="otp" class="text-white flex flex-row  text-center mt-5">
+            <input class="bg-gray-900 border-gray-700 mr-4 border h-10 w-10 text-center form-control rounded" type="text" id="first" maxlength="1" /> 
+            <input class="bg-gray-900 border-gray-700 mr-4 border h-10 w-10 text-center form-control rounded" type="text" id="second" maxlength="1" /> 
+            <input class="bg-gray-900 border-gray-700 mr-4 border h-10 w-10 text-center form-control rounded" type="text" id="third" maxlength="1" /> 
+            <input class="bg-gray-900 border-gray-700 mr-4 border h-10 w-10 text-center form-control rounded" type="text" id="fourth" maxlength="1" />
+            <input class="bg-gray-900 border-gray-700 mr-4 border h-10 w-10 text-center form-control rounded" type="text" id="fifth" maxlength="1" /> 
+            <input class=" bg-gray-900 border-gray-700 mr-4 border h-10 w-10 text-center form-control rounded" type="text" id="sixth" maxlength="1" />
+                      <span><i style={{cursor:'pointer'}} class="fas fa-arrow-alt-circle-right h-10 w-10 text-4xl text-gray-100 hover:text-gray-300"></i></span>
+                      
+                    
+                      </div>
+                      <p className="text-gray-100 mt-5">Expect an email from verification@mail.ctfguide.com. <br></br>If you don't see the email, try checking your spam folder.</p>
+                 
+          <p style={{cursor:"pointer"}} className="text-gray-400 hover:text-white">Resend verification code</p>
+                     
+                          <div   className="hidden text-yellow-400 w-3/4 h-24 mt-4  py-4" disabled>
+                          <b> [WEBSITE]</b> <span className='text-white'>Creating account for website...</span>   <br></br>
+                          <b className='text-blue-400'> [TERMINAL]</b> <span className='text-white'>Requesting account to be made for undefined...</span>   <br></br>
+                          <b className='text-blue-400'> [TERMINAL]</b> <span className='text-red-500'><b>Something failed.</b></span>  <span className="text-white">You will not be able to access your terminal until 24 hours. A developer needs to create your terminal account manually. <br></br></span>    <br></br><br></br>
+                                      <p></p>
+
+                                      <br></br> 
+                          </div>
+</div>
+
+          </div>
 
         </main>
           </div>
@@ -198,4 +307,4 @@ const Onboarding = () => {
     )
     };
     
-  export default Onboarding;
+  export default Onboarding; 
