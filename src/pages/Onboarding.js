@@ -59,6 +59,9 @@ const Onboarding = () => {
         country: ""
       }
   
+        
+
+
   
     function loadStep2() {
     
@@ -125,33 +128,47 @@ const Onboarding = () => {
   
   
     } else {
-      animateCSS(".step2", "fadeOutLeft").then((message) => {
 
-        // the step is email otp so lets just create the account with the details now
-        var xhttp = new XMLHttpRequest();
-        xhttp.onreadystatechange =  function() {
-          if (this.readyState == 4 && this.status == 200) {
-            
-        document.querySelector(".step2").style.display = "none";
+      var xhttp = new XMLHttpRequest();
+      xhttp.onreadystatechange = function() {
+        if (this.readyState == 4 && this.status == 200) {
+          animateCSS(".step2", "fadeOutLeft").then((message) => {
 
-        document.querySelector(".step3").classList.remove("hidden");
+            // the step is email otp so lets just create the account with the details now
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange =  function() {
+              if (this.readyState == 4 && this.status == 200) {
+                
+            document.querySelector(".step2").style.display = "none";
     
+            document.querySelector(".step3").classList.remove("hidden");
+        
+        
+            animateCSS(".step3", "fadeInRight").then((message) => {
+              document.querySelector(".step3").style.opacity = "1";
+              
+            });
     
-        animateCSS(".step3", "fadeInRight").then((message) => {
-          document.querySelector(".step3").style.opacity = "1";
-        });
+          }
+        };
+    
+        xhttp.open("GET", `${process.env.REACT_APP_API_URL}/users/sendOtp?uid=${localStorage.getItem("token")}`, true);
+        xhttp.send();
+    
+      
+    
+          });
+        } else {
+          document.getElementById("step2error").classList.remove("hidden")
+          document.getElementById("step2error").innerText = "Invalid parameters were given."    
+        }
 
-      } else {
-        window.location.href = "../login"
       }
-    };
 
-    xhttp.open("POST", `${process.env.REACT_APP_API_URL}/users/sendOtp?uid=`, true);
-    
+      xhttp.open("GET", `${process.env.REACT_APP_API_URL}/users/register?uid=${localStorage.getItem("token")}&username=${accountTemplate.username}&age=${accountTemplate.age}&country=${accountTemplate.country}`, true);
+      xhttp.send()
 
-  
-
-      });
+      
     }
 
 

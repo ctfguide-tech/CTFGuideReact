@@ -74,7 +74,11 @@ const Dashboard = () => {
     
     onAuthStateChanged(auth, (firebaseUser) => {
 
-      localStorage.setItem("token", firebaseUser.uid)
+      //localStorage.setItem("token", firebaseUser.uid)
+
+      if (!localStorage.getItem("token")) {
+        window.location.href = "/login"
+      }
       if (firebaseUser) {
         console.log(firebaseUser.photoURL);
    

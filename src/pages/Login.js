@@ -31,6 +31,7 @@ const Login = () => {
     signInWithPopup(auth, provider).then((userCredential) => {
       // Signed in 
       const user = userCredential.user;
+      localStorage.setItem("token", user.uid)
       window.location = "./dashboard"
     })
     .catch((error) => {
@@ -63,6 +64,8 @@ const Login = () => {
       .then((userCredential) => {
         // Signed in 
         const user = userCredential.user;
+        localStorage.setItem("token", user.uid)
+
         window.location.href = "./dashboard"
       })
       .catch((error) => {
