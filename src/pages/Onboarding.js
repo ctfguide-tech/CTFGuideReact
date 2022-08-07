@@ -53,13 +53,16 @@ const Onboarding = () => {
       }
   });
 
+  
+  useEffect(() => {
+
   var xhttp = new XMLHttpRequest();
   xhttp.onreadystatechange = function() {
 
-    if (this.readyState == 4 || this.status == 200) {
+    if (this.readyState == 4 && this.status == 200) {
       // OK
       // Check if email verified
-
+window.alert("test")
       const data = JSON.parse(this.responseText);
 
       if (data.emailVerified) {
@@ -68,6 +71,8 @@ const Onboarding = () => {
         if (data.username) {
          // window.alert(data.username)
            // skip to OTP step
+          /// window.alert("test")
+
            animateCSS(".step1", "fadeOutLeft").then((message) => {
 
             // the step is email otp so lets just create the account with the details now
@@ -75,10 +80,14 @@ const Onboarding = () => {
             document.querySelector(".step1").style.display = "none";
     
             document.querySelector(".step3").classList.remove("hidden");
-        
             var xhttp = new XMLHttpRequest();
+
+    
             xhttp.open("GET", `${process.env.REACT_APP_API_URL}/users/sendOtp?uid=${localStorage.getItem("token")}`, true);
             xhttp.send();
+
+
+            
             animateCSS(".step3", "fadeInRight").then((message) => {
               document.querySelector(".step3").style.opacity = "1";
 
@@ -108,6 +117,9 @@ const Onboarding = () => {
   }
   xhttp.open("GET", `${process.env.REACT_APP_API_URL}/users/data?uid=${localStorage.getItem("token")}`)
   xhttp.send();
+
+
+})
   function check2FA() {
    // window.alert("check started")
     var final = document.getElementById("first").value +
