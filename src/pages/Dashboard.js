@@ -260,7 +260,51 @@ const Dashboard = () => {
     <div className="min-h-full " style={{ fontFamily: 'Space Grotesk, sans-serif' }}>
 
       <Navigation/>
-      <div id="message" className="hidden relative bg-blue-900">
+
+
+
+      <div id="message" className="hidden mt-0 bg-blue-900">
+      <div className="max-w-7xl mx-auto py-5 px-3 sm:px-6 lg:px-8">
+        <div className="">
+          <h1 className="text-white text-xl"> CTFGuide Internal</h1>
+          <ul className="text-white">
+            <li><span className="font-semibold">Completed Onboarding</span>: <span id="completedOnboarding">??</span></li>
+            <li><span className="font-semibold">Username</span>: <span id="completedOnboarding">??</span></li>
+            <li><span className="font-semibold">Email Verified</span>: <span id="completedOnboarding">??</span></li>
+            <li><span className="font-semibold">Membership Type</span>: <span id="completedOnboarding">??</span></li>
+            <li><span className="font-semibold">Membership Expiry</span>: <span id="completedOnboarding">??</span></li>
+            <li><span className="font-semibold">Email Verified</span>: <span id="completedOnboarding">??</span></li>
+            <li><span className="font-semibold">Email Verified</span>: <span id="completedOnboarding">??</span></li>
+
+
+          </ul>
+
+
+          <p className="font-medium text-white">
+           
+          </p>
+          <button
+            type="button"
+            className="flex  rounded-md hover:bg-blue-900 focus:outline-none focus:ring-2 focus:ring-white"
+            onClick={() => {
+              document.getElementById("message").classList.add("hidden")
+            }
+          }
+          >
+            <span className="sr-only">Dismiss</span>
+            <XIcon className="h-6 w-6 text-white" aria-hidden="true" />
+
+            <p className="text-white ">Hide</p>
+          </button>
+        </div>
+      
+      </div>
+    </div>
+
+
+
+
+    <div id="dev" className="hidden relative bg-blue-900">
       <div className="max-w-7xl mx-auto py-3 px-3 sm:px-6 lg:px-8">
         <div className="pr-16 sm:text-center sm:px-16">
           <p className="font-medium text-white">
@@ -279,7 +323,7 @@ const Dashboard = () => {
             type="button"
             className="flex p-2 rounded-md hover:bg-blue-900 focus:outline-none focus:ring-2 focus:ring-white"
             onClick={() => {
-              document.getElementById("message").classList.add("hidden")
+              document.getElementById("dev").classList.add("hidden")
             }
           }
           >
@@ -289,6 +333,8 @@ const Dashboard = () => {
         </div>
       </div>
     </div>
+
+
       <main className="mt-6" >
      
 

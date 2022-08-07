@@ -30,7 +30,7 @@ const Onboarding = () => {
   new Promise((resolve, reject) => {
     const animationName = `${prefix}${animation}`;
     const node = document.querySelector(element);
-
+    
     node.classList.add(`${prefix}animated`, animationName);
 
 
@@ -45,7 +45,101 @@ const Onboarding = () => {
     node.addEventListener('animationend', handleAnimationEnd, {once: true});
   });
 
+  onAuthStateChanged(auth, (firebaseUser) => {
+      if (!firebaseUser) {
+        window.location.href = "../login"
+      } else {
+        //window.alert(JSON.stringify(firebaseUser))
+      }
+  });
+
+  var xhttp = new XMLHttpRequest();
+  xhttp.onreadystatechange = function() {
+
+    if (this.readyState == 4 || this.status == 200) {
+      // OK
+      // Check if email verified
+
+      const data = JSON.parse(this.responseText);
+
+      if (data.emailVerified) {
+        window.location.href = "../dashboard";
+      } else {
+        if (data.username) {
+         // window.alert(data.username)
+           // skip to OTP step
+           animateCSS(".step1", "fadeOutLeft").then((message) => {
+
+            // the step is email otp so lets just create the account with the details now
+          
+            document.querySelector(".step1").style.display = "none";
+    
+            document.querySelector(".step3").classList.remove("hidden");
+        
+            var xhttp = new XMLHttpRequest();
+            xhttp.open("GET", `${process.env.REACT_APP_API_URL}/users/sendOtp?uid=${localStorage.getItem("token")}`, true);
+            xhttp.send();
+            animateCSS(".step3", "fadeInRight").then((message) => {
+              document.querySelector(".step3").style.opacity = "1";
+
+
+
+             
+
+              
+            });
+  
+          
+   
+          });
+        }
+      }
+
+      
+    
+
+    }
+
+    if (this.readyState == 4 || this.status == 500) {
+      // This endpoint only returns this code if the user is not found.
+      // We do nothing.
+    }
+
+  }
+  xhttp.open("GET", `${process.env.REACT_APP_API_URL}/users/data?uid=${localStorage.getItem("token")}`)
+  xhttp.send();
+  function check2FA() {
+   // window.alert("check started")
+    var final = document.getElementById("first").value +
+    document.getElementById("second").value +
+    document.getElementById("third").value +
+    document.getElementById("fourth").value +
+    document.getElementById("fifth").value +
+    document.getElementById("sixth").value
+
+   // window.alert(final)
+    // check 2fa via api
+    var xhttp = new XMLHttpRequest();
+    xhttp.onreadystatechange = function() {
+      if (this.readyState == 4 && this.status == 200) {
+        if (this.responseText == "Valid OTP") {
+        window.location.href = "../dashboard"
+        } else {
+          document.getElementById("step3error").classList.remove('hidden');
+          document.getElementById("step3error").innerHTML = "Invalid OTP Code."
+   
+        }
+      } 
+
+      
+    }
+    xhttp.open("GET", `${process.env.REACT_APP_API_URL}/users/checkOTP?uid=${localStorage.getItem("token")}&otp=${final}`)
+    xhttp.send();
+  }
+
   document.addEventListener("DOMContentLoaded", function(event) {
+
+
 
     function OTPInput() {
     const inputs = document.querySelectorAll('#otp > *[id]');
@@ -125,8 +219,7 @@ const Onboarding = () => {
     if (!age || !fullName || !country || !tosChecked || !ppChecked) {
       document.getElementById("step2error").classList.remove("hidden")
       document.getElementById("step2error").innerText = "All fields are required."
-  
-  
+        
     } else {
 
       var xhttp = new XMLHttpRequest();
@@ -297,7 +390,7 @@ const Onboarding = () => {
             <input class="bg-gray-900 border-gray-700 mr-4 border h-10 w-10 text-center form-control rounded" type="text" id="fourth" maxlength="1" />
             <input class="bg-gray-900 border-gray-700 mr-4 border h-10 w-10 text-center form-control rounded" type="text" id="fifth" maxlength="1" /> 
             <input class=" bg-gray-900 border-gray-700 mr-4 border h-10 w-10 text-center form-control rounded" type="text" id="sixth" maxlength="1" />
-                      <span><i style={{cursor:'pointer'}} class="fas fa-arrow-alt-circle-right h-10 w-10 text-4xl text-gray-100 hover:text-gray-300"></i></span>
+                      <span onClick={check2FA}><i style={{cursor:'pointer'}} class="fas fa-arrow-alt-circle-right h-10 w-10 text-4xl text-gray-100 hover:text-gray-300"></i></span>
                       
                     
                       </div>

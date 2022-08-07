@@ -75,9 +75,9 @@ const Register = () => {
         <h2 style={{fontFamily: 'Space Grotesk, sans-serif'}} className="mt-1 text-center text-3xl text-white">Sign up for CTFGuide</h2>
         <p className="mt-2 text-center text-sm text-gray-600">
           Or{' '}
-          <a href="../login" className="font-medium text-blue-600 hover:text-blue-500">
+          <Link to="../login" className="font-medium text-blue-600 hover:text-blue-500">
                 login to your account
-              </a>
+              </Link>
         </p>
       </div>
       <div className="mt-8 space-y-2">
