@@ -32,16 +32,7 @@ const Register = () => {
       // Signed in 
       const user = userCredential.user;
       localStorage.setItem("token", user.uid);
-     //register user via api
-        var xhttp = new XMLHttpRequest();
-        xhttp.onreadystatechange = function() {
-            if (this.readyState == 4 && this.status == 200) {
-                window.location = "./dashboard"
-
-            }
-        };
-        xhttp.open("GET", `${process.env.REACT_APP_API_URL}/users/register?uid=${localStorage.getItem('token')}&username=${document.getElementById('username').value}`, true);
-        xhttp.send()
+      window.location.href = "/onboarding"
     })
     .catch((error) => {
       const errorCode = error.code;
@@ -60,15 +51,7 @@ const Register = () => {
         // Signed in 
         const user = userCredential.user;
         localStorage.setItem("token", user.uid);
-        var xhttp = new XMLHttpRequest();
-        xhttp.onreadystatechange = function() {
-            if (this.readyState == 4 && this.status == 200) {
-                window.location = "./dashboard"
-
-            }
-        };
-        xhttp.open("GET", `${process.env.REACT_APP_API_URL}/users/register?uid=${localStorage.getItem('token')}&username=${document.getElementById('username').value}`, true);
-        xhttp.send()
+        window.location.href = "/onboarding"
       })
       .catch((error) => {
         const errorCode = error.code;
@@ -92,28 +75,15 @@ const Register = () => {
         <h2 style={{fontFamily: 'Space Grotesk, sans-serif'}} className="mt-1 text-center text-3xl text-white">Sign up for CTFGuide</h2>
         <p className="mt-2 text-center text-sm text-gray-600">
           Or{' '}
-          <a href="../login" className="font-medium text-blue-600 hover:text-blue-500">
+          <Link to="../login" className="font-medium text-blue-600 hover:text-blue-500">
                 login to your account
-              </a>
+              </Link>
         </p>
       </div>
       <div className="mt-8 space-y-2">
         <input type="hidden" name="remember" defaultValue="true" />
         <span className="hidden text-red-500 font-semibold text-centered" id="error">Error occured..</span>
-        <div>
-            <label htmlFor="username" className="sr-only">
-              Username
-            </label>
-            <input
-              id="username"
-              name="username"
-              type="text"
-              required
-              className="appearance-none  relative block w-full px-3 py-2  bg-gray-900 border-gray-800 border placeholder-gray-500 text-white rounded-md focus:outline-none focus:ring-blue-500 focus:border-blue-500 focus:z-10 sm:text-sm"
-              placeholder="Username"
-              autocomplete="off"
-            />
-          </div>
+       
         <div>
             <label htmlFor="email" className="sr-only">
               Email
