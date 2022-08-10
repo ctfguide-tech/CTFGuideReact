@@ -25,7 +25,7 @@ const Create = () => {
         appId: "1:166652277588:web:e08b9e19916451e14dcec1",
         measurementId: "G-7ZNKM9VFN2"
     };
-    const [value, setValue] = useState("Loading...");
+    const [value, setValue] = useState("This can be anything!");
 
     // Initialize Firebase
     const app = initializeApp(firebaseConfig);
@@ -201,6 +201,7 @@ function loadchallenge(id) {
             
                     <h1 className="text-4xl text-white mb-4  ">Creator Dashboard</h1>
 
+<div id="home" className="hidden">
                     <div className="flex items-center justify-between">
 
                     <h1  className="text-3xl text-white mb-4  ">Your Challenges</h1>     
@@ -232,12 +233,39 @@ function loadchallenge(id) {
 
                     </div>
 
-
+                    </div>
 
 
                     {/* /End replace */}
 
+<div id=""> 
+{/*/ Create a new challenge */}
 
+<h1 className="text-2xl text-white font-semibold">Create a new challenge</h1>
+<div className="px-5 py-4 mt-5 rounded-lg  bg-gray-900 border border-gray-700">
+                     <h3 className="mt-6  text-3xl leading-6 font-medium text-white mb-5">Challenge Content</h3>
+                            <p className="text-gray-400"> You can use markdown!</p>
+            <SimpleMDE  value={value} />
+            </div>
+
+
+            <div className="px-5 py-4 mt-5 rounded-lg  bg-gray-900 border border-gray-700">
+                            <h3 className="mt-6 text-3xl leading-6 font-medium text-white mb-6">Challenge Hints</h3>
+
+                                            <dt className="text-xl font-medium text-white truncate">Hint 1</dt>
+                                            <textarea id="hint1" className="mt-1 w-full rounded-lg border-gray-700 bg-black text-white">No hint set</textarea>
+
+                                            <dt className="mt-4 text-xl font-medium text-white truncate">Hint 2</dt>
+                                            <textarea id="hint2" className="mt-1 w-full rounded-lg border-gray-700 bg-black  text-white">No hint set</textarea>
+
+                                            <dt className="mt-4 text-xl font-medium text-white truncate">Hint 3</dt>
+                                            <textarea id="hint3" className="mt-1 w-full rounded-lg border-gray-700 bg-black text-white">No hint set</textarea>
+                                 
+
+
+                        </div>
+
+</div>
 
                     <div id="saved" aria-live="assertive" className="hidden fixed inset-0 flex items-end px-4 py-6 pointer-events-none sm:p-6 sm:items-start">
   <div className="w-full flex flex-col items-center space-y-4 sm:items-end">

@@ -58,6 +58,8 @@ const Login = () => {
     }
     );
   }
+
+  
   function login() {
     const auth = getAuth();
     signInWithEmailAndPassword(auth, document.getElementById("email-address").value, document.getElementById("password").value)
