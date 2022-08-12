@@ -86,7 +86,9 @@ const Practice = () => {
           if (this.readyState === 4 & this.status === 200) {
             let data = JSON.parse(this.responseText);
 
-
+            if (data.role == "moderator" || data.role == "developer") {
+              document.getElementById("moderator").classList.remove("hidden")
+            }
             if (data.solvedChallenges.includes(window.location.href.split("/")[4])) {
               document.getElementById("solvedChallenge").classList.remove("hidden");
             }
@@ -247,40 +249,38 @@ const Practice = () => {
 
 
       <main>
-      <div id="message" className="hidden relative bg-blue-900">
-      <div className="max-w-7xl mx-auto py-3 px-3 sm:px-6 lg:px-8">
-        <div className="pr-16 sm:text-center sm:px-16">
-          <p className="font-medium text-white">
-            <span className="md:hidden">Welcome to the new CTFGuide.</span>
-            <span className="hidden md:inline">Welcome to the new CTFGuide! We're still working on releasing all the new features.</span>
-            <span className="block sm:ml-2 sm:inline-block">
-              <a href="https://www.notion.so/ctfguide/CTFGuide-V2-Preview-397bddf3083d4eb6ae1f6b58d3af2e23" className="text-white font-bold underline">
-                {' '}
-                Learn more <span aria-hidden="true">&rarr;</span>
-              </a>
-            </span>
-          </p>
-        </div>
-        <div className="absolute inset-y-0 right-0 pt-1 pr-1 flex items-start sm:pt-1 sm:pr-2 sm:items-start">
-          <button
-            type="button"
-            className="flex p-2 rounded-md hover:bg-blue-900 focus:outline-none focus:ring-2 focus:ring-white"
-            onClick={() => {
-              document.getElementById("message").classList.add("hidden")
-            }
-          }
-          >
-            <span className="sr-only">Dismiss</span>
-            <XIcon className="h-6 w-6 text-white" aria-hidden="true" />
-          </button>
-        </div>
-      </div>
-    </div>
+ 
         <div className="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8 animate__animated animate__fadeIn">
 
           <div>
 
+<div id="moderator" className="hidden mb-4 bg-gray-900 px-4 py-4 rounded-lg border border-gray-600 w-1/2">
 
+  <h1 className="text-white text-xl"><i class="fas fa-user-shield"></i> Moderation Tools</h1>
+  <p className="text-white mb-2">
+    Challenge Owner: <span>Unknown (Probably Legacy)</span><br></br>
+    Challenge Status: <span>Not verified but Legacy</span>
+  </p>
+  <button onClick={() => {
+      // send http request to verify
+      var xhttp = new XMLHttpRequest();
+      xhttp.onreadystatechange = function() {
+        if (this.readyState == 4 && this.status == 200) {
+          var serverResponse = JSON.parse(this.responseText);
+          if (serverResponse) {
+            console.log(serverResponse.message)
+            if (serverResponse.message == "OK") {
+              window.location.reload();
+            }
+          }
+        }
+      }
+      xhttp.open("GET", `${process.env.REACT_APP_API_URL}/challenges/verify?uid=${auth.currentUser.uid}&id=${window.location.href.split("/")[4]}`);
+      xhttp.send();
+   }} className="bg-green-700 hover:bg-green-800 text-white rounded-lg px-2 py-1">Verify Challenge</button>
+  <button className="ml-2 bg-red-700 hover:bg-red-800 text-white rounded-lg px-2 py-1">Delete Challenge</button>
+
+</div>
 
             <div className="px-5 py-10 rounded-lg  bg-gray-900 border border-gray-700">
               <div>
@@ -305,7 +305,7 @@ const Practice = () => {
 
 
                   <div>
-                    <h1 className="text-xl">One second please...</h1> 
+                    <h1 className="text-xl text-white">One second please...</h1> 
                   </div>
 
 
