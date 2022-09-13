@@ -10,7 +10,7 @@ export class Navigation extends Component {
         const navigation = [
             { name: 'Dashboard', href: '../dashboard', current: false },
             { name: 'Learn', href: '../learn', current: false },
-          //  { name: 'Classes', href: '../classes', current: false },
+            //{ name: 'Classes', href: '../classes', current: false },
 
             { name: 'Practice', href: '../practice/all', current: false },
             { name: 'Leaderboards', href: '../leaderboards/global', current: false },

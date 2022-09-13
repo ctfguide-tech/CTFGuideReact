@@ -264,16 +264,20 @@ if (data.lessonsCompleted) {
  <div className="flex-shrink-0">
   
   </div>
-  <div className="flex-1 min-w-0">
+  <div   onClick={() => {window.location.href = './learn/chapter2/lesson1'}}
+ className="flex-1 min-w-0">
       
     <a href="#" className="focus:outline-none">
 
       <p className="text-xl font-medium text-gray-100">Linux Basics</p>
       <hr className="border-gray-700 mt-2 mb-2"></hr>
-    <ul className="text-white">
-        <li>This lesson isn't avaliable yet.  </li>
+      <ul className="text-white">
+                <li>C2L1 - Introduction to Linux   </li>
+                <li>C2A1 - Review Activity   </li>
+                <li>C2L2 - Interacting with Linux   </li>
+                <li>C2A2 - Linux on CTFGuide   </li>
 
-    </ul>
+            </ul>
     </a>
   </div>
 </div>
