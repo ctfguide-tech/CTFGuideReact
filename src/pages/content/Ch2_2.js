@@ -407,20 +407,69 @@ function moveForward() {
            
                     <div id="quiz" className=" mt-5 bg-gray-900 px-10 py-10 rounded-lg border border-gray-700">
                       
-                      <h1 id="question" className="text-2xl font-semibold">Q1: What is Linux?</h1>
+                      <h1 id="question1" className="text-2xl font-semibold">Q1: What is Linux?</h1>
+
+                      <textarea placeholder="Keep it short and sweet. We'll be using machine learning to grade this response." className="mt-3 border-gray-700 bg-gray-900 px-2 py-1 rounded-lg w-full">
+
+                      </textarea>
+                
+                      <h1 id="question2" className="mt-6 text-2xl font-semibold">Q1: What is Linux?</h1>
 
             
-                      <button id="a" onClick={() => {}} className="mt-4 px-6 py-3 bg-gray-800 border border-gray-700 rounded-lg hover:bg-gray-900"><span className="rounded-lg bg-black px-3 py-1 mr-1">A</span>   Cybersecurity is the practice of protecting electronic information by mitigating information risks and vulnerabilities. </button>
-                      <br></br>
-                      <button id="b" onClick={() => {}} className=" mt-4 px-6 py-3 bg-gray-800 border border-gray-700 rounded-lg hover:bg-gray-900"><span className="rounded-lg bg-black px-3 py-1 mr-1">B</span> Cybersecurity is about making sure the inner workings of security stays cyber.</button>
-                      <br></br>
-                      <button id="c" onClick={() => {}} className="mt-4 px-6 py-3 bg-gray-800 border border-gray-700 rounded-lg hover:bg-gray-900"><span className="rounded-lg bg-black px-3 py-1 mr-1">C</span> Cybersecurity is what the TSA uses to make sure only safe passengers board the plane.</button>
-                      <br></br>
-                      <button id="d"onClick={() => {}}  className=" mt-4 px-6 py-3 bg-gray-800 border border-gray-700 rounded-lg hover:bg-gray-900"><span className="rounded-lg bg-black px-3 py-1 mr-1">D</span>  Cybersecurity is responsible for giving electricity to our computers.</button>
+<button id="q2a" onClick={() => {}} className="mt-4 px-6 py-3 bg-gray-800 border border-gray-700 rounded-lg hover:bg-gray-900"><span className="rounded-lg bg-black px-3 py-1 mr-1">A</span>   Cybersecurity is the practice of protecting electronic information by mitigating information risks and vulnerabilities. </button>
+<br></br>
+<button id="q2b" onClick={() => {}} className=" mt-4 px-6 py-3 bg-gray-800 border border-gray-700 rounded-lg hover:bg-gray-900"><span className="rounded-lg bg-black px-3 py-1 mr-1">B</span> Cybersecurity is about making sure the inner workings of security stays cyber.</button>
+<br></br>
+<button id="q2c" onClick={() => {}} className="mt-4 px-6 py-3 bg-gray-800 border border-gray-700 rounded-lg hover:bg-gray-900"><span className="rounded-lg bg-black px-3 py-1 mr-1">C</span> Cybersecurity is what the TSA uses to make sure only safe passengers board the plane.</button>
+<br></br>
+<button id="q2d"onClick={() => {}}  className=" mt-4 px-6 py-3 bg-gray-800 border border-gray-700 rounded-lg hover:bg-gray-900"><span className="rounded-lg bg-black px-3 py-1 mr-1">D</span>  Cybersecurity is responsible for giving electricity to our computers.</button>
+
+<h1 id="question3" className="mt-6 stext-2xl font-semibold">Q1: What is Linux?</h1>
+
+            
+<button id="q3a" onClick={() => {}} className="mt-4 px-6 py-3 bg-gray-800 border border-gray-700 rounded-lg hover:bg-gray-900"><span className="rounded-lg bg-black px-3 py-1 mr-1">A</span>   Cybersecurity is the practice of protecting electronic information by mitigating information risks and vulnerabilities. </button>
+<br></br>
+<button id="q3b" onClick={() => {}} className=" mt-4 px-6 py-3 bg-gray-800 border border-gray-700 rounded-lg hover:bg-gray-900"><span className="rounded-lg bg-black px-3 py-1 mr-1">B</span> Cybersecurity is about making sure the inner workings of security stays cyber.</button>
+<br></br>
+<button id="q3c" onClick={() => {}} className="mt-4 px-6 py-3 bg-gray-800 border border-gray-700 rounded-lg hover:bg-gray-900"><span className="rounded-lg bg-black px-3 py-1 mr-1">C</span> Cybersecurity is what the TSA uses to make sure only safe passengers board the plane.</button>
+<br></br>
+<button id="q3d"onClick={() => {}}  className=" mt-4 px-6 py-3 bg-gray-800 border border-gray-700 rounded-lg hover:bg-gray-900"><span className="rounded-lg bg-black px-3 py-1 mr-1">D</span>  Cybersecurity is responsible for giving electricity to our computers.</button>
+
+<h1 id="question4" className="mt-6 text-2xl font-semibold">Q1: What is Linux?</h1>
+
+            
+<button id="q4a" onClick={() => {}} className="mt-4 px-6 py-3 bg-gray-800 border border-gray-700 rounded-lg hover:bg-gray-900"><span className="rounded-lg bg-black px-3 py-1 mr-1">A</span>   Cybersecurity is the practice of protecting electronic information by mitigating information risks and vulnerabilities. </button>
+<br></br>
+<button id="q4b" onClick={() => {}} className=" mt-4 px-6 py-3 bg-gray-800 border border-gray-700 rounded-lg hover:bg-gray-900"><span className="rounded-lg bg-black px-3 py-1 mr-1">B</span> Cybersecurity is about making sure the inner workings of security stays cyber.</button>
+<br></br>
+<button id="q4c" onClick={() => {}} className="mt-4 px-6 py-3 bg-gray-800 border border-gray-700 rounded-lg hover:bg-gray-900"><span className="rounded-lg bg-black px-3 py-1 mr-1">C</span> Cybersecurity is what the TSA uses to make sure only safe passengers board the plane.</button>
+<br></br>
+<button id="q4d"onClick={() => {}}  className=" mt-4 px-6 py-3 bg-gray-800 border border-gray-700 rounded-lg hover:bg-gray-900"><span className="rounded-lg bg-black px-3 py-1 mr-1">D</span>  Cybersecurity is responsible for giving electricity to our computers.</button>
+<h1 id="question5" className="mt-6 text-2xl font-semibold">Q1: What is Linux?</h1>
+
+            
+<button id="q5a" onClick={() => {}} className="mt-4 px-6 py-3 bg-gray-800 border border-gray-700 rounded-lg hover:bg-gray-900"><span className="rounded-lg bg-black px-3 py-1 mr-1">A</span>   Cybersecurity is the practice of protecting electronic information by mitigating information risks and vulnerabilities. </button>
+<br></br>
+<button id="q5b" onClick={() => {}} className=" mt-4 px-6 py-3 bg-gray-800 border border-gray-700 rounded-lg hover:bg-gray-900"><span className="rounded-lg bg-black px-3 py-1 mr-1">B</span> Cybersecurity is about making sure the inner workings of security stays cyber.</button>
+<br></br>
+<button id="q5c" onClick={() => {}} className="mt-4 px-6 py-3 bg-gray-800 border border-gray-700 rounded-lg hover:bg-gray-900"><span className="rounded-lg bg-black px-3 py-1 mr-1">C</span> Cybersecurity is what the TSA uses to make sure only safe passengers board the plane.</button>
+<br></br>
+<button id="q5d"onClick={() => {}}  className=" mt-4 px-6 py-3 bg-gray-800 border border-gray-700 rounded-lg hover:bg-gray-900"><span className="rounded-lg bg-black px-3 py-1 mr-1">D</span>  Cybersecurity is responsible for giving electricity to our computers.</button>
+
+
+
+<h1 id="question6" className="mt-6 text-2xl font-semibold">Q1: What is Linux?</h1>
+
+<button id="q6a" onClick={() => {}} className="mt-4 px-6 py-3 bg-gray-800 border border-gray-700 rounded-lg hover:bg-gray-900"><span className="rounded-lg bg-black px-3 py-1 mr-1">A</span>   Cybersecurity is the practice of protecting electronic information by mitigating information risks and vulnerabilities. </button>
+<br></br>
+<button id="q6b" onClick={() => {}} className=" mt-4 px-6 py-3 bg-gray-800 border border-gray-700 rounded-lg hover:bg-gray-900"><span className="rounded-lg bg-black px-3 py-1 mr-1">B</span> Cybersecurity is about making sure the inner workings of security stays cyber.</button>
+<br></br>
+<button id="q6c" onClick={() => {}} className="mt-4 px-6 py-3 bg-gray-800 border border-gray-700 rounded-lg hover:bg-gray-900"><span className="rounded-lg bg-black px-3 py-1 mr-1">C</span> Cybersecurity is what the TSA uses to make sure only safe passengers board the plane.</button>
+<br></br>
+<button id="q6d"onClick={() => {}}  className=" mt-4 px-6 py-3 bg-gray-800 border border-gray-700 rounded-lg hover:bg-gray-900"><span className="rounded-lg bg-black px-3 py-1 mr-1">D</span>  Cybersecurity is responsible for giving electricity to our computers.</button>
 
 <br></br>
-<button id="check_btn" className="mt-4 px-10 py-2 bg-blue-800 border border-blue-700 rounded-lg hover:bg-blue-900"><i class="fas fa-check-double"></i> Check Answer</button>
-<button onClick={next} id="next_btn" className="hidden mt-4 px-10 py-2  border border-blue-700 rounded-lg hover:bg-black"> Next Question</button>
+<button id="check_btn" className="mt-4 px-10 py-2 bg-blue-800 border border-blue-700 rounded-lg hover:bg-blue-900"><i class="fas fa-check-double"></i> Check Answers</button>
 <button onClick={showScore}  id="score_btn" className="hidden  mt-4 px-10 py-2  border border-blue-700 rounded-lg hover:bg-black"><i class="fas fa-file-alt"></i> View Score</button>
 
                       </div>  
