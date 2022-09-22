@@ -631,11 +631,17 @@ className="relative rounded-lg border border-gray-700 bg-gray-900  px-6 py-5 sha
             
                 </div>
             
+            
           <div className="mx-auto text-center  w-full flex">
           <a href="https://discord.gg/q3hgRBvgkX" className=" w-full px-10 mx-auto  text-xl px-2 py-3  text-white rounded-lg border border-gray-700 bg-gray-900"><i  class="fab fa-discord mr-1"></i> Join our Discord</a>
             
             </div>
-            </div>
+          <br></br>
+
+          
+          <a href="https://www.stickermule.com/unlock?ref_id=1511893701&utm_content=468x60&utm_medium=embed&utm_source=invite" target="_blank"><img alt="Custom Stickers, Die Cut Stickers, Bumper Stickers - Sticker Mule" border="0" height="60" src="https://assets.stickermule.com/image/upload/v1531752798/banners/stickermule-invite-friends-medium.jpg" width="468" /></a> 
+          <br></br>
+          <a className="mt-2 text-center" href="https://www.digitalocean.com/?refcode=5ab9bf052ea7&utm_campaign=Referral_Invite&utm_medium=Referral_Program&utm_source=badge"><img src="https://web-platforms.sfo2.cdn.digitaloceanspaces.com/WWW/Badge%201.svg" alt="DigitalOcean Referral Badge" /></a>           </div>
 
             
 
