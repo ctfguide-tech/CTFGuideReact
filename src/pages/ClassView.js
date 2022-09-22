@@ -130,6 +130,10 @@ const ClassView = () => {
                         let data = JSON.parse(this.responseText);
                         document.getElementById("navPoints").innerHTML = data.points;
 
+                        if (data.createdClasses.includes(window.location.href.split("/")[4])) {
+                            window.location.href = `/classes/admin/${window.location.href.split("/")[4]}`
+                        }
+
                         setUserData({
                             username: data.username,
                             streak: data.streak,
@@ -250,7 +254,7 @@ const ClassView = () => {
                 <p className={" text-white  text-2xl font-semibold"}> You are not authorized to view this page. </p>
                 </div>
           
-                <div id="" className="">
+                <div id="" className="hidden">
                 <p className={" text-white  text-4xl font-semibold"}> Catastrophic Failure</p>
                 <p className={" text-white  text-2xl font-semibold"}> It seems that this class exists but hasn't been fully processed. Please try again later. </p>
                 </div>
@@ -260,7 +264,7 @@ const ClassView = () => {
           
                  
 
-     <div className="hidden" >
+     <div className="" >
 
 
      <p className={"mt-6 text-white  text-2xl font-semibold"}><i class="fas fa-bullhorn"></i> Class Announcements</p>

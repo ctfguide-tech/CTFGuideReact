@@ -10,6 +10,7 @@ import { io } from "socket.io-client";
 import DashboardManager from "../modules/DashboardManager.js"
 import 'animate.css';
 import { Navigation } from '../components/navigation';
+import { data } from "autoprefixer";
 
 const ClassAdmin = () => {
     const firebaseConfig = {
@@ -32,8 +33,7 @@ const ClassAdmin = () => {
     })
 
     const [classData, setClassData] = useState({
-        defaultName: "Awaiting Class Name"
-    })
+    });
 
     const auth = getAuth();
     //const socket = io("http://localhost:3002");
@@ -68,12 +68,12 @@ const ClassAdmin = () => {
     useEffect(() => {
 
         var xhttp = new XMLHttpRequest();
-        xhttp.onreadystatechange = function() {
+        xhttp.onreadystatechange = function () {
             if (this.readyState === 4 & this.status === 200) {
                 console.log(this.responseText)
                 setLearn({
-                        data: JSON.parse(this.responseText)
-                    }
+                    data: JSON.parse(this.responseText)
+                }
                 );
 
             }
@@ -82,15 +82,16 @@ const ClassAdmin = () => {
         xhttp.send();
 
         var xhttp = new XMLHttpRequest();
-        xhttp.onreadystatechange = function() {
+        xhttp.onreadystatechange = function () {
             if (this.readyState === 4 & this.status === 200) {
                 let data = JSON.parse(this.responseText);
                 setClassData(data);
-            } 
+            }
 
             if (this.readyState === 4 & this.status != 200) {
                 document.getElementById("unauthorized").classList.remove("hidden")
             }
+            
         }
         xhttp.open("GET", `${process.env.REACT_APP_API_URL}/classes/${window.location.href.split("/")[4]}/info?uid=${localStorage.getItem("token")}`);
         xhttp.send();
@@ -102,23 +103,23 @@ const ClassAdmin = () => {
 
                 if (firebaseUser.photoURL) {
                     setUser({
-                      name: firebaseUser.displayName,
-                      email: firebaseUser.email,
-                      imageUrl: firebaseUser.photoURL,
+                        name: firebaseUser.displayName,
+                        email: firebaseUser.email,
+                        imageUrl: firebaseUser.photoURL,
                     });
                     document.getElementById("pfp1").src = firebaseUser.photoURL
-                  } else {
+                } else {
                     setUser({
-                      name: firebaseUser.displayName,
-                      email: firebaseUser.email,
-                      imageUrl:
-                        `https://ui-avatars.com/api/?name=${firebaseUser.email}&background=random`,
+                        name: firebaseUser.displayName,
+                        email: firebaseUser.email,
+                        imageUrl:
+                            `https://ui-avatars.com/api/?name=${firebaseUser.email}&background=random`,
                     });
                     document.getElementById("pfp1").src = `https://ui-avatars.com/api/?name=${firebaseUser.email}&background=random`
-                  }
+                }
 
                 var xhttp = new XMLHttpRequest();
-                xhttp.onreadystatechange = function() {
+                xhttp.onreadystatechange = function () {
                     if (this.readyState === 4 & this.status === 200) {
                         let data = JSON.parse(this.responseText);
                         document.getElementById("navPoints").innerHTML = data.points;
@@ -139,7 +140,7 @@ const ClassAdmin = () => {
                     if (this.readyState === 4 & this.status === 500) {
                         // User not registered via API
                         var xhttp = new XMLHttpRequest();
-                        xhttp.onreadystatechange = function() {
+                        xhttp.onreadystatechange = function () {
                             if (this.readyState === 4 & this.status === 200) {
                                 window.location.reload();
                             }
@@ -213,7 +214,7 @@ const ClassAdmin = () => {
         window.location.href = "../practice"
     }
 
-    window.onload = function() {
+    window.onload = function () {
         if (localStorage.getItem("tutorial_phase") == 1) {
             document.getElementById("dashboard_tutorial").classList.remove("hidden")
         }
@@ -227,116 +228,120 @@ const ClassAdmin = () => {
 
         <div className="min-h-full " style={{ fontFamily: 'Space Grotesk, sans-serif' }}>
 
-        <Navigation/>
+            <Navigation />
 
 
             <main className="mt-3" >
 
                 <div className="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8   ">
 
-              <h1 className="text-white text-2xl hidden"><i class="fas fa-save"></i> Saving your changes. Please do not leave this page!</h1>
-    
-                    <p className={" text-white  text-4xl font-semibold"}> Class Name <span className="bg-gray-900 text-lg rounded-full border border-gray-700 px-5 font-normal">Admin View</span></p>
-          
-                 
+                    <h1 className="text-white text-2xl hidden"><i class="fas fa-save"></i> Saving your changes. Please do not leave this page!</h1>
 
-     <div className="" >
+                    <p className={" text-white  text-4xl font-semibold"}> {classData.name}  <span className="bg-gray-900 text-lg rounded-full border border-gray-700 px-5 font-normal">Admin View</span></p>
 
-     <p className={"mt-6 text-white  text-2xl font-semibold"}><i class="fas fa-bolt"></i> Quick Access</p>
-        <div className="flex flex-wrap -mx-2 mt-2">
-            <div className="w-full md:w-1/2 px-2">
-                <div className="bg-gray-900 border border-gray-700 rounded-lg shadow-lg p-4">
-                    <div className="flex items-center justify-between">
-                    
-                        <div className="mx-auto text-center">
-                        <i className="far text-white text-5xl fa-edit"></i>
-<br></br>
-                            <p className="text-white font-bold text-xl mb-2 mt-4">Create an Assignment</p>
-              
+
+
+                    <div className="" >
+
+                        <p className={"mt-6 text-white  text-2xl font-semibold"}><i class="fas fa-bolt"></i> Quick Access</p>
+                        <div className="flex flex-wrap -mx-2 mt-2">
+                            <div className="w-full md:w-1/2 px-2">
+                                <div className="bg-gray-900 border border-gray-700 rounded-lg shadow-lg p-4">
+                                    <div className="flex items-center justify-between">
+
+                                        <div className="mx-auto text-center">
+                                            <i className="far text-white text-5xl fa-edit"></i>
+                                            <br></br>
+                                            <p className="text-white font-bold text-xl mb-2 mt-4">Create an Assignment</p>
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div className="w-full md:w-1/2 px-2">
+                                <div className="bg-gray-900 border border-gray-700 rounded-lg shadow-lg p-4">
+                                    <div className="flex items-center justify-between">
+
+                                        <div className="mx-auto text-center">
+                                            <i className="fas fa-bullhorn text-5xl text-white"></i>
+                                            <br></br>
+                                            <p className="text-white font-bold text-xl mb-2 mt-4">Post an Announcement</p>
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
-                    </div>
-                </div>
-            </div>
-            <div className="w-full md:w-1/2 px-2">
-            <div className="bg-gray-900 border border-gray-700 rounded-lg shadow-lg p-4">
-                    <div className="flex items-center justify-between">
-                    
-                        <div className="mx-auto text-center">
-                        <i className="fas fa-bullhorn text-5xl text-white"></i>
-<br></br>
-                            <p className="text-white font-bold text-xl mb-2 mt-4">Post an Announcement</p>
-              
+
+
+
+
+                        <p className={"mt-6 text-white  text-2xl font-semibold"}><i class="fas fa-bullhorn"></i> Class Announcements</p>
+                        <div className="mt-2  bg-gray-900 border  border-gray-700  px-4 py-2 text-white rounded ">
+
+
+
+                            <div className=" items-center justify-between">
+
+
+                                <div className="flex align-middle ">
+                                    <img className="rounded-full w-8 h-8 items-center justify-between mr-1 " src="https://avatars.githubusercontent.com/u/23617187?v=4"></img>
+                                    <p><span className="font-semibold">Pranav Ramesh <i class="fas fa-user-shield"></i></span> <br></br>5/17/22 12:00AM</p>
+                                </div>
+                                <p className="mt-4">
+                                    Due to Keystone exams we will be taking a break from the class. If you want to come in during learn to continue working, please email me. Please remember finals are coming soon! If you want to prepare for the final - try out some of the medium problems.
+                                </p>
+
+                            </div>
+
                         </div>
+
+
+                        <p className={"mt-6 text-white  text-2xl font-semibold"}><i class="fas fa-pencil-ruler"></i> Your Assignments</p>
+
+
+                        <div style={{ cursor: 'pointer' }} className="mt-2 hover:border-blue-500 bg-gray-900 border  border-gray-700  px-4 py-2 text-white rounded ">
+
+
+
+                            <div className=" items-center justify-between">
+                                <h1 className="text-xl w-full"> <i class="fas fa-fw fa-file-alt"></i>  Chapter 1 - Lesson 1 <span className="ml-3 bg-red-900 px-4 rounded-full text-red-300 text-sm py-1"><i class="fas fa-exclamation-circle"></i> Overdue</span></h1>
+                                <p className=""> <i class="fas fa-fw fa-clock"></i> Due 5/12/22</p>
+
+                            </div>
+
+                        </div>
+
+
+                        <div style={{ cursor: 'pointer' }} className="mt-2 hover:border-blue-500 bg-gray-900 border  border-gray-700  px-4 py-2 text-white rounded ">
+
+
+
+                            <div className=" items-center justify-between">
+                                <h1 className="text-xl w-full"> <i class="fas fa-flag"></i>  Black Panther <span className="hidden ml-3 bg-red-900 px-4 rounded-full text-red-300 text-sm py-1"><i class="fas fa-exclamation-circle"></i> Overdue</span> <span className=" ml-3 bg-green-900 px-4 rounded-full text-green-300 text-sm py-1"><i class="fas fa-check-circle"></i> Completed</span></h1>
+                                <p className=""> <i class="fas fa-fw fa-clock"></i> Due 5/18/22</p>
+
+                            </div>
+
+                        </div>
+
+
+
+
+
                     </div>
-                </div>
-            </div>
-            </div>
-            
-
-
-
-     <p className={"mt-6 text-white  text-2xl font-semibold"}><i class="fas fa-bullhorn"></i> Class Announcements</p>
-     <div  className="mt-2  bg-gray-900 border  border-gray-700  px-4 py-2 text-white rounded ">
-
-
-
-<div className=" items-center justify-between">
-
-
-<div className="flex align-middle ">
-<img className="rounded-full w-8 h-8 items-center justify-between mr-1 " src="https://avatars.githubusercontent.com/u/23617187?v=4"></img> 
-<p><span className="font-semibold">Pranav Ramesh <i class="fas fa-user-shield"></i></span> <br></br>5/17/22 12:00AM</p>
-</div>
- <p className="mt-4"> 
-        Due to Keystone exams we will be taking a break from the class. If you want to come in during learn to continue working, please email me. Please remember finals are coming soon! If you want to prepare for the final - try out some of the medium problems.
- </p>
-
-  </div>
- 
-</div>
-
-
-     <p className={"mt-6 text-white  text-2xl font-semibold"}><i class="fas fa-pencil-ruler"></i> Your Assignments</p>
-
-    
-    <div style={{cursor:'pointer'}} className="mt-2 hover:border-blue-500 bg-gray-900 border  border-gray-700  px-4 py-2 text-white rounded ">
-
-
-
-    <div className=" items-center justify-between">
-      <h1 className="text-xl w-full"> <i class="fas fa-fw fa-file-alt"></i>  Chapter 1 - Lesson 1 <span className="ml-3 bg-red-900 px-4 rounded-full text-red-300 text-sm py-1"><i class="fas fa-exclamation-circle"></i> Overdue</span></h1>
-        <p className=""> <i class="fas fa-fw fa-clock"></i> Due 5/12/22</p>
-    
-      </div>
-     
-    </div>
-  
-  
-    <div style={{cursor:'pointer'}} className="mt-2 hover:border-blue-500 bg-gray-900 border  border-gray-700  px-4 py-2 text-white rounded ">
-
-
-
-    <div className=" items-center justify-between">
-      <h1 className="text-xl w-full"> <i class="fas fa-flag"></i>  Black Panther <span className="hidden ml-3 bg-red-900 px-4 rounded-full text-red-300 text-sm py-1"><i class="fas fa-exclamation-circle"></i> Overdue</span> <span className=" ml-3 bg-green-900 px-4 rounded-full text-green-300 text-sm py-1"><i class="fas fa-check-circle"></i> Completed</span></h1>
-        <p className=""> <i class="fas fa-fw fa-clock"></i> Due 5/18/22</p>
-    
-      </div>
-     
-    </div>
-
-   
-
-
-  
-    </div>
 
 
                 </div>
 
-                
+
+           
+
+
+
             </main>
 
-        
+
         </div>
 
 

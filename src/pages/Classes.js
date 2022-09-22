@@ -273,7 +273,7 @@ const Classes = () => {
 
                 <div className="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8   ">
 
-                <div className=" text-white border border-blue-900 rounded-lg  border-4 px-6 py-3 mb-5"> 
+                <div className="hidden text-white border border-blue-900 rounded-lg  border-4 px-6 py-3 mb-5"> 
                     <p>CTFGuide Developer Menu <button className="bg-gray-800 px-2 rounded-lg">Hide Menu</button></p>
                     <h1 className="text-xl font-bold">Code Execution</h1>
                     <textarea className="bg-gray-900 border border-none w-full"></textarea>
