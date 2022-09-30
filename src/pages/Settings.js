@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 import { Fragment, useEffect, useRef, useState } from 'react'
 import { Disclosure, Menu, Transition, Dialog } from '@headlessui/react'
 import { BellIcon, MenuIcon, XIcon, FireIcon, ExclamationIcon } from '@heroicons/react/outline'
-import { getAuth, onAuthStateChanged, signOut } from "firebase/auth";
+import { getAuth, onAuthStateChanged, signOut, updatePassword } from "firebase/auth";
 import { CheckCircleIcon } from '@heroicons/react/outline'
 import { initializeApp } from "firebase/app";
 import { getAnalytics } from "firebase/analytics";
@@ -10,6 +10,7 @@ import { io } from "socket.io-client";
 import DashboardManager from "../modules/DashboardManager.js"
 import 'animate.css';
 import { Navigation } from '../components/navigation';
+
 
 const Settings = () => {
     const firebaseConfig = {
@@ -36,7 +37,7 @@ const Settings = () => {
 
 
     const [open, setOpen] = useState(true)
-    const [show, setShow] = useState(true)
+    const [show, setShow] = useState(false)
     const cancelButtonRef = useRef(null)
     document.title = "CTFGuide - Dashboard"
     const [user, setUser] = useState({
@@ -61,8 +62,49 @@ const Settings = () => {
         });
 
     }
-    useEffect(() => {
+    function changePassword() {
+        var password = document.getElementById("confirmnewpass").value;
+        if (password != document.getElementById("newpass").value) {
+            document.getElementById("error").classList.remove("hidden");
+            document.getElementById("error").innerText("Passwords must match!")
+            document.getElementById("newpass").classList.remove("border-gray-600")
+            document.getElementById("newpass").classList.add("border-red-600")
+            document.getElementById("confirmnewpass").classList.remove("border-gray-600")
+            document.getElementById("confirmnewpass").classList.add("border-red-600")
 
+            return;
+        } else {
+            updatePassword(auth.currentUser, password).then(() => {
+                // notify our server
+                var xhttp = new XMLHttpRequest()
+                xhttp.onreadystatechange = function() {
+                    if (this.readyState == 4 && this.status == 200) {
+                        setShow(true);
+                    }
+                }
+                
+                xhttp.open("POST", `${process.env.REACT_APP_API_URL}/users/alerts?type=password_change&uid=${localStorage.getItem("token")}`)
+            }).catch((error) => {
+                document.getElementById("error").classList.remove("hidden");
+                document.getElementById("error").innerText(error)
+                document.getElementById("newpass").classList.remove("border-gray-600")
+                document.getElementById("newpass").classList.add("border-red-600")
+                document.getElementById("confirmnewpass").classList.remove("border-gray-600")
+                document.getElementById("confirmnewpass").classList.add("border-red-600")
+
+            })
+        }
+
+        
+
+
+
+
+        
+    }
+    
+    useEffect(() => {
+      
         var xhttp = new XMLHttpRequest();
         xhttp.onreadystatechange = function() {
             if (this.readyState === 4 & this.status === 200) {
@@ -214,7 +256,49 @@ const Settings = () => {
 
 
             <main className="mt-3" >
-
+  <div
+        aria-live="assertive"
+        className="pointer-events-none fixed inset-0 flex items-end px-4 py-6 sm:items-start sm:p-6"
+      >
+        <div className="flex w-full flex-col items-center space-y-4 sm:items-end">
+          {/* Notification panel, dynamically insert this into the live region when it needs to be displayed */}
+          <Transition
+            show={show}
+            as={Fragment}
+            enter="transform ease-out duration-300 transition"
+            enterFrom="translate-y-2 opacity-0 sm:translate-y-0 sm:translate-x-2"
+            enterTo="translate-y-0 opacity-100 sm:translate-x-0"
+            leave="transition ease-in duration-100"
+            leaveFrom="opacity-100"
+            leaveTo="opacity-0"
+          >
+            <div className="pointer-events-auto w-full max-w-sm overflow-hidden rounded-lg bg-gray-900 border border-gray-700 shadow-lg ring-1 ring-black ring-opacity-5">
+              <div className="p-4">
+                <div className="flex items-start">
+                  <div className="flex-shrink-0">
+                    <CheckCircleIcon className="h-6 w-6 text-green-400" aria-hidden="true" />
+                  </div>
+                  <div className="ml-3 w-0 flex-1 pt-0.5">
+                    <p className="text-sm font-medium text-white">Successfully saved!</p>
+                    <p className="mt-1 text-sm text-gray-200">Certain changes may take a few minutes to sync with our cache system.</p>
+                  </div>
+                  <div className="ml-4 flex flex-shrink-0">
+                    <button
+                      type="button"
+                      className="inline-flex rounded-md bg-white text-gray-400 hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
+                      onClick={() => {
+                        setShow(false)
+                      }}
+                    >
+                      <span className="sr-only">Close</span>
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </Transition>
+        </div>
+      </div>
                 <div className="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8   ">
 
               
@@ -231,15 +315,18 @@ const Settings = () => {
      <div class="grid grid-cols-2 gap-4">
 
 
-    <div className="mt-4 bg-gray-900 border  border-gray-700  px-4 py-4 text-white rounded ">
+    <div className=" mt-4 bg-gray-900 border  border-gray-700  px-4 py-4 text-white rounded ">
+    <div id="error" className="hidden bg-red-900 px-2 mb-4 border border-red-600 text-white rounded-lg"> 
+ <p>Something went wrong</p>
+    </div>
     <div className=" items-center justify-between">
       <h1 className="text-2xl w-full font-bold"><i class="fas fa-shield-alt"></i> Account Settings</h1>
       <hr className="text-gray-800 bg-gray-800 border-gray-600 mt-2 mb-2"></hr>
             <p className="text-xl font-semibold">Change your account password</p>
-            <input placeholder="New Password" className=" mt-3 border border-gray-600 bg-gray-800 px-2 py-1 rounded-lg w-full"/>
+            <input id="newpass" placeholder="New Password" className=" mt-3 border border-gray-600 bg-gray-800 px-2 py-1 rounded-lg w-full"/>
 
-            <input placeholder="Confirm New Password" className="mt-3 border border-gray-600 bg-gray-800 px-2 py-1 rounded-lg w-full"/>
-
+            <input id="confirmnewpass" placeholder="Confirm New Password" className="mt-3 border border-gray-600 bg-gray-800 px-2 py-1 rounded-lg w-full"/>
+            <button onClick={changePassword} class="bg-blue-700 px-2 py-1 rounded-lg mt-3">Change Password</button>
             <p className="text-xl font-semibold mt-4">Change your username</p>
             <input placeholder="Loading..." className="mt-3 border border-gray-600 bg-gray-800 px-2 py-1 rounded-lg w-full"/>
 
@@ -253,7 +340,8 @@ const Settings = () => {
             <img  className="h-10 w-10 rounded-full align-middle border border-white" src="../../defaultpfp.png" alt="profile picture" />
             <input type="file" className="ml-2 mt-1.5 text-sm align-middle"></input>
             </div>
-    
+            <button class="bg-blue-700 px-2 py-1 rounded-lg mt-3">Save Changes</button>
+
       </div>
      
     </div>
