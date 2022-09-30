@@ -228,38 +228,81 @@ const Settings = () => {
 
     
  
+     <div class="grid grid-cols-2 gap-4">
+
 
     <div className="mt-4 bg-gray-900 border  border-gray-700  px-4 py-4 text-white rounded ">
     <div className=" items-center justify-between">
-      <h1 className="text-2xl w-full"><i class="fas fa-shield-alt"></i> Account Settings</h1>
-        <ul>
-            <li><a className=""> <i class="fas fa-arrow-right"></i> Change your account password</a></li>
-            <li><a className=""> <i class="fas fa-arrow-right"></i> Change your username</a></li>
-            <li><a className=""> <i class="fas fa-arrow-right"></i> Submit request for email change</a></li>
-            <li><a className=""> <i class="fas fa-arrow-right"></i> Terminal Password Recovery</a></li>
-            <li><a className=""> <i class="fas fa-arrow-right"></i> View authorized connections</a></li>
+      <h1 className="text-2xl w-full font-bold"><i class="fas fa-shield-alt"></i> Account Settings</h1>
+      <hr className="text-gray-800 bg-gray-800 border-gray-600 mt-2 mb-2"></hr>
+            <p className="text-xl font-semibold">Change your account password</p>
+            <input placeholder="New Password" className=" mt-3 border border-gray-600 bg-gray-800 px-2 py-1 rounded-lg w-full"/>
 
-        </ul>
-                    
+            <input placeholder="Confirm New Password" className="mt-3 border border-gray-600 bg-gray-800 px-2 py-1 rounded-lg w-full"/>
+
+            <p className="text-xl font-semibold mt-4">Change your username</p>
+            <input placeholder="Loading..." className="mt-3 border border-gray-600 bg-gray-800 px-2 py-1 rounded-lg w-full"/>
+
+            <p className="text-xl font-semibold mt-4">Set a biography</p>
+            <textarea placeholder="People can see your biography when clicking on your name" className="mt-3 border border-gray-600 bg-gray-800 px-2 py-1 rounded-lg w-full">
+            </textarea>
+
+            <p className="text-xl font-semibold mt-4">Profile Picture</p>
+
+            <div className="flex align-middle">
+            <img  className="h-10 w-10 rounded-full align-middle border border-white" src="../../defaultpfp.png" alt="profile picture" />
+            <input type="file" className="ml-2 mt-1.5 text-sm align-middle"></input>
+            </div>
     
       </div>
      
     </div>
+
+
     <div className="mt-4 bg-gray-900 border  border-gray-700  px-4 py-4 text-white rounded ">
     <div className=" items-center justify-between">
       <h1 className="text-2xl w-full"><i class="fas fa-file-invoice-dollar"></i> Billing Settings</h1>
-        <ul>
-            <li><a className="font-semibold"> <i class="fas fa-arrow-right"></i> Upgrade to CTFGuide Pro</a></li>
-            <li><a className=""> <i class="fas fa-arrow-right"></i> Manage Payments</a></li>
-            <li><a className=""> <i class="fas fa-arrow-right"></i> Purchase Order</a></li>
+      <hr className="text-gray-800 bg-gray-800 border-gray-600 mt-2 mb-2"></hr>
+      <h1 className="text-center text-4xl  mt-4">Upgrade to <span className="font-bold text-blue-500">CTFGuide Pro</span></h1>
 
-        </ul>
-                    
+      <div class="grid grid-cols-2 gap-4">
+      <div style={{cursor: 'pointer'}}  className="mt-4 bg-gray-800 border  border-gray-700 hover:bg-gray-900  px-4 py-4 text-white rounded ">
+      <h1 className="text-center text-3xl">Monthly</h1>
+
+        <h1 className="text-center text-xl">$4.99/month</h1>
+</div>
+
+<div style={{cursor: 'pointer'}} className="mt-4 bg-gray-800 border  border-gray-700 hover:bg-gray-900 px-4 py-4 text-white rounded ">
+<h1 className="text-center text-3xl">Annually</h1>
+
+<h1 className="text-center text-xl">$35.88/year</h1>
+
+</div>
+</div>
+
+<h1 className="text-xl mt-4 text-center mb-1">What do you get?</h1>
+                <div className="bg-gray-800 px-2 py-1 text-center">
+                    <p>Unlimited machine learning graded responses</p>
+                    </div>  
+                    <div className="mt-1 bg-gray-800 px-2 py-1 text-center">
+                    <p>Show of an exclusive CTFGuide Pro badge</p>
+                    </div>    
+                    <div className="mt-1 bg-gray-800 px-2 py-1 text-center">
+                    <p>Classroom member limits are removed**</p>
+                    </div>   
+                    <div className="mt-1 bg-gray-800 px-2 py-1 text-center">
+                    <p>Access to interview preparation content**</p>
+                    </div>   
+
+                    <p className="mt-4 text-sm text-gray-500">* For the features marked with a star, it means it has not been released yet. For every month you have CTFGuide Pro, if the feature has not been implemented yet, you'll be given an additional free month of Pro.</p>
     
       </div>    
      
     </div>
-    <div className="mt-4 bg-gray-900 border  border-gray-700  px-4 py-4 text-white rounded ">
+
+
+    </div>
+    <div className="hidden mt-4 bg-gray-900 border  border-gray-700  px-4 py-4 text-white rounded ">
     <div className=" items-center justify-between">
       <h1 className="text-2xl w-full"><i class="fas fa-terminal"></i> Developer Settings</h1>
         <ul>
