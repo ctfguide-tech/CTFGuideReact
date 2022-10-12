@@ -26,14 +26,14 @@ export class Navigation extends Component {
         ]
 
         const userNavigation = [
-
+            { name: 'Settings', href: '../../settings' },
             { name: 'Sign out', onClick: logout },  
-           { name: 'Settings', href: '../../settings' },
 
         ]
 
         const userNavigation2 = [
         //    { name: 'Settings', href: '../../settings' },
+
             { name: 'Sign out', onClick: logout },
         ]
 
@@ -192,13 +192,12 @@ export class Navigation extends Component {
                                         </a>
                                         </div>
                                 <div className="mt-3 px-2 space-y-1 z-20">
-                                    {userNavigation.map((item) => (
-                                        <a
-                                            key={item.name + "m"}
-                                            onClick={logout}
-                                            className="block px-3 py-2 rounded-md text-base font-medium text-gray-200 hover:text-white hover:bg-gray-700"
-                                        >{item.name}</a>
-                                    ))}
+                                <a href="../../settings" className="block px-3 py-2 rounded-md text-base font-medium text-gray-200 hover:text-white hover:bg-gray-700">
+                                                Settings
+                                </a>
+                                <a onClick={logout} className="block px-3 py-2 rounded-md text-base font-medium text-gray-200 hover:text-white hover:bg-gray-700">
+                                                Logout
+                                </a>
                                 </div>
                             </div>
                         </Disclosure.Panel>
