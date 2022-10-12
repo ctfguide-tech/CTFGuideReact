@@ -28,7 +28,7 @@ export class Navigation extends Component {
         const userNavigation = [
 
             { name: 'Sign out', onClick: logout },  
-         //   { name: 'Settings', href: '../../settings' },
+           { name: 'Settings', href: '../../settings' },
 
         ]
 
