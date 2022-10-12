@@ -4,7 +4,7 @@ import { Disclosure, Menu, Transition, Dialog } from '@headlessui/react'
 import { BellIcon, MenuIcon, XIcon, FireIcon, ExclamationIcon } from '@heroicons/react/outline'
 import { getAuth, onAuthStateChanged, signOut, updatePassword } from "firebase/auth";
 import { CheckCircleIcon } from '@heroicons/react/outline'
-import { initializeApp } from "firebase/app";
+import { FirebaseError, initializeApp } from "firebase/app";
 import { getAnalytics } from "firebase/analytics";
 import { io } from "socket.io-client";
 import DashboardManager from "../modules/DashboardManager.js"
@@ -84,6 +84,7 @@ const Settings = () => {
                 }
                 
                 xhttp.open("POST", `${process.env.REACT_APP_API_URL}/users/alerts?type=password_change&uid=${localStorage.getItem("token")}`)
+                xhttp.send();
             }).catch((error) => {
                 document.getElementById("error").classList.remove("hidden");
                 document.getElementById("error").innerText(error)
@@ -102,7 +103,7 @@ const Settings = () => {
 
         
     }
-    
+
     useEffect(() => {
       
         var xhttp = new XMLHttpRequest();
@@ -124,7 +125,9 @@ const Settings = () => {
             if (firebaseUser) {
                 const uid = firebaseUser.uid;
                 console.log(firebaseUser.photoURL);
-
+                if (firebaseUser.email == "shashivadlamudi@drexel.edu") {
+                  document.getElementById("probox").classList.remove("hidden");
+                }
                 if (firebaseUser.photoURL) {
                     setUser({
                       name: firebaseUser.displayName,
@@ -147,7 +150,10 @@ const Settings = () => {
                     if (this.readyState === 4 & this.status === 200) {
                         let data = JSON.parse(this.responseText);
                         document.getElementById("navPoints").innerHTML = data.points;
+                        document.getElementById("usernamechange").value = data.username;
 
+                     
+                        
                         setUserData({
                             username: data.username,
                             streak: data.streak,
@@ -198,6 +204,22 @@ const Settings = () => {
 
     }, []);
 
+
+
+    function saveChanges() {
+      var bio = document.getElementById("bio").value;
+      var username = document.getElementById("username").value;
+      if (bio.length > 100) return window.alert("Biography is too long.")
+      var xhttp = new XMLHttpRequest();
+      xhttp.onreadystatechange = function() {
+        if (this.readyState === 4 & this.status === 200) {
+          window.location.reload();
+        }
+      }
+      xhttp.open("POST", `${process.env.REACT_APP_API_URL}/users/set-bio?uid=${localStorage.getItem("token")}&bio=${bio}`);
+      xhttp.send();
+
+    }
 
 
     const people = [
@@ -312,7 +334,7 @@ const Settings = () => {
 
     
  
-     <div class="grid grid-cols-2 gap-4">
+     <div class="grid lg:grid-cols-2 md:grid-cols-2 sml:grid-cols-1 gap-4">
 
 
     <div className=" mt-4 bg-gray-900 border  border-gray-700  px-4 py-4 text-white rounded ">
@@ -323,32 +345,68 @@ const Settings = () => {
       <h1 className="text-2xl w-full font-bold"><i class="fas fa-shield-alt"></i> Account Settings</h1>
       <hr className="text-gray-800 bg-gray-800 border-gray-600 mt-2 mb-2"></hr>
             <p className="text-xl font-semibold">Change your account password</p>
-            <input id="newpass" placeholder="New Password" className=" mt-3 border border-gray-600 bg-gray-800 px-2 py-1 rounded-lg w-full"/>
+            <input type="password" id="newpass" placeholder="New Password" className=" mt-3 border border-gray-600 bg-gray-800 px-2 py-1 rounded-lg w-full"/>
 
-            <input id="confirmnewpass" placeholder="Confirm New Password" className="mt-3 border border-gray-600 bg-gray-800 px-2 py-1 rounded-lg w-full"/>
+            <input type="password" id="confirmnewpass" placeholder="Confirm New Password" className="mt-3 border border-gray-600 bg-gray-800 px-2 py-1 rounded-lg w-full"/>
             <button onClick={changePassword} class="bg-blue-700 px-2 py-1 rounded-lg mt-3">Change Password</button>
-            <p className="text-xl font-semibold mt-4">Change your username</p>
-            <input placeholder="Loading..." className="mt-3 border border-gray-600 bg-gray-800 px-2 py-1 rounded-lg w-full"/>
+            <p className="text-xl font-semibold mt-4 hidden">Change your username</p>
+            <input placeholder="Loading..." id="usernamechange" className="hidden mt-3 border border-gray-600 bg-gray-800 px-2 py-1 rounded-lg w-full"/>
 
-            <p className="text-xl font-semibold mt-4">Set a biography</p>
-            <textarea placeholder="People can see your biography when clicking on your name" className="mt-3 border border-gray-600 bg-gray-800 px-2 py-1 rounded-lg w-full">
+            <p className="hidden text-xl font-semibold mt-4">Set a biography</p>
+            <textarea  placeholder="People can see your biography when clicking on your name" className="hidden mt-3 border border-gray-600 bg-gray-800 px-2 py-1 rounded-lg w-full">
             </textarea>
 
-            <p className="text-xl font-semibold mt-4">Profile Picture</p>
+            <p className="hidden text-xl font-semibold mt-4">Profile Picture</p>
 
             <div className="flex align-middle">
-            <img  className="h-10 w-10 rounded-full align-middle border border-white" src="../../defaultpfp.png" alt="profile picture" />
-            <input type="file" className="ml-2 mt-1.5 text-sm align-middle"></input>
+            <img  className="hidden h-10 w-10 rounded-full align-middle border border-white" src="../../defaultpfp.png" alt="profile picture" />
+            <input type="file" className="hidden ml-2 mt-1.5 text-sm align-middle"></input>
             </div>
-            <button class="bg-blue-700 px-2 py-1 rounded-lg mt-3">Save Changes</button>
+            <button onClick={
+              saveChanges
+            } class="hidden bg-blue-700 px-2 py-1 rounded-lg mt-3">Save Changes</button>
 
       </div>
      
     </div>
 
 
-    <div className="mt-4 bg-gray-900 border  border-gray-700  px-4 py-4 text-white rounded ">
+    <div id="probox" className="hidden mt-4 bg-gray-900 border  border-gray-700  px-4 py-4 text-white rounded ">
     <div className=" items-center justify-between">
+
+      <h1 className="text-2xl w-full"><i class="fas fa-file-invoice-dollar"></i> Billing Settings</h1>
+      <hr className="text-gray-800 bg-gray-800 border-gray-600 mt-2 mb-2"></hr>
+      
+            <p><b>Subscription Type: CTFGuide for Drexel University</b></p>
+            <p><b>Next Billing Date: Not set to renew</b></p>
+      
+            <hr className="text-gray-800 bg-gray-800 border-gray-600 mt-2 mb-2"></hr>
+
+      <h1 className="text-lg bg-yellow-700 px-2 py-1 rounded-lg"><i class="fas fa-exclamation-triangle"></i> Your university (<b>@drexel.edu</b>) requires you to pay for CTFGuide LMS.</h1>
+      <h1 className="text-6xl mt-4 text-center">$120/year</h1>
+
+      <h1 className="text-xl mt-4 text-center mb-1">What do you get?</h1>
+                <div className="bg-gray-800 px-2 py-1 text-center">
+                    <p>Unlimited machine learning graded responses</p>
+                    </div>  
+                    <div className="mt-1 bg-gray-800 px-2 py-1 text-center">
+                    <p>Show of an exclusive CTFGuide Pro badge</p>
+                    </div>    
+                    <div className="mt-1 bg-gray-800 px-2 py-1 text-center">
+                    <p>Classroom member limits are removed**</p>
+                    </div>   
+                    <div className="mt-1 bg-gray-800 px-2 py-1 text-center">
+                    <p>Access to interview preparation content**</p>
+                    </div>   
+
+<div className="text-center mx-auto">
+                    <button class="bg-green-900 hover:bg-green-800 px-2 py-1 rounded-lg text-xl mt-4 text-center mx-auto" disabled>Checkout</button>
+                    <p className="mt-3">You already have a subscription!</p>
+                  
+                    </div>
+                   
+   </div>
+    <div className="hidden items-center justify-between">
       <h1 className="text-2xl w-full"><i class="fas fa-file-invoice-dollar"></i> Billing Settings</h1>
       <hr className="text-gray-800 bg-gray-800 border-gray-600 mt-2 mb-2"></hr>
       <h1 className="text-center text-4xl  mt-4">Upgrade to <span className="font-bold text-blue-500">CTFGuide Pro</span></h1>

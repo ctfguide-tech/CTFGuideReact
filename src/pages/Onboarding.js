@@ -62,7 +62,7 @@ const Onboarding = () => {
     if (this.readyState == 4 && this.status == 200) {
       // OK
       // Check if email verified
-window.alert("test")
+      //window.alert("test")
       const data = JSON.parse(this.responseText);
 
       if (data.emailVerified) {
