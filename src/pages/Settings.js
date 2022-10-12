@@ -149,7 +149,7 @@ const Settings = () => {
                       */
 
             } else {
-                window.location.href = "../login";
+               // window.location.href = "../login";
             }
         });
 
