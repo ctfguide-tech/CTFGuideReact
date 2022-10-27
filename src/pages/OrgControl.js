@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import { Fragment, useEffect, useRef, useState } from 'react'
 import { Disclosure, Menu, Transition, Dialog } from '@headlessui/react'
-import { BellIcon, MenuIcon, XIcon, FireIcon, ExclamationIcon, StarIcon, CheckIcon } from '@heroicons/react/outline'
+import { BellIcon, MenuIcon, XIcon, FireIcon, ExclamationIcon } from '@heroicons/react/outline'
 import { getAuth, onAuthStateChanged, signOut, updatePassword } from "firebase/auth";
 import { CheckCircleIcon } from '@heroicons/react/outline'
 import { FirebaseError, initializeApp } from "firebase/app";
@@ -12,7 +12,7 @@ import 'animate.css';
 import { Navigation } from '../components/navigation';
 
 
-const Settings = () => {
+const OrgControl = () => {
     const firebaseConfig = {
         apiKey: "AIzaSyBLAN84VP3jSA5dqhrU6Bjmfu5NiUDuNw4",
         authDomain: "cyberjags-8b081.firebaseapp.com",
@@ -37,8 +37,6 @@ const Settings = () => {
 
 
     const [open, setOpen] = useState(true)
-    const [open2, setOpen2] = useState(true)
-
     const [show, setShow] = useState(false)
     const cancelButtonRef = useRef(null)
     document.title = "CTFGuide - Dashboard"
@@ -56,28 +54,6 @@ const Settings = () => {
     })
 
 
-    const tiers = [
-      {
-        name: 'CTFGuide Pro',
-        href: '#',
-        priceMonthly: 2,
-        description: 'Level up your learning for just a small price',
-        includedFeatures: ['Unlimited CTFGuide Terminal access', 'Machine learning graded problems', 'Rep an exclusive CTFGuide Pro badge', 'Access to challenge solutions (no points)'],
-      },
-      {
-        name: 'CTFGuide Groups',
-        href: '#',
-        priceMonthly: 40,
-        description: 'A perfect solution for education and companies',
-        includedFeatures: [
-          'Full featured learning management system',
-          'Everything Pro offers for up to 10,000 students',
-          '24/7 Technical Support',
-          'Customize terminal OS images',
-          'Run internal competitions',
-        ],
-      }
-    ]
     function logout() {
         signOut(auth).then(() => {
             // Sign-out successful.
@@ -302,10 +278,6 @@ const Settings = () => {
 
 
             <main className="mt-3" >
-
-
-
-
   <div
         aria-live="assertive"
         className="pointer-events-none fixed inset-0 flex items-end px-4 py-6 sm:items-start sm:p-6"
@@ -352,210 +324,73 @@ const Settings = () => {
                 <div className="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8   ">
 
               
-    
-                    <p className={" text-white  text-4xl font-semibold"}> Settings</p>
-          
+                <div id="billing_error" className="rounded-lg bg-gray-900 px-3 py-2 w-2/3">
+
+<h1 className="text-xl bg-gray-900  text-white ">Your organization isn't activated yet. <button className="float-right bg-gray-800 rounded-lg text-white px-3">Finish Activation</button></h1>
+
+
+</div>
+                    <p className={"mt-4 text-white  text-4xl font-semibold"}> Pennsylvania State University</p>
+                    <div className="flex flex-wrap -mx-2 mt-4 gap-y-4">
+                            <Link to={"./manage-members"} className="w-full md:w-1/2 px-2 ">
+                                <div className="bg-gray-900 border border-gray-700 rounded-lg shadow-lg p-4 hover:bg-gray-800">
+                                    <div className="flex items-center justify-between">
+
+                                        <div className="mx-auto text-center">
+                                            <i className="fas text-white text-5xl fa-users-cog"></i>
+                                            <br></br>
+                                            <p className="text-white font-bold text-xl mb-2 mt-4">Manage Members</p>
+                                            <p className="text-white">Easily manage users in your organization.</p>
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </Link>
+                            <div className="w-full md:w-1/2 px-2">
+                                <div className="bg-gray-900 border border-gray-700 rounded-lg shadow-lg p-4 hover:bg-gray-800">
+                                    <div className="flex items-center justify-between">
+
+                                        <div className="mx-auto text-center">
+                                            <i className="fas fa-file-invoice-dollar text-5xl text-white"></i>
+                                            <br></br>
+                                            <p className="text-white font-bold text-xl mb-2 mt-4">Billing Settings</p>
+                                            <p className="text-white">Handle anything billing related for your organization..</p>
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div className="w-full md:w-1/2 px-2">
+                                <div className="bg-gray-900 border border-gray-700 rounded-lg shadow-lg p-4 hover:bg-gray-800">
+                                    <div className="flex items-center justify-between">
+
+                                        <div className="mx-auto text-center">
+                                        <i class="fas fa-headset text-5xl text-white"></i>
+                                            <br></br>
+                                            <p className="text-white font-bold text-xl mb-2 mt-4">Support</p>
+                                            <p className="text-white">Stuck on something? Create a support ticket our browse our FAQ's.</p>
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                  
 
      <div className="" >
 
 
     
- 
-     <div class="grid lg:grid-cols-2 md:grid-cols-2 sml:grid-cols-1 gap-4">
 
-
-    <div className=" mt-4 bg-gray-900 border  border-gray-700  px-4 py-4 text-white rounded ">
-    <div id="error" className="hidden bg-red-900 px-2 mb-4 border border-red-600 text-white rounded-lg"> 
- <p>Something went wrong</p>
-    </div>
-    <div className=" items-center justify-between">
-      <h1 className="text-2xl w-full font-bold"><i class="fas fa-shield-alt"></i> Account Settings</h1>
-      <hr className="text-gray-800 bg-gray-800 border-gray-600 mt-2 mb-2"></hr>
-            <p className="text-xl font-semibold">Change your account password</p>
-            <input type="password" id="newpass" placeholder="New Password" className=" mt-3 border border-gray-600 bg-gray-800 px-2 py-1 rounded-lg w-full"/>
-
-            <input type="password" id="confirmnewpass" placeholder="Confirm New Password" className="mt-3 border border-gray-600 bg-gray-800 px-2 py-1 rounded-lg w-full"/>
-            <button onClick={changePassword} class="bg-blue-700 px-2 py-1 rounded-lg mt-3">Change Password</button>
-            <p className="text-xl font-semibold mt-4 hidden">Change your username</p>
-            <input placeholder="Loading..." id="usernamechange" className="hidden mt-3 border border-gray-600 bg-gray-800 px-2 py-1 rounded-lg w-full"/>
-
-            <p className="hidden text-xl font-semibold mt-4">Set a biography</p>
-            <textarea  placeholder="People can see your biography when clicking on your name" className="hidden mt-3 border border-gray-600 bg-gray-800 px-2 py-1 rounded-lg w-full">
-            </textarea>
-
-            <p className="hidden text-xl font-semibold mt-4">Profile Picture</p>
-
-            <div className="flex align-middle">
-            <img  className="hidden h-10 w-10 rounded-full align-middle border border-white" src="../../defaultpfp.png" alt="profile picture" />
-            <input type="file" className="hidden ml-2 mt-1.5 text-sm align-middle"></input>
-            </div>
-            <button onClick={
-              saveChanges
-            } class="hidden bg-blue-700 px-2 py-1 rounded-lg mt-3">Save Changes</button>
-
-      </div>
-     
-    </div>
-
-
-    <div id="probox" className=" mt-4 bg-gray-900 border  border-gray-700  px-4 py-4 text-white rounded ">
-    <div className=" items-center justify-between">
-
-      <h1 className="text-2xl w-full"><i class="fas fa-file-invoice-dollar"></i> Billing Settings</h1>
-      <hr className="text-gray-800 bg-gray-800 border-gray-600 mt-2 mb-2"></hr>
-      
-            <p className="text-xl"><b>No billing information.</b></p>
-            <button className="mt-2 bg-blue-700 hover:bg-blue-800 text-white px-6 py-1 rounded-lg text-md">View Plans </button>
-            <hr className="hidden text-gray-700 bg-gray-800 border-gray-600 mt-2 mb-2"></hr>
-
-     <h1 className="hidden text-6xl mt-4 text-center">$120/year</h1>
-
-      <h1 className="hidden text-xl mt-4 text-center mb-1">What do you get?</h1>
-                <div className="hidden bg-gray-800 px-2 py-1 text-center">
-                    <p>Unlimited machine learning graded responses</p>
-                    </div>  
-                    <div className=" hidden mt-1 bg-gray-800 px-2 py-1 text-center">
-                    <p>Show of an exclusive CTFGuide Pro badge</p>
-                    </div>    
-                    <div className=" hidden mt-1 bg-gray-800 px-2 py-1 text-center">
-                    <p>Classroom member limits are removed**</p>
-                    </div>   
-                    <div className="hidden mt-1 bg-gray-800 px-2 py-1 text-center">
-                    <p>Access to interview preparation content**</p>
-                    </div>   
-
-<div className="text-center mx-auto">
-                    <button class="hidden bg-green-900 hover:bg-green-800 px-2 py-1 rounded-lg text-xl mt-4 text-center mx-auto" disabled>Checkout</button>
-                    <p className="mt-3 hidden">You already have a subscription!</p>
-                  
-                    </div>
-                   
-   </div>
-    <div className="hidden items-center justify-between">
-      <h1 className="text-2xl w-full"><i class="fas fa-file-invoice-dollar"></i> Billing Settings</h1>
-      <hr className="text-gray-800 bg-gray-800 border-gray-600 mt-2 mb-2"></hr>
-      <h1 className="text-center text-4xl  mt-4">Upgrade to <span className="font-bold text-blue-500">CTFGuide Pro</span></h1>
-
-      <div class="grid grid-cols-2 gap-4">
-      <div style={{cursor: 'pointer'}}  className="mt-4 bg-gray-800 border  border-gray-700 hover:bg-gray-900  px-4 py-4 text-white rounded ">
-      <h1 className="text-center text-3xl">Monthly</h1>
-
-        <h1 className="text-center text-xl">$4.99/month</h1>
-</div>
-
-<div style={{cursor: 'pointer'}} className="mt-4 bg-gray-800 border  border-gray-700 hover:bg-gray-900 px-4 py-4 text-white rounded ">
-<h1 className="text-center text-3xl">Annually</h1>
-
-<h1 className="text-center text-xl">$35.88/year</h1>
-
-</div>
-</div>
-
-<h1 className="text-xl mt-4 text-center mb-1">What do you get?</h1>
-                <div className="bg-gray-800 px-2 py-1 text-center">
-                    <p>Unlimited machine learning graded responses</p>
-                    </div>  
-                    <div className="mt-1 bg-gray-800 px-2 py-1 text-center">
-                    <p>Show of an exclusive CTFGuide Pro badge</p>
-                    </div>    
-                    <div className="mt-1 bg-gray-800 px-2 py-1 text-center">
-                    <p>Classroom member limits are removed**</p>
-                    </div>   
-                    <div className="mt-1 bg-gray-800 px-2 py-1 text-center">
-                    <p>Access to interview preparation content**</p>
-                    </div>   
-
-                    <p className="mt-4 text-sm text-gray-500">* For the features marked with a star, it means it has not been released yet. For every month you have CTFGuide Pro, if the feature has not been implemented yet, you'll be given an additional free month of Pro.</p>
-    
-      </div>    
-     
-    </div>
-
-
-    </div>
-    <div className="hidden mt-4 bg-gray-900 border  border-gray-700  px-4 py-4 text-white rounded ">
-    <div className=" items-center justify-between">
-      <h1 className="text-2xl w-full"><i class="fas fa-terminal"></i> Developer Settings</h1>
-        <ul>
-            <li><a className=""> <i class="fas fa-arrow-right"></i> Generate API Key</a></li>
-
-
-        </ul>
-                    
-    
-      </div>    
-     
-    </div>
   
 
     </div>
 
 
-    <Transition.Root show={open2} as={Fragment}>
-      <Dialog as="div" className="fixed z-10 inset-0 overflow-y-auto bg-black bg-opacity-90" onClose={setOpen2}>
-        <div className="flex items-end justify-center min-h-screen  pt-4 px-4 pb-20 text-center sm:block sm:p-0">
-      
-     <Transition.Child
-            as={Fragment}
-            enter="ease-out duration-300"
-            enterFrom="opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95"
-            enterTo="opacity-100 translate-y-0 sm:scale-100"
-            leave="ease-in duration-200"
-            leaveFrom="opacity-100 translate-y-0 sm:scale-100"
-            leaveTo="opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95"
-          >
-            <div style={{ fontFamily: 'Space Grotesk, sans-serif' }} className="relative inline-block align-bottom w-4/6 pb-20 pt-10 bg-gray-900 border border-gray-700 rounded-lg px-3 pt-5 pb-4 text-left overflow-hidden shadow-xl transform transition-all sm:my-8 sm:align-middle ">
-              <div>
-             
-                <div className="mt-3 text-center sm:mt-5">
-                  <h1 className="text-white text-5xl">Upgrade your CTFGuide Experience!</h1>
-                  <hr className="border-gray-800 mt-4 ml-40 mr-40"></hr>
-                  <br></br>
-                  <div className="px-5  sm:grid sm:grid-cols-2 sm:gap-6 sm:space-y-0 lg:mx-auto">
-          {tiers.map((tier) => (
-            <div key={tier.name} className="divide-y divide-gray-600 rounded-lg border border-gray-600 shadow-sm">
-              <div className="p-6">
-                <h2 className="text-4xl text-white">{tier.name}</h2>
-                <p className="mt-1 text-lg text-gray-400">{tier.description}</p>
-                <p className="mt-8">
-                  <span className="text-6xl font-bold tracking-tight text-blue-500">${tier.priceMonthly}</span>{' '}
-                  <span className="text-3xl font-medium text-gray-500">/mo</span>
-                </p>
-                <a
-                  href={tier.href}
-                  className="mt-8 block w-full rounded-md border border-gray-800 bg-gray-800 py-2 text-center text-sm font-semibold text-white hover:bg-gray-900"
-                >
-                  Buy {tier.name}
-                </a>
-              </div>
-              <div className="px-6 pt-6 pb-8">
-                <h3 className="text-xl font-medium text-white">What's included</h3>
-                <ul role="list" className="mt-6 space-y-4">
-                  {tier.includedFeatures.map((feature) => (
-                    <li key={feature} className="flex space-x-3">
-                      <CheckIcon className="h-5 w-5 flex-shrink-0 text-green-500" aria-hidden="true" />
-                      <span className="text-md text-gray-400">{feature}</span>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            </div>
-          ))}
-        </div>
-                
-                
-                <button className="text-white mt-10 text-md bg-gray-800 px-4 py-1 rounded-full">Nevermind, I'll stick to the Free Plan.</button>
-                </div>
-              </div>
-           
-            </div>
-          </Transition.Child>
-                </div>
-      </Dialog>
-    </Transition.Root>
                 </div>
 
+                
             </main>
 
         
@@ -570,4 +405,4 @@ const Settings = () => {
 
 
 
-export default Settings;
+export default OrgControl;

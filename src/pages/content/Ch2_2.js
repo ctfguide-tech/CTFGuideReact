@@ -462,8 +462,8 @@ function moveForward() {
 
             
 <button id="q4a" onClick={() => {solution("q4aa");document.getElementById('q4a').classList.remove('border-gray-700');document.getElementById('q4a').classList.add('border-blue-700');document.getElementById('q4b').classList.remove('border-blue-700');document.getElementById('q4b').classList.add('border-gray-700')}} className="mt-4 px-6 py-3 bg-gray-800 border border-gray-700 rounded-lg hover:bg-gray-900"><span className="rounded-lg bg-black px-3 py-1 mr-1">A</span>   Cybersecurity is the practice of protecting electronic information by mitigating information risks and vulnerabilities. </button>
-<br></br>
-<button id="q4b" onClick={() => {}} className=" mt-4 px-6 py-3 bg-gray-800 border border-gray-700 rounded-lg hover:bg-gray-900"><span className="rounded-lg bg-black px-3 py-1 mr-1">B</span> Cybersecurity is about making sure the inner workings of security stays cyber.</button>
+<br></br> 
+<button id="q4b" onClick={() => {}} className=" mt-4 px-6 py-3 bg-gray-800 border border-gray-700 rounded-lg hover:bg-gray-900"><span className="rounded-lg bg-black px-3 py-1 mr-1">B</span> Cybersecurity is about making sure the inner workings of security stays cybe  jr.</button>
 <br></br>
 <button id="q4c" onClick={() => {}} className="mt-4 px-6 py-3 bg-gray-800 border border-gray-700 rounded-lg hover:bg-gray-900"><span className="rounded-lg bg-black px-3 py-1 mr-1">C</span> Cybersecurity is what the TSA uses to make sure only safe passengers board the plane.</button>
 <br></br>

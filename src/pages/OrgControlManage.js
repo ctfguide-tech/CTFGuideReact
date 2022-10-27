@@ -1,8 +1,8 @@
 import { Link } from "react-router-dom";
 import { Fragment, useEffect, useRef, useState } from 'react'
 import { Disclosure, Menu, Transition, Dialog } from '@headlessui/react'
-import { BellIcon, MenuIcon, XIcon, FireIcon, ExclamationIcon, StarIcon, CheckIcon } from '@heroicons/react/outline'
-import { getAuth, onAuthStateChanged, signOut, updatePassword } from "firebase/auth";
+import { BellIcon, MenuIcon, XIcon, FireIcon, ExclamationIcon } from '@heroicons/react/outline'
+import { getAuth, onAuthStateChanged, signInWithEmailAndPassword, signOut, updatePassword } from "firebase/auth";
 import { CheckCircleIcon } from '@heroicons/react/outline'
 import { FirebaseError, initializeApp } from "firebase/app";
 import { getAnalytics } from "firebase/analytics";
@@ -12,7 +12,7 @@ import 'animate.css';
 import { Navigation } from '../components/navigation';
 
 
-const Settings = () => {
+const OrgControlManage = () => {
     const firebaseConfig = {
         apiKey: "AIzaSyBLAN84VP3jSA5dqhrU6Bjmfu5NiUDuNw4",
         authDomain: "cyberjags-8b081.firebaseapp.com",
@@ -32,13 +32,18 @@ const Settings = () => {
         data: []
     })
 
+    const [people, setPeople] = useState([
+        { name: 'Pranav Ramesh',  email: 'pkr53@%psu.edu', role: 'Teacher' },
+        { name: 'Pranav Ramesh',  email: 'pkr53@%psu.edu', role: 'Teacher' },
+
+        // More people...
+      ])
+
     const auth = getAuth();
     //const socket = io("http://localhost:3002");
 
 
     const [open, setOpen] = useState(true)
-    const [open2, setOpen2] = useState(true)
-
     const [show, setShow] = useState(false)
     const cancelButtonRef = useRef(null)
     document.title = "CTFGuide - Dashboard"
@@ -56,28 +61,6 @@ const Settings = () => {
     })
 
 
-    const tiers = [
-      {
-        name: 'CTFGuide Pro',
-        href: '#',
-        priceMonthly: 2,
-        description: 'Level up your learning for just a small price',
-        includedFeatures: ['Unlimited CTFGuide Terminal access', 'Machine learning graded problems', 'Rep an exclusive CTFGuide Pro badge', 'Access to challenge solutions (no points)'],
-      },
-      {
-        name: 'CTFGuide Groups',
-        href: '#',
-        priceMonthly: 40,
-        description: 'A perfect solution for education and companies',
-        includedFeatures: [
-          'Full featured learning management system',
-          'Everything Pro offers for up to 10,000 students',
-          '24/7 Technical Support',
-          'Customize terminal OS images',
-          'Run internal competitions',
-        ],
-      }
-    ]
     function logout() {
         signOut(auth).then(() => {
             // Sign-out successful.
@@ -169,14 +152,14 @@ const Settings = () => {
                     document.getElementById("pfp1").src = `https://ui-avatars.com/api/?name=${firebaseUser.email}&background=random`
                   }
 
-                var xhttp = new XMLHttpRequest();
+                var xhttp = new XMLHttpRequest(); 
                 xhttp.onreadystatechange = function() {
                     if (this.readyState === 4 & this.status === 200) {
                         let data = JSON.parse(this.responseText);
                         document.getElementById("navPoints").innerHTML = data.points;
                         document.getElementById("usernamechange").value = data.username;
 
-                     
+
                         
                         setUserData({
                             username: data.username,
@@ -246,14 +229,7 @@ const Settings = () => {
     }
 
 
-    const people = [
-        {
-            name: 'Lindsay Walton',
-            imageUrl:
-                'https://images.unsplash.com/photo-1517841905240-472988babdf9?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=3&w=256&h=256&q=80',
-        },
-        // More people...
-    ]
+
     const activityItems = [
         { id: 1, person: people[0], project: 'Workcation', commit: '2d89f0c8', environment: 'production', time: '1h' },
         // More items...
@@ -302,10 +278,6 @@ const Settings = () => {
 
 
             <main className="mt-3" >
-
-
-
-
   <div
         aria-live="assertive"
         className="pointer-events-none fixed inset-0 flex items-end px-4 py-6 sm:items-start sm:p-6"
@@ -322,7 +294,7 @@ const Settings = () => {
             leaveFrom="opacity-100"
             leaveTo="opacity-0"
           >
-            <div className="pointer-events-auto w-full max-w-sm overflow-hidden rounded-lg bg-gray-900 border border-gray-700 shadow-lg ring-1 ring-black ring-opacity-5">
+            <div className="pointer-events-auto w-full max-w-sm overflow-hidden rounded-lg bg-gray-900 border border-gray-900 shadow-lg ring-1 ring-black ring-opacity-5">
               <div className="p-4">
                 <div className="flex items-start">
                   <div className="flex-shrink-0">
@@ -353,209 +325,101 @@ const Settings = () => {
 
               
     
-                    <p className={" text-white  text-4xl font-semibold"}> Settings</p>
-          
-                 
+                
+<div className="px-4 sm:px-6 lg:px-8 text-white">
+      <div className="sm:flex sm:items-center">
 
+     
+        <div className="sm:flex-auto">
+       
+          <h1 className="text-3xl font-semibold text-white"><i class="fas fa-users"></i> Members - <span className="
+                   text-xl ">Pennsylvania State University</span></h1>
+          <p className="mt-2 text-sm  text-white">
+            A list of all the users in your organization including their name, email and role.
+          </p>
+        </div>
+        <div className="mt-4 sm:mt-0 sm:ml-16 sm:flex-none">
+          <button
+            type="button"
+            className="inline-flex items-center justify-center rounded-md border border-transparent bg-blue-700 px-4 py-2 text-sm font-medium text-white shadow-sm hover:bg-blue-700  sm:w-auto"
+          >
+           <i class="far fa-copy mr-2"></i> Copy Invite Link
+          </button>
+        </div>
+      </div>
+      <div className="mt-8 flex flex-col ">
+        <div className="-my-2 -mx-4 overflow-x-auto sm:-mx-6 lg:-mx-8">
+          <div className="inline-block min-w-full py-2 align-middle md:px-6 lg:px-8">
+            <div className="overflow-hidden shadow ring-1 ring-black ring-opacity-5 md:rounded-lg">
+              <table className="min-w-full divide-y divide-gray-600 bg-black">
+                <thead className="bg-gray-900 text-white">
+                  <tr>
+                    <th scope="col" className="py-3.5 pl-4 pr-3 text-left text-sm font-semibold text-white sm:pl-6">
+                      Name
+                    </th>
+                    <th scope="col" className="px-3 py-3.5 text-left text-sm font-semibold text-white">
+                      Email
+                    </th>
+                    <th scope="col" className="px-3 py-3.5 text-left text-sm font-semibold text-white">
+                      Account Type
+                    </th>
+                    
+                  
+                    <th scope="col" className="hidden relative py-3.5 pl-3 pr-4 sm:pr-6">
+                      <span className="sr-only">Edit</span>
+                    </th>
+                  </tr>
+                </thead>
+                <tbody className="bg-gray-800">
+                  {people.map((person, personIdx) => (
+                    
+                    <tr key={person.email} className={personIdx % 2 === 0 ? undefined : 'bg-gray-800'}>
+                      <td className="whitespace-nowrap py-4 pl-4 pr-3 text-sm font-medium text-white sm:pl-6">
+                        {person.name}
+                      </td>
+                      <td className="whitespace-nowrap px-3 py-4 text-sm text-white">{person.email}</td>
+                      <td className="whitespace-nowrap px-3 py-4 text-sm text-white"><select id={personIdx} onChange={e => {
+
+                            people[personIdx].role = e.target.value;
+                            setPeople(people);
+                            setShow(true);
+                            setInterval(() => {
+                                setShow(false);
+                                }
+                                , 3000);
+                        
+                       
+
+                      }} value={person.role} className="px-10 py-1 bg-gray-900 border-gray-800 text-sm" ><option value="Normal Account">Normal Account</option><option value="Teacher">Teacher</option><option value="Admin">Admin</option></select></td>
+                      <td className="hidden relative whitespace-nowrap py-4 pl-3 pr-4 text-right text-sm font-medium sm:pr-6">
+                        <a href="#" className="text-indigo-600 hover:text-indigo-900">
+                          Edit<span className="sr-only">, {person.name}</span>
+                        </a>
+                      </td>
+                    </tr>
+                  ))}
+                  
+                  
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
      <div className="" >
 
 
     
- 
-     <div class="grid lg:grid-cols-2 md:grid-cols-2 sml:grid-cols-1 gap-4">
 
-
-    <div className=" mt-4 bg-gray-900 border  border-gray-700  px-4 py-4 text-white rounded ">
-    <div id="error" className="hidden bg-red-900 px-2 mb-4 border border-red-600 text-white rounded-lg"> 
- <p>Something went wrong</p>
-    </div>
-    <div className=" items-center justify-between">
-      <h1 className="text-2xl w-full font-bold"><i class="fas fa-shield-alt"></i> Account Settings</h1>
-      <hr className="text-gray-800 bg-gray-800 border-gray-600 mt-2 mb-2"></hr>
-            <p className="text-xl font-semibold">Change your account password</p>
-            <input type="password" id="newpass" placeholder="New Password" className=" mt-3 border border-gray-600 bg-gray-800 px-2 py-1 rounded-lg w-full"/>
-
-            <input type="password" id="confirmnewpass" placeholder="Confirm New Password" className="mt-3 border border-gray-600 bg-gray-800 px-2 py-1 rounded-lg w-full"/>
-            <button onClick={changePassword} class="bg-blue-700 px-2 py-1 rounded-lg mt-3">Change Password</button>
-            <p className="text-xl font-semibold mt-4 hidden">Change your username</p>
-            <input placeholder="Loading..." id="usernamechange" className="hidden mt-3 border border-gray-600 bg-gray-800 px-2 py-1 rounded-lg w-full"/>
-
-            <p className="hidden text-xl font-semibold mt-4">Set a biography</p>
-            <textarea  placeholder="People can see your biography when clicking on your name" className="hidden mt-3 border border-gray-600 bg-gray-800 px-2 py-1 rounded-lg w-full">
-            </textarea>
-
-            <p className="hidden text-xl font-semibold mt-4">Profile Picture</p>
-
-            <div className="flex align-middle">
-            <img  className="hidden h-10 w-10 rounded-full align-middle border border-white" src="../../defaultpfp.png" alt="profile picture" />
-            <input type="file" className="hidden ml-2 mt-1.5 text-sm align-middle"></input>
-            </div>
-            <button onClick={
-              saveChanges
-            } class="hidden bg-blue-700 px-2 py-1 rounded-lg mt-3">Save Changes</button>
-
-      </div>
-     
-    </div>
-
-
-    <div id="probox" className=" mt-4 bg-gray-900 border  border-gray-700  px-4 py-4 text-white rounded ">
-    <div className=" items-center justify-between">
-
-      <h1 className="text-2xl w-full"><i class="fas fa-file-invoice-dollar"></i> Billing Settings</h1>
-      <hr className="text-gray-800 bg-gray-800 border-gray-600 mt-2 mb-2"></hr>
-      
-            <p className="text-xl"><b>No billing information.</b></p>
-            <button className="mt-2 bg-blue-700 hover:bg-blue-800 text-white px-6 py-1 rounded-lg text-md">View Plans </button>
-            <hr className="hidden text-gray-700 bg-gray-800 border-gray-600 mt-2 mb-2"></hr>
-
-     <h1 className="hidden text-6xl mt-4 text-center">$120/year</h1>
-
-      <h1 className="hidden text-xl mt-4 text-center mb-1">What do you get?</h1>
-                <div className="hidden bg-gray-800 px-2 py-1 text-center">
-                    <p>Unlimited machine learning graded responses</p>
-                    </div>  
-                    <div className=" hidden mt-1 bg-gray-800 px-2 py-1 text-center">
-                    <p>Show of an exclusive CTFGuide Pro badge</p>
-                    </div>    
-                    <div className=" hidden mt-1 bg-gray-800 px-2 py-1 text-center">
-                    <p>Classroom member limits are removed**</p>
-                    </div>   
-                    <div className="hidden mt-1 bg-gray-800 px-2 py-1 text-center">
-                    <p>Access to interview preparation content**</p>
-                    </div>   
-
-<div className="text-center mx-auto">
-                    <button class="hidden bg-green-900 hover:bg-green-800 px-2 py-1 rounded-lg text-xl mt-4 text-center mx-auto" disabled>Checkout</button>
-                    <p className="mt-3 hidden">You already have a subscription!</p>
-                  
-                    </div>
-                   
-   </div>
-    <div className="hidden items-center justify-between">
-      <h1 className="text-2xl w-full"><i class="fas fa-file-invoice-dollar"></i> Billing Settings</h1>
-      <hr className="text-gray-800 bg-gray-800 border-gray-600 mt-2 mb-2"></hr>
-      <h1 className="text-center text-4xl  mt-4">Upgrade to <span className="font-bold text-blue-500">CTFGuide Pro</span></h1>
-
-      <div class="grid grid-cols-2 gap-4">
-      <div style={{cursor: 'pointer'}}  className="mt-4 bg-gray-800 border  border-gray-700 hover:bg-gray-900  px-4 py-4 text-white rounded ">
-      <h1 className="text-center text-3xl">Monthly</h1>
-
-        <h1 className="text-center text-xl">$4.99/month</h1>
-</div>
-
-<div style={{cursor: 'pointer'}} className="mt-4 bg-gray-800 border  border-gray-700 hover:bg-gray-900 px-4 py-4 text-white rounded ">
-<h1 className="text-center text-3xl">Annually</h1>
-
-<h1 className="text-center text-xl">$35.88/year</h1>
-
-</div>
-</div>
-
-<h1 className="text-xl mt-4 text-center mb-1">What do you get?</h1>
-                <div className="bg-gray-800 px-2 py-1 text-center">
-                    <p>Unlimited machine learning graded responses</p>
-                    </div>  
-                    <div className="mt-1 bg-gray-800 px-2 py-1 text-center">
-                    <p>Show of an exclusive CTFGuide Pro badge</p>
-                    </div>    
-                    <div className="mt-1 bg-gray-800 px-2 py-1 text-center">
-                    <p>Classroom member limits are removed**</p>
-                    </div>   
-                    <div className="mt-1 bg-gray-800 px-2 py-1 text-center">
-                    <p>Access to interview preparation content**</p>
-                    </div>   
-
-                    <p className="mt-4 text-sm text-gray-500">* For the features marked with a star, it means it has not been released yet. For every month you have CTFGuide Pro, if the feature has not been implemented yet, you'll be given an additional free month of Pro.</p>
-    
-      </div>    
-     
-    </div>
-
-
-    </div>
-    <div className="hidden mt-4 bg-gray-900 border  border-gray-700  px-4 py-4 text-white rounded ">
-    <div className=" items-center justify-between">
-      <h1 className="text-2xl w-full"><i class="fas fa-terminal"></i> Developer Settings</h1>
-        <ul>
-            <li><a className=""> <i class="fas fa-arrow-right"></i> Generate API Key</a></li>
-
-
-        </ul>
-                    
-    
-      </div>    
-     
-    </div>
   
 
     </div>
 
 
-    <Transition.Root show={open2} as={Fragment}>
-      <Dialog as="div" className="fixed z-10 inset-0 overflow-y-auto bg-black bg-opacity-90" onClose={setOpen2}>
-        <div className="flex items-end justify-center min-h-screen  pt-4 px-4 pb-20 text-center sm:block sm:p-0">
-      
-     <Transition.Child
-            as={Fragment}
-            enter="ease-out duration-300"
-            enterFrom="opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95"
-            enterTo="opacity-100 translate-y-0 sm:scale-100"
-            leave="ease-in duration-200"
-            leaveFrom="opacity-100 translate-y-0 sm:scale-100"
-            leaveTo="opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95"
-          >
-            <div style={{ fontFamily: 'Space Grotesk, sans-serif' }} className="relative inline-block align-bottom w-4/6 pb-20 pt-10 bg-gray-900 border border-gray-700 rounded-lg px-3 pt-5 pb-4 text-left overflow-hidden shadow-xl transform transition-all sm:my-8 sm:align-middle ">
-              <div>
-             
-                <div className="mt-3 text-center sm:mt-5">
-                  <h1 className="text-white text-5xl">Upgrade your CTFGuide Experience!</h1>
-                  <hr className="border-gray-800 mt-4 ml-40 mr-40"></hr>
-                  <br></br>
-                  <div className="px-5  sm:grid sm:grid-cols-2 sm:gap-6 sm:space-y-0 lg:mx-auto">
-          {tiers.map((tier) => (
-            <div key={tier.name} className="divide-y divide-gray-600 rounded-lg border border-gray-600 shadow-sm">
-              <div className="p-6">
-                <h2 className="text-4xl text-white">{tier.name}</h2>
-                <p className="mt-1 text-lg text-gray-400">{tier.description}</p>
-                <p className="mt-8">
-                  <span className="text-6xl font-bold tracking-tight text-blue-500">${tier.priceMonthly}</span>{' '}
-                  <span className="text-3xl font-medium text-gray-500">/mo</span>
-                </p>
-                <a
-                  href={tier.href}
-                  className="mt-8 block w-full rounded-md border border-gray-800 bg-gray-800 py-2 text-center text-sm font-semibold text-white hover:bg-gray-900"
-                >
-                  Buy {tier.name}
-                </a>
-              </div>
-              <div className="px-6 pt-6 pb-8">
-                <h3 className="text-xl font-medium text-white">What's included</h3>
-                <ul role="list" className="mt-6 space-y-4">
-                  {tier.includedFeatures.map((feature) => (
-                    <li key={feature} className="flex space-x-3">
-                      <CheckIcon className="h-5 w-5 flex-shrink-0 text-green-500" aria-hidden="true" />
-                      <span className="text-md text-gray-400">{feature}</span>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            </div>
-          ))}
-        </div>
-                
-                
-                <button className="text-white mt-10 text-md bg-gray-800 px-4 py-1 rounded-full">Nevermind, I'll stick to the Free Plan.</button>
-                </div>
-              </div>
-           
-            </div>
-          </Transition.Child>
-                </div>
-      </Dialog>
-    </Transition.Root>
                 </div>
 
+                
             </main>
 
         
@@ -570,4 +434,4 @@ const Settings = () => {
 
 
 
-export default Settings;
+export default OrgControlManage;

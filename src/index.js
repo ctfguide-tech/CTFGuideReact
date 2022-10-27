@@ -17,9 +17,11 @@ import Settings from "./pages/Settings"
 import Leaderboards from "./pages/Leaderboards";
 import Ab from "./pages/Ab";
 import Classes from "./pages/Classes" 
-import ClassView from "./pages/ClassView"
+import ClassView from "./pages/ClassView";
 import ClassAdmin from "./pages/ClassAdmin";
 import CreateClass from "./pages/CreateClass";
+import OrgControl from "./pages/OrgControl";
+import OrgControlManage from "./pages/OrgControlManage";
 import "./index.css";
 
 
@@ -46,6 +48,9 @@ export default function App() {
           <Route path="/register" element={<Register />} />
           <Route path="/onboarding" element={<Onboarding />} />
           <Route path="/ambassador-program" element={<Ab />} />
+
+          <Route path="/orgcontrol" element={<OrgControl />} />
+          <Route path="/orgcontrol/manage-members" element={<OrgControlManage />} />
 
           <Route path="/dashboard" element={<Dashboard />} />
           <Route path="/settings" element={<Settings />} />

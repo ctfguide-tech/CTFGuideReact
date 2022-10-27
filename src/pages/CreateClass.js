@@ -379,7 +379,7 @@ const CreateClass = () => {
 
                 <div className="text-white mt-4 text-xl border border-white w-1/2 px-4 py-4 rounded-lg shadow-2xl floating shadow-gray-500/50">
 
-Upgrade to <span className="bg-gray-800 px-2 font-semibold"><i class="fas fa-crown"></i> CTFGuide PRO</span> to have larger classes, organization locks, and more.
+Upgrade to <span className="bg-gray-800 px-2 font-semibold"><i class="fas fa-crown"></i> CTFGuide for Education</span> to have larger classes, organization locks, and more.
   <br></br><br></br>
 <a className="text-blue-500 hover:text-blue-600" href="../settings/billing"><i class="far fa-credit-card"></i> Upgrade now for just <b>$5/month</b>.</a>
 
