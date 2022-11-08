@@ -9,7 +9,6 @@ export class Navigation extends Component {
     render() {
         const navigation = [
             { name: 'Dashboard', href: '../dashboard', current: false },
-            { name: 'Learn', href: '../learn', current: false },
             { name: 'Classes', href: '../classes', current: false },
 
             { name: 'Practice', href: '../practice/all', current: false },
@@ -19,7 +18,6 @@ export class Navigation extends Component {
 
         const navigation2 = [
             { name: 'Dashboard', href: '../dashboard', current: false },
-            { name: 'Learn', href: '../learn', current: false },
             { name: 'Practice', href: '../practice/all', current: false },
             { name: 'Leaderboards', href: '../leaderboards/global', current: false },
             { name: 'Create', href: '../create', current: false },

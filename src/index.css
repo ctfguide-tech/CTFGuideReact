@@ -3,6 +3,18 @@
 @tailwind utilities;
 @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300&display=swap');
 
+.tooltip {
+    position: relative;
+    display: inline-block;
+    border-bottom: 1px dotted black;
+  }
+
+.tooltip .tooltiptext {
+    width: 120px;
+    bottom: 100%;
+    left: 50%;
+    margin-left: -60px; /* Use half of the width (120/2 = 60), to center the tooltip */
+  }
 .rainbow-text {
     background-image: repeating-linear-gradient(45deg, violet, indigo, blue, green, yellow, orange, red, violet);
     text-align: center;
@@ -12,6 +24,10 @@
     font-size: 24px;
     animation: rainbow 8s ease infinite;
 }
+
+.tooltip:hover .tooltiptext {
+    visibility: visible;
+  }
 
 @keyframes rainbow {
     0%{background-position:0% 50%}
