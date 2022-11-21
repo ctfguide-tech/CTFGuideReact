@@ -13,15 +13,17 @@ import { Navigation } from '../components/navigation';
 
 const CreateClass = () => {
     const firebaseConfig = {
-        apiKey: "AIzaSyBLAN84VP3jSA5dqhrU6Bjmfu5NiUDuNw4",
-        authDomain: "cyberjags-8b081.firebaseapp.com",
-        databaseURL: "https://cyberjags-8b081.firebaseio.com",
-        projectId: "cyberjags-8b081",
-        storageBucket: "cyberjags-8b081.appspot.com",
-        messagingSenderId: "166652277588",
-        appId: "1:166652277588:web:e08b9e19916451e14dcec1",
-        measurementId: "G-7ZNKM9VFN2"
-    };
+        apiKey: process.env.REACT_APP_apiKey,
+        authDomain: process.env.REACT_APP_authDomain,
+        databaseURL: process.env.REACT_APP_databaseURL,
+        projectId: process.env.REACT_APP_projectId,
+        storageBucket: process.env.REACT_APP_storageBucket,
+        messagingSenderId: process.env.REACT_APP_messagingSenderId,
+        appId: process.env.REACT_APP_appId,
+        measurementId: process.env.REACT_APP_measurementId
+      };
+    
+    
 
     // Initialize Firebase
     const app = initializeApp(firebaseConfig);
@@ -379,7 +381,7 @@ const CreateClass = () => {
 
                 <div className="text-white mt-4 text-xl border border-white w-1/2 px-4 py-4 rounded-lg shadow-2xl floating shadow-gray-500/50">
 
-Upgrade to <span className="bg-gray-800 px-2 font-semibold"><i class="fas fa-crown"></i> CTFGuide PRO</span> to have larger classes, organization locks, and more.
+Upgrade to <span className="bg-gray-800 px-2 font-semibold"><i class="fas fa-crown"></i> CTFGuide for Education</span> to have larger classes, organization locks, and more.
   <br></br><br></br>
 <a className="text-blue-500 hover:text-blue-600" href="../settings/billing"><i class="far fa-credit-card"></i> Upgrade now for just <b>$5/month</b>.</a>
 

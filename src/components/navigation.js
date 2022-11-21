@@ -9,8 +9,7 @@ export class Navigation extends Component {
     render() {
         const navigation = [
             { name: 'Dashboard', href: '../dashboard', current: false },
-            { name: 'Learn', href: '../learn', current: false },
-            //{ name: 'Classes', href: '../classes', current: false },
+            { name: 'Classes', href: '../classes', current: false },
 
             { name: 'Practice', href: '../practice/all', current: false },
             { name: 'Leaderboards', href: '../leaderboards/global', current: false },
@@ -19,21 +18,20 @@ export class Navigation extends Component {
 
         const navigation2 = [
             { name: 'Dashboard', href: '../dashboard', current: false },
-            { name: 'Learn', href: '../learn', current: false },
             { name: 'Practice', href: '../practice/all', current: false },
             { name: 'Leaderboards', href: '../leaderboards/global', current: false },
             { name: 'Create', href: '../create', current: false },
         ]
 
         const userNavigation = [
-
+            { name: 'Settings', href: '../../settings' },
             { name: 'Sign out', onClick: logout },  
-         //   { name: 'Settings', href: '../../settings' },
 
         ]
 
         const userNavigation2 = [
         //    { name: 'Settings', href: '../../settings' },
+
             { name: 'Sign out', onClick: logout },
         ]
 
@@ -83,7 +81,11 @@ export class Navigation extends Component {
                                                 >
                                                     {item.name}
                                                 </Link>
+
+                                                   
                                             ))}
+
+                                            <Link to={"../orgcontrol"} className='hidden bg-orange text-white text-gray-300 hover:bg-gray-800 hover:text-white px-3 py-2 rounded-md text-sm font-medium'>Organization Control</Link>
                                         </div>
                                     </div>
                                 </div>
@@ -192,13 +194,12 @@ export class Navigation extends Component {
                                         </a>
                                         </div>
                                 <div className="mt-3 px-2 space-y-1 z-20">
-                                    {userNavigation.map((item) => (
-                                        <a
-                                            key={item.name + "m"}
-                                            onClick={logout}
-                                            className="block px-3 py-2 rounded-md text-base font-medium text-gray-200 hover:text-white hover:bg-gray-700"
-                                        >{item.name}</a>
-                                    ))}
+                                <a href="../../settings" className="block px-3 py-2 rounded-md text-base font-medium text-gray-200 hover:text-white hover:bg-gray-700">
+                                                Settings
+                                </a>
+                                <a onClick={logout} className="block px-3 py-2 rounded-md text-base font-medium text-gray-200 hover:text-white hover:bg-gray-700">
+                                                Logout
+                                </a>
                                 </div>
                             </div>
                         </Disclosure.Panel>

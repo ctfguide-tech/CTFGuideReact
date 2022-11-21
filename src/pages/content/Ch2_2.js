@@ -197,8 +197,8 @@ const Ch2_2 = () => {
 
   
   const steps = [
-    { id: '', name: 'Introduction to Linux', href: '/learn/chapter2/lesson1', status: 'inprogress' },
-    { id: '', name: 'Review Activity', href: '/learn/chapter2/activity1', status: 'activity' },
+    { id: '', name: 'Introduction to Linux', href: '/learn/chapter2/lesson1', status: 'learning' },
+    { id: '', name: 'Review Activity', href: '/learn/chapter2/activity1', status: 'inprogress' },
     { id: '', name: 'Interacting with Linux', href: '/learn/chapter2/lesson2', status: 'learning' },
     { id: '', name: 'Linux on CTFGuide', href: '/learn/chapter2/lesson2', status: 'activity' },
 
@@ -295,6 +295,35 @@ function moveForward() {
     }
   }
 
+  var answerFile = {
+    q1: "none",
+    q2: "none",
+    q3: "none",
+    q4: "none",
+    q5: "none",
+    q6: "none"
+  }
+
+
+  
+
+
+  function solution(id) {
+      let base = id.substring(0, 2);
+      let answer = id.substring(2, 3)
+      //window.alert(`${answer} was given for q: ${base}`)
+
+      answerFile[`${base}`] = answer;
+
+      window.alert(JSON.stringify(answerFile))
+
+  }
+
+  function machineLearningSolve(id, studentResponse) {
+    // what did you expect here, a million if statements??
+    let base = id.substring(0, 2);
+    answerFile[`${base}`] = studentResponse;
+  }
   
 
   return (
@@ -398,8 +427,12 @@ function moveForward() {
             <div className="flex items-center justify-between">
               <div>
             <h1 className="text-4xl font-semibold ">Review Activity</h1>
-            <p><i class="fas fa-info-circle"></i>  This lesson includes <a href="https://github.com/ctfguide-tech/Information/blob/main/lessons/lesson1.md" className="text-blue-300">externally sourced</a> content.</p>
+            <p><i class="fas fa-info-circle"></i>  Some questions are graded using machine learning algorithms. <a className="text-blue-400" href="https://ctfguide.com/m/ml_usage">Learn more.</a></p>
             </div>
+
+
+                    <div>Unlock to CTFGuide PRO to access this activity.</div>
+
             <div className="ml-2 flex-shrink-0 flex w-1/10">
             <button id="nextstep" className=" text-white text-xl border border-gray-500 px-6 py-3 hover:bg-gray-900 rounded-lg"><i class="fas fa-spinner text-white  fa-spin"></i> Awaiting Completion</button>
                     </div>
@@ -408,67 +441,38 @@ function moveForward() {
                     <div id="quiz" className=" mt-5 bg-gray-900 px-10 py-10 rounded-lg border border-gray-700">
                       
                       <h1 id="question1" className="text-2xl font-semibold">Q1: What is Linux?</h1>
+                      <div id="question1grading" className="hidden"><i class="fas fa-spinner text-white  fa-spin mt-3"></i>  Grading...</div>
+                      <div id="question1correct" className="hidden border-l-4 border-green-400 bg-gray-800">&nbsp;&nbsp;Correct</div>
+                      <div id="question1wrong"className="hidden border-l-4 border-red-400 bg-gray-800">&nbsp;&nbsp;Incorrect</div>
 
                       <textarea placeholder="Keep it short and sweet. We'll be using machine learning to grade this response." className="mt-3 border-gray-700 bg-gray-900 px-2 py-1 rounded-lg w-full">
 
                       </textarea>
                 
-                      <h1 id="question2" className="mt-6 text-2xl font-semibold">Q1: What is Linux?</h1>
+                      <h1 id="question2" className="mt-6 text-2xl font-semibold">Q2: Linux was made by Bill Gates.</h1>
+                      <select className="mt-3 bg-gray-900 rounded-lg border border-gray-700 w-1/2">
+                        <option>True</option>
+                        <option>False</option>
 
-            
-<button id="q2a" onClick={() => {}} className="mt-4 px-6 py-3 bg-gray-800 border border-gray-700 rounded-lg hover:bg-gray-900"><span className="rounded-lg bg-black px-3 py-1 mr-1">A</span>   Cybersecurity is the practice of protecting electronic information by mitigating information risks and vulnerabilities. </button>
-<br></br>
-<button id="q2b" onClick={() => {}} className=" mt-4 px-6 py-3 bg-gray-800 border border-gray-700 rounded-lg hover:bg-gray-900"><span className="rounded-lg bg-black px-3 py-1 mr-1">B</span> Cybersecurity is about making sure the inner workings of security stays cyber.</button>
-<br></br>
-<button id="q2c" onClick={() => {}} className="mt-4 px-6 py-3 bg-gray-800 border border-gray-700 rounded-lg hover:bg-gray-900"><span className="rounded-lg bg-black px-3 py-1 mr-1">C</span> Cybersecurity is what the TSA uses to make sure only safe passengers board the plane.</button>
-<br></br>
-<button id="q2d"onClick={() => {}}  className=" mt-4 px-6 py-3 bg-gray-800 border border-gray-700 rounded-lg hover:bg-gray-900"><span className="rounded-lg bg-black px-3 py-1 mr-1">D</span>  Cybersecurity is responsible for giving electricity to our computers.</button>
+                      </select>
+    
+<h1 id="question3" className="mt-6 text-2xl font-semibold">Q3: What makes Linux different from an operating system like Windows?</h1>
+<div id="question3grading" className="hidden"><i class="fas fa-spinner text-white  fa-spin mt-3"></i>  Grading...</div>
+                      <div id="question3correct" className="hidden border-l-4 border-green-400 bg-gray-800">&nbsp;&nbsp;Correct</div>
+                      <div id="question3wrong"className="hidden border-l-4 border-red-400 bg-gray-800">&nbsp;&nbsp;Incorrect</div>
 
-<h1 id="question3" className="mt-6 stext-2xl font-semibold">Q1: What is Linux?</h1>
+<textarea placeholder="Keep it short and sweet. We'll be using machine learning to grade this response." className="mt-3 border-gray-700 bg-gray-900 px-2 py-1 rounded-lg w-full">
 
-            
-<button id="q3a" onClick={() => {}} className="mt-4 px-6 py-3 bg-gray-800 border border-gray-700 rounded-lg hover:bg-gray-900"><span className="rounded-lg bg-black px-3 py-1 mr-1">A</span>   Cybersecurity is the practice of protecting electronic information by mitigating information risks and vulnerabilities. </button>
-<br></br>
-<button id="q3b" onClick={() => {}} className=" mt-4 px-6 py-3 bg-gray-800 border border-gray-700 rounded-lg hover:bg-gray-900"><span className="rounded-lg bg-black px-3 py-1 mr-1">B</span> Cybersecurity is about making sure the inner workings of security stays cyber.</button>
-<br></br>
-<button id="q3c" onClick={() => {}} className="mt-4 px-6 py-3 bg-gray-800 border border-gray-700 rounded-lg hover:bg-gray-900"><span className="rounded-lg bg-black px-3 py-1 mr-1">C</span> Cybersecurity is what the TSA uses to make sure only safe passengers board the plane.</button>
-<br></br>
-<button id="q3d"onClick={() => {}}  className=" mt-4 px-6 py-3 bg-gray-800 border border-gray-700 rounded-lg hover:bg-gray-900"><span className="rounded-lg bg-black px-3 py-1 mr-1">D</span>  Cybersecurity is responsible for giving electricity to our computers.</button>
-
-<h1 id="question4" className="mt-6 text-2xl font-semibold">Q1: What is Linux?</h1>
-
-            
-<button id="q4a" onClick={() => {}} className="mt-4 px-6 py-3 bg-gray-800 border border-gray-700 rounded-lg hover:bg-gray-900"><span className="rounded-lg bg-black px-3 py-1 mr-1">A</span>   Cybersecurity is the practice of protecting electronic information by mitigating information risks and vulnerabilities. </button>
-<br></br>
-<button id="q4b" onClick={() => {}} className=" mt-4 px-6 py-3 bg-gray-800 border border-gray-700 rounded-lg hover:bg-gray-900"><span className="rounded-lg bg-black px-3 py-1 mr-1">B</span> Cybersecurity is about making sure the inner workings of security stays cyber.</button>
-<br></br>
-<button id="q4c" onClick={() => {}} className="mt-4 px-6 py-3 bg-gray-800 border border-gray-700 rounded-lg hover:bg-gray-900"><span className="rounded-lg bg-black px-3 py-1 mr-1">C</span> Cybersecurity is what the TSA uses to make sure only safe passengers board the plane.</button>
-<br></br>
-<button id="q4d"onClick={() => {}}  className=" mt-4 px-6 py-3 bg-gray-800 border border-gray-700 rounded-lg hover:bg-gray-900"><span className="rounded-lg bg-black px-3 py-1 mr-1">D</span>  Cybersecurity is responsible for giving electricity to our computers.</button>
-<h1 id="question5" className="mt-6 text-2xl font-semibold">Q1: What is Linux?</h1>
-
-            
-<button id="q5a" onClick={() => {}} className="mt-4 px-6 py-3 bg-gray-800 border border-gray-700 rounded-lg hover:bg-gray-900"><span className="rounded-lg bg-black px-3 py-1 mr-1">A</span>   Cybersecurity is the practice of protecting electronic information by mitigating information risks and vulnerabilities. </button>
-<br></br>
-<button id="q5b" onClick={() => {}} className=" mt-4 px-6 py-3 bg-gray-800 border border-gray-700 rounded-lg hover:bg-gray-900"><span className="rounded-lg bg-black px-3 py-1 mr-1">B</span> Cybersecurity is about making sure the inner workings of security stays cyber.</button>
-<br></br>
-<button id="q5c" onClick={() => {}} className="mt-4 px-6 py-3 bg-gray-800 border border-gray-700 rounded-lg hover:bg-gray-900"><span className="rounded-lg bg-black px-3 py-1 mr-1">C</span> Cybersecurity is what the TSA uses to make sure only safe passengers board the plane.</button>
-<br></br>
-<button id="q5d"onClick={() => {}}  className=" mt-4 px-6 py-3 bg-gray-800 border border-gray-700 rounded-lg hover:bg-gray-900"><span className="rounded-lg bg-black px-3 py-1 mr-1">D</span>  Cybersecurity is responsible for giving electricity to our computers.</button>
+</textarea>
 
 
 
-<h1 id="question6" className="mt-6 text-2xl font-semibold">Q1: What is Linux?</h1>
+<h1 id="question6" className="mt-6 text-2xl font-semibold">Q4: How's the learning going? <span className="text-sm ">Not Graded</span></h1>
+<i class="fas fa-spinner text-white  fa-spin mt-3"></i>  Analyzing...
+<textarea placeholder="Pretend like you're talking to your teacher. We can modify your learning experience automatically with our machine learning algorithms." className="mt-3 border-gray-700 bg-gray-900 px-2 py-1 rounded-lg w-full">
 
-<button id="q6a" onClick={() => {}} className="mt-4 px-6 py-3 bg-gray-800 border border-gray-700 rounded-lg hover:bg-gray-900"><span className="rounded-lg bg-black px-3 py-1 mr-1">A</span>   Cybersecurity is the practice of protecting electronic information by mitigating information risks and vulnerabilities. </button>
-<br></br>
-<button id="q6b" onClick={() => {}} className=" mt-4 px-6 py-3 bg-gray-800 border border-gray-700 rounded-lg hover:bg-gray-900"><span className="rounded-lg bg-black px-3 py-1 mr-1">B</span> Cybersecurity is about making sure the inner workings of security stays cyber.</button>
-<br></br>
-<button id="q6c" onClick={() => {}} className="mt-4 px-6 py-3 bg-gray-800 border border-gray-700 rounded-lg hover:bg-gray-900"><span className="rounded-lg bg-black px-3 py-1 mr-1">C</span> Cybersecurity is what the TSA uses to make sure only safe passengers board the plane.</button>
-<br></br>
-<button id="q6d"onClick={() => {}}  className=" mt-4 px-6 py-3 bg-gray-800 border border-gray-700 rounded-lg hover:bg-gray-900"><span className="rounded-lg bg-black px-3 py-1 mr-1">D</span>  Cybersecurity is responsible for giving electricity to our computers.</button>
+</textarea>
 
-<br></br>
 <button id="check_btn" className="mt-4 px-10 py-2 bg-blue-800 border border-blue-700 rounded-lg hover:bg-blue-900"><i class="fas fa-check-double"></i> Check Answers</button>
 <button onClick={showScore}  id="score_btn" className="hidden  mt-4 px-10 py-2  border border-blue-700 rounded-lg hover:bg-black"><i class="fas fa-file-alt"></i> View Score</button>
 
