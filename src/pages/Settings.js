@@ -36,8 +36,8 @@ const Settings = () => {
   //const socket = io("http://localhost:3002");
 
 
-  const [open, setOpen] = useState(true)
-  const [open2, setOpen2] = useState(true)
+  const [open, setOpen] = useState(false)
+  const [open2, setOpen2] = useState(false)
 
   const [show, setShow] = useState(false)
   const cancelButtonRef = useRef(null)
@@ -407,7 +407,7 @@ const Settings = () => {
 
                   <p className="text-xl"><b>No billing information.</b></p>
                   <button onClick={() => setOpen2(true)}
-                    className="mt-2 bg-blue-700 hover:bg-blue-800 text-white px-6 py-1 rounded-lg text-md">View Plans </button>
+                    className="hidden mt-2 bg-blue-700 hover:bg-blue-800 text-white px-6 py-1 rounded-lg text-md">View Plans </button>
                   <hr className="hidden text-gray-700 bg-gray-800 border-gray-600 mt-2 mb-2"></hr>
 
                   <h1 className="hidden text-6xl mt-4 text-center">$120/year</h1>
