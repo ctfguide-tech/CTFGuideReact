@@ -12,16 +12,19 @@ import 'animate.css';
 import { Navigation } from '../components/navigation';
 
 const Classes = () => {
-    const firebaseConfig = {
-        apiKey: "AIzaSyBLAN84VP3jSA5dqhrU6Bjmfu5NiUDuNw4",
-        authDomain: "cyberjags-8b081.firebaseapp.com",
-        databaseURL: "https://cyberjags-8b081.firebaseio.com",
-        projectId: "cyberjags-8b081",
-        storageBucket: "cyberjags-8b081.appspot.com",
-        messagingSenderId: "166652277588",
-        appId: "1:166652277588:web:e08b9e19916451e14dcec1",
-        measurementId: "G-7ZNKM9VFN2"
-    };
+const firebaseConfig = {
+    apiKey: process.env.REACT_APP_apiKey,
+    authDomain: process.env.REACT_APP_authDomain,
+    databaseURL: process.env.REACT_APP_databaseURL,
+    projectId: process.env.REACT_APP_projectId,
+    storageBucket: process.env.REACT_APP_storageBucket,
+    messagingSenderId: process.env.REACT_APP_messagingSenderId,
+    appId: process.env.REACT_APP_appId,
+    measurementId: process.env.REACT_APP_measurementId
+  };
+
+
+
 
     // Initialize Firebase
     const app = initializeApp(firebaseConfig);
