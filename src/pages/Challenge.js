@@ -13,16 +13,17 @@ import { marked } from 'marked';
 const Practice = () => {
   const [open, setOpen] = useState(false)
   const [open2, setOpen2] = useState(false)
-  const firebaseConfig = {
-    apiKey: "AIzaSyBLAN84VP3jSA5dqhrU6Bjmfu5NiUDuNw4",
-    authDomain: "cyberjags-8b081.firebaseapp.com",
-    databaseURL: "https://cyberjags-8b081.firebaseio.com",
-    projectId: "cyberjags-8b081",
-    storageBucket: "cyberjags-8b081.appspot.com",
-    messagingSenderId: "166652277588",
-    appId: "1:166652277588:web:e08b9e19916451e14dcec1",
-    measurementId: "G-7ZNKM9VFN2"
+   const firebaseConfig = {
+    apiKey: process.env.REACT_APP_apiKey,
+    authDomain: process.env.REACT_APP_authDomain,
+    databaseURL: process.env.REACT_APP_databaseURL,
+    projectId: process.env.REACT_APP_projectId,
+    storageBucket: process.env.REACT_APP_storageBucket,
+    messagingSenderId: process.env.REACT_APP_messagingSenderId,
+    appId: process.env.REACT_APP_appId,
+    measurementId: process.env.REACT_APP_measurementId
   };
+
 
   // Initialize Firebase
   const app = initializeApp(firebaseConfig);
@@ -411,7 +412,7 @@ challenge.data.map((item) => (
                 <div className="test bg-gradient-to-br from-gray-900 to-black border border-gray-800 h-full flex flex-col py-6 bg-white shadow-xl overflow-y-scroll">
                   <div className="px-4 sm:px-6">
                     <Dialog.Title className="text-lg font-medium text-white text-2xl">Challenge Hint</Dialog.Title>
-                    <div class="hidden bg-gray-800 rounded-lg px-4 py-2 mt-4">
+                    <div class=" bg-gray-800 rounded-lg px-4 py-2 mt-4">
 
 
                     <div class="flex items-center justify-between">
@@ -422,14 +423,18 @@ challenge.data.map((item) => (
                         <div class="ml-2 flex-shrink-0 flex w-1/10">
                           <button class="border text-white border-green-500 px-4 py-1 rounded-lg hover:bg-gray-900">Unlock Hint</button>
                           </div>
+
                           </div>
-                  
-                  
+<hr className="mt-4"></hr>
+                    <div className="text-white mt-4">
+                      
+                          <h1>Given an id, find the url. What could that possibly mean?</h1>
+                          </div>
                   
                   
                     </div>
 
-                    <div class="hidden bg-gray-800 rounded-lg px-4 py-2 mt-4">
+                    <div class=" bg-gray-800 rounded-lg px-4 py-2 mt-4">
 
 
 <div class="flex items-center justify-between">
@@ -447,7 +452,7 @@ challenge.data.map((item) => (
 
 </div>
 
-<div class="hidden bg-gray-800 rounded-lg px-4 py-2 mt-4">
+<div class=" bg-gray-800 rounded-lg px-4 py-2 mt-4">
 
 
 <div class="flex items-center justify-between">
@@ -467,7 +472,8 @@ challenge.data.map((item) => (
                   </div>
                   <div className="mt-6 relative flex-1 px-4 sm:px-6">
                     {/* Replace with your content */}
-                    <div className="text-white">
+                    <div id="nohint" className="hidden text-white">
+
                     <h1 className=" text-xl mb-2">There are no hints for this challenge.</h1>
                  
                       Feel free to join our <a className="text-yellow-400 hover:text-white" href="https://discord.gg/q3hgRBvgkX">Discord server</a> for help.

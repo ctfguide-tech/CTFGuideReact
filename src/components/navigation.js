@@ -9,8 +9,7 @@ export class Navigation extends Component {
     render() {
         const navigation = [
             { name: 'Dashboard', href: '../dashboard', current: false },
-            { name: 'Learn', href: '../learn', current: false },
-            //{ name: 'Classes', href: '../classes', current: false },
+            { name: 'Classes', href: '../classes', current: false },
 
             { name: 'Practice', href: '../practice/all', current: false },
             { name: 'Leaderboards', href: '../leaderboards/global', current: false },
@@ -19,7 +18,6 @@ export class Navigation extends Component {
 
         const navigation2 = [
             { name: 'Dashboard', href: '../dashboard', current: false },
-            { name: 'Learn', href: '../learn', current: false },
             { name: 'Practice', href: '../practice/all', current: false },
             { name: 'Leaderboards', href: '../leaderboards/global', current: false },
             { name: 'Create', href: '../create', current: false },
@@ -83,7 +81,11 @@ export class Navigation extends Component {
                                                 >
                                                     {item.name}
                                                 </Link>
+
+                                                   
                                             ))}
+
+                                            <Link to={"../orgcontrol"} className='hidden bg-orange text-white text-gray-300 hover:bg-gray-800 hover:text-white px-3 py-2 rounded-md text-sm font-medium'>Organization Control</Link>
                                         </div>
                                     </div>
                                 </div>

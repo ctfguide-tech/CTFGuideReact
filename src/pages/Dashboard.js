@@ -14,16 +14,19 @@ import 'animate.css';
 import { data } from "autoprefixer";
 
 const Dashboard = () => {
+  console.log("START\N\N\N" + process.env.REACT_APP_projectId)
   const firebaseConfig = {
-    apiKey: "AIzaSyBLAN84VP3jSA5dqhrU6Bjmfu5NiUDuNw4",
-    authDomain: "cyberjags-8b081.firebaseapp.com",
-    databaseURL: "https://cyberjags-8b081.firebaseio.com",
-    projectId: "cyberjags-8b081",
-    storageBucket: "cyberjags-8b081.appspot.com",
-    messagingSenderId: "166652277588",
-    appId: "1:166652277588:web:e08b9e19916451e14dcec1",
-    measurementId: "G-7ZNKM9VFN2"
+    apiKey: process.env.REACT_APP_apiKey,
+    authDomain: process.env.REACT_APP_authDomain,
+    databaseURL: process.env.REACT_APP_databaseURL,
+    projectId: process.env.REACT_APP_projectId,
+    storageBucket: process.env.REACT_APP_storageBucket,
+    messagingSenderId: process.env.REACT_APP_messagingSenderId,
+    appId: process.env.REACT_APP_appId,
+    measurementId: process.env.REACT_APP_measurementId
   };
+
+
 
   // Initialize Firebase
   const app = initializeApp(firebaseConfig);
@@ -641,7 +644,7 @@ className="relative rounded-lg border border-gray-700 bg-gray-900  px-6 py-5 sha
           
           <a href="https://www.stickermule.com/unlock?ref_id=1511893701&utm_content=468x60&utm_medium=embed&utm_source=invite" target="_blank"><img alt="Custom Stickers, Die Cut Stickers, Bumper Stickers - Sticker Mule" border="0" height="60" src="https://assets.stickermule.com/image/upload/v1531752798/banners/stickermule-invite-friends-medium.jpg" width="468" /></a> 
           <br></br>
-          <a className="mt-2 text-center" href="https://www.digitalocean.com/?refcode=5ab9bf052ea7&utm_campaign=Referral_Invite&utm_medium=Referral_Program&utm_source=badge"><img src="https://web-platforms.sfo2.cdn.digitaloceanspaces.com/WWW/Badge%201.svg" alt="DigitalOcean Referral Badge" /></a>           </div>
+         </div>
 
             
 
