@@ -85,7 +85,7 @@ export class Navigation extends Component {
                                                    
                                             ))}
 
-                                            <Link to={"../orgcontrol"} className='bg-orange text-white text-gray-300 hover:bg-gray-800 hover:text-white px-3 py-2 rounded-md text-sm font-medium'>Organization Control</Link>
+                                            <Link to={"../orgcontrol"} className='hidden bg-orange text-white text-gray-300 hover:bg-gray-800 hover:text-white px-3 py-2 rounded-md text-sm font-medium'>Organization Control</Link>
                                         </div>
                                     </div>
                                 </div>
