@@ -198,9 +198,9 @@ const Ch2_1 = () => {
   
   const steps = [
     { id: '', name: 'Introduction to Linux', href: '/learn/chapter2/lesson1', status: 'inprogress' },
-    { id: '', name: 'Review Activity', href: '/learn/chapter2/activity1', status: 'activity' },
-    { id: '', name: 'Interacting with Linux', href: '/learn/chapter2/lesson2', status: 'learning' },
-    { id: '', name: 'Linux on CTFGuide', href: '/learn/chapter2/lesson2', status: 'activity' },
+    { id: '', name: 'Coming Soon', href: '/learn/chapter2/wip', status: 'activity' },
+    { id: '', name: 'Coming Soon', href: '/learn/chapter2/wip', status: 'learning' },
+    { id: '', name: 'Coming Soon', href: '/learn/chapter2/wip', status: 'activity' },
 
   ]
 
