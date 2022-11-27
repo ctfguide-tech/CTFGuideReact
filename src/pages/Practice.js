@@ -10,6 +10,14 @@ import { Navigation } from '../components/navigation';
 import 'animate.css';
 
 const Practice = () => {
+
+      
+  if (document.body.getElementsByTagName("*").length < 10) {
+    window.alert(document.body.getElementsByTagName("*").length)
+    //window.location.reload();
+  }
+
+
   function move(hn, path) {
     !!hn.navigate ? hn.navigate(path) : hn.push(path);
   }

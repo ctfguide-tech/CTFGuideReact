@@ -393,7 +393,7 @@ const Dashboard = () => {
          <div className="bg-gray-900 border  border-gray-700 px-6 py-10 rounded-lg flex align-middle">
            <input id="file-input" type="file" name="name" className={"hidden"} onChange={() => {window.alert("recieved but not saved. this is intended behavior.")}} accept={"image/png"}/>
            
-         <div onMouseOver={ () => { document.getElementById('editpfp').classList.remove('hidden')}} onMouseLeave={ () => { 
+         <div onMouseOver={ () => { /*document.getElementById('editpfp').classList.remove('hidden')*/}} onMouseLeave={ () => { 
            document.getElementById('editpfp').classList.add('hidden')}} className={"relative"}>
              <img className="rounded-full w-full" src={user.imageUrl } alt="" />
              <div  id={"editpfp"} onClick={() => {document.getElementById('file-input').click();}} style={ {bottom: "0px", cursor: 'pointer'}} className={"hidden rounded-b-full text-white absolute  px-4 opacity-80  bg-black"}>
@@ -447,11 +447,11 @@ const Dashboard = () => {
             
                 </div>
 
-                <h1 className="text-4xl text-white mt-6 mb-4 align-middle"> Learn  <span className="align-middle hidden text-xl font-semibold italic text-yellow-500">N E W !</span></h1>
+                <h1 className="text-4xl text-white mt-6 mb-4 align-middle hidden"> Learn  <span className="align-middle hidden text-xl font-semibold italic text-yellow-500">N E W !</span></h1>
 
 
          
-                <div className="mt-5 grid grid-cols-1 gap-4 sm:grid-cols-2">
+                <div className="mt-5 grid grid-cols-1 gap-4 sm:grid-cols-2 hidden">
 
 <div
     onClick={() => {window.location.href = './learn/chapter1/lesson1'}}
@@ -501,15 +501,8 @@ className="relative rounded-lg border border-gray-700 bg-gray-900  px-6 py-5 sha
 
 
 </div>
-<br></br>
-<Link to="../learn" className="text-white mt-10 px-3 rounded-lg   py-1 bg-blue-900 rounded-lg ">Looking for more lessons?</Link>
-<br></br><br></br>
-                <div className="hidden">
-         
-         <h1 className="text-4xl text-white mt-6 mb-4 align-middle"> Learning Path <span className="align-middle text-xl font-semibold italic text-yellow-500">Coming soon!</span></h1>
 
-
-         
+<h1 className="text-4xl text-white mt-6 mb-4 align-middle"> Learning Path <span className="align-middle text-xl font-semibold italic text-yellow-500">Coming soon!</span></h1>
 
 <div className="blur-sm" disabled>
          <div className="mt-2 bg-gray-900 border  border-gray-700  px-4 py-4 text-white rounded ">
@@ -569,6 +562,16 @@ className="relative rounded-lg border border-gray-700 bg-gray-900  px-6 py-5 sha
 
 
     </div>
+<br></br>
+<Link to="../learn" className="text-white mt-10 px-3 rounded-lg  hidden  py-1 bg-blue-900 rounded-lg ">Looking for more lessons?</Link>
+<br></br><br></br>
+                <div className="">
+         
+      
+
+         
+
+
     </div>
           
             
@@ -616,7 +619,7 @@ className="relative rounded-lg border border-gray-700 bg-gray-900  px-6 py-5 sha
               <h1 className="text-4xl text-white mb-4 mt-4"> Progress</h1>
               <div  className="mt-4 bg-gray-900 border  border-gray-700  px-4 py-4 text-white rounded ">
                 <h1 className="text-xl font-semibold text-yellow-500 inline-flex text-center"> <FireIcon className="h-6 w-6 text-center mr-1" aria-hidden="true" />  {userData.streak} day streak</h1>
-                <p>No activity today, yet!</p>
+                <p>Solve a challenge everyday to mantain your streak!</p>
               </div>
        
         

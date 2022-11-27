@@ -198,26 +198,13 @@ const Ch2_1 = () => {
   
   const steps = [
     { id: '', name: 'Introduction to Linux', href: '/learn/chapter2/lesson1', status: 'inprogress' },
-    { id: '', name: 'Coming Soon', href: '/learn/chapter2/wip', status: 'activity' },
-    { id: '', name: 'Coming Soon', href: '/learn/chapter2/wip', status: 'learning' },
-    { id: '', name: 'Coming Soon', href: '/learn/chapter2/wip', status: 'activity' },
+    { id: '', name: 'Coming Soon 1', href: '/learn/chapter2/wip', status: 'activity' },
+    { id: '', name: 'Coming Soon 2', href: '/learn/chapter2/wip2', status: 'learning' },
+    { id: '', name: 'Coming Soon 3', href: '/learn/chapter2/wip3', status: 'activity' },
 
   ]
 
-  const navigation = [
-    { name: 'Dashboard', href: '../dashboard', current: false },
-    { name: 'Practice', href: '../practice', current: false },
-    { name: 'Learn', href: './learn', current: true },
-    { name: 'Classes', href: '#', current: false },
-    { name: 'CTFLive', href: '#', current: false },
-    { name: 'Learn', href: '#', current: true },
-    { name: 'Friends', href: '#', current: false },
-  ]
-  const userNavigation = [
-    { name: 'Your Profile', href: '#' },
-    { name: 'Settings', href: '#' },
-    { name: 'Sign out', onClick: logout },
-  ]
+  
 
  
 
