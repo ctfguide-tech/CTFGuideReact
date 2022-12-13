@@ -11,11 +11,6 @@ import 'animate.css';
 
 const Practice = () => {
 
-      
-  if (document.body.getElementsByTagName("*").length < 10) {
-    window.alert(document.body.getElementsByTagName("*").length)
-    //window.location.reload();
-  }
 
 
   function move(hn, path) {
@@ -329,7 +324,7 @@ const Practice = () => {
                   defaultValue={window.location.href.split("/")[4]}
                   onChange={(e) => {
         
-                    window.location.href = "../practice/" + e.target.value
+                    window.location.href =  "../../practice/" + e.target.value
                   }}
                 >
                   <option value="all">All</option>

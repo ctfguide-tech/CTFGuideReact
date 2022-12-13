@@ -333,16 +333,22 @@ const Practice = () => {
             <div className="mt-5 bg-gray-900 border border-gray-700 rounded-lg px-5 py-10">
                     <h1 className="text-white text-3xl font-semibold">Comments</h1>
                     <textarea id="comment" className="mt-4 text-white border border-gray-700 focus-outline-none outline-none block w-full bg-black rounded-lg"></textarea>
+                  
                     <button onClick={ () => {
                         var xhttp = new XMLHttpRequest();
                         xhttp.onreadystatechange = function() {
                           if (this.status === 200 && this.readyState === 4) {
                             window.location.reload();
+                          } 
+
+                          if (this.status != 200 && this.readyState === 4) {
+                            document.getElementById("commentError").classList.remove("hidden");
                           }
                         }
                         xhttp.open("GET", `${process.env.REACT_APP_API_URL}/challenges/comments/post?comment=${document.getElementById("comment").value}&uid=${localStorage.getItem("token")}&challengeID=${window.location.href.split("/")[4]}`);
                         xhttp.send();
                    }} id="commentButton" className="mt-4 border border-gray-700 bg-black hover:bg-gray-900 rounded-lg text-white px-4 py-1">Post Comment</button>
+                    <h1 id="commentError" className="hidden text-red-400 text-xl px-2 py-1 mt-4">Error posting comment! This could be because it was less than 5 characters or greater than 250 characters. </h1>
 
                 
 
@@ -352,7 +358,20 @@ challenge.data.map((item) => (
 
   <div className="mt-4 bg-black rounded-lg border border-gray-700">
   <h1 className="text-white px-5 pt-4 text-xl">@{ item.username }</h1>
-  <p className="px-5 text-white pb-4 space-y-10"><span className="mb-5">{ item.comment }</span><br className="mt-10"></br><a href="" className="mt-4 text-red-600 hover:text-red-500  ">Report Comment</a></p>
+  <p className="px-5 text-white pb-4 space-y-10"><span className="mb-5">{ item.comment }</span><br className="mt-10"></br><a onClick={() => {
+    var xhttp = new XMLHttpRequest();
+    xhttp.onreadystatechange = function() {
+      if (this.status === 200 && this.readyState === 4) {
+        window.alert("Thank you for reporting this challenge. Our moderation team will look into this.")
+      } 
+
+      if (this.status != 200 && this.readyState === 4) {
+        window.alert("Error reporting comment. Please try again later. ")
+      }
+    }
+    xhttp.open("GET", `${process.env.REACT_APP_API_URL}/challenges/report?commentID=${item.id}&uid=${localStorage.getItem("token")}&challengeID=${window.location.href.split("/")[4]}`);
+    xhttp.send();
+  }} className="mt-4 text-red-600 hover:text-red-500  ">Report Comment</a></p>
   </div>
 
 ))
