@@ -1,28 +1,34 @@
-const NoPage = () => {
+import { Link , useNavigate } from "react-router-dom";
+
+
+const NoPage = () => {  
+
+  const navigate = useNavigate();
+
+
+
+  function goBack() {
+    navigate(-1)
+  }
+
+
   return (
     <>
-      {/*
-        This example requires updating your template:
+      <h1 style={{fontFamily: 'Space Grotesk, sans-serif'}} className="mx-auto text-center text-white text-5xl mt-20"> 404 Error </h1>
+      <p style={{fontFamily: 'Space Grotesk, sans-serif'}} className="mx-auto text-center text-white text-2xl w-1/2 mt-3">Looks like you've found a broken link or you're trying to access content that isn't ready for the public yet.</p>
+      <div style={{fontFamily: 'Space Grotesk, sans-serif'}} className="mx-auto text-center mt-10">
+        <Link to={"/"} className="text-white text-2xl hover:underline"> 🌎 Go back to the homepage</Link>
+        <br></br>
+        <a onClick={goBack} style={{cursor: 'pointer'}} className="hover:underline text-white text-2xl">  
+🚀 Go back to the last page you were on</a>
 
-        ```
-        <html class="h-full">
-        <body class="h-full">
-        ```
-      */}
-      <div className="bg-black min-h-full px-4 py-16 sm:px-6 sm:py-24 md:grid md:place-items-center lg:px-8">
-        <div className="max-w-max mx-auto">
-          <main className="sm:flex">
-            <p className="text-4xl font-extrabold text-white sm:text-5xl">404</p>
-            <div className="sm:ml-6">
-              <div className="sm:border-l sm:border-gray-200 sm:pl-6">
-                <h1 className="text-4xl font-extrabold text-gray-100 tracking-tight sm:text-5xl">Page not found</h1>
-                <p className="mt-1 text-base text-gray-100">Please check the URL in the address bar and try again.</p>
-              </div>
-            
-            </div>
-          </main>
-        </div>
-      </div>
+<br></br>
+<a href="https://status.ctfguide.com" style={{fontFamily: 'Space Grotesk, sans-serif'}} className="hover:underline mx-auto text-center text-white text-2xl w-1/2 mt-3"> 📶 Check CTFGuide Status</a>
+
+    </div>
+
+
+
     </>
   )
   };
