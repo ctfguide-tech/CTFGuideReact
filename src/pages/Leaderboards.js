@@ -29,18 +29,7 @@ const Leaderboards = () => {
     const analytics = getAnalytics(app);
 
     const [leaderboards, setLeaderboards] = useState({
-        data: [{
-            username: "Loading"
-
-        },
-        {
-            username: "Loading"
-        },
-        
-        
-        {
-            username: "Loading"
-        }]
+        data: []
     })
 
     const auth = getAuth();
@@ -265,67 +254,21 @@ const Leaderboards = () => {
 
                 <div className="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8 ">
 
-                    <div id="loader" className="hidden py-10 mb-10">
+                    <div id="loader" className="py-10 mb-10">
                         <h1 className="text-white text-4xl text-center"><i class="fas fa-spinner text-white  fa-spin"></i> Preparing for blast off</h1>
                         <p className="text-white text-center">You're probably going to see this a lot during the beta as our cache system hasn't been setup yet.</p>
 
                     </div>
 
-                    <h1 className="text-white text-4xl font-semibold">Global Leaderboards</h1>
-                    <div className="mt-6 grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3">
-                        <div  className=" overflow-hidden shadow rounded-lg bg-gradient-to-r from-yellow-500 to-orange-500">
-                            <div className="px-4 py-5 sm:p-6">
-                                <dl>
-                                
-                                    <dd className="mt-1 text-3xl leading-9 font-semibold text-white text-center">
-                                    <span className="text-5xl">#1</span>  {leaderboards.data[0].username}
-                                    </dd>
+                    <h1 className="text-white text-4xl">🌎 Global Leaderboards (top 20)</h1>
+                    <table className="table-auto text-white w-full mt-4">
 
-
-                                </dl>
-                            </div>
-
-                            
-                        </div>
-
-                        <div  className="overflow-hidden shadow rounded-lg bg-gradient-to-r from-cyan-500 to-blue-500">
-                            <div className="px-4 py-5 sm:p-6">
-                                <dl>
-                                
-                                    <dd className="mt-1 text-3xl leading-9 font-semibold text-gray-100 text-center">
-                                    <span className="text-5xl">#2</span>  {leaderboards.data[1].username} </dd>
-
-
-                                </dl>
-                            </div>
-
-                            
-                        </div>
-
-                        <div  className=" overflow-hidden shadow rounded-lg bg-gradient-to-r from-indigo-500 to-blue-500">
-                            <div className="px-4 py-5 sm:p-6">
-                                <dl>
-                                
-                                    <dd className="mt-1 text-3xl leading-9 font-semibold text-white text-center">
-                                    <span className="text-5xl">#3</span>  {leaderboards.data[2].username}
-                                    </dd>
-
-
-                                </dl>
-                            </div>
-
-                            
-                        </div>
-                            </div>
-
-
-                    <table className="table-auto text-white w-full mt-4 mx-auto text-left justify-content mt-6">
-
-                        <tbody className="mt-4 text-xl rounded-lg">
-                        <tr className={("text-xl font-bold  bg-gray-900 px-6 py-1 border rounded-xl border-gray-600")}>
-                            <td className="px-6">Rank</td> 
-                            <td className="px-6 ">Username</td>
+                        <tbody className="mt-4 text-xl  ">
+                        <tr className={("text-2xl font-semibold py-3")}>
+                            <td>Username</td>
+                            <td>Rank</td>
                             <td>Points</td>
+                            <td>Country</td>
                         </tr>
                         <tr className="bg-gray-600 border border-gray-600" >
                                 <td className="px-6 ">
@@ -335,10 +278,11 @@ const Leaderboards = () => {
                                 <td>{userData.points}</td>
                             </tr>
                         {leaderboards.data.map((item) => (
-                            <tr className="bg-gray-800 border border-gray-600" >
-                                <td className="px-6 ">{item.pos}</td>
-                                <td className={"inline-flex px-6"}><img className={"w-6 mr-2 hidden"} src={"https://ui-avatars.com/api/?name="+ (item.username) + "&background=random"}/><a href="" className={(item.pro ? "rainbow-text" : "") + " font-semibold"} >{item.username}</a></td>
+                            <tr >
+                                <td className={"inline-flex"}><img className={"w-6 mr-2"} src={"https://ui-avatars.com/api/?name="+ (item.username) + "&background=random"}/><a href="" className={(item.pro ? "rainbow-text" : "") + " font-semibold"} >{item.username}</a></td>
+                                <td>Gold</td>
                                 <td>{item.points}</td>
+                                <td>{item.country} </td>
                             </tr>
                         ))}
 
