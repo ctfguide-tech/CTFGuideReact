@@ -10,6 +10,9 @@ import { Navigation } from '../components/navigation';
 import 'animate.css';
 
 const Practice = () => {
+
+
+
   function move(hn, path) {
     !!hn.navigate ? hn.navigate(path) : hn.push(path);
   }
@@ -321,7 +324,7 @@ const Practice = () => {
                   defaultValue={window.location.href.split("/")[4]}
                   onChange={(e) => {
         
-                    window.location.href = "../practice/" + e.target.value
+                    window.location.href =  "../../practice/" + e.target.value
                   }}
                 >
                   <option value="all">All</option>

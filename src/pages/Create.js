@@ -95,10 +95,7 @@ const Create = () => {
                         let data = JSON.parse(this.responseText);
 
 
-                        if (data.solvedChallenges.includes(window.location.href.split("/")[4])) {
-                            document.getElementById("solvedChallenge").classList.remove("hidden");
-                        }
-
+                      
                         if (data.createdChallenges) {
                             data.createdChallenges.forEach(challenge => {
                                loadchallenge(challenge)
@@ -245,24 +242,8 @@ function loadchallenge(id) {
                         <div style={{cursor: 'pointer'}} id="challBase" className="hidden bg-gray-900 border border-gray-700 rounded-lg text-white px-4 py-2 shadow-lg hover:shadow-gray-700/50 ">
                             <h1 className="text-xl">Challenge Name</h1>
                         </div>
-                    <hr className="border-gray-700 mt-6"></hr>
 
-                    <h1  className="text-3xl text-white mt-4 mb-2">Your Lessons</h1>     
-                    <p className="text-white mb-5 ">
-             
-                  Your account is unable to make lessons at this time.
-                        </p>
-
-        <hr className="border-gray-700"></hr>
-                    <h1  className="text-3xl text-white mb-2 mt-4">Revenue Earned</h1>     
-                    <p className="text-white ">
-                    <b>Profits this month:</b> $0.00<br></br>
-                    <b>Profits to date:</b> $0.00<br></br>
-        <br></br>
-                    You can earn money based on how many people with CTFGuide PRO complete your lessons.
-                        </p>
-
-                        <button className="mt-3 border border-gray-700 hover:Brounded-lg px-2 py-1 text-white bg-gray-900 rounded-lg">Cashout via Stripe</button>     <button className="mt-3 border border-gray-700 rounded-lg px-2 py-1 text-white bg-gray-900 ">Cashout via Paypal</button>
+                
 
                     </div>
 

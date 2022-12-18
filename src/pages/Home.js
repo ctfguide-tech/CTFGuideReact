@@ -3,11 +3,13 @@ import { Popover, Transition } from '@headlessui/react'
 import { MenuIcon, XIcon } from '@heroicons/react/outline'
 import { Link } from "react-router-dom";
 import { SparklesIcon, LightningBoltIcon } from '@heroicons/react/outline'
-
+import { Features } from '../components/features';
 
 const Home = () => {
 
   document.title = "CTFGuide"
+
+  
   return (
   
     <div className="relative bg-black overflow-hidden bg-black" >
@@ -187,54 +189,23 @@ const Home = () => {
 
       <div style={{fontFamily: 'Space Grotesk, sans-serif'}}  className="relative bg-black pt-5 pb-32 overflow-hidden">
       <div  style={{fontFamily: 'Space Grotesk, sans-serif'}}  className="relative">
-        <div className="lg:mx-auto lg:max-w-7xl lg:px-8 lg:grid lg:grid-cols-2 lg:grid-flow-col-dense lg:gap-24 ">
-          
-        <div className="relative">
-          <div className="mt-6 px-4 pb-3 max-w-xl mx-auto sm:px-6 lg:py-16 lg:max-w-none lg:mx-0 lg:px-0">
-            <div>
-              <div>
-                <span className="h-12 w-12 rounded-md flex items-center justify-center bg-blue-600">
-                  <LightningBoltIcon className="h-6 w-6 text-white" aria-hidden="true" />
-                </span>
-              </div>
-              <div className="mt-6">
-                <h2 className="text-3xl font-extrabold tracking-tight text-white">
-                 Loads of resources
-                </h2>
-                <p className="mt-4 text-lg text-gray-200">
-                Loads of community uploaded challenges from varying difficulties for you to practice. All these challenges have extensive write-ups, so you'll never be alone when you're stuck on a challenge.
-                </p>
-               
-              </div>
-            </div>
-      
-          </div>
-
-          <div className="mt-6 px-4 max-w-xl mx-auto sm:px-6 lg:py-16 lg:max-w-none lg:mx-0 lg:px-0">
-            <div>
-              <div>
-                <span className="h-12 w-12 rounded-md flex items-center justify-center bg-blue-600">
-                <i class="fas fa-terminal text-white"></i>
-                </span>
-              </div>
-              <div className="mt-6">
-                <h2 className="text-3xl font-extrabold tracking-tight text-white">
-                  Integrated Terminal
-                </h2>
-                <p className="mt-4 text-lg text-gray-200">
-                The terminal is integrated directly onto the website, meaning you can run linux commands from the comfort of your browser.
-                </p>
-               
-              </div>
-            </div>
-      
-          </div>
-
-          </div>
-
+        <div className="lg:mx-auto lg:max-w-auto lg:px-8  ">
+ 
           
     
-          <div id="video" className="hidden fixed z-10 inset-0 overflow-y-auto" aria-labelledby="modal-title" role="dialog" aria-modal="true">
+    
+        <div className="mx-auto  ">
+
+        <Features/>
+
+</div>
+</div>
+</div>
+        
+
+
+
+<div id="video" className="hidden fixed z-10 inset-0 overflow-y-auto" aria-labelledby="modal-title" role="dialog" aria-modal="true">
   <div className="flex items-end justify-center min-h-screen pt-4 px-4 pb-20 text-center sm:block sm:p-0">
    
     <div onClick={() => {
@@ -260,69 +231,12 @@ const Home = () => {
   </div>
 </div>
 
-            <div className="relative">
-        <div className="lg:mx-auto lg:max-w-7xl">
-          <div className="mt-6 px-4 max-w-xl mx-auto sm:px-6 lg:py-16 lg:max-w-none lg:mx-0 lg:px-0">
-            <div>
-              <div>
-                <span className="h-12 w-12 rounded-md flex items-center justify-center bg-blue-600">
-                  <SparklesIcon className="h-6 w-6 text-white" aria-hidden="true" />
-                </span>
-              </div>
-              <div className="mt-6">
-                <h2 className="text-3xl font-extrabold tracking-tight text-white">
-                 An engaging learning experience
-                </h2>
-                <p className="mt-4 text-lg text-gray-200">
-                CTFGuide keeps you engaged by introducing a competitive factor. Solving challenges awards points and the amount of points you have determines what rank you are.
-                </p>
-               
-              </div>
-            </div>
       
-          </div>
-
-        
 
 
+          
 
-
-
-
-
-            </div>
-
-            <div className="mt-6 px-4 max-w-xl mx-auto sm:px-6 lg:py-16 lg:max-w-none lg:mx-0 lg:px-0">
-            <div>
-              <div>
-                <span className="h-12 w-12 rounded-md flex items-center justify-center bg-blue-600">
-                <i class="fas fa-brain text-white text-xl"></i>
-                </span>
-              </div>
-              <div className="mt-6">
-                <h2 className="text-3xl font-extrabold tracking-tight text-white">
-                  ML Powered Learning
-                </h2>
-                <p className="mt-4 text-lg text-gray-200">
-                Get lessons tailored to your skillset. CTFGuide uses machine learning to generate lessons based of your past performance on activites.
-                </p>
-               
-              </div>
-            </div>
       
-          </div>
-
-
-          
-          </div>
-
-          
-
-          
-        </div>
-      </div>
-
-   
    
       <div className="bg-black">
       <div className="max-w-7xl mx-auto py-16 px-4 sm:px-6 lg:px-8">

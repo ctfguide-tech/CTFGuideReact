@@ -90,9 +90,12 @@ const Practice = () => {
             if (data.role == "moderator" || data.role == "developer") {
               document.getElementById("moderator").classList.remove("hidden")
             }
+
+            if (data.solvedChallenges) {
             if (data.solvedChallenges.includes(window.location.href.split("/")[4])) {
               document.getElementById("solvedChallenge").classList.remove("hidden");
             }
+          }
 
               document.getElementById("navPoints").innerHTML = data.points
             setUserData({
@@ -567,17 +570,17 @@ challenge.data.map((item) => (
                   </div>
                 </div>
               </div>
-              <div className="mt-5 sm:mt-6 mx-auto text-center">
+              <div className="mt-5 sm:mt-6 mx-auto text-center flex">
                 <button
                   type="button"
-                  className="inline-flex justify-center w-1/2 rounded-md shadow-sm px-4 py-2 bg-gray-800 border border-gray-700 text-base font-medium text-white  focus:outline-none  sm:text-sm"
+                  className="inline-flex justify-center w-auto rounded-md shadow-sm px-4 py-2 bg-gray-800 border border-gray-700 text-base font-medium text-white  focus:outline-none  sm:text-sm"
                   onClick={() => window.location.href = "../leaderboards/global"}
                 >
                   View Leaderboards
                 </button>
                 <button
                   type="button"
-                  className="ml-2 inline-flex justify-center   rounded-md shadow-sm px-4 py-2 bg-gray-800 border border-gray-700 text-base font-medium text-white  focus:outline-none  sm:text-sm"
+                  className="ml-2 w-auto inline-flex justify-center   rounded-md shadow-sm px-4 py-2 bg-gray-800 border border-gray-700 text-base font-medium text-white  focus:outline-none  sm:text-sm"
                   onClick={() => window.location.href = "../practice/all"}
                 >
                   Back to Challenges
