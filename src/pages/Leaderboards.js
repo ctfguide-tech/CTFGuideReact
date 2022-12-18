@@ -115,9 +115,15 @@ const Leaderboards = () => {
 
                     if (JSON.parse(this.responseText)[i].username === userData.username) {
                         document.getElementById("myrank").innerHTML = "#" +  (i + 1);
-
+                        
                     }
                 }
+
+                document.getElementById("loader").classList.add("hidden");
+                document.getElementById("content").classList.remove("hidden");
+
+
+
 
 
             }
@@ -162,8 +168,7 @@ const Leaderboards = () => {
 
                         document.getElementById("navPoints").innerHTML = data.points
 
-                        document.getElementById("loader").classList.add("hidden");
-
+                       
 
                     }
 
@@ -265,12 +270,13 @@ const Leaderboards = () => {
 
                 <div className="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8 ">
 
-                    <div id="loader" className="hidden py-10 mb-10">
-                        <h1 className="text-white text-4xl text-center"><i class="fas fa-spinner text-white  fa-spin"></i> Preparing for blast off</h1>
-                        <p className="text-white text-center">You're probably going to see this a lot during the beta as our cache system hasn't been setup yet.</p>
+                    <div id="loader" className=" py-10 mb-10">
+                        <h1 className="text-white text-4xl text-center"><i class="fas fa-spinner text-white  fa-spin"></i> Fetching Leaderboards...</h1>
+                        <p className="text-white text-center"></p>
 
                     </div>
 
+<div id="content" className="hidden">
                     <h1 className="text-white text-4xl font-semibold">Global Leaderboards</h1>
                     <div className="mt-6 grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3">
                         <div  className=" overflow-hidden shadow rounded-lg bg-gradient-to-r from-yellow-500 to-orange-500">
@@ -345,7 +351,7 @@ const Leaderboards = () => {
 
                         </tbody>
                     </table>
-
+                    </div>
                   
                     <p className="text-yellow-500 mb-3 hidden"><i className="fas fa-tools"></i> <b>Developer Broadcast</b> The following services aren't avaliable: Learning Paths, Progress, Challenge Solving, Classes, CTFLive, Friends, Settings, Billing, Terminals and more.</p>
                     <p className="text-yellow-500 mb-3 hidden">If you are seeing this message it means the CTFGuide API is offline.</p>

@@ -294,14 +294,14 @@ function loadchallenge(id) {
 
                 
 <div className="px-5 py-4 mt-5 rounded-lg  bg-gray-900 border border-gray-700">
-                     <h3 className="mt-6  text-3xl leading-6 font-medium text-white mb-5">Challenge Content</h3>
+                     <h3 className="mt-6  text-3xl leading-6 font-medium text-white mb-5"><i class="fas fa-align-left"></i> Challenge Content</h3>
                             <p className="text-gray-400"> You can use markdown!</p>
             <SimpleMDE  value={value} />
             </div>
 
 
             <div className="px-5 py-4 mt-5 rounded-lg  bg-gray-900 border border-gray-700">
-                            <h3 className="mt-6 text-3xl leading-6 font-medium text-white mb-6">Challenge Hints</h3>
+                            <h3 className="mt-6 text-3xl leading-6 font-medium text-white mb-6"><i class="far fa-lightbulb"></i> Challenge Hints</h3>
 
                                             <dt className="text-xl font-medium text-white truncate">Hint 1</dt>
                                             <textarea id="hint1" className="mt-1 w-full rounded-lg border-gray-700 bg-black text-white">No hint set</textarea>
@@ -317,13 +317,21 @@ function loadchallenge(id) {
                         </div>
 
                         <div className="px-5 py-4 mt-5 rounded-lg  bg-gray-900 border border-gray-700">
-                            <h3 className="mt-6 text-3xl leading-6 font-medium text-white mb-6">Challenge Solution</h3>
+                            <h3 className="mt-6 text-3xl leading-6 font-medium text-white mb-6"><i class="far fa-flag"></i> Challenge Solution</h3>
 
                                             <input id="solution" className="mb-4 mt-1 w-full px-2 py-2 border border-gray-600 rounded-lg border-gray-700 bg-black text-white"></input>
 
 
 
                         </div>
+
+                        <div className="px-5 py-4 mt-5 rounded-lg  bg-gray-900 border border-gray-700">
+                                <h1 className="text-3xl text-white"><i class="fab fa-docker"></i> Deploy a docker container <span class="text-xl bg-black px-5 rounded-lg">BETA</span></h1>
+                                <p className="text-white mt-4"><b className="italic bold">This is not required!</b> Sometimes if you have a challenge that has a web component, you'd need to host it yourself. However, now you can just give us a docker container and we'll deploy it to our servers.</p>
+                                <input className="mt-4 text-white" type="file"></input>
+
+                          
+                            </div>
 
                         <button onClick={saveChanges} className="mr-2 mt-6 bg-green-700 border-green-600 hover:bg-green-800 px-4 py-2 text-2xl text-white rounded-lg"><i class="fas fa-send"></i> Send for approval</button>
 

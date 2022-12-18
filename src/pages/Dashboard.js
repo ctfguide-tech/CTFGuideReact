@@ -7,13 +7,12 @@ import { CheckCircleIcon } from '@heroicons/react/outline'
 import { initializeApp } from "firebase/app";
 import { getAnalytics } from "firebase/analytics";
 import { Navigation } from '../components/navigation';
-
 import { io } from "socket.io-client";
 import DashboardManager from "../modules/DashboardManager.js"
 import 'animate.css';
 import { data } from "autoprefixer";
-
 const Dashboard = () => {
+
   console.log("START\N\N\N" + process.env.REACT_APP_projectId)
   const firebaseConfig = {
     apiKey: process.env.REACT_APP_apiKey,
@@ -48,8 +47,14 @@ const Dashboard = () => {
     xhttp.send();
   }
 
-
+  if (!localStorage.getItem("22-18-update")) {
+    localStorage.setItem("22-18-update", true)
+  }
   const [open, setOpen] = useState(true)
+  const [open2, setOpen2] = useState(localStorage.getItem("22-18-update") === "true" ? true : false)
+
+ 
+
   const [show, setShow] = useState(true)
   const cancelButtonRef = useRef(null)
   document.title = "CTFGuide - Dashboard"
@@ -263,7 +268,7 @@ const Dashboard = () => {
     <div className="min-h-full " style={{ fontFamily: 'Space Grotesk, sans-serif' }}>
 
       <Navigation/>
-
+      =
 
 
       <div id="message" className="hidden mt-0 bg-blue-900">
@@ -405,7 +410,7 @@ const Dashboard = () => {
 
  
           <div className="mt-5 grid lg:grid-cols-3 gap-10 sm:grid-cols-1">
-
+  
 
             <div className="lg:col-span-2 sm:col-span-1">
                 <h1 className="text-4xl text-white mb-4 mt-4 "> Continue working on</h1>
@@ -647,6 +652,12 @@ className="relative rounded-lg border border-gray-700 bg-gray-900  px-6 py-5 sha
           
           <a href="https://www.stickermule.com/unlock?ref_id=1511893701&utm_content=468x60&utm_medium=embed&utm_source=invite" target="_blank"><img alt="Custom Stickers, Die Cut Stickers, Bumper Stickers - Sticker Mule" border="0" height="60" src="https://assets.stickermule.com/image/upload/v1531752798/banners/stickermule-invite-friends-medium.jpg" width="468" /></a> 
           <br></br>
+
+
+          <h1 className="hidden text-4xl text-white mb-4 mt-4"> Global Activity</h1>
+          <div className="hidden bg-gray-900 border  border-gray-700  px-4 py-1 text-white rounded ">
+            <p>Laphatize solved <span className="text-blue-500">Black Panther</span><br></br><span className="text-sm italic">5:45 PM</span></p>
+           </div>  
          </div>
 
             
@@ -807,7 +818,103 @@ className="relative rounded-lg border border-gray-700 bg-gray-900  px-6 py-5 sha
       </div>
     </div>
   </div>
+
 </div>
+<Transition.Root show={open2} as={Fragment}>
+
+<Dialog as="div" className="fixed z-10 inset-0 overflow-y-auto" onClose={setOpen2}>
+
+  <Transition.Child
+    as={Fragment}
+    enter="ease-out duration-300"
+    enterFrom="opacity-0"
+    enterTo="opacity-100"
+    leave="ease-in duration-200"
+    leaveFrom="opacity-100"
+    leaveTo="opacity-0"
+  >
+    <div onClick={() => {
+      setOpen2(false)
+      localStorage.setItem("22-18-update", false)
+    }}
+      className="fixed inset-0 bg-gray-900 bg-opacity-75 transition-opacity" />
+  </Transition.Child>
+  <div className="flex items-end justify-center min-h-screen  pt-4 px-4  text-center sm:block sm:p-0">
+
+    <Transition.Child
+      as={Fragment}
+      enter="ease-out duration-300"
+      enterFrom="opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95"
+      enterTo="opacity-100 translate-y-0 sm:scale-100"
+      leave="ease-in duration-200"
+      leaveFrom="opacity-100 translate-y-0 sm:scale-100"
+      leaveTo="opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95"
+    >
+      <div style={{ fontFamily: 'Space Grotesk, sans-serif' }} className="max-w-6xl relative inline-block align-bottom w-5/6 pb-10 pt-10 bg-gray-900 border border-gray-700 rounded-lg px-20 pt-5 pb-4 text-left overflow-hidden shadow-xl transform transition-all sm:my-8 sm:align-middle ">
+        <div>
+
+          <div className="mt-3  sm:mt-5">
+            <h1 className="text-white text-4xl"><i class="far fa-newspaper"></i> Platform News <span className="italic text-sm">Sunday, Dec 18 2022</span></h1>
+            <hr className="border-gray-600 mt-4"></hr> 
+            <br></br>
+          
+                      <h1 className="text-white text-xl">What's changed?</h1>
+                      <ul>
+                        <li className="text-white text-md hidden">• Added Global Activity to your dashboard. You can see recent solves globally.</li>
+                        <li className="text-white text-md">• We've cleaned up the leaderboards UI/UX.</li>
+                        <li className="text-white text-md">• Fixed bugs regarding switching difficulty of challenges you want to see.</li>
+                        <li className="text-white text-md">• Basic moderation system setup for comments.</li>
+                        <li className="text-white text-md">• Platform News to keep the community updated. Aka this modal.</li>
+                      </ul>
+                      <br></br>
+                      <h1 className="text-white text-xl">Other News.</h1>
+                      <ul>
+                        <li className="text-white text-md">We've expanded our team and have a new co-founder.</li>
+
+                        <div className="flex gap-x-4 mb-4 mx-auto text-center">
+                        <div className="mt-4 mx-auto text-center ">
+                          <img width="60" className="rounded-full mx-auto" src="https://avatars.githubusercontent.com/u/67762433?v=4"></img>
+                          <h1 className="text-white">Raymond Yan</h1>
+                          <h1 className="text-white">Co-founder &<br></br> Head of Engineering</h1>
+
+                        </div>
+                        <div className="mt-4 mx-auto text-center">
+                          <img width="60" className="rounded-full mx-auto" src="https://media.licdn.com/dms/image/C5603AQES6Hp4D9MXjg/profile-displayphoto-shrink_200_200/0/1588608773250?e=1677110400&v=beta&t=9W9CEMEIcDG0iSkBj6RpvH8a9gxV-nhfv8BzBsPmkNg"></img>
+                          <h1 className="text-white">Joshua Herron</h1>
+                          <h1 className="text-white">Sandbox Engineer</h1>
+
+                        </div>
+
+                        <div className="mt-4 mx-auto text-center ">
+                          <img width="60" className="rounded-full mx-auto" src="https://media.licdn.com/dms/image/D4E03AQEY9G-O77b3ng/profile-displayphoto-shrink_200_200/0/1668423394884?e=1677110400&v=beta&t=gKZkxkCZytaKdwsIGwBUWudOgnH9gFd_D3Upqt8T15Y"></img>
+                          <h1 className="text-white">Srihari Raman</h1>
+                          <h1 className="text-white">
+Director of Analytics & <br></br> Customer Acquisition</h1>
+
+                        </div>
+                        <div className="mt-4 mx-auto text-center">
+                          <img width="60" className="rounded-full mx-auto" src="https://cdn.discordapp.com/attachments/1035971879283990648/1045457965001478195/image.png"></img>
+                          <h1 className="text-white">Abhinav Byreddy</h1>
+                          <h1 className="text-white">System Architect</h1>
+
+                        </div>
+                        </div>
+                        <div className="flex gap-x-4 mx-auto text-center">
+                     
+                        </div>
+                      </ul>
+
+
+
+            <button className="hidden text-white mt-10 text-md bg-gray-800 px-4 py-1 rounded-full">Nevermind, I'll stick to the Free Plan.</button>
+          </div>
+        </div>
+
+      </div>
+    </Transition.Child>
+  </div>
+</Dialog>
+</Transition.Root>
 
     </div>
 
