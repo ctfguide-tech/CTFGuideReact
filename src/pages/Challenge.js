@@ -343,10 +343,6 @@ const Practice = () => {
                           if (this.status === 200 && this.readyState === 4) {
                             window.location.reload();
                           } 
-
-                          if (this.status != 200 && this.readyState === 4) {
-                            document.getElementById("commentError").classList.remove("hidden");
-                          }
                         }
                         xhttp.open("GET", `${process.env.REACT_APP_API_URL}/challenges/comments/post?comment=${document.getElementById("comment").value}&uid=${localStorage.getItem("token")}&challengeID=${window.location.href.split("/")[4]}`);
                         xhttp.send();
