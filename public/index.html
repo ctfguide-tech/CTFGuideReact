@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css" integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm" crossorigin="anonymous">
     <script async src="https://media.ethicalads.io/media/client/ethicalads.min.js"></script>
     <script async src="https://arc.io/widget.min.js#pmzgiCUF"></script>
+    
     <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
     <script>
       (function() {
@@ -90,6 +91,7 @@
 })();
     </script>
   <style>
+@import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
 
 .c2 {
   /* This will come into play later */
@@ -105,7 +107,12 @@
   transform: translateZ(2px);
 
 }
-
+.zimg {
+  transition: transform .7s ease-in-out;
+}
+.zimg:hover {
+  transform: rotate(360deg);
+}
 
 html {
   background-color:black;
