@@ -268,7 +268,7 @@ const Dashboard = () => {
 
       <Navigation />
 
-      <div id="message" className=" mt-0 bg-yellow-900">
+      <div id="message" className=" mt-0 bg-yellow-900 hidden">
         <div className="max-w-7xl mx-auto py-3 px-3 sm:px-6 lg:px-8">
           <div className="flex">
    
@@ -390,17 +390,35 @@ const Dashboard = () => {
             </div>
 
           </div>
-          <div style={{ backgroundColor: "#212121"}}className=" px-12 py-10 rounded-lg flex align-middle">
+          <div style={{ backgroundColor: "#212121"}} className=" px-12 py-10 rounded-lg flex align-middle">
+
+            <div className="">
             <input id="file-input" type="file" name="name" className={"hidden"} onChange={() => { window.alert("recieved but not saved. this is intended behavior.") }} accept={"image/png"} />
 
+
+<div className="flex">
             <div onMouseOver={() => { /*document.getElementById('editpfp').classList.remove('hidden')*/ }} onMouseLeave={() => {
               document.getElementById('editpfp').classList.add('hidden')
             }} className={"relative"}>
-              <img className="rounded-full w-full " src={user.imageUrl} alt="" />
+              <img className="rounded-full my-auto"  width={70} src={user.imageUrl} alt="" />
               <div id={"editpfp"} onClick={() => { document.getElementById('file-input').click(); }} style={{ bottom: "0px", cursor: 'pointer' }} className={"hidden rounded-b-full text-white absolute  px-4 opacity-80  bg-black"}>
                 <p>Edit</p></div></div>
-            <h1 className="text-white text-4xl ml-4 ">Hello {userData.username} <br></br><span className="  align-middle align-center border  border-slate-400 text-slate-200 rounded-lg px-2 py-1 text-sm" ><i className="fas fa-check-circle text-slate-200"></i> CTFGuide Employee</span>&nbsp;<span className=" align-middle align-center border border-slate-400 text-slate-200  rounded-lg px-2 py-1 text-sm" ><i className="fas fa-bolt text-slate-200"></i> CTFGuide Pro</span></h1>
+   <div>
+   <h1 className="text-white text-3xl ml-4 mt-2 my-auto ">Hello {userData.username}</h1>
 
+      <span style={{borderColor: "#8c8c8c", color: "#8c8c8c"}} className="ml-4    align-middle align-center   border-slate-400 text-slate-200 rounded-lg  text-sm" >
+              <i style={{color: "#8c8c8c"}} className=" fas fa-check-circle text-slate-200"></i> CTFGuide Employee</span>&nbsp;
+              <span style={{borderColor: "#8c8c8c", color: "#8c8c8c"}} className="ml-2 text-sm align-middle align-center  border-slate-400 text-slate-200  rounded-lg  stext-sm" >
+                <i style={{color: "#8c8c8c"}}  className="fas fa-bolt text-slate-200"></i> CTFGuide Pro</span>
+                </div>
+            </div>
+            </div>
+
+       
+
+            <div className="ml-auto pl-4 align-middle my-auto">
+              <button className="rounded-lg border border-slate-600 px-3 py-2 text-white" style={{borderColor: "#8c8c8c", color: "#8c8c8c" }}><i class="fas fa-terminal"></i>&nbsp;Launch Terminal</button>
+            </div>
           </div>
 
 
@@ -464,8 +482,7 @@ const Dashboard = () => {
     <a href="./learn/chapter1/lesson1" className="focus:outline-none">
       <span className="absolute inset-0" aria-hidden="true" />
       <p className="text-xl font-medium text-gray-100">Cybersecurity Basics <span id="c1done" className="hidden text-sm bg-green-800 rounded-lg px-2">Completed</span></p>
-      <hr className="border-gray-700 mt-2 mb-3"></hr>
-            <p className="text-white"> 
+            <p className="text-white" style={{color: "#8c8c8c"}}> 
               Build your cybersecurity fundementals in this lesson. Learn about the basics of cybersecurity, and how to protect yourself online.
             </p>
     </a>
@@ -483,9 +500,8 @@ style={{backgroundColor: "#212121"}}
 
     <a href="#" className="focus:outline-none">
 
-      <p className="text-xl font-medium text-gray-100">Linux Basics</p>
-      <hr className="border-gray-700 mt-2 mb-2"></hr>
-            <p className="text-white">
+      <p className="text-xl font-medium text-white">Linux Basics</p>
+            <p className="text-white" style={{color: "#8c8c8c"}}>
               Learn the basics of Linux and how to use it. This lesson will teach you how to use the CTFGuide terminal, and how to use Linux commands.
             </p>
     </a>
@@ -650,14 +666,61 @@ style={{backgroundColor: "#212121"}}
               </div>
 
               <h1 className="text-xl text-white tracking-tight mt-4  mb-2" style={{color: "#595959"}}> FRIENDS</h1>
-              <div className=" text-white rounded mx-auto  ">
+              <div className=" text-white rounded mx-auto  hidden">
                 <p className="text-sm mt-1 tracking-tight px-2 py-2 rounded-lg " style={{color: "#595959", backgroundColor: "rgb(33, 33, 33)"}}>You don't have any friends yet. Add some to see their progress!</p>
               </div>
 
 
+              <div className="" style={{color: "#595959", backgroundColor: "rgb(33, 33, 33)"}}>
+              <div className="text-sm mt-1   rounded-lg px-4 py-3 rounded-lg flex" >
+            
+
+                    <div className="c-avatar" >
+
+                    <img width="40" className="rounded-full mx-auto c-avatar__image" src="https://avatars.githubusercontent.com/u/67762433?v=4"></img>
+                    <span className='c-avatar__status'></span>
 
 
-              <div id="" className="mt-2 mb-2 text-white rounded">
+                    </div>
+
+                    <div className=" pl-3">
+                    <div className="text-white text-lg font-bold">raym0nd <i class="fas fa-tools"></i></div>
+                    <div className=" text-sm" style={{color: "#8c8c8c"}}>Viewing dashboard</div>
+                  </div>            
+           
+              </div>
+
+            
+              </div>
+
+              <div className="" style={{color: "#595959", backgroundColor: "rgb(33, 33, 33)"}}>
+              <div className="text-sm mt-1   rounded-lg px-4 py-3 rounded-lg flex" >
+            
+
+                    <div className="c-avatar" >
+
+                    <img width="40" className="rounded-full mx-auto c-avatar__image" src="https://ui-avatars.com/api/?name=guest12&background=random"></img>
+                    <span className='c-avatar__status'></span>
+
+
+                    </div>
+
+                    <div className=" pl-3">
+                    <div className="text-white text-lg font-bold">guest12</div>
+                    <div style={{color: "#8c8c8c"}} className=" text-sm">Solving terrible web authentication</div>
+                  </div>            
+           
+              </div>
+
+            
+              </div>
+
+              <input style={{backgroundColor: "rgb(33, 33, 33)", border: "solid 1px rgb(33, 33, 33)", color: "#8c8c8c"}} className="focus-outline-none outline-none mt-3 rounded-lg px-2 text-sm"></input>
+              <button style={{color: "#8c8c8c", border: "solid 1px #8c8c8c"}} className="rounded-lg px-2 ml-2 text-sm"><i class="fas fa-user-plus"></i> Send Request</button>
+
+      
+
+              <div id="" className="hidden mt-2 mb-2 text-white rounded">
                 <div className="flex items-center justify-between mx-auto text-centered text-white">
                   <div className="mx-auto text-center">
 
@@ -694,29 +757,30 @@ style={{backgroundColor: "#212121"}}
 
 
 
-          <div className=" bg-gray-800 px-20 py-1 text-xl rounded-t-lg hover:bg-gray-700 hidden" style={{
-            display: 'none',
+          <div className=" hidden px-20 py-1 text-xl rounded-t-lg hover:bg-gray-700 " style={{
             cursor: 'pointer',
             position: 'fixed',
             bottom: 0,
             right: '2%',
+            backgroundColor: "#212121"
           }}>
-            <h1 className="text-white flex "><svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <h1 className="text-white flex text-md "><svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8h2a2 2 0 012 2v6a2 2 0 01-2 2h-2v4l-4-4H9a1.994 1.994 0 01-1.414-.586m0 0L11 14h4a2 2 0 002-2V6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2v4l.586-.586z" />
             </svg> <span className="ml-2">Chat</span> <span className="bg-black text-white ml-4 rounded-lg px-3 text-md">7</span></h1>
 
           </div>
 
-          <div className=" rounded-t-lg hover:bg-gray-700 " style={{
+          <div className=" rounded-lg-t rounded  " style={{
             cursor: 'pointer',
             position: 'fixed',
             bottom: 0,
             right: '2%',
           }}>
-            <div className="bg-gray-800 px-20 py-1 text-xl">
+            <div style={{ backgroundColor: "#212121"}} className="rounded-t-lg px-20 py-1 text-xl">
               <h1 className="text-white flex"><svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8h2a2 2 0 012 2v6a2 2 0 01-2 2h-2v4l-4-4H9a1.994 1.994 0 01-1.414-.586m0 0L11 14h4a2 2 0 002-2V6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2v4l.586-.586z" />
-              </svg> <span className="ml-2">Chat</span> <span className="bg-black text-white ml-4 rounded-lg px-3 text-md">7</span></h1>
+              </svg> <span className="ml-2">Chat</span>  
+              </h1>
             </div>
             <div className="bg-gray-900 hidden ">
               <div>
@@ -883,7 +947,7 @@ style={{backgroundColor: "#212121"}}
 
                   <div className="mt-3  sm:mt-5">
                     <h1 className="text-white text-4xl"><i className="far fa-newspaper"></i> Platform News <span className="italic text-sm">Sunday, Dec 18 2022</span></h1>
-                    <hr className="border-gray-600 mt-4"></hr>
+                    <hr style={{borderColor: "#8c8c8c", color: "#8c8c8c"}} className=" mt-4"></hr>
                     <br></br>
 
                     <h1 className="text-white text-xl">What's changed?</h1>

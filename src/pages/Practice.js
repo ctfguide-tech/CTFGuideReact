@@ -206,7 +206,7 @@ const Practice = () => {
 
   return (
 
-    <div className="min-h-full" style={{ fontFamily: 'Space Grotesk, sans-serif' }}>
+    <div className="min-h-full" style={{ fontFamily: 'Poppins, sans-serif' }}>
    <Transition.Root show={open} as={Fragment} afterLeave={() => setQuery('')}>
       <Dialog as="div" className="fixed inset-0 z-10 overflow-y-auto p-4 sm:p-6 md:p-20" onClose={setOpen}>
         <Transition.Child
@@ -320,6 +320,7 @@ const Practice = () => {
                 <select
                   id="location"
                   name="location"
+                  style={{backgroundColor: "rgb(33, 33, 33)"}}
                   className="mt-1 mb-4  w-full pl-3 pr-20  py-2 text-base border-gray-700 text-white bg-gray-900 focus:outline-none  sm:text-sm rounded-md"
                   defaultValue={window.location.href.split("/")[4]}
                   onChange={(e) => {
@@ -359,9 +360,9 @@ const Practice = () => {
                     <Link
                   //  onClick={() => {this.props.history.push(`./challenges/${item.id}`)}}
                   to={`../challenges/${item.id}`}
-                     style={{cursor: 'pointer'}}
+                     style={{cursor: 'pointer', backgroundColor: "rgb(33, 33, 33)"}}
                       key={item.title}
-                      className={(item.difficulty) +  " " + ((item.verified === false ? 'hidden' : 'visible')) + "  animate__animated animate__fadeIn px-3 py-2  rounded-md bg-gray-900 border border-gray-700  mb-2  text-base font-medium text-white hover:text-white "}
+                      className={(item.difficulty) +  " " + ((item.verified === false ? 'hidden' : 'visible')) + "  animate__animated animate__fadeIn px-3 py-2  rounded-md  mb-2  text-base font-medium text-white hover:text-white "}
                     ><span className="font-semibold">{item.title} </span>
                   <br></br>
                       <span className={"lowercase " +  (item.difficulty === 'hard' ? 'text-red-500' : item.difficulty === 'medium' ? ' text-yellow-500' : 'text-green-500')}> {item.difficulty}</span> <b>∙</b><span className="bg-black rounded-lg px-2  lowercase">{item.category}</span>
