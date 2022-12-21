@@ -55,7 +55,7 @@ export class Navigation extends Component {
         }
 
         return(
-            <Disclosure as="nav" className="z-20 bg-black border-b  border-gray-700 ">
+            <Disclosure as="nav" style={{backgroundColor: "#212121"}} className="z-20   ">
                 {({ open }) => (
                     <>
                         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -98,7 +98,7 @@ export class Navigation extends Component {
                                         <p className="hidden text-yellow-500 hover:text-yellow-400" style={{cursor:'pointer'}}>✨ Upgrade to pro</p>
                                         <button
                                             type="button"
-                                            className="ml-3 bg-black border border-gray-700 px-3 font-semibold rounded-full text-blue-500  focus:outline-none "
+                                            className="ml-3 border border-gray-700 px-3 font-semibold rounded-full text-blue-500  focus:outline-none "
                                         >
                                             <span className="sr-only">View notifications</span>
                                             <span id={"navPoints"}><i className="fas fa-spinner fa-pulse"></i></span>  points

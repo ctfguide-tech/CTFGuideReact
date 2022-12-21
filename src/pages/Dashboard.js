@@ -264,32 +264,27 @@ const Dashboard = () => {
 
   return (
 
-    <div className="min-h-full " style={{ fontFamily: 'Poppins, sans-serif' }}>
+    <div className="min-h-full " style={{ fontFamily: 'Poppins, sans-serif', backgroundColor: "#161716" }}>
 
       <Navigation />
-      =
 
+      <div id="message" className=" mt-0 bg-yellow-900">
+        <div className="max-w-7xl mx-auto py-3 px-3 sm:px-6 lg:px-8">
+          <div className="flex">
+   
 
-      <div id="message" className="hidden mt-0 bg-blue-900">
-        <div className="max-w-7xl mx-auto py-5 px-3 sm:px-6 lg:px-8">
-          <div className="">
-            <h1 className="text-white text-xl"> CTFGuide Internal</h1>
-            <ul className="text-white">
-              <li><span className="font-semibold">Completed Onboarding</span>: <span id="completedOnboarding">??</span></li>
-              <li><span className="font-semibold">Username</span>: <span id="completedOnboarding">??</span></li>
-              <li><span className="font-semibold">Email Verified</span>: <span id="completedOnboarding">??</span></li>
-              <li><span className="font-semibold">Membership Type</span>: <span id="completedOnboarding">??</span></li>
-              <li><span className="font-semibold">Membership Expiry</span>: <span id="completedOnboarding">??</span></li>
-              <li><span className="font-semibold">Email Verified</span>: <span id="completedOnboarding">??</span></li>
-              <li><span className="font-semibold">Email Verified</span>: <span id="completedOnboarding">??</span></li>
+            <div>
+              <p className="text-white font-medium">
+                <span className="text-white">We are currently in beta. </span>
+                <a href="https://discord.gg/8Z7Y4Z7" className="text-white font-medium underline">
+                  Join our Discord
+                </a>
+                <span className="text-white"> to get updates and help us improve!</span>
+              </p>
 
+            </div>
 
-            </ul>
-
-
-            <p className="font-medium text-white">
-
-            </p>
+            <div className="ml-auto pl-3">
             <button
               type="button"
               className="flex  rounded-md hover:bg-blue-900 focus:outline-none focus:ring-2 focus:ring-white"
@@ -303,6 +298,7 @@ const Dashboard = () => {
 
               <p className="text-white ">Hide</p>
             </button>
+            </div>
           </div>
 
         </div>
@@ -394,7 +390,7 @@ const Dashboard = () => {
             </div>
 
           </div>
-          <div className="bg-gray-900 border  border-gray-700 px-6 py-10 rounded-lg flex align-middle">
+          <div style={{ backgroundColor: "#212121"}}className=" px-12 py-10 rounded-lg flex align-middle">
             <input id="file-input" type="file" name="name" className={"hidden"} onChange={() => { window.alert("recieved but not saved. this is intended behavior.") }} accept={"image/png"} />
 
             <div onMouseOver={() => { /*document.getElementById('editpfp').classList.remove('hidden')*/ }} onMouseLeave={() => {
@@ -403,7 +399,7 @@ const Dashboard = () => {
               <img className="rounded-full w-full " src={user.imageUrl} alt="" />
               <div id={"editpfp"} onClick={() => { document.getElementById('file-input').click(); }} style={{ bottom: "0px", cursor: 'pointer' }} className={"hidden rounded-b-full text-white absolute  px-4 opacity-80  bg-black"}>
                 <p>Edit</p></div></div>
-            <h1 className="text-white text-4xl ml-4 mt-3">Hello {userData.username} <span className=" hidden align-middle align-center bg-gradient-to-r from-orange-500 to-orange-700  rounded-lg px-2 py-1 text-xl" ><i className="fas fa-check-circle text-white"></i> CTFGuide Employee</span>&nbsp;&nbsp;<span className="hidden align-middle align-center bg-gradient-to-r from-blue-500 to-blue-700  rounded-lg px-2 py-1 text-xl" ><i className="fas fa-bolt text-white"></i> CTFGuide Pro</span></h1>
+            <h1 className="text-white text-4xl ml-4 ">Hello {userData.username} <br></br><span className="  align-middle align-center border  border-slate-400 text-slate-200 rounded-lg px-2 py-1 text-sm" ><i className="fas fa-check-circle text-slate-200"></i> CTFGuide Employee</span>&nbsp;<span className=" align-middle align-center border border-slate-400 text-slate-200  rounded-lg px-2 py-1 text-sm" ><i className="fas fa-bolt text-slate-200"></i> CTFGuide Pro</span></h1>
 
           </div>
 
@@ -413,9 +409,9 @@ const Dashboard = () => {
 
 
             <div className="lg:col-span-2 sm:col-span-1">
-              <h1 className="text-4xl text-white mb-4 mt-4 "> Continue working on</h1>
+              <h1 className="text-xl text-white tracking-tight mt-4  mb-2" style={{color: "#595959"}}> CONTINUE WORKING ON</h1>
 
-              <div id="fetchingHistory" className="mt-2 bg-gray-900 border  border-gray-700  px-4 py-4 text-white rounded">
+              <div id="fetchingHistory" className="mt-1    px-4 py-4 text-white rounded">
                 <div className="flex items-center justify-between">
                   <div>
                     <h1 className="text-xl">Fetching History...</h1>
@@ -425,7 +421,7 @@ const Dashboard = () => {
                 </div>
               </div>
 
-              <div id="noHistory" className="hidden mt-2 bg-gray-900 border  border-gray-700   px-4 py-6 text-white rounded ">
+              <div id="noHistory" className="hidden mt-2   px-4 py-6 text-white rounded ">
                 <div className="flex items-center justify-between">
                   <div>
                     <h1 className="text-xl">☹️ Nothing here yet. Head on to the <span>Practice</span> page to get started.</h1>
@@ -439,7 +435,7 @@ const Dashboard = () => {
 
 
 
-              <div id="history" className="hidden mt-2 bg-gray-900 border  border-gray-700   px-4 py-6 text-white rounded">
+              <div id="history" style={{backgroundColor: "#212121"}} className="hidden    px-9 py-6 text-white rounded">
                 <div className="flex items-center justify-between">
                   <div>
                     <h1 className="text-xl"> <span id="history_title"></span></h1>
@@ -451,6 +447,59 @@ const Dashboard = () => {
                 </div>
 
               </div>
+
+              <h1 className="text-xl text-white tracking-tight mt-10  mb-2" style={{color: "#595959"}}> DISCOVER</h1>
+              <div className="mt-2 grid grid-cols-1 gap-4 sm:grid-cols-2 ">
+
+<div
+  onClick={() => { window.location.href = './learn/chapter1/lesson1' }}
+  className="relative rounded-lg   px-6 py-5 shadow-sm flex space-x-3 hover:border-gray-600 "
+  style={{backgroundColor: "#212121"}}
+>
+  <div className="flex-shrink-0">
+
+  </div>
+  <div className="flex-1 min-w-0">
+
+    <a href="./learn/chapter1/lesson1" className="focus:outline-none">
+      <span className="absolute inset-0" aria-hidden="true" />
+      <p className="text-xl font-medium text-gray-100">Cybersecurity Basics <span id="c1done" className="hidden text-sm bg-green-800 rounded-lg px-2">Completed</span></p>
+      <hr className="border-gray-700 mt-2 mb-3"></hr>
+            <p className="text-white"> 
+              Build your cybersecurity fundementals in this lesson. Learn about the basics of cybersecurity, and how to protect yourself online.
+            </p>
+    </a>
+  </div>
+</div>
+
+<div
+style={{backgroundColor: "#212121"}}
+  className="relative rounded-lg   px-6 py-5 shadow-sm flex  space-x-3 hover:border-gray-600 focus-within:ring-2 focus-within:ring-offset-2 focus-within:ring-indigo-500"
+>
+  <div className="flex-shrink-0">
+
+  </div>
+  <div className="flex-1 min-w-0">
+
+    <a href="#" className="focus:outline-none">
+
+      <p className="text-xl font-medium text-gray-100">Linux Basics</p>
+      <hr className="border-gray-700 mt-2 mb-2"></hr>
+            <p className="text-white">
+              Learn the basics of Linux and how to use it. This lesson will teach you how to use the CTFGuide terminal, and how to use Linux commands.
+            </p>
+    </a>
+  </div>
+
+</div>
+
+
+
+
+</div>
+
+
+
 
               <h1 className="text-4xl text-white mt-6 mb-4 align-middle hidden"> Learn  <span className="align-middle hidden text-xl font-semibold italic text-yellow-500">N E W !</span></h1>
 
@@ -507,9 +556,9 @@ const Dashboard = () => {
 
               </div>
 
-              <h1 className="text-4xl text-white mt-6 mb-4 align-middle"> Learning Path <span className="align-middle text-xl font-semibold italic text-yellow-500">Coming soon!</span></h1>
+              <h1 className="text-4xl text-white mt-6 mb-4 align-middle hidden"> Learning Path <span className="align-middle text-xl font-semibold italic text-yellow-500">Coming soon!</span></h1>
 
-              <div className="blur-sm" disabled>
+              <div className="blur-sm hidden" disabled>
                 <div className="mt-2 bg-gray-900 border  border-gray-700  px-4 py-4 text-white rounded ">
                   <div className="flex items-center justify-between">
                     <h1 className="text-xl w-full"><i className="fas fa-search"></i> Exploratory Cybersecurity</h1>
@@ -586,11 +635,25 @@ const Dashboard = () => {
 
 
             <div className="">
-              <h1 className="text-4xl text-white mb-4 mt-4"> Progress</h1>
-              <div className="mt-4 bg-gray-900 border  border-gray-700  px-4 py-4 text-white rounded ">
-                <h1 className="text-xl font-semibold text-yellow-500 inline-flex text-center"> <FireIcon className="h-6 w-6 text-center mr-1" aria-hidden="true" />  {userData.streak} day streak</h1>
-                <p>Solve a challenge everyday to mantain your streak!</p>
+            <h1 className="text-xl text-white tracking-tight mt-4  mb-2" style={{color: "#595959"}}> YOUR PROGRESS</h1>
+
+              <div className=" text-white rounded mx-auto  ">
+           
+              <FireIcon className="hidden h-12 w-12 mx-auto  text-center  text-yellow-500" aria-hidden="true" /> 
+                <h1 className="text-3xl font-bold text-transparent bg-clip-text bg-gradient-to-br from-orange-400 to-yellow-400 inline-flex text-center">  {userData.streak} day streak</h1>
+                <p className="text-sm mt-1 tracking-tight " style={{color: "#595959"}}>You haven't solved a challenge yet today. Make sure you solve one to maintain your streak!</p>
+                
+                <h1 className="mt-4 text-3xl font-bold text-transparent bg-clip-text bg-gradient-to-br from-blue-400 to-green-400 inline-flex text-center">  #45th </h1>
+                <p className="text-sm mt-1 tracking-tight " style={{color: "#595959"}}>This is your placement on the global leaderboards.</p>
+
+
               </div>
+
+              <h1 className="text-xl text-white tracking-tight mt-4  mb-2" style={{color: "#595959"}}> FRIENDS</h1>
+              <div className=" text-white rounded mx-auto  ">
+                <p className="text-sm mt-1 tracking-tight px-2 py-2 rounded-lg " style={{color: "#595959", backgroundColor: "rgb(33, 33, 33)"}}>You don't have any friends yet. Add some to see their progress!</p>
+              </div>
+
 
 
 
@@ -608,14 +671,14 @@ const Dashboard = () => {
               </div>
 
 
-              <div className="mx-auto text-center  w-full flex">
+              <div className="mx-auto text-center hidden  w-full flex">
                 <a href="https://discord.gg/q3hgRBvgkX" className=" w-full px-10 mx-auto  text-xl px-2 py-3  text-white rounded-lg border border-gray-700 bg-gray-900"><i className="fab fa-discord mr-1"></i> Join our Discord</a>
 
               </div>
               <br></br>
 
 
-              <a href="https://www.stickermule.com/unlock?ref_id=1511893701&utm_content=468x60&utm_medium=embed&utm_source=invite" target="_blank"><img alt="Custom Stickers, Die Cut Stickers, Bumper Stickers - Sticker Mule" border="0" height="60" src="https://assets.stickermule.com/image/upload/v1531752798/banners/stickermule-invite-friends-medium.jpg" width="468" /></a>
+              <a className="hidden" href="https://www.stickermule.com/unlock?ref_id=1511893701&utm_content=468x60&utm_medium=embed&utm_source=invite" target="_blank"><img alt="Custom Stickers, Die Cut Stickers, Bumper Stickers - Sticker Mule" border="0" height="60" src="https://assets.stickermule.com/image/upload/v1531752798/banners/stickermule-invite-friends-medium.jpg" width="468" /></a>
               <br></br>
 
 
@@ -815,7 +878,7 @@ const Dashboard = () => {
               leaveFrom="opacity-100 translate-y-0 sm:scale-100"
               leaveTo="opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95"
             >
-              <div style={{ fontFamily: 'Space Grotesk, sans-serif' }} className="max-w-6xl relative inline-block align-bottom w-5/6 pb-10 pt-10 bg-gray-900 border border-gray-700 rounded-lg px-20 pt-5 pb-4 text-left overflow-hidden shadow-xl transform transition-all sm:my-8 sm:align-middle ">
+              <div style={{ fontFamily: 'Poppins, sans-serif' , backgroundColor: "#161716"}} className="max-w-6xl relative inline-block align-bottom w-5/6 pb-10 pt-10 bg-gray-900 border border-gray-700 rounded-lg px-20 pt-5 pb-4 text-left overflow-hidden shadow-xl transform transition-all sm:my-8 sm:align-middle ">
                 <div>
 
                   <div className="mt-3  sm:mt-5">
@@ -840,27 +903,27 @@ const Dashboard = () => {
                         <div className="mt-4 mx-auto text-center ">
                           <img width="60" className="rounded-full mx-auto" src="https://avatars.githubusercontent.com/u/67762433?v=4"></img>
                           <h1 className="text-white">Raymond Yan</h1>
-                          <h1 className="text-white">Co-founder &<br></br> Head of Engineering</h1>
+                          <h1 className="text-white text-sm">Co-founder &<br></br> Head of Engineering</h1>
 
                         </div>
                         <div className="mt-4 mx-auto text-center">
                           <img width="60" className="rounded-full mx-auto" src="https://media.licdn.com/dms/image/C5603AQES6Hp4D9MXjg/profile-displayphoto-shrink_200_200/0/1588608773250?e=1677110400&v=beta&t=9W9CEMEIcDG0iSkBj6RpvH8a9gxV-nhfv8BzBsPmkNg"></img>
                           <h1 className="text-white">Joshua Herron</h1>
-                          <h1 className="text-white">Sandbox Engineer</h1>
+                          <h1 className="text-white text-sm">Sandbox Engineer</h1>
 
                         </div>
 
                         <div className="mt-4 mx-auto text-center ">
                           <img width="60" className="rounded-full mx-auto" src="https://media.licdn.com/dms/image/D4E03AQEY9G-O77b3ng/profile-displayphoto-shrink_200_200/0/1668423394884?e=1677110400&v=beta&t=gKZkxkCZytaKdwsIGwBUWudOgnH9gFd_D3Upqt8T15Y"></img>
                           <h1 className="text-white">Srihari Raman</h1>
-                          <h1 className="text-white">
+                          <h1 className="text-white text-sm">
                             Director of Analytics & <br></br> Customer Acquisition</h1>
 
                         </div>
                         <div className="mt-4 mx-auto text-center">
                           <img width="60" className="rounded-full mx-auto" src="https://cdn.discordapp.com/attachments/1035971879283990648/1045457965001478195/image.png"></img>
                           <h1 className="text-white">Abhinav Byreddy</h1>
-                          <h1 className="text-white">System Architect</h1>
+                          <h1 className="text-white text-sm">System Architect</h1>
 
                         </div>
                       </div>
