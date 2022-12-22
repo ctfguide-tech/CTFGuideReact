@@ -88,7 +88,7 @@ const Practice = () => {
             let data = JSON.parse(this.responseText);
 
             if (data.role == "moderator" || data.role == "developer") {
-              document.getElementById("moderator").classList.remove("hidden")
+            //  document.getElementById("moderator").classList.remove("hidden")
             }
 
             if (data.solvedChallenges) {
@@ -248,7 +248,7 @@ const Practice = () => {
 
   return (
 
-    <div className="min-h-full example" style={{ fontFamily: 'Space Grotesk, sans-serif' }}>
+    <div className="min-h-full example" style={{ fontFamily: 'Poppins, sans-serif' }}>
       <Navigation/>
 
 
@@ -260,7 +260,7 @@ const Practice = () => {
 
 <div id="moderator" className="hidden mb-4 bg-gray-900 px-4 py-4 rounded-lg border border-gray-600 w-1/2">
 
-  <h1 className="text-white text-xl"><i class="fas fa-user-shield"></i> Moderation Tools</h1>
+  <h1 className="text-white text-xl"><i className="fas fa-user-shield"></i> Moderation Tools</h1>
   <p className="text-white mb-2">
     Challenge Owner: <span>Unknown (Probably Legacy)</span><br></br>
     Challenge Status: <span>Not verified but Legacy</span>
@@ -286,18 +286,36 @@ const Practice = () => {
 
 </div>
 
-            <div className="px-5 py-10 rounded-lg  bg-gray-900 border border-gray-700">
+            <div className="px-5  rounded-lg  ">
               <div>
 
               <div className="flex items-center justify-between">
-              <h1 id="challengeName" className="text-4xl text-white mb-4 font-semibold"></h1> 
-              <div className="ml-2 flex-shrink-0 flex mb-5">
-              <p id="solvedChallenge" className="hidden text-white bg-green-700 w-60 px-2 py-1 rounded-lg border-green-800 border"><i className="fas fa-check-circle text-white"></i> You solved this challenge</p>
-              <p id="editButton" onClick={editChallenge} style={{cursor: 'pointer'}} className="hidden ml-3 border border-gray-700 bg-black hover:bg-gray-900 rounded-lg text-white px-2 py-1 w-40  border mx-auto text-center"><i className="fas fa-pencil-alt text-white"></i> Edit Challenge</p>
 
-              <p style={{cursor: 'pointer'}}className="hidden ml-4 text-white font-semibold border-blue-600 w-50 py-1 px-3 rounded-lg hover:bg-gray-900 text-blue-500 border"><i class="fas fa-trophy text-blue-500"></i> Leaderboards</p>
+                <div className="flex w-full my-auto">
+              <h1 id="challengeName" className="mt-5 w-1/2 text-4xl text-white mb-4 font-semibold"></h1> 
 
-                    </div>
+              <div style={{backgroundColor: "#212121"}} className="ml-auto  w-1/6 my-auto  rounded-lg px-2 py-1">
+                      <div className="text-sm mt-1   rounded-lg px-1 py-1 rounded-lg flex" >
+            
+
+            <div className="c-avatar" >
+
+            <img width="70" className="rounded-full mx-auto c-avatar__image" src="https://avatars.githubusercontent.com/u/67762433?v=4"></img>
+
+
+            </div>
+
+            <div className=" pl-3">
+            <div className="text-white text-lg font-bold">raym0nd <i className="fas fa-tools"></i></div>
+            <div className=" text-sm" style={{color: "#8c8c8c"}}> Author</div>
+    
+          </div>            
+   
+      </div>
+      </div>
+                      </div>
+
+
               </div>
       
               </div>
@@ -317,14 +335,64 @@ const Practice = () => {
               </div>
               
 
-                  <p id="challengeDetails" className="text-white text-xl">
+                  <p id="challengeDetails" style={{color: "#8c8c8c"}} className="w-5/6 text-white text-lg">
                       
                     </p>
 
-                      <input id="enteredFlag" placeholder="Flag Here" className="text-white  focus-outline-none  outline-none px-4 py-1 rounded-lg mr-2 bg-black border border-gray-700"></input>
-                      <button id="enterFlagBTN" onClick={submitFlag} className="mt-4 border bg-black border-green-500  rounded-lg  hover:bg-gray-900 text-green-500 px-4 py-1">Submit Flag</button>
-                      <button onClick={() => setOpen(true)} className="mt-4 border bg-black  rounded-lg  border-yellow-300 text-yellow-300 hover:bg-gray-900 text-white px-4 py-1 ml-2">Stuck?</button>
-                      
+<div className="flex ">
+               
+
+
+                      <div className="mt-4 rounded-lg">
+                      <div className="text-sm    rounded-lg   rounded-lg flex" >
+            
+
+          
+
+            <div style={{color: "#8c8c8c"}} className="mb-4">
+
+            <input id="enteredFlag"  style={{backgroundColor: "#212121"}} placeholder="Flag Here"  className="mx-auto text-white  focus-outline-none  outline-none px-4 py-1 rounded-lg mr-2 bg-black border border-gray-700"></input>
+                      <button id="enterFlagBTN" onClick={submitFlag} className="  bg-green-700   rounded-lg  hover:bg-green-900 text-green-300 px-4 py-1">Submit Flag</button>
+                  
+
+                      <button onClick={() => setOpen(true)} className="mt-4  bg-black  rounded-lg  bg-yellow-700 text-yellow-300 hover:bg-yellow-900 text-white px-4 py-1 ml-2">Stuck?</button>
+
+
+
+          </div>            
+   
+      </div></div>
+                      </div>
+
+
+                      <div className="mt-6 grid lg:grid-cols-3 gap-10 sm:grid-cols-1">
+
+                            <div style={{backgroundColor: "#212121"}} className="w-full py-3 card mx-auto text-center">
+                              <div className="card-body">   
+                                <h1 className="text-transparent bg-clip-text bg-gradient-to-br from-orange-400 to-yellow-400  text-2xl font-semibold">#1</h1>
+                                <p className="text-white text-lg">Laphatize</p>
+
+                            </div>
+                            </div>
+                            
+                            <div style={{backgroundColor: "#212121"}} className="w-full py-3 card mx-auto text-center">
+                              <div className="card-body">   
+                                <h1 className="text-white text-2xl font-semibold text-transparent bg-clip-text bg-gradient-to-br from-blue-400 to-indigo-500 " >#2</h1>
+                                <p className="text-white text-lg">Raymond</p>
+
+                            </div>
+                            </div>
+
+                            <div style={{backgroundColor: "#212121"}} className="w-full py-3 card mx-auto text-center">
+                              <div className="card-body">   
+                                <h1 className="text-white text-2xl font-semibold text-transparent bg-clip-text bg-gradient-to-br from-blue-400 to-green-500">#3</h1>
+                                <p className="text-white text-lg">Joshua</p>
+
+                            </div>
+                            </div>
+                            
+                      </div>               
+                  
                     <div id="terminal" className=" mt-6 ">
                   <p className="text-gray-400 mb-2 hint"><span className="text-white ">Terminal (Beta)</span> Login as <span className="text-yellow-400">{userData.susername}</span> using the password <span className="text-yellow-400">{userData.spassword}</span><a style={{ cursor: 'pointer'}} className="hidden hover:bg-black text-gray-300">Need help?</a></p>
                     <iframe className="w-full" height="500" src="https://terminal.ctfguide.com/wetty/ssh/root?pass=" ></iframe>
@@ -333,9 +401,9 @@ const Practice = () => {
 
             </div>
 
-            <div className="mt-5 bg-gray-900 border border-gray-700 rounded-lg px-5 py-10">
+            <div className="mt-5 rounded-lg px-5 ">
                     <h1 className="text-white text-3xl font-semibold">Comments</h1>
-                    <textarea id="comment" className="mt-4 text-white border border-gray-700 focus-outline-none outline-none block w-full bg-black rounded-lg"></textarea>
+                    <textarea id="comment"  style={{backgroundColor: "#212121"}} className="border-none mt-4 text-white focus-outline-none outline-none block w-full bg-black rounded-lg"></textarea>
                   
                     <button onClick={ () => {
                         var xhttp = new XMLHttpRequest();
@@ -346,7 +414,7 @@ const Practice = () => {
                         }
                         xhttp.open("GET", `${process.env.REACT_APP_API_URL}/challenges/comments/post?comment=${document.getElementById("comment").value}&uid=${localStorage.getItem("token")}&challengeID=${window.location.href.split("/")[4]}`);
                         xhttp.send();
-                   }} id="commentButton" className="mt-4 border border-gray-700 bg-black hover:bg-gray-900 rounded-lg text-white px-4 py-1">Post Comment</button>
+                   }} id="commentButton" style={{backgroundColor: "#212121"}} className="mt-4 border border-gray-700 bg-black hover:bg-gray-900 rounded-lg text-white px-4 py-1">Post Comment</button>
                     <h1 id="commentError" className="hidden text-red-400 text-xl px-2 py-1 mt-4">Error posting comment! This could be because it was less than 5 characters or greater than 250 characters. </h1>
 
                 
@@ -355,7 +423,7 @@ const Practice = () => {
 
 challenge.data.map((item) => (
 
-  <div className="mt-4 bg-black rounded-lg border border-gray-700">
+  <div className="mt-4 bg-black rounded-lg  " style={{backgroundColor: "#212121"}} >
   <h1 className="text-white px-5 pt-4 text-xl">@{ item.username }</h1>
   <p className="px-5 text-white pb-4 space-y-10"><span className="mb-5">{ item.comment }</span><br className="mt-10"></br><a onClick={() => {
     var xhttp = new XMLHttpRequest();
@@ -381,153 +449,7 @@ challenge.data.map((item) => (
               </div>
 
 
-              
-          <Transition.Root show={open} as={Fragment} style={{ fontFamily: 'Space Grotesk, sans-serif', overflow:'hidden'}} className="test">
-      <Dialog as="div" className="fixed inset-0 overflow-hidden" onClose={setOpen}>
-        <div className="absolute inset-0 overflow-hidden">
-          <Transition.Child
-            as={Fragment}
-            enter="ease-in-out duration-500"
-            enterFrom="opacity-0"
-            enterTo="opacity-100"
-            leave="ease-in-out duration-500"
-            leaveFrom="opacity-100"
-            leaveTo="opacity-0"
-          >
-            <Dialog.Overlay className="absolute inset-0 bg-gray-900 bg-opacity-75 transition-opacity" />
-          </Transition.Child>
-          <div className="fixed inset-y-0 right-0 pl-10 max-w-full flex">
-            <Transition.Child
-              as={Fragment}
-              enter="transform transition ease-in-out duration-500 sm:duration-700"
-              enterFrom="translate-x-full"
-              enterTo="translate-x-0"
-              leave="transform transition ease-in-out duration-500 sm:duration-700"
-              leaveFrom="translate-x-0"
-              leaveTo="translate-x-full"
-            >
-              <div className="relative w-screen max-w-md">
-                <Transition.Child
-                  as={Fragment}
-                  enter="ease-in-out duration-500"
-                  enterFrom="opacity-0"
-                  enterTo="opacity-100"
-                  leave="ease-in-out duration-500"
-                  leaveFrom="opacity-100"
-                  leaveTo="opacity-0"
-                >
-                  <div className="absolute top-0 left-0 -ml-8 pt-4 pr-2 flex sm:-ml-10 sm:pr-4">
-                    <button
-                      type="button"
-                      className="rounded-md text-gray-300 hover:text-white focus:outline-none"
-                      onClick={() => setOpen(false)}
-                    >
-                      <span className="sr-only">Close panel</span>
-                      <XIcon className="h-6 w-6" aria-hidden="true" />
-                    </button>
-                  </div>
-                </Transition.Child>
-                <div className="test bg-gradient-to-br from-gray-900 to-black border border-gray-800 h-full flex flex-col py-6 bg-white shadow-xl overflow-y-scroll">
-                  <div className="px-4 sm:px-6">
-                    <Dialog.Title className="text-lg font-medium text-white text-2xl">Challenge Hint</Dialog.Title>
-                    <div class=" bg-gray-800 rounded-lg px-4 py-2 mt-4">
-
-
-                    <div class="flex items-center justify-between">
-                      <div>
-                        <p class="text-white  uppercase">Hint 1</p>
-                        
-                        </div>
-                        <div class="ml-2 flex-shrink-0 flex w-1/10">
-                          <button class="border text-white border-green-500 px-4 py-1 rounded-lg hover:bg-gray-900">Unlock Hint</button>
-                          </div>
-
-                          </div>
-<hr className="mt-4"></hr>
-                    <div className="text-white mt-4">
-                      
-                          <h1>Given an id, find the url. What could that possibly mean?</h1>
-                          </div>
-                  
-                  
-                    </div>
-
-                    <div class=" bg-gray-800 rounded-lg px-4 py-2 mt-4">
-
-
-<div class="flex items-center justify-between">
-  <div>
-    <p class="text-white  uppercase">Hint 2</p>
-    
-    </div>
-    <div class="ml-2 flex-shrink-0 flex w-1/10">
-      <button class="border text-white border-green-500 px-4 py-1 rounded-lg hover:bg-gray-900">Unlock Hint</button>
-      </div>
-      </div>
-
-
-
-
-</div>
-
-<div class=" bg-gray-800 rounded-lg px-4 py-2 mt-4">
-
-
-<div class="flex items-center justify-between">
-  <div>
-    <p class="text-white  uppercase">Answer</p>
-    
-    </div>
-    <div class="ml-2 flex-shrink-0 flex w-1/10">
-      <button class="border text-white border-orange-500 px-4 py-1 rounded-lg hover:bg-gray-900">Upgrade to PRO</button>
-      </div>
-      </div>
-
-
-
-
-</div>
-                  </div>
-                  <div className="mt-6 relative flex-1 px-4 sm:px-6">
-                    {/* Replace with your content */}
-                    <div id="nohint" className="hidden text-white">
-
-                    <h1 className=" text-xl mb-2">There are no hints for this challenge.</h1>
-                 
-                      Feel free to join our <a className="text-yellow-400 hover:text-white" href="https://discord.gg/q3hgRBvgkX">Discord server</a> for help.
-                    
-                   
-                 </div>
-                    {/* /End replace */}
-               
-               
-                    <div className="text-white hidden">
-                    <h1 className=" text-xl mb-2">How do hints work?</h1>
-                    <p>Your first hint will only allow you to earn 1/2 of the points avaliable for this challenge.</p>
-                    <br/>
-                    <p>Your second hint will only allow you to earn 1/3 of the points avaliable for this challenge.</p>
-                    <br/>
-                    <p>Viewing the answer will simply mark the challenge solved for you and not award you any points. This feature is only for pro members.</p>
-
-                 </div>
-
-                 
-          
-
-
-
-                  </div>
-
-
-               
-                </div>
-              </div>
-            </Transition.Child>
-          </div>
-        </div>
-      </Dialog>
-    </Transition.Root>
-
+ 
           </div>
 
 

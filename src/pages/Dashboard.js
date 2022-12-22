@@ -185,7 +185,6 @@ const Dashboard = () => {
               }
 
               if (localStorage.getItem("tutorial_active")) {
-                console.log("tutoraila ctivito ")
                 document.getElementById("tutorial_banner").classList.add("hidden")
               }
             }
@@ -417,7 +416,10 @@ const Dashboard = () => {
        
 
             <div className="ml-auto pl-4 align-middle my-auto">
-              <button className="rounded-lg border border-slate-600 px-3 py-2 text-white" style={{borderColor: "#8c8c8c", color: "#8c8c8c" }}><i class="fas fa-terminal"></i>&nbsp;Launch Terminal</button>
+              <button className="rounded-lg border border-slate-600 px-3 py-1 text-white" style={{borderColor: "#8c8c8c", color: "#8c8c8c" }}><i class="fas fa-terminal"></i>&nbsp;Launch Terminal</button>
+         
+              <button className="ml-2 rounded-lg border border-slate-600 px-3 py-1 text-white" style={{borderColor: "#8c8c8c", color: "#8c8c8c" }}><i class="fas fa-cog"></i>&nbsp;Account Settings</button>
+
             </div>
           </div>
 
@@ -516,7 +518,6 @@ style={{backgroundColor: "#212121"}}
 
 
 
-
               <h1 className="text-4xl text-white mt-6 mb-4 align-middle hidden"> Learn  <span className="align-middle hidden text-xl font-semibold italic text-yellow-500">N E W !</span></h1>
 
 
@@ -572,69 +573,10 @@ style={{backgroundColor: "#212121"}}
 
               </div>
 
-              <h1 className="text-4xl text-white mt-6 mb-4 align-middle hidden"> Learning Path <span className="align-middle text-xl font-semibold italic text-yellow-500">Coming soon!</span></h1>
-
-              <div className="blur-sm hidden" disabled>
-                <div className="mt-2 bg-gray-900 border  border-gray-700  px-4 py-4 text-white rounded ">
-                  <div className="flex items-center justify-between">
-                    <h1 className="text-xl w-full"><i className="fas fa-search"></i> Exploratory Cybersecurity</h1>
-                    <div className="ml-2 flex-shrink-0 flex w-1/2">
-                      <div className="w-full bg-gray-900 border border-gray-700 rounded-full">
-                        <div className="bg-gradient-to-br from-green-600 to-green-900  text-xs font-medium text-blue-100 text-center p-0.5 leading-none rounded-l-full" style={{ width: '25%' }}> 25%</div>
-
-                      </div>
-
-                    </div>
-
-
-                  </div>
-
-                  <div className="flex items-center justify-between">
-
-
-
-                    <div>
-
-                      <p className="mt-4 uppercase">Up next</p>
-                      <i className="far fa-play-circle"></i> Video Lesson - Cyberwhatnow?
-                    </div>
-                    <div className="ml-2 flex-shrink-0 flex w-1/10">
-                      <button className="border border-green-600 px-4 py-1 rounded-lg hover:bg-gray-800">Start Lesson</button>
-                    </div>
-                  </div>
-                </div>
-
-
-                <div className=" mt-4 bg-gray-900 border  border-gray-700   px-4 py-4 text-white rounded ">
-
-                  <div className="flex items-center justify-between">
-                    <h1 className="text-xl"><i className="fab fa-linux"></i> Linux 101</h1>
-                    <div className="ml-2 flex-shrink-0 flex w-1/2">
-                      <div className="w-full bg-gray-900 border border-gray-700 rounded-full">
-                        <div className="bg-gradient-to-br from-green-600 to-green-900 text-xs font-medium text-blue-100 text-center p-0.5 leading-none rounded-l-full" style={{ width: '25%' }}> 25%</div>
-                      </div>
-
-                    </div>
-
-
-                  </div>
-                  <div className="flex items-center justify-between">
-                    <div>
-
-                      <p className="mt-4 uppercase">Up next</p>
-                      <i className="far fa-play-circle"></i> Video Lesson - Accessing other servers
-                    </div>
-                    <div className="ml-2 flex-shrink-0 flex w-1/10">
-                      <button className="border border-green-600 px-4 py-1 rounded-lg hover:bg-gray-800">Start Lesson</button>
-                    </div>
-                  </div>
-                </div>
-
-
-              </div>
+       
               <br></br>
               <Link to="../learn" className="text-white mt-10 px-3 rounded-lg  hidden  py-1 bg-blue-900 rounded-lg ">Looking for more lessons?</Link>
-              <br></br><br></br>
+         
               <div className="">
 
 
@@ -646,8 +588,31 @@ style={{backgroundColor: "#212121"}}
 
 
 
+
+
+
          
+
+<h1 className="text-xl text-white tracking-tight mt-2  mb-2 " style={{color: "#595959"}}> PLATFORM  FEED</h1>
+
+<div
+style={{backgroundColor: "#212121"}}
+  className=" rounded-lg   px-6 py-5 shadow-sm    hover:border-gray-600 focus-within:ring-2 focus-within:ring-offset-2 focus-within:ring-indigo-500"
+>
+
+            <h1 className="text-white text-xl">CTFGuide Winter Competition</h1>
+
+            <p className="text-white mt-2" style={{color: "#8c8c8c"}}>
+              The CTFGuide Winter Competition is now live! Compete against other CTFGuide users to win prizes and earn points. The competition ends on January 1st, 2023. Join the competition by clicking this link: https://comp.ctfguide.com/2.
+            </p>
+
+
+              <p className="mt-4 text-sm italic" style={{color: "#8c8c8c"}}>Posted by CTFGuide Team - 12/21/22</p>
+
+</div>
             </div>
+
+            
 
 
             <div className="">
