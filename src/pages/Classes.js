@@ -12,16 +12,16 @@ import 'animate.css';
 import { Navigation } from '../components/navigation';
 
 const Classes = () => {
-const firebaseConfig = {
-    apiKey: process.env.REACT_APP_apiKey,
-    authDomain: process.env.REACT_APP_authDomain,
-    databaseURL: process.env.REACT_APP_databaseURL,
-    projectId: process.env.REACT_APP_projectId,
-    storageBucket: process.env.REACT_APP_storageBucket,
-    messagingSenderId: process.env.REACT_APP_messagingSenderId,
-    appId: process.env.REACT_APP_appId,
-    measurementId: process.env.REACT_APP_measurementId
-  };
+    const firebaseConfig = {
+        apiKey: process.env.REACT_APP_apiKey,
+        authDomain: process.env.REACT_APP_authDomain,
+        databaseURL: process.env.REACT_APP_databaseURL,
+        projectId: process.env.REACT_APP_projectId,
+        storageBucket: process.env.REACT_APP_storageBucket,
+        messagingSenderId: process.env.REACT_APP_messagingSenderId,
+        appId: process.env.REACT_APP_appId,
+        measurementId: process.env.REACT_APP_measurementId
+    };
 
 
 
@@ -40,8 +40,8 @@ const firebaseConfig = {
 
     const [classes, setClasses] = useState({
         data: []
-      })
-    
+    })
+
     const [open, setOpen] = useState(true)
     const [show, setShow] = useState(true)
     const cancelButtonRef = useRef(null)
@@ -72,7 +72,7 @@ const firebaseConfig = {
                     console.log(this.responseText)
                     window.reload();
                     //window.location.href = "./" + classCode;
-                } 
+                }
 
                 if (this.readyState === 4 && this.status != 200) {
                     document.getElementById("error").classList.remove("hidden")
@@ -95,12 +95,12 @@ const firebaseConfig = {
     useEffect(() => {
 
         var xhttp = new XMLHttpRequest();
-        xhttp.onreadystatechange = function() {
+        xhttp.onreadystatechange = function () {
             if (this.readyState === 4 & this.status === 200) {
                 console.log(this.responseText)
                 setLearn({
-                        data: JSON.parse(this.responseText)
-                    }
+                    data: JSON.parse(this.responseText)
+                }
                 );
 
             }
@@ -116,23 +116,23 @@ const firebaseConfig = {
 
                 if (firebaseUser.photoURL) {
                     setUser({
-                      name: firebaseUser.displayName,
-                      email: firebaseUser.email,
-                      imageUrl: firebaseUser.photoURL,
+                        name: firebaseUser.displayName,
+                        email: firebaseUser.email,
+                        imageUrl: firebaseUser.photoURL,
                     });
                     document.getElementById("pfp1").src = firebaseUser.photoURL
-                  } else {
+                } else {
                     setUser({
-                      name: firebaseUser.displayName,
-                      email: firebaseUser.email,
-                      imageUrl:
-                        `https://ui-avatars.com/api/?name=${firebaseUser.email}&background=random`,
+                        name: firebaseUser.displayName,
+                        email: firebaseUser.email,
+                        imageUrl:
+                            `https://ui-avatars.com/api/?name=${firebaseUser.email}&background=random`,
                     });
                     document.getElementById("pfp1").src = `https://ui-avatars.com/api/?name=${firebaseUser.email}&background=random`
-                  }
+                }
 
                 var xhttp = new XMLHttpRequest();
-                xhttp.onreadystatechange = function() {
+                xhttp.onreadystatechange = function () {
                     if (this.readyState === 4 & this.status === 200) {
                         let data = JSON.parse(this.responseText);
                         document.getElementById("navPoints").innerHTML = data.points;
@@ -153,7 +153,7 @@ const firebaseConfig = {
                     if (this.readyState === 4 & this.status === 500) {
                         // User not registered via API
                         var xhttp = new XMLHttpRequest();
-                        xhttp.onreadystatechange = function() {
+                        xhttp.onreadystatechange = function () {
                             if (this.readyState === 4 & this.status === 200) {
                                 window.location.reload();
                             }
@@ -168,23 +168,23 @@ const firebaseConfig = {
 
                     var xhttp = new XMLHttpRequest();
                     xhttp.onreadystatechange = function () {
-                      if (this.readyState === 4 && this.status === 200) {
-                        // Success!
-                        console.log(JSON.parse(this.responseText));
-                        classes.data = []
+                        if (this.readyState === 4 && this.status === 200) {
+                            // Success!
+                            console.log(JSON.parse(this.responseText));
+                            classes.data = []
 
-                        setClasses({
-                          data: JSON.parse(this.responseText)
-                        })
-                        document.getElementById("suggestedLoader").classList.add("hidden");
-                      } 
+                            setClasses({
+                                data: JSON.parse(this.responseText)
+                            })
+                            document.getElementById("suggestedLoader").classList.add("hidden");
+                        }
 
-                      if (this.readyState === 4 && this.status === 400) {
+                        if (this.readyState === 4 && this.status === 400) {
 
-                        document.getElementById("noClasses").classList.remove("hidden");
+                            document.getElementById("noClasses").classList.remove("hidden");
 
-                      }
-                   }
+                        }
+                    }
                     xhttp.open("GET", `${process.env.REACT_APP_API_URL}/classes/student/my-classes?uid=${localStorage.getItem("token")}`);
                     xhttp.send();
 
@@ -255,7 +255,7 @@ const firebaseConfig = {
         window.location.href = "../practice"
     }
 
-    window.onload = function() {
+    window.onload = function () {
         if (localStorage.getItem("tutorial_phase") == 1) {
             document.getElementById("dashboard_tutorial").classList.remove("hidden")
         }
@@ -269,107 +269,107 @@ const firebaseConfig = {
 
         <div className="min-h-full " style={{ fontFamily: 'Space Grotesk, sans-serif' }}>
 
-        <Navigation/>
+            <Navigation />
 
 
             <main className="mt-3" >
 
                 <div className="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8   ">
 
-                <div className="hidden text-white border border-blue-900 rounded-lg  border-4 px-6 py-3 mb-5"> 
-                    <p>CTFGuide Developer Menu <button className="bg-gray-800 px-2 rounded-lg">Hide Menu</button></p>
-                    <h1 className="text-xl font-bold">Code Execution</h1>
-                    <textarea className="bg-gray-900 border border-none w-full"></textarea>
-                    <h1 className="text-xl font-bold">Logged in as {localStorage.getItem("token")}</h1>
-                  
-                </div>
+                    <div className="hidden text-white border border-blue-900 rounded-lg  border-4 px-6 py-3 mb-5">
+                        <p>CTFGuide Developer Menu <button className="bg-gray-800 px-2 rounded-lg">Hide Menu</button></p>
+                        <h1 className="text-xl font-bold">Code Execution</h1>
+                        <textarea className="bg-gray-900 border border-none w-full"></textarea>
+                        <h1 className="text-xl font-bold">Logged in as {localStorage.getItem("token")}</h1>
 
-
-   <div className="flex items-center justify-between">
-                  
-                    <p className={" text-white  text-4xl font-semibold"}> Enrolled Classes</p>
-                    <div className="ml-2 flex-shrink-0 flex">
-               
-                    <input id="classCode" className="text-white border border-gray-700 bg-gray-900  px-4 text-xl py-1 rounded-lg focus:outline-none" placeholder="Class Code"></input>
-                    <button onClick={joinClass} className="ml-4 text-white border border-gray-700 bg-gray-900 hover:bg-gray-800 px-4 text-xl py-1 rounded-lg"><i class="fas fa-sign-in-alt mr-1"></i> Join Class</button>
-                    <Link to="../create-class" className="ml-4 text-white border border-gray-700 bg-gray-900 px-4 text-xl py-1 rounded-lg hover:bg-gray-800"><i class="fas fa-plus-circle mr-1"></i> Create a Class</Link>
-  
                     </div>
-                    
-          </div>
-          <div id="error" className="hidden flex items-center justify-between">
-              <p></p>
-          <div className="ml-2 flex-shrink-0 flex">
-   
-          <p className="text-xl font-bold text-red-700 mt-4 mb-4">Something went wrong trying to do an action.</p>
-
-           </div>     
-</div>
-     <div className="" >
 
 
-    
-        <div id="noClasses" className="hidden text-center mx-auto mt-20">
-        <i class="fas fa-question-circle text-white text-7xl mb-4"></i>
-        <h1 className="text-4xl w-full text-white">You are not enrolled in any classes.</h1>
-        <p className="text-white mt-4 hidden">If you were told that you would be enrolled in your courses automatically. You may need to connect your LMS to CTFGuide.</p>
+                    <div className="flex items-center justify-between">
 
-        </div>
+                        <p className={" text-white  text-4xl font-semibold"}> Enrolled Classes</p>
+                        <div className="ml-2 flex-shrink-0 flex">
 
-    <div style={{cursor:'pointer'}} className=" hidden mt-4 hover:border-blue-500 bg-gray-900 border  border-gray-700  px-4 py-4 text-white rounded ">
-    <div className=" items-center justify-between">
-      <h1 className="text-2xl w-full">CYBSEC 121</h1>
-  <a className=""><i class="ml-1 fas fa-calendar-alt"></i> Enrolled 5/14/22 - 12/2/22</a> • <a className=""><i class="fas fa-chalkboard-teacher"></i> Instructed by Paul C, Santiago L <br></br> <i className="fa fa-check"></i> Issued by Garnet Valley SD</a>
-    
-                    
-    
-      </div>
-     
-    </div>
+                            <input id="classCode" className="text-white border border-gray-700 bg-gray-900  px-4 text-xl py-1 rounded-lg focus:outline-none" placeholder="Class Code"></input>
+                            <button onClick={joinClass} className="ml-4 text-white border border-gray-700 bg-gray-900 hover:bg-gray-800 px-4 text-xl py-1 rounded-lg"><i class="fas fa-sign-in-alt mr-1"></i> Join Class</button>
+                            <Link to="../create-class" className="ml-4 text-white border border-gray-700 bg-gray-900 px-4 text-xl py-1 rounded-lg hover:bg-gray-800"><i class="fas fa-plus-circle mr-1"></i> Create a Class</Link>
 
+                        </div>
 
-    {
+                    </div>
+                    <div id="error" className="hidden flex items-center justify-between">
+                        <p></p>
+                        <div className="ml-2 flex-shrink-0 flex">
 
-            classes.data.map((item) => (
+                            <p className="text-xl font-bold text-red-700 mt-4 mb-4">Something went wrong trying to do an action.</p>
 
-
-  
+                        </div>
+                    </div>
+                    <div className="" >
 
 
 
-<Link to={"./" + (item.classId)} style={{cursor:'pointer'}}>
-    <div  className=" mt-4 hover:border-blue-500 bg-gray-900 border  border-gray-700  px-4 py-4 text-white rounded ">
-<div className=" items-center justify-between">
-  <h1 className="text-2xl w-full">{item.name} </h1> 
-  <a className=""><i class="fas fa-chalkboard-teacher"></i> Instructed by {item.teachers[0]} <br></br>{item.organization}</a>
-<p>
-                {item.description}
-    </p> 
+                        <div id="noClasses" className="hidden text-center mx-auto mt-20">
+                            <i class="fas fa-question-circle text-white text-7xl mb-4"></i>
+                            <h1 className="text-4xl w-full text-white">You are not enrolled in any classes.</h1>
+                            <p className="text-white mt-4 hidden">If you were told that you would be enrolled in your courses automatically. You may need to connect your LMS to CTFGuide.</p>
 
-  </div>
-  </div>
-</Link>
+                        </div>
+
+                        <div style={{ cursor: 'pointer' }} className=" hidden mt-4 hover:border-blue-500 bg-gray-900 border  border-gray-700  px-4 py-4 text-white rounded ">
+                            <div className=" items-center justify-between">
+                                <h1 className="text-2xl w-full">CYBSEC 121</h1>
+                                <a className=""><i class="ml-1 fas fa-calendar-alt"></i> Enrolled 5/14/22 - 12/2/22</a> • <a className=""><i class="fas fa-chalkboard-teacher"></i> Instructed by Paul C, Santiago L <br></br> <i className="fa fa-check"></i> Issued by Garnet Valley SD</a>
+
+
+
+                            </div>
+
+                        </div>
+
+
+                        {
+
+                            classes.data.map((item) => (
 
 
 
 
 
-            ))
-    }
-  
 
-    </div>
+                                <Link to={"./" + (item.classId)} style={{ cursor: 'pointer' }}>
+                                    <div className=" mt-4 hover:border-blue-500 bg-gray-900 border  border-gray-700  px-4 py-4 text-white rounded ">
+                                        <div className=" items-center justify-between">
+                                            <h1 className="text-2xl w-full">{item.name} </h1>
+                                            <a className=""><i class="fas fa-chalkboard-teacher"></i> Instructed by {item.teachers[0]} <br></br>{item.organization}</a>
+                                            <p>
+                                                {item.description}
+                                            </p>
+
+                                        </div>
+                                    </div>
+                                </Link>
+
+
+
+
+
+                            ))
+                        }
+
+
+                    </div>
 
 
 
                 </div>
 
-             
 
-                
+
+
             </main>
 
-        
+
         </div>
 
 
