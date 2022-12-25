@@ -354,7 +354,7 @@ const Home = () => {
         <nav className="flex h-9 items-center justify-between" aria-label="Global">
           <div className="flex lg:min-w-0 lg:flex-1" aria-label="Global">
             <a href="#" className="-m-1.5 p-1.5 flex">
-              <span className="sr-only">Your Company</span>
+              <span className="sr-only">CTFGuide</span>
               <img
                                             className="h-14 w-14 zimg"
                                             src="../../CTFGuide trans dark.png"
@@ -382,12 +382,12 @@ const Home = () => {
             ))}
           </div>
           <div className="hidden lg:flex lg:min-w-0 lg:flex-1 lg:justify-end">
-            <a
-              href="#"
+            <Link
+              to="./login"
               className="inline-block rounded-lg px-6 py-1.5 text-sm font-semibold leading-6 border text-white shadow-sm ring-1 ring-white/10 hover:ring-white/20"
             >
               Log in
-            </a>
+            </Link>
           </div>
         </nav>
         <Dialog as="div" open={mobileMenuOpen} onClose={setMobileMenuOpen}>
@@ -453,24 +453,24 @@ const Home = () => {
                 A platform built for learning cybersecurity right from the browser.
               </p>
               <div className="mt-8 flex gap-x-4 sm:justify-center">
-                <a
-                  href="#"
+                <Link
+                  to="./register"
                   className="inline-block rounded-lg border px-4 py-1.5 text-base font-semibold leading-7 text-white shadow-sm"
                 >
                   Create an account
                   <span className="text-white ml-2" aria-hidden="true">
                     &rarr;
                   </span>
-                </a>
-                <a
-                  href="#"
+                </Link>
+                <Link
+                  to="./login"
                   className="inline-block rounded-lg px-4 py-1.5 text-base font-semibold leading-7 text-white ring-1 ring-white/10 hover:ring-white/20"
                 >
                   Returning user?
                   <span className="text-white ml-2" aria-hidden="true">
                     &rarr;
                   </span>
-                </a>
+                </Link>
               </div>
             </div>
             <div className="absolute inset-x-0 top-[calc(100%-13rem)] -z-10 transform-gpu overflow-hidden blur-3xl sm:top-[calc(100%-30rem)]">

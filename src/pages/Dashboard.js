@@ -263,7 +263,7 @@ const Dashboard = () => {
 
   return (
 
-    <div className="min-h-full " style={{ fontFamily: 'Poppins, sans-serif', backgroundColor: "#161716" }}>
+    <div className="min-h-full animate__animated animate__fadeIn " style={{ fontFamily: 'Poppins, sans-serif', backgroundColor: "#161716" }}>
 
       <Navigation />
 
@@ -597,7 +597,7 @@ style={{backgroundColor: "#212121"}}
 
 <div
 style={{backgroundColor: "#212121"}}
-  className=" rounded-lg   px-6 py-5 shadow-sm    hover:border-gray-600 focus-within:ring-2 focus-within:ring-offset-2 focus-within:ring-indigo-500"
+  className=" rounded-lg mb-16  px-6 py-5 shadow-sm    hover:border-gray-600 focus-within:ring-2 focus-within:ring-offset-2 focus-within:ring-indigo-500"
 >
 
             <h1 className="text-white text-xl">CTFGuide Winter Competition</h1>

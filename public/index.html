@@ -8,88 +8,9 @@
     <script src="%PUBLIC_URL%/socket.io/client-dist/socket.io.js"></script>
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css" integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm" crossorigin="anonymous">
     <script async src="https://media.ethicalads.io/media/client/ethicalads.min.js"></script>
-    <script async src="https://arc.io/widget.min.js#pmzgiCUF"></script>
     
     <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
-    <script>
-      (function() {
-  // Init
-  var container = document.getElementById("c2"),
-    inner = document.getElementById("i2");
-
-  // Mouse
-  var mouse = {
-    _x: 0,
-    _y: 0,
-    x: 0,
-    y: 0,
-    updatePosition: function(event) {
-      var e = event || window.event;
-      this.x = e.clientX - this._x;
-      this.y = (e.clientY - this._y) * -1;
-    },
-    setOrigin: function(e) {
-      this._x = e.offsetLeft + Math.floor(e.offsetWidth / 2);
-      this._y = e.offsetTop + Math.floor(e.offsetHeight / 2);
-    },
-    show: function() {
-      return "(" + this.x + ", " + this.y + ")";
-    }
-  };
-
-  // Track the mouse position relative to the center of the container.
-  mouse.setOrigin(container);
-
-  //-----------------------------------------
-
-  var counter = 0;
-  var updateRate = 10;
-  var isTimeToUpdate = function() {
-    return counter++ % updateRate === 0;
-  };
-
-  //-----------------------------------------
-
-  var onMouseEnterHandler = function(event) {
-    update(event);
-  };
-
-  var onMouseLeaveHandler = function() {
-    inner.style = "";
-  };
-
-  var onMouseMoveHandler = function(event) {
-    if (isTimeToUpdate()) {
-      update(event);
-    }
-  };
-
-  //-----------------------------------------
-
-  var update = function(event) {
-    mouse.updatePosition(event);
-    updateTransformStyle(
-      (mouse.y / inner.offsetHeight / 2).toFixed(2),
-      (mouse.x / inner.offsetWidth / 2).toFixed(2)
-    );
-  };
-
-  var updateTransformStyle = function(x, y) {
-    var style = "rotateX(" + x + "deg) rotateY(" + y + "deg)";
-    inner.style.transform = style;
-    inner.style.webkitTransform = style;
-    inner.style.mozTransform = style;
-    inner.style.msTransform = style;
-    inner.style.oTransform = style;
-  };
-
-  //-----------------------------------------
-
-  container.onmouseenter = onMouseEnterHandler;
-  container.onmouseleave = onMouseLeaveHandler;
-  container.onmousemove = onMouseMoveHandler;
-})();
-    </script>
+    <script>   </script>
   <style>
 @import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
 
@@ -172,6 +93,14 @@ html::-webkit-scrollbar-thumb {
     background: #4e4e4e;
     border-radius: 25px;
   }
+
+  html {
+    height: 100vh
+  }
+
+  body {
+    height: 100vh
+  }
     </style>
 
     <meta
@@ -182,7 +111,7 @@ html::-webkit-scrollbar-thumb {
   
     <title>CTFGuide</title>
   </head>
-  <body class=" h-full ">
+  <body class=" h-full  min-h-full">
     <!--
      There is absolutely no point in cheating on this site. Be smart.
     -->
