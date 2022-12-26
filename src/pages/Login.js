@@ -61,6 +61,7 @@ const Login = () => {
 
 
   function login() {
+    document.getElementById("loginBtn").innerHTML = "Signing in..."
     const auth = getAuth();
     signInWithEmailAndPassword(auth, document.getElementById("email-address").value, document.getElementById("password").value)
       .then((userCredential) => {
@@ -73,6 +74,8 @@ const Login = () => {
       .catch((error) => {
         const errorCode = error.code;
         const errorMessage = error.message;
+        document.getElementById("loginBtn").innerHTML = "Sign in"
+
         document.getElementById("loginError").classList.remove("hidden")
       });
   }
@@ -186,14 +189,14 @@ const Login = () => {
       <div className="flex flex-1 flex-col justify-center py-12 px-4 sm:px-6 lg:flex-none lg:px-20 xl:px-24">
         <div className=" mx-auto w-full max-w-sm lg:w-96">
           <div>
-            <div className="my-auto flex">
+            <Link to="../" className="my-auto flex">
               <img
                 className="h-10 w-10 zimg"
                 src="../../CTFGuide trans dark.png"
                 alt="CTFGuide"
               />
               <h1 className='text-white text-xl my-auto'>CTFGuide</h1>
-            </div>
+            </Link>
             <h2 className="mt-6 text-3xl font-bold tracking-tight text-white">Login</h2>
             <p className="mt-2 text-sm text-gray-600">
               Or{' '}
@@ -257,7 +260,7 @@ const Login = () => {
 
             <div className="mt-4">
               <div className="space-y-6">
-                <div id="loginError" className="hidden bg-blue-900 animate_animated animate__fadeIn border border-blue-500 px-2 py-2 rounded-lg">
+                <div id="loginError"  className="hidden bg-blue-900 animate_animated animate__fadeIn border border-blue-500 px-2 py-2 rounded-lg">
                   <p className="text-white text-sm text-center">There was an error when trying to log you in.</p>
                 </div>
 
@@ -320,7 +323,8 @@ const Login = () => {
                 <div>
                   <button
                     onClick={login}
-                    className="flex w-full justify-center rounded-md border border-transparent bg-blue-600 py-2 px-4 text-sm font-medium text-white shadow-sm hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"
+                    id="loginBtn"
+                    className="flex w-full justify-center rounded-md border border-transparent bg-blue-700 hover:shadow-lg hover:shadow-blue-500/00 py-2 px-4 text-sm font-medium text-white shadow-sm hover:bg-blue-700 focus:outline-none "
                   >
                     Sign in
                   </button>

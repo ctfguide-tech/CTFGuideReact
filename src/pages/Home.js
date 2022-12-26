@@ -47,8 +47,33 @@ const communicationFeatures = [
 const Home = () => {
 
   document.title = "CTFGuide"
-
+  function elementInViewport(el) {
+    var top = el.offsetTop;
+    var left = el.offsetLeft;
+    var width = el.offsetWidth;
+    var height = el.offsetHeight;
   
+    while(el.offsetParent) {
+      el = el.offsetParent;
+      top += el.offsetTop;
+      left += el.offsetLeft;
+    }
+  
+    return (
+      top >= window.pageYOffset &&
+      left >= window.pageXOffset &&
+      (top + height) <= (window.pageYOffset + window.innerHeight) &&
+      (left + width) <= (window.pageXOffset + window.innerWidth)
+    );
+  }
+  
+
+
+
+
+
+
+
 
   /*
   return (
@@ -321,7 +346,7 @@ const Home = () => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
 
   return (
-    <div className="isolate" style={{fontFamily: 'Poppins, sans-serif'}}>
+    <div className="isolate " style={{fontFamily: 'Poppins, sans-serif'}}>
     <div className="absolute inset-x-0 top-[-10rem] -z-10 transform-gpu overflow-hidden blur-3xl sm:top-[-20rem]">
       <svg
         className="relative left-[calc(50%-11rem)] -z-10 h-[21.1875rem] max-w-none -translate-x-1/2 rotate-[30deg] sm:left-[calc(50%-30rem)] sm:h-[42.375rem]"
@@ -440,16 +465,16 @@ const Home = () => {
         </Dialog>
       </div>
     </div>
-    <main>
-      <div className="relative px-6 lg:px-8 mx-auto">
-        <div className="mx-auto max-w-3xl pt-20 pb-32 sm:pt-48 sm:pb-40">
+    <main >
+      <div className=" px-6 lg:px-8 flex h-screen" style={{height: "80vh"}}>
+        <div className="mx-auto my-auto max-w-3xl pt-20 pb-32 sm:pt-48 sm:pb-40 animate__animated animate__fadeIn">
           <div>
        
             <div>
-              <h1 className="text-4xl text-white font-bold tracking-tight sm:text-center sm:text-6xl">
+              <h1 className="mx-auto my-auto text-4xl text-white font-bold tracking-tight sm:text-center sm:text-6xl">
                 Cybersecurity demystified.
               </h1>
-              <p className="mt-6 text-lg leading-8 text-gray-400 sm:text-center">
+              <p className="mx-auto my-auto mt-6 text-lg leading-8 text-gray-400 sm:text-center">
                 A platform built for learning cybersecurity right from the browser.
               </p>
               <div className="mt-8 flex gap-x-4 sm:justify-center">
@@ -505,7 +530,7 @@ const Home = () => {
       </div>
     </main>
 
-    <div className="overflow-hidden  py-16 lg:py-24">
+    <div style={{height: "200vh"}} className="overflow-hidden  py-16 lg:py-24">
       <div className="relative mx-auto max-w-xl px-6 lg:max-w-7xl lg:px-1">
         <svg
           className="absolute left-full hidden -translate-x-1/2 -translate-y-1/4 transform lg:block"
@@ -530,7 +555,7 @@ const Home = () => {
           <rect width={404} height={784} fill="url(#b1e6e422-73f8-40a6-b5d9-c8586e37e0e7)" />
         </svg>
 
-        <div className="relative">
+        <div className="relative" id="part2">
           <h2 className="text-center text-3xl font-bold leading-8 tracking-tight text-white sm:text-4xl">
            We've got every aspect covered for you.
           </h2>
@@ -540,7 +565,7 @@ const Home = () => {
         </div>
 
         <div className="relative mt-12 lg:mt-24 lg:grid lg:grid-cols-2 lg:items-center lg:gap-20">
-          <div className="relative">
+          <div className="relative ">
             <h3 className="text-2xl font-bold tracking-tight text-white sm:text-3xl">Capture the Flag</h3>
             <p className="mt-3 text-lg text-gray-500">
             Capture "flags" that are secretly hidden in purposefully-vulnerable programs or websites. It's the go-to format for cybersecurity competitions.
@@ -575,7 +600,7 @@ const Home = () => {
 
             <dl className="mt-10 space-y-10">
               {transferFeatures.map((item) => (
-                <div key={item.id} className="relative px-4 py-4 rounded-lg" style={{ backgroundColor: "#212121"}}>
+                <div key={item.id} className="relative px-4 py-4 rounded-lg " style={{ backgroundColor: "#212121"}}>
                   <dt>
                    
                     <p className=" text-lg font-medium leading-6 text-white">{item.name}</p>
@@ -637,7 +662,7 @@ const Home = () => {
               <rect width={784} height={404} fill="url(#ca9667ae-9f92-4be7-abcb-9e3d727f2941)" />
             </svg>
             <img
-              className="relative mx-auto shadow-2xl  shadow-gray-900/50  rounded-lg  "
+              className="  relative mx-auto shadow-2xl  shadow-gray-900/50  rounded-lg  "
               style={{borderColor: "black"}}
               width={2000}
               src="../ss4.png"
