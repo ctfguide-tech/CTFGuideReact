@@ -14,13 +14,13 @@ const transferFeatures = [
     id: 1,
     name: 'Community Uploaded Challenges',
     description:
-      'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Maiores impedit perferendis suscipit eaque, iste dolor cupiditate blanditiis ratione.',
+      'Get access to hunderds of challenges uploaded by the community. You can also upload your own challenges. ',
   },
   {
     id: 2,
     name: 'Competitive System',
     description:
-      'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Maiores impedit perferendis suscipit eaque, iste dolor cupiditate blanditiis ratione.',
+      'All challenges are ranked by difficulty, and you can compete with other users to solve them. ',
   },
 
 ]
@@ -61,12 +61,21 @@ const Home = () => {
       (left + width) <= (window.pageXOffset + window.innerWidth)
     );
   }
+  function scrollFeatures() {
+    document.getElementById("featuresview").scrollIntoView();
+  
+  }
+
+  
+
+const urlParams = new URLSearchParams(window.location.search);
+const page = urlParams.get('view');
 
 
-function scrollFeatures() {
-  document.getElementById("featuresview").scrollIntoView();
-
+if (page == "features") {
+  setTimeout(function(){ scrollFeatures(); }, 100);
 }
+
 
 
 
@@ -842,7 +851,7 @@ function scrollFeatures() {
       
 
     </div>
-    <p className="mb-10 text-gray-500 text-center mx-auto">  &copy; CTFGuide 2022<br></br><a className="hover:text-white" href="https://github.com/ctfguide-tech/Information/blob/main/terms-of-service.md">Terms of Service</a> • <a className="hover:text-white" href="https://github.com/ctfguide-tech/Information/blob/main/privacy-policy.md">Privacy Policy</a> • <a className="hover:text-white" href="https://feedback.ctfguide.com">Feedback</a> • <a className="hover:text-white" href="https://feedback.ctfguide.com">Contact Us</a><br></br><a href="https://twitter.com/ctfguideapp"><i className="fab fa-twitter text-xl"></i></a> <a href="https://www.linkedin.com/in/pranavramesh2/" className='ml-3'><i className="fab fa-linkedin text-xl"></i></a><a href="https://github.com/ctfguide-tech" className='ml-3'><i class="text-xl fab fa-github"></i></a></p>
+    <p className="mb-10 text-gray-500 text-center mx-auto">  &copy; CTFGuide 2022<br></br><a className="hover:text-white" href="https://github.com/ctfguide-tech/Information/blob/main/terms-of-service.md">Terms of Service</a> • <a className="hover:text-white" href="https://github.com/ctfguide-tech/Information/blob/main/privacy-policy.md">Privacy Policy</a> • <a className="hover:text-white" href="https://feedback.ctfguide.com">Feedback</a> • <a className="hover:text-white" href="mailto:staff@ctfguide.com">Contact Us</a><br></br><a href="https://twitter.com/ctfguideapp"><i className="fab fa-twitter text-xl"></i></a> <a href="https://www.linkedin.com/company/ctfguide/" className='ml-3'><i className="fab fa-linkedin text-xl"></i></a><a href="https://github.com/ctfguide-tech" className='ml-3'><i class="text-xl fab fa-github"></i></a></p>
 
                   <br></br>
 

@@ -53,7 +53,7 @@ const About = () => {
             </button>
           </div>
           <div className=" lg:flex lg:min-w-0 lg:flex-1 lg:justify-center lg:gap-x-12">
-          <a  href="../" className="font-semibold text-white hover:text-white">
+          <a  href="../?view=features" className="font-semibold text-white hover:text-white">
                Home
               </a>
 
