@@ -22,6 +22,7 @@ import ClassAdmin from "./pages/ClassAdmin";
 import CreateClass from "./pages/CreateClass";
 import OrgControl from "./pages/OrgControl";
 import OrgControlManage from "./pages/OrgControlManage";
+import About from "./pages/About";
 import "./index.css";
 
 
@@ -44,7 +45,7 @@ export default function App() {
 
           <Route path="/orgcontrol" element={<OrgControl />} />
           <Route path="/orgcontrol/manage-members" element={<OrgControlManage />} />
-
+          <Route path="/about" element={<About />} />
           <Route path="/dashboard" element={<Dashboard />} />
           <Route path="/settings" element={<Settings />} />
           <Route path="/classes" element={<Classes />} />
