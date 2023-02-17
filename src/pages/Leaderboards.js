@@ -261,7 +261,7 @@ const Leaderboards = () => {
 
     return (
 
-        <div className="min-h-full " style={{ fontFamily: 'Space Grotesk, sans-serif' }}>
+        <div className="min-h-full " style={{ fontFamily: 'Poppins, sans-serif' }}>
 
         <Navigation/>
 
@@ -328,12 +328,12 @@ const Leaderboards = () => {
                     <table className="table-auto text-white w-full mt-4 mx-auto text-left justify-content mt-6">
 
                         <tbody className="mt-4 text-xl rounded-lg">
-                        <tr className={("text-xl font-bold  bg-gray-900 px-6 py-1 border rounded-xl border-gray-600")}>
+                        <tr className={("text-xl font-bold  bg-gray-900 px-6 py-1 " )} style={{backgroundColor: "rgb(33, 33, 33)"}}>
                             <td className="px-6">Rank</td> 
                             <td className="px-6 ">Username</td>
                             <td>Points</td>
                         </tr>
-                        <tr className="bg-gray-600 border border-gray-600" >
+                        <tr   style={{backgroundColor: "rgb(33, 33, 33)"}}>
                                 <td className="px-6 ">
                                     <span id="myrank" className="">#</span>
                                 </td>
@@ -341,7 +341,7 @@ const Leaderboards = () => {
                                 <td>{userData.points}</td>
                             </tr>
                         {leaderboards.data.map((item) => (
-                            <tr className="bg-gray-800 border border-gray-600" >
+                            <tr   style={{backgroundColor: "rgb(33, 33, 33)"}}>
                                 <td className="px-6 ">{item.pos}</td>
                                 <td className={"inline-flex px-6"}><img className={"w-6 mr-2 hidden"} src={"https://ui-avatars.com/api/?name="+ (item.username) + "&background=random"}/><a href="" className={(item.pro ? "rainbow-text" : "") + " font-semibold"} >{item.username}</a></td>
                                 <td>{item.points}</td>

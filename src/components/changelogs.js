@@ -6,7 +6,7 @@ export class Changelogs extends Component {
 
   render() {
 
-return {
+    return {
+    }
   }
-}
 }

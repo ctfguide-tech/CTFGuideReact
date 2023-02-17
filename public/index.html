@@ -8,8 +8,9 @@
     <script src="%PUBLIC_URL%/socket.io/client-dist/socket.io.js"></script>
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css" integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm" crossorigin="anonymous">
     <script async src="https://media.ethicalads.io/media/client/ethicalads.min.js"></script>
-    <script async src="https://arc.io/widget.min.js#pmzgiCUF"></script>
+    
     <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+
     <style>
       @import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
     </style>
@@ -92,7 +93,9 @@
   container.onmousemove = onMouseMoveHandler;
 })();
     </script>
+
   <style>
+@import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
 
 .c2 {
   /* This will come into play later */
@@ -108,10 +111,39 @@
   transform: translateZ(2px);
 
 }
+.zimg {
+  transition: transform .7s ease-in-out;
+}
+.zimg:hover {
+  transform: rotate(360deg);
+}
 
-
+.navHover:hover {
+  background-color: #161716;
+}
 html {
-  background-color:black;
+  background-color:#161716;
+}
+
+.c-avatar {
+  position:relative;
+  display:inline-block;
+}
+.c-avatar__image {
+  width:40px;
+  height:40px;
+  object-fit:cover;
+  border-radius:100%;
+}
+.c-avatar__status {
+  width:10px;
+  height:10px;
+  background:#049824;
+  border:2px solid #049023;
+  position:absolute;
+  bottom:12%;
+  right:2%;
+  border-radius:100%;
 }
       .developer {
         background-image: linear-gradient(to right, rgb(0, 183, 255), rgb(6, 234, 255));
@@ -144,6 +176,14 @@ html::-webkit-scrollbar-thumb {
     background: #4e4e4e;
     border-radius: 25px;
   }
+
+  html {
+    height: 100vh
+  }
+
+  body {
+    height: 100vh
+  }
     </style>
 
     <meta
@@ -154,7 +194,7 @@ html::-webkit-scrollbar-thumb {
   
     <title>CTFGuide</title>
   </head>
-  <body class="bg-black h-full ">
+  <body class=" h-full  min-h-full">
     <!--
      There is absolutely no point in cheating on this site. Be smart.
     -->

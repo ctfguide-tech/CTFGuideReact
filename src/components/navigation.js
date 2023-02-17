@@ -55,7 +55,7 @@ export class Navigation extends Component {
         }
 
         return(
-            <Disclosure as="nav" className="z-20 bg-black border-b  border-gray-700 ">
+            <Disclosure as="nav" style={{backgroundColor: "#212121"}} className="z-20   ">
                 {({ open }) => (
                     <>
                         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -63,7 +63,7 @@ export class Navigation extends Component {
                                 <div className="flex items-center">
                                     <div className="flex-shrink-0">
                                         <img
-                                            className="h-14 w-14"
+                                            className="h-14 w-14 zimg"
                                             src="../../CTFGuide trans dark.png"
                                             alt="CTFGuide"
                                         />
@@ -72,13 +72,14 @@ export class Navigation extends Component {
                                         <div className="ml-10 flex items-baseline space-x-4">
                                             {navigation.map((item) => (
                                                 <Link
+                                                   
                                                     key={item.name}
                                                     to={ item.href}
                                                     className={classNames(
                                                         item.current
                                                             ? 'bg-black text-white'
-                                                            : 'text-gray-300 hover:bg-gray-800 hover:text-white',
-                                                        'px-3 py-2 rounded-md text-sm font-medium'
+                                                            : 'text-gray-300  hover:text-white',
+                                                        'px-3 py-2 rounded-md text-sm font-medium navHover'
                                                     )}
                                                     aria-current={item.current ? 'page' : undefined}
                                                 >
@@ -98,7 +99,7 @@ export class Navigation extends Component {
                                         <p className="hidden text-yellow-500 hover:text-yellow-400" style={{cursor:'pointer'}}>✨ Upgrade to pro</p>
                                         <button
                                             type="button"
-                                            className="ml-3 bg-black border border-gray-700 px-3 font-semibold rounded-full text-blue-500  focus:outline-none "
+                                            className="ml-3 border border-gray-700 px-3 font-semibold rounded-full text-blue-500  focus:outline-none "
                                         >
                                             <span className="sr-only">View notifications</span>
                                             <span id={"navPoints"}><i className="fas fa-spinner fa-pulse"></i></span>  points
@@ -123,15 +124,15 @@ export class Navigation extends Component {
                                                 leaveFrom="transform opacity-100 scale-100"
                                                 leaveTo="transform opacity-0 scale-95"
                                             >
-                                                <Menu.Items className="origin-top-right absolute right-0 mt-2 w-48 rounded-md shadow-lg py-1 bg-black border border-gray-700 text-white focus:outline-none z-50">
+                                                <Menu.Items style={{ backgroundColor: "#161716" }} className="origin-top-right absolute right-0 mt-2 w-48 rounded-md shadow-lg py-1 bg-black  shadow-lg text-white focus:outline-none z-50">
                                                     {userNavigation.map((item) => (
                                                         <Menu.Item key={item.name}>
                                                             {({ active }) => (
                                                                 <a
                                                                     href={item.href}
-                                                                    style={{cursor:'pointer'}}
+                                                                    style={{cursor:'pointer',  backgroundColor: "#161716"}}
                                                                     className={classNames(
-                                                                        active ? 'bg-gray-800' : '',
+                                                                        active ? '' : '',
                                                                         'block px-4 py-2 text-sm text-gray-200'
                                                                     )}
                                                                     onClick={item.onClick}

@@ -21,9 +21,9 @@ const CreateClass = () => {
         messagingSenderId: process.env.REACT_APP_messagingSenderId,
         appId: process.env.REACT_APP_appId,
         measurementId: process.env.REACT_APP_measurementId
-      };
-    
-    
+    };
+
+
 
     // Initialize Firebase
     const app = initializeApp(firebaseConfig);
@@ -39,8 +39,8 @@ const CreateClass = () => {
 
     const [classes, setClasses] = useState({
         data: []
-      })
-    
+    })
+
     const [open, setOpen] = useState(true)
     const [show, setShow] = useState(true)
     const cancelButtonRef = useRef(null)
@@ -71,7 +71,7 @@ const CreateClass = () => {
                     console.log(this.responseText)
                     window.reload();
                     //window.location.href = "./" + classCode;
-                } 
+                }
 
                 if (this.readyState === 4 && this.status != 200) {
                     document.getElementById("error").classList.remove("hidden")
@@ -94,12 +94,12 @@ const CreateClass = () => {
     useEffect(() => {
 
         var xhttp = new XMLHttpRequest();
-        xhttp.onreadystatechange = function() {
+        xhttp.onreadystatechange = function () {
             if (this.readyState === 4 & this.status === 200) {
                 console.log(this.responseText)
                 setLearn({
-                        data: JSON.parse(this.responseText)
-                    }
+                    data: JSON.parse(this.responseText)
+                }
                 );
 
             }
@@ -117,23 +117,23 @@ const CreateClass = () => {
 
                 if (firebaseUser.photoURL) {
                     setUser({
-                      name: firebaseUser.displayName,
-                      email: firebaseUser.email,
-                      imageUrl: firebaseUser.photoURL,
+                        name: firebaseUser.displayName,
+                        email: firebaseUser.email,
+                        imageUrl: firebaseUser.photoURL,
                     });
                     document.getElementById("pfp1").src = firebaseUser.photoURL
-                  } else {
+                } else {
                     setUser({
-                      name: firebaseUser.displayName,
-                      email: firebaseUser.email,
-                      imageUrl:
-                        `https://ui-avatars.com/api/?name=${firebaseUser.email}&background=random`,
+                        name: firebaseUser.displayName,
+                        email: firebaseUser.email,
+                        imageUrl:
+                            `https://ui-avatars.com/api/?name=${firebaseUser.email}&background=random`,
                     });
                     document.getElementById("pfp1").src = `https://ui-avatars.com/api/?name=${firebaseUser.email}&background=random`
-                  }
+                }
 
                 var xhttp = new XMLHttpRequest();
-                xhttp.onreadystatechange = function() {
+                xhttp.onreadystatechange = function () {
                     if (this.readyState === 4 & this.status === 200) {
                         let data = JSON.parse(this.responseText);
                         document.getElementById("navPoints").innerHTML = data.points;
@@ -154,7 +154,7 @@ const CreateClass = () => {
                     if (this.readyState === 4 & this.status === 500) {
                         // User not registered via API
                         var xhttp = new XMLHttpRequest();
-                        xhttp.onreadystatechange = function() {
+                        xhttp.onreadystatechange = function () {
                             if (this.readyState === 4 & this.status === 200) {
                                 window.location.reload();
                             }
@@ -169,23 +169,23 @@ const CreateClass = () => {
 
                     var xhttp = new XMLHttpRequest();
                     xhttp.onreadystatechange = function () {
-                      if (this.readyState === 4 && this.status === 200) {
-                        // Success!
-                        console.log(JSON.parse(this.responseText));
-                        classes.data = []
+                        if (this.readyState === 4 && this.status === 200) {
+                            // Success!
+                            console.log(JSON.parse(this.responseText));
+                            classes.data = []
 
-                        setClasses({
-                          data: JSON.parse(this.responseText)
-                        })
-                        document.getElementById("suggestedLoader").classList.add("hidden");
-                      } 
+                            setClasses({
+                                data: JSON.parse(this.responseText)
+                            })
+                            document.getElementById("suggestedLoader").classList.add("hidden");
+                        }
 
-                      if (this.readyState === 4 && this.status === 400) {
+                        if (this.readyState === 4 && this.status === 400) {
 
-                        document.getElementById("noClasses").classList.remove("hidden");
+                            document.getElementById("noClasses").classList.remove("hidden");
 
-                      }
-                   }
+                        }
+                    }
                     xhttp.open("GET", `${process.env.REACT_APP_API_URL}/classes/student/my-classes?uid=${localStorage.getItem("token")}`);
                     xhttp.send();
 
@@ -260,7 +260,7 @@ const CreateClass = () => {
         }
 
         var xhttp = new XMLHttpRequest();
-        xhttp.onreadystatechange = function() {
+        xhttp.onreadystatechange = function () {
 
 
             if (this.readyState == 4 && this.status != 200) {
@@ -268,7 +268,7 @@ const CreateClass = () => {
             } else {
                 window.location.href = "../classes";
             }
- 
+
         }
         xhttp.open("GET", `${process.env.REACT_APP_API_URL}/classes/create-class/standard?name=${className}&description=${classDescription}&orgLock=${orgLock}&uid=${localStorage.getItem("token")}`);
         xhttp.send();
@@ -281,7 +281,7 @@ const CreateClass = () => {
         window.location.href = "../practice"
     }
 
-    window.onload = function() {
+    window.onload = function () {
         if (localStorage.getItem("tutorial_phase") == 1) {
             document.getElementById("dashboard_tutorial").classList.remove("hidden")
         }
@@ -295,104 +295,104 @@ const CreateClass = () => {
 
         <div className="min-h-full " style={{ fontFamily: 'Space Grotesk, sans-serif' }}>
 
-        <Navigation/>
+            <Navigation />
 
 
             <main className="mt-3" >
 
 
                 <div className="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8   ">
-<div>
-   <div className="flex items-center justify-between">
-                  
-                    <p className={" text-white  text-4xl font-semibold"}> Create a new class</p>
-                    <div className="ml-2 flex-shrink-0 flex">
-               
-                    <input id="classCode" className="hidden text-white border border-gray-700 bg-gray-900  px-4 text-xl py-1 rounded-lg focus:outline-none" placeholder="Class Code"></input>
-                    <button onClick={joinClass} className="hidden ml-4 text-white border border-gray-700 bg-gray-900 hover:bg-gray-800 px-4 text-xl py-1 rounded-lg"><i class="fas fa-sign-in-alt mr-1"></i> Join Class</button>
-                    <button className="ml-4 text-white border border-gray-700 bg-gray-900 px-4 text-xl py-1 rounded-lg hover:bg-gray-800"> Cancel Class Creation</button>
-  
+                    <div>
+                        <div className="flex items-center justify-between">
+
+                            <p className={" text-white  text-4xl font-semibold"}> Create a new class</p>
+                            <div className="ml-2 flex-shrink-0 flex">
+
+                                <input id="classCode" className="hidden text-white border border-gray-700 bg-gray-900  px-4 text-xl py-1 rounded-lg focus:outline-none" placeholder="Class Code"></input>
+                                <button onClick={joinClass} className="hidden ml-4 text-white border border-gray-700 bg-gray-900 hover:bg-gray-800 px-4 text-xl py-1 rounded-lg"><i class="fas fa-sign-in-alt mr-1"></i> Join Class</button>
+                                <button className="ml-4 text-white border border-gray-700 bg-gray-900 px-4 text-xl py-1 rounded-lg hover:bg-gray-800"> Cancel Class Creation</button>
+
+                            </div>
+
+                        </div>
+                        <div id="error" className="hidden flex items-center justify-between">
+                            <p></p>
+                            <div className="ml-2 flex-shrink-0 flex">
+
+                                <p className="text-xl font-bold text-red-700 mt-4 mb-4">Something went wrong trying to do an action.</p>
+
+                            </div>
+                        </div>
+                        <div className="" >
+
+
+
+
+
+                            <div style={{ cursor: 'pointer' }} className=" hidden mt-4 hover:border-blue-500 bg-gray-900 border  border-gray-700  px-4 py-4 text-white rounded ">
+                                <div className=" items-center justify-between">
+                                    <h1 className="text-2xl w-full">CYBSEC 121</h1>
+                                    <a className=""><i class="ml-1 fas fa-calendar-alt"></i> Enrolled 5/14/22 - 12/2/22</a> • <a className=""><i class="fas fa-chalkboard-teacher"></i> Instructed by Paul C, Santiago L <br></br> <i className="fa fa-check"></i> Issued by Garnet Valley SD</a>
+
+
+
+                                </div>
+
+                            </div>
+
+                            <h1 className="mt-5 mb-1 text-white text-2xl">Class Name<span className="text-red-500">*</span></h1>
+                            <input id="className" className="w-1/2 text-white bg-gray-900 py-1 px-5 focus:outline-none border border-gray-700 rounded-lg" placeholder="Students should be able to identify your course easily"></input>
+
+
+                            <div id="orgDetails" class="hidden mt-4 bg-gray-900 rounded-lg  py-4 border border-gray-700 text-white px-3 w-2/4">
+                                <p class="text-md">The ID you entered is for the following organization.</p>
+                                <ul>
+                                    <li>Organization Name: <span id="orgName"> ?</span></li>
+                                    <li>Organization Owner: <span id="orgOwner"> ?</span></li>
+                                    <li>Please ensure that this information is correct.</li>
+                                </ul>
+                            </div>
+
+
+                            <h1 className="mt-5 mb-1 text-white text-2xl">Course Description<span className="text-red-500">*</span></h1>
+                            <input id="courseDesc" className="w-1/2 text-white bg-gray-900 py-1 px-5 focus:outline-none border border-gray-700 rounded-lg" placeholder="Briefly explain on what your class offers"></input>
+
+                            <div className="hidden">
+                                <h1 className="mt-5 mb-1 text-white text-2xl flex ">Organization Lock    <div className="ml-4 form-check focus:outline-none form-switch">
+                                    <input id="orgLock" className="form-check-input appearance-none w-16 rounded-full float-left h-8 align-top bg-gray-900 bg-no-repeat bg-contain bg-gray-900 focus:outline-none cursor-pointer shadow-sm" type="checkbox" role="switch"></input>
+
+
+
+                                </div></h1>
+
+                                <p className="text-sm text-white italic">This will only allow accounts with emails ending with  <span id="userorg" className="font-semibold">unknown</span>.</p>
+                            </div>
+
+
+                            <br></br>
+
+                            <button onClick={saveClass} className="mt-5 px-5 py-2 bg-green-900 hover:bg-green-800 border-green-700 rounded-lg text-white">Save Changes</button>
+
+
+                        </div>
                     </div>
-                     
-          </div>
-          <div id="error" className="hidden flex items-center justify-between">
-              <p></p>
-          <div className="ml-2 flex-shrink-0 flex">
-   
-          <p className="text-xl font-bold text-red-700 mt-4 mb-4">Something went wrong trying to do an action.</p>
-
-           </div>     
-</div>
-     <div className="" >
 
 
-    
+
+                    <div className="text-white mt-4 text-xl border border-white w-1/2 px-4 py-4 rounded-lg shadow-2xl floating shadow-gray-500/50">
+
+                        Upgrade to <span className="bg-gray-800 px-2 font-semibold"><i class="fas fa-crown"></i> CTFGuide for Education</span> to have larger classes, organization locks, and more.
+                        <br></br><br></br>
+                        <a className="text-blue-500 hover:text-blue-600" href="../settings/billing"><i class="far fa-credit-card"></i> Upgrade now for just <b>$5/month</b>.</a>
+
+                    </div>
+                </div>
 
 
-    <div style={{cursor:'pointer'}} className=" hidden mt-4 hover:border-blue-500 bg-gray-900 border  border-gray-700  px-4 py-4 text-white rounded ">
-    <div className=" items-center justify-between">
-      <h1 className="text-2xl w-full">CYBSEC 121</h1>
-  <a className=""><i class="ml-1 fas fa-calendar-alt"></i> Enrolled 5/14/22 - 12/2/22</a> • <a className=""><i class="fas fa-chalkboard-teacher"></i> Instructed by Paul C, Santiago L <br></br> <i className="fa fa-check"></i> Issued by Garnet Valley SD</a>
-    
-                    
-    
-      </div>
-     
-    </div>
 
-        <h1 className="mt-5 mb-1 text-white text-2xl">Class Name<span className="text-red-500">*</span></h1>
-        <input id="className" className="w-1/2 text-white bg-gray-900 py-1 px-5 focus:outline-none border border-gray-700 rounded-lg" placeholder="Students should be able to identify your course easily"></input>
-  
-      
-        <div id="orgDetails" class="hidden mt-4 bg-gray-900 rounded-lg  py-4 border border-gray-700 text-white px-3 w-2/4">
-            <p class="text-md">The ID you entered is for the following organization.</p>
-            <ul>
-                <li>Organization Name: <span id="orgName"> ?</span></li>
-                <li>Organization Owner: <span id="orgOwner"> ?</span></li>
-                <li>Please ensure that this information is correct.</li>
-            </ul>
-        </div>
-
-        
-        <h1  className="mt-5 mb-1 text-white text-2xl">Course Description<span className="text-red-500">*</span></h1>
-        <input id="courseDesc" className="w-1/2 text-white bg-gray-900 py-1 px-5 focus:outline-none border border-gray-700 rounded-lg" placeholder="Briefly explain on what your class offers"></input>
-  
-<div className="hidden">
-        <h1 className="mt-5 mb-1 text-white text-2xl flex ">Organization Lock    <div className="ml-4 form-check focus:outline-none form-switch">
-    <input id="orgLock" className="form-check-input appearance-none w-16 rounded-full float-left h-8 align-top bg-gray-900 bg-no-repeat bg-contain bg-gray-900 focus:outline-none cursor-pointer shadow-sm" type="checkbox" role="switch"></input>
-  
-  
-  
-  </div></h1>
- 
-        <p className="text-sm text-white italic">This will only allow accounts with emails ending with  <span id="userorg" className="font-semibold">unknown</span>.</p>
-     </div>
-
-   
-     <br></br>
-
-     <button onClick={saveClass} className="mt-5 px-5 py-2 bg-green-900 hover:bg-green-800 border-green-700 rounded-lg text-white">Save Changes</button>
-     
-
-</div>
-    </div>
-
-               
-
-                <div className="text-white mt-4 text-xl border border-white w-1/2 px-4 py-4 rounded-lg shadow-2xl floating shadow-gray-500/50">
-
-Upgrade to <span className="bg-gray-800 px-2 font-semibold"><i class="fas fa-crown"></i> CTFGuide for Education</span> to have larger classes, organization locks, and more.
-  <br></br><br></br>
-<a className="text-blue-500 hover:text-blue-600" href="../settings/billing"><i class="far fa-credit-card"></i> Upgrade now for just <b>$5/month</b>.</a>
-
-</div>
-</div>
-
-          
-                
             </main>
 
-        
+
         </div>
 
 

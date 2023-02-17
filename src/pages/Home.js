@@ -1,12 +1,18 @@
 import { Fragment } from 'react'
 import { Popover, Transition } from '@headlessui/react'
-import { Menu, XIcon } from '@heroicons/react/outline'
+//import { Menu, XIcon } from '@heroicons/react/outline'
+
 import { Link } from "react-router-dom";
-import { SparklesIcon, LightningBoltIcon } from '@heroicons/react/outline'
+//import { SparklesIcon, LightningBoltIcon } from '@heroicons/react/outline'
 import { Features } from '../components/features';
 import { useState } from 'react'
 import { Dialog } from '@headlessui/react'
+import { FeaturesPanel } from '../components/home/FeaturesPanel';
 
+const navigation = [
+
+ 
+]
 
 
 const transferFeatures = [
@@ -14,13 +20,17 @@ const transferFeatures = [
     id: 1,
     name: 'Community Uploaded Challenges',
     description:
+
       'Get access to hunderds of challenges uploaded by the community. You can also upload your own challenges. ',
+
   },
   {
     id: 2,
     name: 'Competitive System',
     description:
+
       'All challenges are ranked by difficulty, and you can compete with other users to solve them. ',
+
   },
 
 ]
@@ -47,6 +57,7 @@ const Home = () => {
     var left = el.offsetLeft;
     var width = el.offsetWidth;
     var height = el.offsetHeight;
+
   
     while(el.offsetParent) {
       el = el.offsetParent;
@@ -254,7 +265,8 @@ if (page == "features") {
     <br></br>
               <Link to="#"  onClick={() => {
                         document.getElementById("video").classList.remove("hidden");
-        }}  className="mt-10 sm:text-center  md:mx-auto  text-blue-700 lg:text-center lg:mx-auto "><i className="fas fa-play"></i> Watch Video</Link>
+        }}  className="mt-10 sm:text-center  md:mx-auto  text-blue-700 lg:text-center lg:mx-auto "><i class="fas fa-play"></i> Watch Video</Link>
+
             </div>
           
           </div>
@@ -355,7 +367,7 @@ if (page == "features") {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
 
   return (
-    
+
     <div className="isolate " style={{fontFamily: 'Poppins, sans-serif'}}>
     <div className="absolute inset-x-0 top-[-10rem] -z-10 transform-gpu overflow-hidden blur-3xl sm:top-[-20rem]">
       <svg
@@ -395,7 +407,8 @@ if (page == "features") {
                                             src="../../CTFGuide trans dark.png"
                                             alt="CTFGuide"
                                         />
-                                        <h1 className='text-white text-2xl my-auto'>CTFGuide Beta</h1>
+                                        <h1 className='text-white text-2xl my-auto'>CTFGuide</h1>
+
             </a>
           </div>
           <div className="flex lg:hidden">
@@ -410,22 +423,12 @@ if (page == "features") {
             </button>
           </div>
           <div className="hidden lg:flex lg:min-w-0 lg:flex-1 lg:justify-center lg:gap-x-12">
-
-          <a  href="../" className="font-semibold text-white hover:text-white">
-               Home
+            {navigation.map((item) => (
+              <a key={item.name} onClick={{elementInViewport}} href={item.href} className="font-semibold text-white hover:text-white">
+                {item.name}
               </a>
-<a  href="./about" className="font-semibold text-white hover:text-white">
-               About
-              </a>
+            ))}
 
-
-<a  onClick={scrollFeatures} style={{cursor: "pointer"}} className="font-semibold text-white hover:text-white">
-               Features
-              </a>
-
-              <a href="https://ctfguide.freshteam.com/jobs" className="font-semibold text-white hover:text-white">
-               Careers
-              </a>
 
 
           </div>
@@ -464,7 +467,16 @@ if (page == "features") {
             <div className="mt-6 flow-root">
               <div className="-my-6 divide-y divide-gray-500/10 text-white">
                 <div className="space-y-2 py-6 text-white">
-             
+                  {navigation.map((item) => (
+                    <a
+                      key={item.name}
+                      href={item.href}
+                      className="-mx-3 block rounded-lg py-2 px-3 text-base font-semibold leading-7 text-white hover:bg-gray-400/10"
+                    >
+                      {item.name}
+                    </a>
+                  ))}
+
                 </div>
                 <div className="py-6">
                   <a
@@ -481,8 +493,9 @@ if (page == "features") {
       </div>
     </div>
     <main >
-      <div className=" px-6 lg:px-8 flex h-screen" style={{height: "80vh"}}>
-        <div className="mx-auto my-auto max-w-3xl pt-20 pb-32 sm:pt-48 sm:pb-40 animate__animated animate__fadeIn">
+      <div className=" px-6 lg:px-8 flex h-screen" style={{height: "100vh"}}>
+        <div className="mx-auto my-auto max-w-3xl pt-10 pb-32 sm:pt-20 sm:pb-40 animate__animated animate__fadeIn">
+
           <div>
        
             <div>
@@ -513,7 +526,8 @@ if (page == "features") {
                 </Link>
               </div>
             </div>
-            <div className="absolute inset-x-0 top-[calc(100%-13rem)] -z-10 transform-gpu overflow-hidden blur-3xl sm:top-[calc(100%-30rem)]">
+            <div className="truncate absolute inset-x-0 top-[calc(100%-13rem)] -z-10 transform-gpu overflow-hidden blur-3xl sm:top-[calc(100%-30rem)]">
+
               <svg
                 className="relative left-[calc(50%+3rem)] h-[21.1875rem] max-w-none -translate-x-1/2 sm:left-[calc(50%+36rem)] sm:h-[42.375rem]"
                 viewBox="0 0 1155 678"
@@ -545,315 +559,7 @@ if (page == "features") {
       </div>
     </main>
 
-    <div id="featuresview" style={{height: "200vh"}} className="overflow-hidden  py-16 lg:py-24">
-      <div className="relative mx-auto max-w-xl px-6 lg:max-w-7xl lg:px-1">
-        <svg
-          className="absolute left-full hidden -translate-x-1/2 -translate-y-1/4 transform lg:block"
-          width={404}
-          height={784}
-          fill="none"
-          viewBox="0 0 404 784"
-          aria-hidden="true"
-        >
-          <defs>
-            <pattern
-              id="b1e6e422-73f8-40a6-b5d9-c8586e37e0e7"
-              x={0}
-              y={0}
-              width={20}
-              height={20}
-              patternUnits="userSpaceOnUse"
-            >
-              <rect x={0} y={0} width={4} height={4} className="text-gray-600" fill="currentColor" />
-            </pattern>
-          </defs>
-          <rect width={404} height={784} fill="url(#b1e6e422-73f8-40a6-b5d9-c8586e37e0e7)" />
-        </svg>
-
-        <div className="relative" id="part2">
-          <h2 className="text-center text-3xl font-bold leading-8 tracking-tight text-white sm:text-4xl">
-           We've got every aspect covered for you.
-          </h2>
-          <p className="mx-auto mt-4 max-w-3xl text-center text-xl text-gray-500">
-                A seamless learning experience for every aspect of cybersecurity.
-          </p>
-        </div>
-
-        <div className="relative mt-12 lg:mt-24 lg:grid lg:grid-cols-2 lg:items-center lg:gap-20">
-          <div className="relative ">
-            <h3 className="text-2xl font-bold tracking-tight text-white sm:text-3xl">Capture the Flag</h3>
-            <p className="mt-3 text-lg text-gray-500">
-            Capture "flags" that are secretly hidden in purposefully-vulnerable programs or websites. It's the go-to format for cybersecurity competitions.
-            </p>
-            <div className="absolute inset-x-0 top-[calc(100%-13rem)] -z-10 transform-gpu overflow-hidden blur-3xl sm:top-[calc(100%-30rem)]">
-              <svg
-                className="relative left-[calc(50%+3rem)] h-[21.1875rem] max-w-none -translate-x-1/2 sm:left-[calc(50%+36rem)] sm:h-[42.375rem]"
-                viewBox="0 0 1155 678"
-                fill="none"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <path
-                  fill="url(#ecb5b0c9-546c-4772-8c71-4d3f06d544bc)"
-                  fillOpacity=".3"
-                  d="M317.219 518.975L203.852 678 0 438.341l317.219 80.634 204.172-286.402c1.307 132.337 45.083 346.658 209.733 145.248C936.936 126.058 882.053-94.234 1031.02 41.331c119.18 108.451 130.68 295.337 121.53 375.223L855 299l21.173 362.054-558.954-142.079z"
-                />
-                <defs>
-                  <linearGradient
-                    id="ecb5b0c9-546c-4772-8c71-4d3f06d544bc"
-                    x1="1155.49"
-                    x2="-78.208"
-                    y1=".177"
-                    y2="474.645"
-                    gradientUnits="userSpaceOnUse"
-                  >
-                    <stop stopColor="#0034e4" />
-                    <stop offset={1} stopColor="#000516" />
-                  </linearGradient>
-                </defs>
-              </svg>
-            </div>
-
-            <dl className="mt-10 space-y-10">
-              {transferFeatures.map((item) => (
-                <div key={item.id} className="relative px-4 py-4 rounded-lg " style={{ backgroundColor: "#212121"}}>
-                  <dt>
-                   
-                    <p className=" text-lg font-medium leading-6 text-white">{item.name}</p>
-                  </dt>
-                  <dd className="mt-2 text-base text-gray-500">{item.description}</dd>
-                </div>
-              ))}
-            </dl>
-
-            <div className="absolute inset-x-0 top-[calc(100%-13rem)] -z-10 transform-gpu overflow-hidden blur-3xl sm:top-[calc(100%-30rem)]">
-              <svg
-                className="relative left-[calc(50%+3rem)] h-[21.1875rem] max-w-none -translate-x-1/2 sm:left-[calc(50%+36rem)] sm:h-[42.375rem]"
-                viewBox="0 0 1155 678"
-                fill="none"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <path
-                  fill="url(#ecb5b0c9-546c-4772-8c71-4d3f06d544bc)"
-                  fillOpacity=".3"
-                  d="M317.219 518.975L203.852 678 0 438.341l317.219 80.634 204.172-286.402c1.307 132.337 45.083 346.658 209.733 145.248C936.936 126.058 882.053-94.234 1031.02 41.331c119.18 108.451 130.68 295.337 121.53 375.223L855 299l21.173 362.054-558.954-142.079z"
-                />
-                <defs>
-                  <linearGradient
-                    id="ecb5b0c9-546c-4772-8c71-4d3f06d544bc"
-                    x1="1155.49"
-                    x2="-78.208"
-                    y1=".177"
-                    y2="474.645"
-                    gradientUnits="userSpaceOnUse"
-                  >
-                    <stop stopColor="#0034e4" />
-                    <stop offset={1} stopColor="#000516" />
-                  </linearGradient>
-                </defs>
-              </svg>
-            </div>
-          </div>
-
-          <div className="relative -mx-4 mt-10 lg:mt-0" aria-hidden="true">
-            <svg
-              className="absolute left-1/2 -translate-x-1/2 translate-y-16 transform lg:hidden"
-              width={784}
-              height={404}
-              fill="none"
-              viewBox="0 0 784 404"
-            >
-              <defs>
-                <pattern
-                  id="ca9667ae-9f92-4be7-abcb-9e3d727f2941"
-                  x={0}
-                  y={0}
-                  width={20}
-                  height={20}
-                  patternUnits="userSpaceOnUse"
-                >
-                  <rect x={0} y={0} width={4} height={4} className="text-gray-600" fill="currentColor" />
-                </pattern>
-              </defs>
-              <rect width={784} height={404} fill="url(#ca9667ae-9f92-4be7-abcb-9e3d727f2941)" />
-            </svg>
-            <img
-              className="  relative mx-auto shadow-2xl  shadow-gray-900/50  rounded-lg  "
-              style={{borderColor: "black"}}
-              width={2000}
-              src="../ss4.png"
-              alt=""
-            />
-                <div className="absolute inset-x-0 top-[calc(100%-13rem)] -z-10 transform-gpu overflow-hidden blur-3xl sm:top-[calc(100%-30rem)]">
-              <svg
-                className="relative left-[calc(50%+3rem)] h-[21.1875rem] max-w-none -translate-x-1/2 sm:left-[calc(50%+36rem)] sm:h-[42.375rem]"
-                viewBox="0 0 1155 678"
-                fill="none"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <path
-                  fill="url(#ecb5b0c9-546c-4772-8c71-4d3f06d544bc)"
-                  fillOpacity=".3"
-                  d="M317.219 518.975L203.852 678 0 438.341l317.219 80.634 204.172-286.402c1.307 132.337 45.083 346.658 209.733 145.248C936.936 126.058 882.053-94.234 1031.02 41.331c119.18 108.451 130.68 295.337 121.53 375.223L855 299l21.173 362.054-558.954-142.079z"
-                />
-                <defs>
-                  <linearGradient
-                    id="ecb5b0c9-546c-4772-8c71-4d3f06d544bc"
-                    x1="1155.49"
-                    x2="-78.208"
-                    y1=".177"
-                    y2="474.645"
-                    gradientUnits="userSpaceOnUse"
-                  >
-                    <stop stopColor="#0034e4" />
-                    <stop offset={1} stopColor="#000516" />
-                  </linearGradient>
-                </defs>
-              </svg>
-            </div>
-
-            
-          </div>
-        </div>
-
-        <svg
-          className="absolute right-full hidden translate-x-1/2 translate-y-12 transform lg:block"
-          width={404}
-          height={784}
-          fill="none"
-          viewBox="0 0 404 784"
-          aria-hidden="true"
-        >
-          <defs>
-            <pattern
-              id="64e643ad-2176-4f86-b3d7-f2c5da3b6a6d"
-              x={0}
-              y={0}
-              width={20}
-              height={20}
-              patternUnits="userSpaceOnUse"
-            >
-              <rect x={0} y={0} width={4} height={4} className="text-gray-600" fill="currentColor" />
-            </pattern>
-          </defs>
-          <rect width={404} height={784} fill="url(#64e643ad-2176-4f86-b3d7-f2c5da3b6a6d)" />
-        </svg>
-
-        <div className="relative mt-12 sm:mt-16 lg:mt-24">
-          <div className="lg:grid lg:grid-flow-row-dense lg:grid-cols-2 lg:items-center lg:gap-20">
-            <div className="lg:col-start-2">
-              <h3 className="text-2xl font-bold tracking-tight text-white sm:text-3xl">Built for the web</h3>
-              <p className="mt-3 text-lg text-gray-500">
-                Everything can be done right from your browser. No need to download or install anything.
-              </p>
-
-              <dl className="mt-10 space-y-10">
-                {communicationFeatures.map((item) => (
-                 <div key={item.id} className="relative px-4 py-4 rounded-lg" style={{ backgroundColor: "#212121"}}>
-                  <dt>
-                   
-                    <p className=" text-lg font-medium leading-6 text-white">{item.name}</p>
-                  </dt>
-                  <dd className="mt-2 text-base text-gray-500">{item.description}</dd>
-                </div>
-                ))}
-
-<div className="absolute inset-x-0 top-[calc(100%-13rem)] -z-10 transform-gpu overflow-hidden blur-3xl sm:top-[calc(100%-30rem)]">
-              <svg
-                className="relative left-[calc(50%+3rem)] h-[21.1875rem] max-w-none -translate-x-1/2 sm:left-[calc(50%+36rem)] sm:h-[42.375rem]"
-                viewBox="0 0 1155 678"
-                fill="none"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <path
-                  fill="url(#ecb5b0c9-546c-4772-8c71-4d3f06d544bc)"
-                  fillOpacity=".3"
-                  d="M317.219 518.975L203.852 678 0 438.341l317.219 80.634 204.172-286.402c1.307 132.337 45.083 346.658 209.733 145.248C936.936 126.058 882.053-94.234 1031.02 41.331c119.18 108.451 130.68 295.337 121.53 375.223L855 299l21.173 362.054-558.954-142.079z"
-                />
-                <defs>
-                  <linearGradient
-                    id="ecb5b0c9-546c-4772-8c71-4d3f06d544bc"
-                    x1="1155.49"
-                    x2="-78.208"
-                    y1=".177"
-                    y2="474.645"
-                    gradientUnits="userSpaceOnUse"
-                  >
-                    <stop stopColor="#0034e4" />
-                    <stop offset={1} stopColor="#000516" />
-                  </linearGradient>
-                </defs>
-              </svg>
-            </div>
-              </dl>
-            </div>
-
-            <div className="relative -mx-4 mt-10 lg:col-start-1 lg:mt-0">
-            <div className="absolute inset-x-0 top-[calc(100%-13rem)] -z-10 transform-gpu overflow-hidden blur-3xl sm:top-[calc(100%-30rem)]">
-              <svg
-                className="relative left-[calc(10%+3rem)] h-[21.1875rem] max-w-none -translate-x-1/2 sm:left-[calc(50%+36rem)] sm:h-[42.375rem]"
-                viewBox="0 0 1155 678"
-                fill="none"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <path
-                  fill="url(#ecb5b0c9-546c-4772-8c71-4d3f06d544bc)"
-                  fillOpacity=".3"
-                  d="M317.219 518.975L203.852 678 0 438.341l317.219 80.634 204.172-286.402c1.307 132.337 45.083 346.658 209.733 145.248C936.936 126.058 882.053-94.234 1031.02 41.331c119.18 108.451 130.68 295.337 121.53 375.223L855 299l21.173 362.054-558.954-142.079z"
-                />
-                <defs>
-                  <linearGradient
-                    id="ecb5b0c9-546c-4772-8c71-4d3f06d544bc"
-                    x1="1155.49"
-                    x2="-78.208"
-                    y1=".177"
-                    y2="474.645"
-                    gradientUnits="userSpaceOnUse"
-                  >
-                    <stop stopColor="#0034e4" />
-                    <stop offset={1} stopColor="#000516" />
-                  </linearGradient>
-                </defs>
-              </svg>
-            </div>
-              <svg
-                className="absolute left-1/2 -translate-x-1/2 translate-y-16 transform lg:hidden"
-                width={784}
-                height={404}
-                fill="none"
-                viewBox="0 0 784 404"
-                aria-hidden="true"
-              >
-                <defs>
-                  <pattern
-                    id="e80155a9-dfde-425a-b5ea-1f6fadd20131"
-                    x={0}
-                    y={0}
-                    width={20}
-                    height={20}
-                    patternUnits="userSpaceOnUse"
-                  >
-                    <rect x={0} y={0} width={4} height={4} className="text-gray-200" fill="currentColor" />
-                  </pattern>
-                </defs>
-                <rect width={784} height={404} fill="url(#e80155a9-dfde-425a-b5ea-1f6fadd20131)" />
-              </svg>
-              <img
-                className=" relative mx-auto"
-                width={1000}
-                src="../ss5.png"
-                alt=""
-              />
-              
-            </div>
-          </div>
-        </div>
-      </div>
-      
-
-    </div>
-    <p className="mb-10 text-gray-500 text-center mx-auto">  &copy; CTFGuide 2022<br></br><a className="hover:text-white" href="https://github.com/ctfguide-tech/Information/blob/main/terms-of-service.md">Terms of Service</a> • <a className="hover:text-white" href="https://github.com/ctfguide-tech/Information/blob/main/privacy-policy.md">Privacy Policy</a> • <a className="hover:text-white" href="https://feedback.ctfguide.com">Feedback</a> • <a className="hover:text-white" href="mailto:staff@ctfguide.com">Contact Us</a><br></br><a href="https://twitter.com/ctfguideapp"><i className="fab fa-twitter text-xl"></i></a> <a href="https://www.linkedin.com/company/ctfguide/" className='ml-3'><i className="fab fa-linkedin text-xl"></i></a><a href="https://github.com/ctfguide-tech" className='ml-3'><i class="text-xl fab fa-github"></i></a></p>
-
-                  <br></br>
+    <FeaturesPanel></FeaturesPanel>
 
   </div>
   )

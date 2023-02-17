@@ -62,10 +62,15 @@ const Settings = () => {
       href: '`',
       priceMonthly: 2,
       description: 'Level up your learning for just a small price',
-      includedFeatures: ['Unlimited CTFGuide Terminal access', 'Machine learning graded problems', 'Rep an exclusive CTFGuide Pro badge', 'Access to challenge solutions (no points)'],
-    },
-    {
-      name: 'CTFGuide Groups',
+      includedFeatures: ['Rep an exclusive CTFGuide Pro badge', 'Access to challenge solutions (no points)'],
+    }
+   
+  ]
+
+  /*
+
+   {
+      name: 'CTFGuide Groups (not avaliable yet)',
       href: '#',
       priceMonthly: 40,
       description: 'A perfect solution for education and companies',
@@ -77,7 +82,8 @@ const Settings = () => {
         'Run internal competitions',
       ],
     }
-  ]
+
+    */
   function logout() {
     signOut(auth).then(() => {
       // Sign-out successful.
@@ -407,7 +413,7 @@ const Settings = () => {
 
                   <p className="text-xl"><b>No billing information.</b></p>
                   <button onClick={() => setOpen2(true)}
-                    className="hidden mt-2 bg-blue-700 hover:bg-blue-800 text-white px-6 py-1 rounded-lg text-md">View Plans </button>
+                    className=" mt-2 bg-blue-700 hover:bg-blue-800 text-white px-6 py-1 rounded-lg text-md">View Plans </button>
                   <hr className="hidden text-gray-700 bg-gray-800 border-gray-600 mt-2 mb-2"></hr>
 
                   <h1 className="hidden text-6xl mt-4 text-center">$120/year</h1>
@@ -527,9 +533,9 @@ const Settings = () => {
                         <h1 className="text-white text-5xl">Upgrade your CTFGuide Experience!</h1>
                         <hr className="border-gray-800 mt-4 ml-40 mr-40"></hr>
                         <br></br>
-                        <div className="px-5  sm:grid sm:grid-cols-2 sm:gap-6 sm:space-y-0 lg:mx-auto">
+                        <div className="px-5  sm:grid sm:grid-cols-1 sm:gap-6 sm:space-y-0 lg:mx-auto">
                           {tiers.map((tier) => (
-                            <div key={tier.name} className="divide-y divide-gray-600 rounded-lg border border-gray-600 shadow-sm">
+                            <div key={tier.name} className="mx-auto text-center divide-y divide-gray-600 rounded-lg border border-gray-600 shadow-sm">
                               <div className="p-6">
                                 <h2 className="text-4xl text-white">{tier.name}</h2>
                                 <p className="mt-1 text-lg text-gray-400">{tier.description}</p>
@@ -573,7 +579,7 @@ const Settings = () => {
 
       </main>
 
-
+ 
     </div>
 
 

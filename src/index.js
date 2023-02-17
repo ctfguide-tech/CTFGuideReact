@@ -24,7 +24,7 @@ import OrgControl from "./pages/OrgControl";
 import OrgControlManage from "./pages/OrgControlManage";
 import About from "./pages/About";
 import "./index.css";
-
+import ToS  from "./pages/ToS";
 
 import Ch1_1 from "./pages/content/Ch1_1"; // Lesson 1
 import Ch1_2 from "./pages/content/Ch1_2"; // Activity 1
@@ -54,6 +54,7 @@ export default function App() {
 
           <Route path="/classes/:id" element={<ClassView />} />
 
+          <Route path="/tos" element={<ToS />} />
           <Route path="/create" element={<Create />} />
 
           <Route path="/create-class" element={<CreateClass />} />
