@@ -8,7 +8,7 @@ import { Features } from '../components/features';
 import { useState } from 'react'
 import { Dialog } from '@headlessui/react'
 import { FeaturesPanel } from '../components/home/FeaturesPanel';
-
+import { Footer } from '../components/footer';
 const navigation = [
 
  
@@ -561,6 +561,7 @@ if (page == "features") {
 
     <FeaturesPanel></FeaturesPanel>
 
+    <Footer></Footer>
   </div>
   )
 }
