@@ -22,6 +22,8 @@ const Register = () => {
   const app = initializeApp(firebaseConfig);
   const analytics = getAnalytics(app);
   document.title = "CTFGuide - Register"
+  
+  window.location.href = "https://docs.google.com/forms/d/e/1FAIpQLSeCKUKeOGSRj65RC2s1funqG6GVuqYDLGjAP7uW37o77rXl8w/viewform"
 
   function googleRegister() {
     const auth = getAuth();

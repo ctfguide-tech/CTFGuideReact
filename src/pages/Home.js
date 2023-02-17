@@ -1,6 +1,7 @@
 import { Fragment } from 'react'
 import { Popover, Transition } from '@headlessui/react'
 //import { Menu, XIcon } from '@heroicons/react/outline'
+
 import { Link } from "react-router-dom";
 //import { SparklesIcon, LightningBoltIcon } from '@heroicons/react/outline'
 import { Features } from '../components/features';
@@ -13,18 +14,23 @@ const navigation = [
  
 ]
 
+
 const transferFeatures = [
   {
     id: 1,
     name: 'Community Uploaded Challenges',
     description:
-      'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Maiores impedit perferendis suscipit eaque, iste dolor cupiditate blanditiis ratione.',
+
+      'Get access to hunderds of challenges uploaded by the community. You can also upload your own challenges. ',
+
   },
   {
     id: 2,
     name: 'Competitive System',
     description:
-      'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Maiores impedit perferendis suscipit eaque, iste dolor cupiditate blanditiis ratione.',
+
+      'All challenges are ranked by difficulty, and you can compete with other users to solve them. ',
+
   },
 
 ]
@@ -51,6 +57,7 @@ const Home = () => {
     var left = el.offsetLeft;
     var width = el.offsetWidth;
     var height = el.offsetHeight;
+
   
     while(el.offsetParent) {
       el = el.offsetParent;
@@ -65,7 +72,21 @@ const Home = () => {
       (left + width) <= (window.pageXOffset + window.innerWidth)
     );
   }
+  function scrollFeatures() {
+    document.getElementById("featuresview").scrollIntoView();
   
+  }
+
+  
+
+const urlParams = new URLSearchParams(window.location.search);
+const page = urlParams.get('view');
+
+
+if (page == "features") {
+  setTimeout(function(){ scrollFeatures(); }, 100);
+}
+
 
 
 
@@ -138,7 +159,7 @@ const Home = () => {
                   style={{fontFamily: 'Space Grotesk, sans-serif', cursor: 'pointer'}}
                   className="inline-flex items-center px-10 py-2 text-base font-medium rounded-md text-white bg-blue-600 hover:bg-blue-700"
                 >
-                 <i class="mr-2 fas fa-user-plus"></i> Register
+                 <i className="mr-2 fas fa-user-plus"></i> Register
                 </Link>
               </span>
             </div>
@@ -150,7 +171,7 @@ const Home = () => {
                   style={{fontFamily: 'Space Grotesk, sans-serif', cursor: 'pointer'}}
                   className="inline-flex items-center px-10 py-2 border borde border-gray-600 text-base font-medium rounded-md text-white bg-gray-800 hover:bg-white hover:border-gray-700"
                 >
-                  <i class="fas fa-sign-in-alt mr-2"></i> Log in
+                  <i className="fas fa-sign-in-alt mr-2"></i> Log in
                 </Link>
               </span>
             </div>
@@ -176,7 +197,7 @@ const Home = () => {
                  
                   <div className="flex-shrink-0 flex items-center">
 				
-                <img src="./CTFGuide trans dark.png" class="w-10"/> <span style={{fontFamily: 'Space Grotesk, sans-serif'}} className="w-auto font-semibold text-xl text-white">CTFGuide</span>
+                <img src="./CTFGuide trans dark.png" className="w-10"/> <span style={{fontFamily: 'Space Grotesk, sans-serif'}} className="w-auto font-semibold text-xl text-white">CTFGuide</span>
                 </div>
 
 
@@ -245,6 +266,7 @@ const Home = () => {
               <Link to="#"  onClick={() => {
                         document.getElementById("video").classList.remove("hidden");
         }}  className="mt-10 sm:text-center  md:mx-auto  text-blue-700 lg:text-center lg:mx-auto "><i class="fas fa-play"></i> Watch Video</Link>
+
             </div>
           
           </div>
@@ -287,7 +309,7 @@ const Home = () => {
        <iframe width="720" height="400" src="https://www.youtube-nocookie.com/embed/HrerCAcOblc" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; hide-info;"></iframe>
         <button  onClick={() => {
                         document.getElementById("video").classList.add("hidden");
-        }} class="mt-4 bg-black px-4 rounded-lg text-white hover:bg-gray-800">X Close</button> 
+        }} className="mt-4 bg-black px-4 rounded-lg text-white hover:bg-gray-800">X Close</button> 
         </div>
         
       </div>
@@ -345,6 +367,7 @@ const Home = () => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
 
   return (
+
     <div className="isolate " style={{fontFamily: 'Poppins, sans-serif'}}>
     <div className="absolute inset-x-0 top-[-10rem] -z-10 transform-gpu overflow-hidden blur-3xl sm:top-[-20rem]">
       <svg
@@ -385,6 +408,7 @@ const Home = () => {
                                             alt="CTFGuide"
                                         />
                                         <h1 className='text-white text-2xl my-auto'>CTFGuide</h1>
+
             </a>
           </div>
           <div className="flex lg:hidden">
@@ -404,6 +428,9 @@ const Home = () => {
                 {item.name}
               </a>
             ))}
+
+
+
           </div>
           <div className="hidden lg:flex lg:min-w-0 lg:flex-1 lg:justify-end">
             <Link
@@ -449,6 +476,7 @@ const Home = () => {
                       {item.name}
                     </a>
                   ))}
+
                 </div>
                 <div className="py-6">
                   <a
@@ -467,6 +495,7 @@ const Home = () => {
     <main >
       <div className=" px-6 lg:px-8 flex h-screen" style={{height: "100vh"}}>
         <div className="mx-auto my-auto max-w-3xl pt-10 pb-32 sm:pt-20 sm:pb-40 animate__animated animate__fadeIn">
+
           <div>
        
             <div>
@@ -498,6 +527,7 @@ const Home = () => {
               </div>
             </div>
             <div className="truncate absolute inset-x-0 top-[calc(100%-13rem)] -z-10 transform-gpu overflow-hidden blur-3xl sm:top-[calc(100%-30rem)]">
+
               <svg
                 className="relative left-[calc(50%+3rem)] h-[21.1875rem] max-w-none -translate-x-1/2 sm:left-[calc(50%+36rem)] sm:h-[42.375rem]"
                 viewBox="0 0 1155 678"
@@ -530,7 +560,6 @@ const Home = () => {
     </main>
 
     <FeaturesPanel></FeaturesPanel>
-
 
   </div>
   )
