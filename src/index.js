@@ -32,6 +32,29 @@ import Ch1_3 from "./pages/content/Ch1_3"; // Lesson 21
 import Ch2_1 from "./pages/content/Ch2_1"; // Lesson 1
 import Ch2_2 from "./pages/content/Ch2_2"; // Activity 2
 
+
+// sentry
+import * as Sentry from "@sentry/react";
+import { BrowserTracing } from "@sentry/tracing";
+Sentry.init({
+  dsn: "https://8da5eb8e4e5e4ae7bebcd3f5532e8e6f@o4504693609529344.ingest.sentry.io/4504693611167744",
+  integrations: [new BrowserTracing()],
+
+  // Set tracesSampleRate to 1.0 to capture 100%
+  // of transactions for performance monitoring.
+  // We recommend adjusting this value in production
+  tracesSampleRate: 1.0,
+
+  // This sets the sample rate to be 10%. You may want this to be 100% while
+  // in development and sample at a lower rate in production
+  replaysSessionSampleRate: 0.1,
+  // If the entire session is not sampled, use the below sample rate to sample
+  // sessions when an error occurs.
+  replaysOnErrorSampleRate: 1.0,
+  integrations: [new Sentry.Replay()],
+
+});
+
 export default function App() {
   return (
     <BrowserRouter>

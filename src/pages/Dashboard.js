@@ -147,11 +147,14 @@ const Dashboard = () => {
               }
               xhttp.open("GET", `${process.env.REACT_APP_API_URL}/users/createvm?uid=${firebaseUser.uid}`);
               xhttp.send();
-
+            
             }
 
             console.log(data.tutorialCompleted)
-
+            
+            if (!data.username) {
+              window.location.href = "./onboarding"
+            }
             setUserData({
               username: data.username,
               streak: data.streak,
