@@ -9,10 +9,8 @@ import { Dialog } from '@headlessui/react'
 import { FeaturesPanel } from '../components/home/FeaturesPanel';
 
 const navigation = [
-  { name: 'Mission', href: '#' },
-  { name: 'Features', href: '#' },
-  { name: 'Outreach', href: '#' },
-  { name: 'Careers', href: '#' },
+
+ 
 ]
 
 const transferFeatures = [
@@ -402,7 +400,7 @@ const Home = () => {
           </div>
           <div className="hidden lg:flex lg:min-w-0 lg:flex-1 lg:justify-center lg:gap-x-12">
             {navigation.map((item) => (
-              <a key={item.name} href={item.href} className="font-semibold text-white hover:text-white">
+              <a key={item.name} onClick={{elementInViewport}} href={item.href} className="font-semibold text-white hover:text-white">
                 {item.name}
               </a>
             ))}

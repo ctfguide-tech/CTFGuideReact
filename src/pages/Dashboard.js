@@ -403,11 +403,11 @@ const Dashboard = () => {
               <div id={"editpfp"} onClick={() => { document.getElementById('file-input').click(); }} style={{ bottom: "0px", cursor: 'pointer' }} className={"hidden rounded-b-full text-white absolute  px-4 opacity-80  bg-black"}>
                 <p>Edit</p></div></div>
    <div>
-   <h1 className="text-white text-3xl ml-4 mt-2 my-auto ">Hello {userData.username}</h1>
+   <h1 className="text-white text-3xl ml-4 mt-5 my-auto ">Hello {userData.username}</h1>
 
-      <span style={{borderColor: "#8c8c8c", color: "#8c8c8c"}} className="ml-4    align-middle align-center   border-slate-400 text-slate-200 rounded-lg  text-sm" >
-              <i style={{color: "#8c8c8c"}} className=" fas fa-check-circle text-slate-200"></i> CTFGuide Employee</span>&nbsp;
-              <span style={{borderColor: "#8c8c8c", color: "#8c8c8c"}} className="ml-2 text-sm align-middle align-center  border-slate-400 text-slate-200  rounded-lg  stext-sm" >
+      <span style={{borderColor: "#8c8c8c", color: "#8c8c8c"}} className="hidden ml-4    align-middle align-center   border-slate-400 text-slate-200 rounded-lg  text-sm" >
+              <i style={{color: "#8c8c8c"}} className=" hidden fas fa-check-circle text-slate-200"></i> CTFGuide Employee</span>&nbsp;
+              <span style={{borderColor: "#8c8c8c", color: "#8c8c8c"}} className="hidden ml-2 text-sm align-middle align-center  border-slate-400 text-slate-200  rounded-lg  stext-sm" >
                 <i style={{color: "#8c8c8c"}}  className="fas fa-bolt text-slate-200"></i> CTFGuide Pro</span>
                 </div>
             </div>
@@ -416,9 +416,9 @@ const Dashboard = () => {
        
 
             <div className="ml-auto pl-4 align-middle my-auto">
-              <button className="rounded-lg border border-slate-600 px-3 py-1 text-white" style={{borderColor: "#8c8c8c", color: "#8c8c8c" }}><i class="fas fa-terminal"></i>&nbsp;Launch Terminal</button>
+              <a href="https://terminal.ctfguide.com/wetty" className="rounded-lg border border-slate-600 px-3 py-1 text-white cursor-pointer" style={{borderColor: "#8c8c8c", color: "#8c8c8c" }}><i class="fas fa-terminal"></i>&nbsp;Launch Terminal</a>
          
-              <button className="ml-2 rounded-lg border border-slate-600 px-3 py-1 text-white" style={{borderColor: "#8c8c8c", color: "#8c8c8c" }}><i class="fas fa-cog"></i>&nbsp;Account Settings</button>
+              <a href="./settings" className="ml-2 rounded-lg border border-slate-600 px-3 py-1 text-white cursor-pointer" style={{borderColor: "#8c8c8c", color: "#8c8c8c" }}><i class="fas fa-cog"></i>&nbsp;Account Settings</a>
 
             </div>
           </div>
@@ -600,14 +600,21 @@ style={{backgroundColor: "#212121"}}
   className=" rounded-lg mb-16  px-6 py-5 shadow-sm    hover:border-gray-600 focus-within:ring-2 focus-within:ring-offset-2 focus-within:ring-indigo-500"
 >
 
-            <h1 className="text-white text-xl">CTFGuide Winter Competition</h1>
+            <h1 className="text-white text-xl">Major Construction</h1>
 
             <p className="text-white mt-2" style={{color: "#8c8c8c"}}>
-              The CTFGuide Winter Competition is now live! Compete against other CTFGuide users to win prizes and earn points. The competition ends on January 1st, 2023. Join the competition by clicking this link: https://comp.ctfguide.com/2.
+              Heads up, we're slowly rebuilding some services on this website. Please expect things to not work.
+<br></br>   <br></br>
+              <b>known bugs:</b>
+              - Points do not show sometimes. Do not worry your points will still be accounted for.<br></br>
+              - Learn panel sometimes doesn't show up<br></br>
+              - Friends aren't accurate whatsoever. This is a feature that's coming in the future and will be hidden in the next update.<br></br>
+              - Launching terminals from the website doesn't work<br></br>
+            
             </p>
 
 
-              <p className="mt-4 text-sm italic" style={{color: "#8c8c8c"}}>Posted by CTFGuide Team - 12/21/22</p>
+              <p className="mt-4 text-sm italic" style={{color: "#8c8c8c"}}>Posted by CTFGuide Team - 02/17/23</p>
 
 </div>
             </div>
