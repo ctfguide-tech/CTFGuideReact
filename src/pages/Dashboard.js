@@ -640,6 +640,15 @@ style={{backgroundColor: "#212121"}}
 
               </div>
 
+              <amp-ad width="100vw" height="320"
+                type="adsense"
+                data-ad-client="ca-pub-6073597245946312"
+                data-ad-slot="5584990248"
+                data-auto-format="rspv"
+                data-full-width="">
+              <div overflow=""></div>
+            </amp-ad>
+
               <h1 className="text-xl text-white tracking-tight mt-4  mb-2" style={{color: "#595959"}}> FRIENDS</h1>
               <div className=" text-white rounded mx-auto  hidden">
                 <p className="text-sm mt-1 tracking-tight px-2 py-2 rounded-lg " style={{color: "#595959", backgroundColor: "rgb(33, 33, 33)"}}>You don't have any friends yet. Add some to see their progress!</p>
@@ -921,55 +930,32 @@ style={{backgroundColor: "#212121"}}
                 <div>
 
                   <div className="mt-3  sm:mt-5">
-                    <h1 className="text-white text-4xl"><i className="far fa-newspaper"></i> Platform News <span className="italic text-sm">Sunday, Dec 18 2022</span></h1>
+                    <h1 className="text-white text-4xl"><i className="far fa-newspaper"></i> Platform News <span className=" text-sm">Monday, Feb 20th 2023</span></h1>
                     <hr style={{borderColor: "#8c8c8c", color: "#8c8c8c"}} className=" mt-4"></hr>
                     <br></br>
+                  <img width="700" src="../ctflearn.png" className="mx-auto text-center"></img>
+                  <h1 className="text-white text-3xl mt-10 mx-auto text-center">Woah, you teach me cybersecurity now?</h1>
+                <p className="max-w-xl text-white text-xl mt-2 mx-auto text-center">You heard that right, starting today you can learn cybersecurity right from your browser.</p>
 
-                    <h1 className="text-white text-xl">What's changed?</h1>
+                    <h1 className="text-white text-2xl mt-10">What's changed?</h1>
                     <ul>
-                      <li className="text-white text-md hidden">• Added Global Activity to your dashboard. You can see recent solves globally.</li>
-                      <li className="text-white text-md">• We've cleaned up the leaderboards UI/UX.</li>
-                      <li className="text-white text-md">• Fixed bugs regarding switching difficulty of challenges you want to see.</li>
-                      <li className="text-white text-md">• Basic moderation system setup for comments.</li>
-                      <li className="text-white text-md">• Platform News to keep the community updated. Aka this modal.</li>
+                    <li className="text-white text-md ">•  CTFGuide Learn</li>
+                      <li className="text-white text-md ">• CTFGuide has reopened public registration.</li>
+                      <li className="text-white text-md ">• Complete UI refresh.</li>
+
                     </ul>
+                    <h1 className="text-white text-2xl mt-4">Bug Fixes</h1>
+                    <ul>
+                      <li className="text-white text-md ">• Fixed issue with our homescreen where footer would cut of content.</li>
+                      <li className="text-white text-md ">• Removed any usage of our legacy font.</li>
+                      <li className="text-white text-md ">• No issues with the onboarding process. We've simplified registration UI a lot.</li>
+
+
+                    </ul>
+
+
                     <br></br>
-                    <h1 className="text-white text-xl">Other News.</h1>
-                    <ul>
-                      <li className="text-white text-md">We've expanded our team and have a new co-founder.</li>
-
-                      <div className="flex gap-x-4 mb-4 mx-auto text-center">
-                        <div className="mt-4 mx-auto text-center ">
-                          <img width="60" className="rounded-full mx-auto" src="https://avatars.githubusercontent.com/u/67762433?v=4"></img>
-                          <h1 className="text-white">Raymond Yan</h1>
-                          <h1 className="text-white text-sm">Co-founder &<br></br> Head of Engineering</h1>
-
-                        </div>
-                        <div className="mt-4 mx-auto text-center">
-                          <img width="60" className="rounded-full mx-auto" src="https://media.licdn.com/dms/image/C5603AQES6Hp4D9MXjg/profile-displayphoto-shrink_200_200/0/1588608773250?e=1677110400&v=beta&t=9W9CEMEIcDG0iSkBj6RpvH8a9gxV-nhfv8BzBsPmkNg"></img>
-                          <h1 className="text-white">Joshua Herron</h1>
-                          <h1 className="text-white text-sm">Sandbox Engineer</h1>
-
-                        </div>
-
-                        <div className="mt-4 mx-auto text-center ">
-                          <img width="60" className="rounded-full mx-auto" src="https://media.licdn.com/dms/image/D4E03AQEY9G-O77b3ng/profile-displayphoto-shrink_200_200/0/1668423394884?e=1677110400&v=beta&t=gKZkxkCZytaKdwsIGwBUWudOgnH9gFd_D3Upqt8T15Y"></img>
-                          <h1 className="text-white">Srihari Raman</h1>
-                          <h1 className="text-white text-sm">
-                            Director of Analytics & <br></br> Customer Acquisition</h1>
-
-                        </div>
-                        <div className="mt-4 mx-auto text-center">
-                          <img width="60" className="rounded-full mx-auto" src="https://cdn.discordapp.com/attachments/1035971879283990648/1045457965001478195/image.png"></img>
-                          <h1 className="text-white">Abhinav Byreddy</h1>
-                          <h1 className="text-white text-sm">System Architect</h1>
-
-                        </div>
-                      </div>
-                      <div className="flex gap-x-4 mx-auto text-center">
-
-                      </div>
-                    </ul>
+                  
 
 
 

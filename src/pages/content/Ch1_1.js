@@ -11,6 +11,7 @@ import DashboardManager from "../../modules/DashboardManager.js"
 import 'animate.css';
 import { Navigation } from '../../components/navigation';
 import YouTube  from "react-youtube";
+import { LearnCore } from "../../components/learn/LearnCore.js";
 
 const Ch1_1 = () => {
   const firebaseConfig = {
@@ -244,9 +245,10 @@ const Ch1_1 = () => {
 
   return (
 
-    <div className="min-h-full " style={{ fontFamily: 'Space Grotesk, sans-serif' }}>
-
+    <div className="min-h-full " style={{ fontFamily: 'Poppins, sans-serif' }}>
       <Navigation />
+<LearnCore></LearnCore>
+
 
 
       <main className="mt-3" >

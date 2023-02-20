@@ -1,209 +1,217 @@
 <!DOCTYPE html>
 <html lang="en" class="h-full ">
-  <head>
-    <meta charset="utf-8" />
-    <link rel="icon" href="%PUBLIC_URL%/favicon.ico" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="theme-color" content="#000000" />
-    <script src="%PUBLIC_URL%/socket.io/client-dist/socket.io.js"></script>
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css" integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm" crossorigin="anonymous">
-    <script async src="https://media.ethicalads.io/media/client/ethicalads.min.js"></script>
-    
-    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
-    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6073597245946312"
+
+<head>
+  <meta charset="utf-8" />
+  <link rel="icon" href="%PUBLIC_URL%/favicon.ico" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="theme-color" content="#000000" />
+  <script src="%PUBLIC_URL%/socket.io/client-dist/socket.io.js"></script>
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css"
+    integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm" crossorigin="anonymous">
+  <script async src="https://media.ethicalads.io/media/client/ethicalads.min.js"></script>
+  <script async custom-element="amp-ad" src="https://cdn.ampproject.org/v0/amp-ad-0.1.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6073597245946312"
     crossorigin="anonymous"></script>
-    <style>
-      @import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
-    </style>
-    <script>
-      (function() {
-  // Init
-  var container = document.getElementById("c2"),
-    inner = document.getElementById("i2");
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+  </style>
+  <script>
+    (function () {
+      // Init
+      var container = document.getElementById("c2"),
+        inner = document.getElementById("i2");
 
-  // Mouse
-  var mouse = {
-    _x: 0,
-    _y: 0,
-    x: 0,
-    y: 0,
-    updatePosition: function(event) {
-      var e = event || window.event;
-      this.x = e.clientX - this._x;
-      this.y = (e.clientY - this._y) * -1;
-    },
-    setOrigin: function(e) {
-      this._x = e.offsetLeft + Math.floor(e.offsetWidth / 2);
-      this._y = e.offsetTop + Math.floor(e.offsetHeight / 2);
-    },
-    show: function() {
-      return "(" + this.x + ", " + this.y + ")";
-    }
-  };
+      // Mouse
+      var mouse = {
+        _x: 0,
+        _y: 0,
+        x: 0,
+        y: 0,
+        updatePosition: function (event) {
+          var e = event || window.event;
+          this.x = e.clientX - this._x;
+          this.y = (e.clientY - this._y) * -1;
+        },
+        setOrigin: function (e) {
+          this._x = e.offsetLeft + Math.floor(e.offsetWidth / 2);
+          this._y = e.offsetTop + Math.floor(e.offsetHeight / 2);
+        },
+        show: function () {
+          return "(" + this.x + ", " + this.y + ")";
+        }
+      };
 
-  // Track the mouse position relative to the center of the container.
-  mouse.setOrigin(container);
+      // Track the mouse position relative to the center of the container.
+      mouse.setOrigin(container);
 
-  //-----------------------------------------
+      //-----------------------------------------
 
-  var counter = 0;
-  var updateRate = 10;
-  var isTimeToUpdate = function() {
-    return counter++ % updateRate === 0;
-  };
+      var counter = 0;
+      var updateRate = 10;
+      var isTimeToUpdate = function () {
+        return counter++ % updateRate === 0;
+      };
 
-  //-----------------------------------------
+      //-----------------------------------------
 
-  var onMouseEnterHandler = function(event) {
-    update(event);
-  };
+      var onMouseEnterHandler = function (event) {
+        update(event);
+      };
 
-  var onMouseLeaveHandler = function() {
-    inner.style = "";
-  };
+      var onMouseLeaveHandler = function () {
+        inner.style = "";
+      };
 
-  var onMouseMoveHandler = function(event) {
-    if (isTimeToUpdate()) {
-      update(event);
-    }
-  };
+      var onMouseMoveHandler = function (event) {
+        if (isTimeToUpdate()) {
+          update(event);
+        }
+      };
 
-  //-----------------------------------------
+      //-----------------------------------------
 
-  var update = function(event) {
-    mouse.updatePosition(event);
-    updateTransformStyle(
-      (mouse.y / inner.offsetHeight / 2).toFixed(2),
-      (mouse.x / inner.offsetWidth / 2).toFixed(2)
-    );
-  };
+      var update = function (event) {
+        mouse.updatePosition(event);
+        updateTransformStyle(
+          (mouse.y / inner.offsetHeight / 2).toFixed(2),
+          (mouse.x / inner.offsetWidth / 2).toFixed(2)
+        );
+      };
 
-  var updateTransformStyle = function(x, y) {
-    var style = "rotateX(" + x + "deg) rotateY(" + y + "deg)";
-    inner.style.transform = style;
-    inner.style.webkitTransform = style;
-    inner.style.mozTransform = style;
-    inner.style.msTransform = style;
-    inner.style.oTransform = style;
-  };
+      var updateTransformStyle = function (x, y) {
+        var style = "rotateX(" + x + "deg) rotateY(" + y + "deg)";
+        inner.style.transform = style;
+        inner.style.webkitTransform = style;
+        inner.style.mozTransform = style;
+        inner.style.msTransform = style;
+        inner.style.oTransform = style;
+      };
 
-  //-----------------------------------------
+      //-----------------------------------------
 
-  container.onmouseenter = onMouseEnterHandler;
-  container.onmouseleave = onMouseLeaveHandler;
-  container.onmousemove = onMouseMoveHandler;
-})();
-    </script>
+      container.onmouseenter = onMouseEnterHandler;
+      container.onmouseleave = onMouseLeaveHandler;
+      container.onmousemove = onMouseMoveHandler;
+    })();
+  </script>
 
   <style>
-@import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+    @import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
 
-.c2 {
-  /* This will come into play later */
-  perspective: 25px;
-}
+    .c2 {
+      /* This will come into play later */
+      perspective: 25px;
+    }
 
-.i2 {
-  transition: transform 0.1s ease;
-  transform-style: preserve-3d;
-  will-change: transform;
-}
-.i2:hover {
-  transform: translateZ(2px);
+    .i2 {
+      transition: transform 0.1s ease;
+      transform-style: preserve-3d;
+      will-change: transform;
+    }
 
-}
-.zimg {
-  transition: transform .7s ease-in-out;
-}
-.zimg:hover {
-  transform: rotate(360deg);
-}
+    .i2:hover {
+      transform: translateZ(2px);
 
-.navHover:hover {
-  background-color: #161716;
-}
-html {
-  background-color:#161716;
-}
+    }
 
-.c-avatar {
-  position:relative;
-  display:inline-block;
-}
-.c-avatar__image {
-  width:40px;
-  height:40px;
-  object-fit:cover;
-  border-radius:100%;
-}
-.c-avatar__status {
-  width:10px;
-  height:10px;
-  background:#049824;
-  border:2px solid #049023;
-  position:absolute;
-  bottom:12%;
-  right:2%;
-  border-radius:100%;
-}
-      .developer {
-        background-image: linear-gradient(to right, rgb(0, 183, 255), rgb(6, 234, 255));
+    .zimg {
+      transition: transform .7s ease-in-out;
+    }
+
+    .zimg:hover {
+      transform: rotate(360deg);
+    }
+
+    .navHover:hover {
+      background-color: #161716;
+    }
+
+    html {
+      background-color: #161716;
+    }
+
+    .c-avatar {
+      position: relative;
+      display: inline-block;
+    }
+
+    .c-avatar__image {
+      width: 40px;
+      height: 40px;
+      object-fit: cover;
+      border-radius: 100%;
+    }
+
+    .c-avatar__status {
+      width: 10px;
+      height: 10px;
+      background: #049824;
+      border: 2px solid #049023;
+      position: absolute;
+      bottom: 12%;
+      right: 2%;
+      border-radius: 100%;
+    }
+
+    .developer {
+      background-image: linear-gradient(to right, rgb(0, 183, 255), rgb(6, 234, 255));
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
-      }
-html::-webkit-scrollbar {
-      width: 10px; 
-   }
+    }
 
-html::-webkit-scrollbar-track {
-    background-color: black;
-  }
+    html::-webkit-scrollbar {
+      width: 10px;
+    }
 
-html::-webkit-scrollbar-thumb {
-    background: #4e4e4e;
-    border-radius: 25px;
-  }
+    html::-webkit-scrollbar-track {
+      background-color: black;
+    }
+
+    html::-webkit-scrollbar-thumb {
+      background: #4e4e4e;
+      border-radius: 25px;
+    }
 
 
-  .test::-webkit-scrollbar {
-      width: 10px; 
-   }
+    .test::-webkit-scrollbar {
+      width: 10px;
+    }
 
-.test::-webkit-scrollbar-track {
-    background-color: black;
-  }
+    .test::-webkit-scrollbar-track {
+      background-color: black;
+    }
 
-.test::-webkit-scrollbar-thumb {
-    background: #4e4e4e;
-    border-radius: 25px;
-  }
+    .test::-webkit-scrollbar-thumb {
+      background: #4e4e4e;
+      border-radius: 25px;
+    }
 
-  html {
-    height: 100vh
-  }
+    html {
+      height: 100vh
+    }
 
-  body {
-    height: 100vh
-  }
-    </style>
+    body {
+      height: 100vh
+    }
+  </style>
 
-    <meta
-      name="description"
-      content="The learning platform for hackers around the world."
-    />
-    <link rel="apple-touch-icon" href="%PUBLIC_URL%/CTFGuide%20trans%20dark.png" />
-  
-    <title>CTFGuide</title>
-  </head>
-  <body class=" h-full  min-h-full">
-    <!--
+  <meta name="description" content="The learning platform for hackers around the world." />
+  <link rel="apple-touch-icon" href="%PUBLIC_URL%/CTFGuide%20trans%20dark.png" />
+
+  <title>CTFGuide</title>
+</head>
+
+<body class=" h-full  min-h-full">
+  <!--
      There is absolutely no point in cheating on this site. Be smart.
     -->
-    <noscript>You need to enable JavaScript to run this app.</noscript>
-    <div id="root"></div>
-  
-  </body>
+  <noscript>You need to enable JavaScript to run this app.</noscript>
+  <div id="root"></div>
 
-  <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+</body>
+
+<script src="https://www.google.com/recaptcha/api.js" async defer></script>
 
 </html>

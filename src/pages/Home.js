@@ -557,11 +557,13 @@ if (page == "features") {
           </div>
         </div>
       </div>
+
+
     </main>
 
     <FeaturesPanel></FeaturesPanel>
 
-    <Footer></Footer>
+<Footer></Footer>
   </div>
   )
 }

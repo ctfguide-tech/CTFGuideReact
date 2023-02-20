@@ -53,8 +53,7 @@ const Login = () => {
       document.getElementById("passwordReset").classList.remove("hidden")
     }
     ).catch((error) => {
-      document.getElementById("passwordReset").classList.remove("hidden")
-      document.getElementById("passwordReset").innerHTML = error
+      document.getElementById("passwordReseterror").classList.remove("hidden")
     }
     );
   }
@@ -245,6 +244,14 @@ const Login = () => {
                   <p className="text-white text-sm text-center">There was an error when trying to log you in.</p>
                 </div>
 
+                   <div id="passwordReset" className="text-white hidden bg-blue-900 border border-blue-500 px-2 py-2 rounded-lg">
+          <p className="text-white text-center">Check your email for a password reset link.</p>
+        </div>
+
+        <div id="passwordReseterror" className="hidden text-white  bg-red-900 border border-red-500 px-2 py-2 rounded-lg">
+          <p className="text-white text-center">Please enter your email below before requesting a reset!</p>
+        </div>
+
 
                 <div>
                   <label htmlFor="email" className="block text-sm font-medium text-white">
@@ -295,7 +302,7 @@ const Login = () => {
                   </div>
 
                   <div className="text-sm">
-                    <a href="#" className="font-medium text-blue-600 hover:text-blue-500">
+                    <a onClick={resetPassword} className="font-medium text-blue-600 hover:text-blue-500">
                       Forgot your password?
                     </a>
                   </div>
