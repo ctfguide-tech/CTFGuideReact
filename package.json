@@ -1,60 +1,42 @@
 {
-  "name": "my-react-app",
+  "name": "ctfguide-next",
   "version": "0.1.0",
   "private": true,
-  "dependencies": {
-    "@fortawesome/react-fontawesome": "^0.1.16",
-    "@headlessui/react": "^1.4.2",
-    "@heroicons/react": "^1.0.6",
-    "@sentry/react": "^7.38.0",
-    "@sentry/tracing": "^7.38.0",
-    "@tailwindcss/forms": "^0.4.0",
-    "@testing-library/jest-dom": "^5.16.1",
-    "@testing-library/react": "^12.1.2",
-    "@testing-library/user-event": "^13.5.0",
-    "animate.css": "^4.1.1",
-    "easymde": "^2.16.1",
-    "firebase": "^9.6.1",
-    "heroicons": "^2.0.15",
-    "marked": "^4.0.14",
-    "react": "^17.0.2",
-    "react-dom": "^17.0.2",
-    "react-scripts": "5.0.0",
-    "react-simplemde-editor": "^5.0.2",
-    "react-youtube": "^9.0.1",
-    "simplemde": "^1.11.2",
-    "socket.io": "^4.4.1",
-    "socket.io-client": "^4.4.1",
-    "web-vitals": "^2.1.2"
-  },
   "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "dev": "next dev -p 3000",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint"
   },
-  "eslintConfig": {
-    "extends": [
-      "react-app",
-      "react-app/jest"
-    ]
-  },
-  "browserslist": {
-    "production": [
-      ">0.2%",
-      "not dead",
-      "not op_mini all"
-    ],
-    "development": [
-      "last 1 chrome version",
-      "last 1 firefox version",
-      "last 1 safari version"
-    ]
+  "browserslist": "defaults, not ie <= 11",
+  "dependencies": {
+    "@fortawesome/fontawesome-svg-core": "^6.2.1",
+    "@fortawesome/free-regular-svg-icons": "^6.2.1",
+    "@fortawesome/free-solid-svg-icons": "^6.2.1",
+    "@fortawesome/react-fontawesome": "^0.2.0",
+    "@headlessui/react": "^1.7.2",
+    "@heroicons/react": "1.0.6",
+    "@ory/client": "^1.1.5",
+    "@ory/integrations": "^1.1.0",
+    "@oryd/kratos-client": "^0.0.0-next.5212bbfcf5dc",
+    "@tailwindcss/forms": "^0.5.3",
+    "autoprefixer": "^10.4.12",
+    "babel-plugin-macros": "^3.1.0",
+    "clsx": "^1.2.1",
+    "dotenv": "^16.0.3",
+    "firebase": "^9.16.0",
+    "focus-visible": "^5.2.0",
+    "heroicons": "^2.0.13",
+    "next": "13.0.2",
+    "postcss-focus-visible": "^6.0.4",
+    "react": "18.2.0",
+    "react-dom": "18.2.0",
+    "tailwindcss": "^3.2.1"
   },
   "devDependencies": {
-    "autoprefixer": "^10.4.0",
-    "postcss": "^8.4.5",
-    "react-router-dom": "^6.2.1",
-    "tailwindcss": "^3.0.7"
+    "eslint": "8.26.0",
+    "eslint-config-next": "13.0.2",
+    "prettier": "^2.7.1",
+    "prettier-plugin-tailwindcss": "^0.1.13"
   }
 }
