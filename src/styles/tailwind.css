@@ -11,7 +11,6 @@
 
 html {
   background-color:#161716;
-  font-family: 'Poppins', sans-serif;
 
 }
 
@@ -48,106 +47,4 @@ body {
   opacity: 1;
   transform: none;
   visibility: visible;
-}
-
-
-.tooltip {
-  position: relative;
-  display: inline-block;
-  border-bottom: 1px dotted black;
-}
-
-.tooltip .tooltiptext {
-  width: 120px;
-  bottom: 100%;
-  left: 50%;
-  margin-left: -60px; /* Use half of the width (120/2 = 60), to center the tooltip */
-}
-.rainbow-text {
-  background-image: repeating-linear-gradient(45deg, violet, indigo, blue, green, yellow, orange, red, violet);
-  text-align: center;
-  background-size: 800% 800%;
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  font-size: 24px;
-  animation: rainbow 8s ease infinite;
-}
-
-.tooltip:hover .tooltiptext {
-  visibility: visible;
-}
-
-@keyframes rainbow {
-  0%{background-position:0% 50%}
-  50%{background-position:100% 25%}
-}
-
-.CodeMirror {
-   background-color: black;
-   color:white;
-   border:none;
-      font-family: 'Space Grotesk', sans-serif;
-
-
-}
-.EasyMDEContainer .CodeMirror {
-   border-color: rgb(55 65 81 / var(--tw-border-opacity));
-   border-radius:8px;
-
-}
-
-.editor-preview-side {
-   border:none;
-}
-.EasyMDEContainer
-{
-   border:none;
-
-}
-
-.editor-toolbar {
-   border:none;
-   padding-left:0;
-   display:none;
-}
-
-.editor-toolbar .preview {
-   display:none;
-}
-.editor-toolbar .side-by-side {
-  display:none;
-}
-.editor-toolbar .fullscreen {
-  display:none;
-}
-
-
-.editor-toolbar button {
-      color: white;
-      background-color:  rgb(17 24 39 / var(--tw-bg-opacity));
-}
-
-.editor-toolbar button:hover {
-  color: white;
-  background-color:  rgb(17 24 39 / var(--tw-bg-opacity));
-}
-
-
-.editor-toolbar button:active {
-  color: white;
-  background-color:  rgb(17 24 39 / var(--tw-bg-opacity));
-}
-
-.floating { 
-  animation-name: floating;
-  animation-duration: 3s;
-  animation-iteration-count: infinite;
-  animation-timing-function: ease-in-out;
-
-}
-
-@keyframes floating {
-  0% { transform: translate(0,  0px); }
-  50%  { transform: translate(0, 15px); }
-  100%   { transform: translate(0, -0px); }   
 }

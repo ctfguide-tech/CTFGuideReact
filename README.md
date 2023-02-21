@@ -1,18 +1,26 @@
-[![CTFGuide](https://cdn.glitch.global/4c2c02b2-7900-4318-89bf-6974b196f4c2/CTFGuide%20React%20Client.png?v=1656076065339 "CTFGuide")](https://cdn.glitch.global/4c2c02b2-7900-4318-89bf-6974b196f4c2/CTFGuide%20React%20Client.png?v=1656076065339 "CTFGuide")
+<img src="https://raw.githubusercontent.com/ctfguide-tech/.github/main/Screenshot%202023-01-19%20at%2012.22.46%20AM.png" style="width:100%">
+
 
 ## What is this repository?
-This repository serves as the home for the CTFGuide React Client. This repository serves as a way for us to be transparent with our users. If you are deploying this on your machine, the website should not be accessed by the public.
+This is our in-progress NextJS client!<br>*(Note: This client uses npm. Some of our other nodejs apis use yarn.)*
 
-## Deploying on your machine
+## Quickstart
 
-### `npm install`
 
-This will install all needed dependencies.
+```bash
+npm install
+```
 
-### `npm start`
+Next, run the development server:
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+```bash
+npm run dev
+```
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+Finally, open [http://localhost:3001](http://localhost:3001) in your browser to view the website.
+
+## Contributing
+The roadmap of our new client application is not open source. However, we always welcome suggestions and improvements on our UI. Feel free to open feature requests on our [Nolt Board](https://feedback.ctfguide.com/) our contact us on our [Discord Server](https://discord.gg/tSnUdqmG3p)!<br>
+
+## Contact
+Feel free to raise a GitHub issue to give suggestions. We'll add more contribution guidelines as the project grows. For further contact, reach us at: [staff@ctfguide.com](mailto:staff@ctfguide.com)<br>
