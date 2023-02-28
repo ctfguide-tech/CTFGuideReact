@@ -244,7 +244,7 @@ const Ch1_1 = () => {
 
   return (
 
-    <div className="min-h-full " style={{ fontFamily: 'Space Grotesk, sans-serif' }}>
+    <div className="min-h-full " style={{ fontFamily: 'Poppins, sans-serif' }}>
 
       <Navigation />
 
@@ -255,7 +255,7 @@ const Ch1_1 = () => {
 
         
         <nav aria-label="Progress">
-            <ol role="list" className="border bg-gray-900 border-gray-700 rounded-md divide-y divide-gray-900 md:flex md:divide-y-0">
+            <ol role="list" className="border  border-gray-700 rounded-md divide-y divide-gray-900 md:flex md:divide-y-0">
               {steps.map((step, stepIdx) => (
                 <li key={step.name} className="relative md:flex-1 md:flex">
                   {step.status === 'complete' ? (
@@ -346,7 +346,7 @@ const Ch1_1 = () => {
             <p><i class="fas fa-info-circle"></i>  This lesson includes <a href="https://github.com/ctfguide-tech/Information/blob/main/lessons/lesson1.md" className="text-blue-300">externally sourced</a> content.</p>
             </div>
             <div className="ml-2 flex-shrink-0 flex w-1/10">
-            <button id="nextstep" className=" text-white text-xl border border-gray-500 px-6 py-3 hover:bg-gray-900 rounded-lg"><i class="fas fa-spinner text-white  fa-spin"></i> Awaiting Completion</button>
+            <button id="nextstep" className=" text-white text-xl border border-gray-500 px-6 py-3 hover: rounded-lg"><i class="fas fa-spinner text-white  fa-spin"></i> Awaiting Completion</button>
                     </div>
                     </div>
            

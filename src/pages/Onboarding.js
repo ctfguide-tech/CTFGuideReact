@@ -313,7 +313,7 @@ const Onboarding = () => {
 
                                 <div className=" px-2 space-y-1 z-20">
                                         <a className='block px-3 py-2 rounded-md text-base font-medium text-gray-200  '>
-                                        <span style={{fontFamily: 'Space Grotesk, sans-serif'}} className="text-xl"> Onboarding Process  </span>  
+                                        <span style={{fontFamily: 'Poppins, sans-serif'}} className="text-xl"> Onboarding Process  </span>  
                                         </a>
                                         </div>
                             </div>
@@ -324,7 +324,7 @@ const Onboarding = () => {
             </Disclosure>
 
 
-        <div className="bg-black min-h-full px-4 py-16 sm:px-6 sm:py-24 lg:px-8 " style={{fontFamily: 'Space Grotesk, sans-serif'}}   >
+        <div className="bg-black min-h-full px-4 py-16 sm:px-6 sm:py-24 lg:px-8 " style={{fontFamily: 'Poppins, sans-serif'}}   >
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 ">
             <main className="px-6">
 

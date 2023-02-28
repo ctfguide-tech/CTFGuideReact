@@ -282,7 +282,7 @@ const EditChallenge = () => {
 
     return (
 
-        <div className="min-h-full example" style={{ fontFamily: 'Space Grotesk, sans-serif' }}>
+        <div className="min-h-full example" style={{ fontFamily: 'Poppins, sans-serif' }}>
             <Navigation />
 
 

@@ -137,7 +137,7 @@ if (page == "features") {
                  
                   <div className="flex-shrink-0 flex items-center">
 				
-                <img src="./CTFGuide trans dark.png" width="70"/> <span style={{fontFamily: 'Space Grotesk, sans-serif'}} className="w-auto font-semibold text-3xl text-white">CTFGuide</span>
+                <img src="./CTFGuide trans dark.png" width="70"/> <span style={{fontFamily: 'Poppins, sans-serif'}} className="w-auto font-semibold text-3xl text-white">CTFGuide</span>
                 </div>
 
 
@@ -156,7 +156,7 @@ if (page == "features") {
               <span className="inline-flex rounded-md shadow-md ring-1 ring-black ring-opacity-5">
                 <Link
                   to="./register"
-                  style={{fontFamily: 'Space Grotesk, sans-serif', cursor: 'pointer'}}
+                  style={{fontFamily: 'Poppins, sans-serif', cursor: 'pointer'}}
                   className="inline-flex items-center px-10 py-2 text-base font-medium rounded-md text-white bg-blue-600 hover:bg-blue-700"
                 >
                  <i className="mr-2 fas fa-user-plus"></i> Register
@@ -168,7 +168,7 @@ if (page == "features") {
               <span className="inline-flex rounded-md shadow-md ring-1 ring-black ring-opacity-5">
                 <Link
                   to="./login"
-                  style={{fontFamily: 'Space Grotesk, sans-serif', cursor: 'pointer'}}
+                  style={{fontFamily: 'Poppins, sans-serif', cursor: 'pointer'}}
                   className="inline-flex items-center px-10 py-2 border borde border-gray-600 text-base font-medium rounded-md text-white bg-gray-800 hover:bg-white hover:border-gray-700"
                 >
                   <i className="fas fa-sign-in-alt mr-2"></i> Log in
@@ -197,7 +197,7 @@ if (page == "features") {
                  
                   <div className="flex-shrink-0 flex items-center">
 				
-                <img src="./CTFGuide trans dark.png" className="w-10"/> <span style={{fontFamily: 'Space Grotesk, sans-serif'}} className="w-auto font-semibold text-xl text-white">CTFGuide</span>
+                <img src="./CTFGuide trans dark.png" className="w-10"/> <span style={{fontFamily: 'Poppins, sans-serif'}} className="w-auto font-semibold text-xl text-white">CTFGuide</span>
                 </div>
 
 
@@ -213,14 +213,14 @@ if (page == "features") {
                 <Link
                   to="./Login"
                   className="block w-full px-5 py-3 text-sm text-center font-medium text-white bg-white hover:bg-gray-800  mt-4"
-                  style={{fontFamily: 'Space Grotesk, sans-serif'}}
+                  style={{fontFamily: 'Poppins, sans-serif'}}
                 >
                   Log in
                 </Link>
                 <Link
                   to="./Register"
                   className="block w-full px-5 py-3 text-sm text-center font-medium text-white bg-white hover:bg-gray-800"
-                  style={{fontFamily: 'Space Grotesk, sans-serif'}}
+                  style={{fontFamily: 'Poppins, sans-serif'}}
                 >
                  Register
                 </Link>
@@ -233,16 +233,16 @@ if (page == "features") {
           <div className="text-center">
             <div className="sm:text-center md:max-w-6xl md:mx-auto lg:col-span-6 lg:text-center">
               <h1>
-                <span style={{fontFamily: 'Space Grotesk, sans-serif'}} className="font-bold mt-1 block text-4xl tracking-tight sm:text-5xl xl:text-6xl">
+                <span style={{fontFamily: 'Poppins, sans-serif'}} className="font-bold mt-1 block text-4xl tracking-tight sm:text-5xl xl:text-6xl">
                   <span className="text-white ">Your cybersecurity journey <span className="text-blue-600">starts here</span></span>
                   
                 </span>
               </h1>
-              <p style={{fontFamily: 'Space Grotesk, sans-serif'}} className="mt-3 text-base text-gray-200 sm:mt-5 sm:text-xl lg:text-lg xl:text-xl">
+              <p style={{fontFamily: 'Poppins, sans-serif'}} className="mt-3 text-base text-gray-200 sm:mt-5 sm:text-xl lg:text-lg xl:text-xl">
                    The learning platform made for cybersecurity enthusiasts.
 
               </p>
-              <div style={{fontFamily: 'Space Grotesk, sans-serif'}} className="hidden mt-8 sm:max-w-lg sm:mx-auto  sm:text-center lg:text-center lg:mx-auto">
+              <div style={{fontFamily: 'Poppins, sans-serif'}} className="hidden mt-8 sm:max-w-lg sm:mx-auto  sm:text-center lg:text-center lg:mx-auto">
         
                   <Link
                     style={{cursor:'pointer'}}
@@ -274,8 +274,8 @@ if (page == "features") {
       </div>
 
 
-      <div style={{fontFamily: 'Space Grotesk, sans-serif'}}  className="relative bg-black pt-5 pb-32 overflow-hidden">
-      <div  style={{fontFamily: 'Space Grotesk, sans-serif'}}  className="relative">
+      <div style={{fontFamily: 'Poppins, sans-serif'}}  className="relative bg-black pt-5 pb-32 overflow-hidden">
+      <div  style={{fontFamily: 'Poppins, sans-serif'}}  className="relative">
         <div className="lg:mx-auto lg:max-w-auto lg:px-8  ">
  
           

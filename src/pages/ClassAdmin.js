@@ -227,7 +227,7 @@ const ClassAdmin = () => {
 
     return (
 
-        <div className="min-h-full " style={{ fontFamily: 'Space Grotesk, sans-serif' }}>
+        <div className="min-h-full " style={{ fontFamily: 'Poppins, sans-serif' }}>
 
             <Navigation />
 

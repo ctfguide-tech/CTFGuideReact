@@ -83,11 +83,11 @@ const Login = () => {
   /*
   return (
 
-    <div className="min-h-full h-screen flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8" style={{fontFamily: 'Space Grotesk, sans-serif'}}>
+    <div className="min-h-full h-screen flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8" style={{fontFamily: 'Poppins, sans-serif'}}>
     <div className="max-w-md w-full space-y-8">
       <div>
      <Link to="../"><img  src="../CTFGuide trans dark.png" className="mx-auto" width="100"/></Link>
-        <h2 style={{fontFamily: 'Space Grotesk, sans-serif'}} className="mt-1 text-center text-3xl text-white">Sign in to your account</h2>
+        <h2 style={{fontFamily: 'Poppins, sans-serif'}} className="mt-1 text-center text-3xl text-white">Sign in to your account</h2>
         <p className="mt-2 text-center text-sm text-gray-600">
           Or{' '}
           <Link to={"../register"} className="font-medium text-blue-600 hover:text-blue-500">

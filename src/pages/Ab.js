@@ -9,7 +9,7 @@ const Ab = () => {
           <body class="h-full">
           ```
         */}
-      <div className="bg-black min-h-full px-4 py-16 sm:px-6 sm:py-24 md:grid md:place-items-center lg:px-8" style={{ fontFamily: 'Space Grotesk, sans-serif' }}>
+      <div className="bg-black min-h-full px-4 py-16 sm:px-6 sm:py-24 md:grid md:place-items-center lg:px-8" style={{ fontFamily: 'Poppins, sans-serif' }}>
         <div className="max-w-max mx-auto">
           <main className="sm:flex">
 

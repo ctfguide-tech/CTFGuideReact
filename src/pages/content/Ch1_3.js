@@ -25,8 +25,6 @@ const Ch1_3 = () => {
   };
 
   // Initialize Firebase
-  const app = initializeApp(firebaseConfig);
-  const analytics = getAnalytics(app);
 
 
   const auth = getAuth();
@@ -235,7 +233,7 @@ const Ch1_3 = () => {
 
   return (
 
-    <div className="min-h-full " style={{ fontFamily: 'Space Grotesk, sans-serif' }}>
+    <div className="min-h-full " style={{ fontFamily: 'Poppins, sans-serif' }}>
 
       <Navigation />
 

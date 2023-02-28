@@ -302,7 +302,7 @@ const Settings = () => {
 
   return (
 
-    <div className="min-h-full " style={{ fontFamily: 'Space Grotesk, sans-serif' }}>
+    <div className="min-h-full " style={{ fontFamily: 'Poppins, sans-serif' }}>
 
       <Navigation />
 
@@ -328,7 +328,7 @@ const Settings = () => {
               leaveFrom="opacity-100"
               leaveTo="opacity-0"
             >
-              <div className="pointer-events-auto w-full max-w-sm overflow-hidden rounded-lg bg-gray-900 border border-gray-700 shadow-lg ring-1 ring-black ring-opacity-5">
+              <div className="pointer-events-auto w-full max-w-sm overflow-hidden rounded-lg  border border-gray-700 shadow-lg ring-1 ring-black ring-opacity-5">
                 <div className="p-4">
                   <div className="flex items-start">
                     <div className="flex-shrink-0">
@@ -371,23 +371,22 @@ const Settings = () => {
             <div class="grid lg:grid-cols-2 md:grid-cols-2 sml:grid-cols-1 gap-4">
 
 
-              <div className=" mt-4 bg-gray-900 border  border-gray-700  px-4 py-4 text-white rounded ">
+              <div style={{backgroundColor: "rgb(33, 33, 33)"}}  className=" mt-4  px-4 py-4 text-white rounded ">
                 <div id="error" className="hidden bg-red-900 px-2 mb-4 border border-red-600 text-white rounded-lg">
                   <p>Something went wrong</p>
                 </div>
-                <div className=" items-center justify-between">
+                <div className=" items-center justify-between" >
                   <h1 className="text-2xl w-full font-bold"><i class="fas fa-shield-alt"></i> Account Settings</h1>
-                  <hr className="text-gray-800 bg-gray-800 border-gray-600 mt-2 mb-2"></hr>
                   <p className="text-xl font-semibold">Change your account password</p>
-                  <input type="password" id="newpass" placeholder="New Password" className=" mt-3 border border-gray-600 bg-gray-800 px-2 py-1 rounded-lg w-full" />
+                  <input type="password" id="newpass" placeholder="New Password" className=" mt-3 border border-gray-600  px-2 py-1 rounded-lg w-full" />
 
-                  <input type="password" id="confirmnewpass" placeholder="Confirm New Password" className="mt-3 border border-gray-600 bg-gray-800 px-2 py-1 rounded-lg w-full" />
+                  <input type="password" id="confirmnewpass" placeholder="Confirm New Password" className="mt-3 border border-gray-600  px-2 py-1 rounded-lg w-full" />
                   <button onClick={changePassword} class="bg-blue-700 px-2 py-1 rounded-lg mt-3">Change Password</button>
                   <p className="text-xl font-semibold mt-4 hidden">Change your username</p>
-                  <input placeholder="Loading..." id="usernamechange" className="hidden mt-3 border border-gray-600 bg-gray-800 px-2 py-1 rounded-lg w-full" />
+                  <input placeholder="Loading..." id="usernamechange" className="hidden mt-3 border border-gray-600  px-2 py-1 rounded-lg w-full" />
 
                   <p className="hidden text-xl font-semibold mt-4">Set a biography</p>
-                  <textarea placeholder="People can see your biography when clicking on your name" className="hidden mt-3 border border-gray-600 bg-gray-800 px-2 py-1 rounded-lg w-full">
+                  <textarea placeholder="People can see your biography when clicking on your name" className="hidden mt-3 border border-gray-600  px-2 py-1 rounded-lg w-full">
                   </textarea>
 
                   <p className="hidden text-xl font-semibold mt-4">Profile Picture</p>
@@ -405,30 +404,29 @@ const Settings = () => {
               </div>
 
 
-              <div id="probox" className=" mt-4 bg-gray-900 border  border-gray-700  px-4 py-4 text-white rounded ">
+              <div style={{backgroundColor: "rgb(33, 33, 33)"}} id="probox" className=" mt-4    px-4 py-4 text-white rounded ">
                 <div className=" items-center justify-between">
 
                   <h1 className="text-2xl w-full"><i class="fas fa-file-invoice-dollar"></i> Billing Settings</h1>
-                  <hr className="text-gray-800 bg-gray-800 border-gray-600 mt-2 mb-2"></hr>
 
                   <p className="text-xl"><b>No billing information.</b></p>
                   <button onClick={() => setOpen2(true)}
-                    className=" mt-2 bg-blue-700 hover:bg-blue-800 text-white px-6 py-1 rounded-lg text-md">View Plans </button>
-                  <hr className="hidden text-gray-700 bg-gray-800 border-gray-600 mt-2 mb-2"></hr>
+                    className=" mt-2 bg-blue-700 hover:bg-blue-800 text-white px-6 py-1 rounded-lg text-md hidden">View Plans </button>
+                  <hr className="hidden text-gray-700  border-gray-600 mt-2 mb-2"></hr>
 
                   <h1 className="hidden text-6xl mt-4 text-center">$120/year</h1>
 
                   <h1 className="hidden text-xl mt-4 text-center mb-1">What do you get?</h1>
-                  <div className="hidden bg-gray-800 px-2 py-1 text-center">
+                  <div className="hidden  px-2 py-1 text-center">
                     <p>Unlimited machine learning graded responses</p>
                   </div>
-                  <div className=" hidden mt-1 bg-gray-800 px-2 py-1 text-center">
+                  <div className=" hidden mt-1  px-2 py-1 text-center">
                     <p>Show of an exclusive CTFGuide Pro badge</p>
                   </div>
-                  <div className=" hidden mt-1 bg-gray-800 px-2 py-1 text-center">
+                  <div className=" hidden mt-1  px-2 py-1 text-center">
                     <p>Classroom member limits are removed**</p>
                   </div>
-                  <div className="hidden mt-1 bg-gray-800 px-2 py-1 text-center">
+                  <div className="hidden mt-1  px-2 py-1 text-center">
                     <p>Access to interview preparation content**</p>
                   </div>
 
@@ -441,17 +439,17 @@ const Settings = () => {
                 </div>
                 <div className="hidden items-center justify-between">
                   <h1 className="text-2xl w-full"><i class="fas fa-file-invoice-dollar"></i> Billing Settings</h1>
-                  <hr className="text-gray-800 bg-gray-800 border-gray-600 mt-2 mb-2"></hr>
+                  <hr className="text-gray-800  border-gray-600 mt-2 mb-2"></hr>
                   <h1 className="text-center text-4xl  mt-4">Upgrade to <span className="font-bold text-blue-500">CTFGuide Pro</span></h1>
 
                   <div class="grid grid-cols-2 gap-4">
-                    <div style={{ cursor: 'pointer' }} className="mt-4 bg-gray-800 border  border-gray-700 hover:bg-gray-900  px-4 py-4 text-white rounded ">
+                    <div style={{ cursor: 'pointer' }} className="mt-4  border  border-gray-700 hover:  px-4 py-4 text-white rounded ">
                       <h1 className="text-center text-3xl">Monthly</h1>
 
                       <h1 className="text-center text-xl">$4.99/month</h1>
                     </div>
 
-                    <div style={{ cursor: 'pointer' }} className="mt-4 bg-gray-800 border  border-gray-700 hover:bg-gray-900 px-4 py-4 text-white rounded ">
+                    <div style={{ cursor: 'pointer' }} className="mt-4  border  border-gray-700 hover: px-4 py-4 text-white rounded ">
                       <h1 className="text-center text-3xl">Annually</h1>
 
                       <h1 className="text-center text-xl">$35.88/year</h1>
@@ -460,16 +458,16 @@ const Settings = () => {
                   </div>
 
                   <h1 className="text-xl mt-4 text-center mb-1">What do you get?</h1>
-                  <div className="bg-gray-800 px-2 py-1 text-center">
+                  <div className=" px-2 py-1 text-center">
                     <p>Unlimited machine learning graded responses</p>
                   </div>
-                  <div className="mt-1 bg-gray-800 px-2 py-1 text-center">
+                  <div className="mt-1  px-2 py-1 text-center">
                     <p>Show of an exclusive CTFGuide Pro badge</p>
                   </div>
-                  <div className="mt-1 bg-gray-800 px-2 py-1 text-center">
+                  <div className="mt-1  px-2 py-1 text-center">
                     <p>Classroom member limits are removed**</p>
                   </div>
-                  <div className="mt-1 bg-gray-800 px-2 py-1 text-center">
+                  <div className="mt-1  px-2 py-1 text-center">
                     <p>Access to interview preparation content**</p>
                   </div>
 
@@ -481,7 +479,7 @@ const Settings = () => {
 
 
             </div>
-            <div className="hidden mt-4 bg-gray-900 border  border-gray-700  px-4 py-4 text-white rounded ">
+            <div className="hidden mt-4  border  border-gray-700  px-4 py-4 text-white rounded ">
               <div className=" items-center justify-between">
                 <h1 className="text-2xl w-full"><i class="fas fa-terminal"></i> Developer Settings</h1>
                 <ul>
@@ -513,7 +511,7 @@ const Settings = () => {
                 leaveTo="opacity-0"
               >
                 <div onClick={() => setOpen2(false)}
-                  className="fixed inset-0 bg-gray-900 bg-opacity-75 transition-opacity" />
+                  className="fixed inset-0  bg-opacity-75 transition-opacity" />
               </Transition.Child>
               <div className="flex items-end justify-center min-h-screen  pt-4 px-4  text-center sm:block sm:p-0">
 
@@ -526,7 +524,7 @@ const Settings = () => {
                   leaveFrom="opacity-100 translate-y-0 sm:scale-100"
                   leaveTo="opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95"
                 >
-                  <div style={{ fontFamily: 'Space Grotesk, sans-serif' }} className="relative inline-block align-bottom w-5/6 pb-10 pt-10 bg-gray-900 border border-gray-700 rounded-lg px-3 pt-5 pb-4 text-left overflow-hidden shadow-xl transform transition-all sm:my-8 sm:align-middle ">
+                  <div style={{ fontFamily: 'Poppins, sans-serif' }} className="relative inline-block align-bottom w-5/6 pb-10 pt-10  border border-gray-700 rounded-lg px-3 pt-5 pb-4 text-left overflow-hidden shadow-xl transform transition-all sm:my-8 sm:align-middle ">
                     <div>
 
                       <div className="mt-3 text-center sm:mt-5">
@@ -545,7 +543,7 @@ const Settings = () => {
                                 </p>
                                 <a
                                   href={tier.href}
-                                  className="mt-8 block w-full rounded-md border border-gray-800 bg-gray-800 py-2 text-center text-sm font-semibold text-white hover:bg-gray-900"
+                                  className="mt-8 block w-full rounded-md border border-gray-800  py-2 text-center text-sm font-semibold text-white hover:"
                                 >
                                   Buy {tier.name}
                                 </a>
@@ -566,7 +564,7 @@ const Settings = () => {
                         </div>
 
 
-                        <button className="hidden text-white mt-10 text-md bg-gray-800 px-4 py-1 rounded-full">Nevermind, I'll stick to the Free Plan.</button>
+                        <button className="hidden text-white mt-10 text-md  px-4 py-1 rounded-full">Nevermind, I'll stick to the Free Plan.</button>
                       </div>
                     </div>
 

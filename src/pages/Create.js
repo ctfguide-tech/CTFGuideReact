@@ -175,7 +175,7 @@ const Create = () => {
 
                 let data = JSON.parse(this.responseText);
 
-                document.getElementById("challBase").insertAdjacentHTML('afterend', `<div onclick="window.location.href = '../challenges/${id}/edit'" class="mt-2 bg-gray-900 border border-gray-700 rounded-lg text-white px-4 py-2 shadow-lg hover:shadow-gray-700/50 " style="cursor: pointer;"><h1 class="text-xl">${data.title}</h1></div>`);
+                document.getElementById("challBase").insertAdjacentHTML('afterend', `<div onclick="window.location.href = '../challenges/${id}/edit'" class="mt-2  border border-gray-700 rounded-lg text-white px-4 py-2 shadow-lg hover:shadow-gray-700/50 " style="cursor: pointer;"><h1 class="text-xl">${data.title}</h1></div>`);
 
                 //    window.alert(JSON.stringify(data.comments))
                 // document.getElementById("suggestedLoader").classList.add("hidden");
@@ -216,7 +216,7 @@ const Create = () => {
 
     return (
 
-        <div className="min-h-full example" style={{ fontFamily: 'Space Grotesk, sans-serif' }}>
+        <div className="min-h-full example" style={{ fontFamily: 'Poppins, sans-serif' }}>
             <Navigation />
 
 
@@ -239,7 +239,7 @@ const Create = () => {
                                     }} className="bg-green-900 border border-green-800 rounded-lg px-2 py-1 text-xl text-white">Create Challenge</button>
                                 </div>
                             </div>
-                            <div style={{ cursor: 'pointer' }} id="challBase" className="hidden bg-gray-900 border border-gray-700 rounded-lg text-white px-4 py-2 shadow-lg hover:shadow-gray-700/50 ">
+                            <div style={{ cursor: 'pointer' }} id="challBase" className="hidden  border border-gray-700 rounded-lg text-white px-4 py-2 shadow-lg hover:shadow-gray-700/50 ">
                                 <h1 className="text-xl">Challenge Name</h1>
                             </div>
 
@@ -261,7 +261,7 @@ const Create = () => {
                             <select
                                 id="difficulty"
                                 name="difficulty"
-                                className="mt-1 mb-4  w-1/3 pl-3 pr-20  py-2 text-base border-gray-700 text-white bg-gray-900 focus:outline-none  sm:text-sm rounded-md"
+                                className="mt-1 mb-4  w-1/3 pl-3 pr-20  py-2 text-base border-gray-700 text-white  focus:outline-none  sm:text-sm rounded-md"
                                 defaultValue="easy">
 
 
@@ -273,7 +273,7 @@ const Create = () => {
                             <select
                                 id="category"
                                 name="category"
-                                className="ml-4 mt-1 mb-4  w-1/3 pl-3 pr-20  py-2 text-base border-gray-700 text-white bg-gray-900 focus:outline-none  sm:text-sm rounded-md"
+                                className="ml-4 mt-1 mb-4  w-1/3 pl-3 pr-20  py-2 text-base border-gray-700 text-white  focus:outline-none  sm:text-sm rounded-md"
                                 defaultValue="forensics">
 
 
@@ -293,14 +293,14 @@ const Create = () => {
                         </div>
 
 
-                        <div className="px-5 py-4 mt-5 rounded-lg  bg-gray-900 border border-gray-700">
+                        <div className="px-5 py-4 mt-5 rounded-lg   border border-gray-700">
                             <h3 className="mt-6  text-3xl leading-6 font-medium text-white mb-5"><i class="fas fa-align-left"></i> Challenge Content</h3>
                             <p className="text-gray-400"> You can use markdown!</p>
                             <SimpleMDE value={value} />
                         </div>
 
 
-                        <div className="px-5 py-4 mt-5 rounded-lg  bg-gray-900 border border-gray-700">
+                        <div className="px-5 py-4 mt-5 rounded-lg   border border-gray-700">
                             <h3 className="mt-6 text-3xl leading-6 font-medium text-white mb-6"><i class="far fa-lightbulb"></i> Challenge Hints</h3>
 
                             <dt className="text-xl font-medium text-white truncate">Hint 1</dt>
@@ -316,7 +316,7 @@ const Create = () => {
 
                         </div>
 
-                        <div className="px-5 py-4 mt-5 rounded-lg  bg-gray-900 border border-gray-700">
+                        <div className="px-5 py-4 mt-5 rounded-lg   border border-gray-700">
                             <h3 className="mt-6 text-3xl leading-6 font-medium text-white mb-6"><i class="far fa-flag"></i> Challenge Solution</h3>
 
                             <input id="solution" className="mb-4 mt-1 w-full px-2 py-2 border border-gray-600 rounded-lg border-gray-700 bg-black text-white"></input>
@@ -325,7 +325,7 @@ const Create = () => {
 
                         </div>
 
-                        <div className="px-5 py-4 mt-5 rounded-lg  bg-gray-900 border border-gray-700">
+                        <div className="px-5 py-4 mt-5 rounded-lg   border border-gray-700">
                             <h1 className="text-3xl text-white"><i class="fab fa-docker"></i> Deploy a docker container <span class="text-xl bg-black px-5 rounded-lg">BETA</span></h1>
                             <p className="text-white mt-4"><b className="italic bold">This is not required!</b> Sometimes if you have a challenge that has a web component, you'd need to host it yourself. However, now you can just give us a docker container and we'll deploy it to our servers.</p>
                             <input className="mt-4 text-white" type="file"></input>
@@ -342,7 +342,7 @@ const Create = () => {
                     <div id="saved" aria-live="assertive" className="hidden fixed inset-0 flex items-end px-4 py-6 pointer-events-none sm:p-6 sm:items-start">
                         <div className="w-full flex flex-col items-center space-y-4 sm:items-end">
 
-                            <div className="max-w-sm w-full bg-gray-900 border border-gray-700 shadow-lg rounded-lg pointer-events-auto ring-1 ring-black ring-opacity-5 overflow-hidden">
+                            <div className="max-w-sm w-full  border border-gray-700 shadow-lg rounded-lg pointer-events-auto ring-1 ring-black ring-opacity-5 overflow-hidden">
                                 <div className="p-4">
                                     <div className="flex items-start">
                                         <div className="flex-shrink-0">

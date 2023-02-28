@@ -233,7 +233,7 @@ const Ch2_1 = () => {
 
   return (
 
-    <div className="min-h-full " style={{ fontFamily: 'Space Grotesk, sans-serif' }}>
+    <div className="min-h-full " style={{ fontFamily: 'Poppins, sans-serif' }}>
 
       <Navigation />
 
@@ -387,7 +387,7 @@ const Ch2_1 = () => {
 
       </main>
               
-      <Transition.Root show={open} as={Fragment} style={{ fontFamily: 'Space Grotesk, sans-serif', overflow:'hidden'}} className="test">
+      <Transition.Root show={open} as={Fragment} style={{ fontFamily: 'Poppins, sans-serif', overflow:'hidden'}} className="test">
       <Dialog as="div" className="fixed inset-0 overflow-hidden" onClose={setOpen}>
         <div className="absolute inset-0 overflow-hidden">
           <Transition.Child
