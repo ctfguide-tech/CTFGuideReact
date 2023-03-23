@@ -1,3 +1,7 @@
+# THIS PROJECT IS ARCHIVED. PLEASE SEE THE NEW ONE BELOW.
+https://github.com/ctfguide-tech/CTFGuideNext
+
+
 [![CTFGuide](https://cdn.glitch.global/4c2c02b2-7900-4318-89bf-6974b196f4c2/CTFGuide%20React%20Client.png?v=1656076065339 "CTFGuide")](https://cdn.glitch.global/4c2c02b2-7900-4318-89bf-6974b196f4c2/CTFGuide%20React%20Client.png?v=1656076065339 "CTFGuide")
 
 ## What is this repository?
